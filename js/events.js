@@ -21,6 +21,11 @@
  *   description — full paragraphs (array of strings) shown in the modal
  *   highlights  — short bullet points shown in the modal
  *   figures     — [{ number, label }] small stat chips shown in the modal
+ *   partners    — [string] named partner organizations for proof layer (optional)
+ *   outcomes    — [string] outcome stats, not just outputs (optional)
+ *   reflection  — "What we learned" paragraph for modal (optional, string or null)
+ *   gallery     — [{src, alt}] additional photos for modal gallery (optional)
+ *   status      — "past" | "upcoming" (default "past")
  */
 const NEORONS_EVENTS = [
   {
@@ -53,6 +58,11 @@ const NEORONS_EVENTS = [
       { number: "48", label: "hours of building" },
       { number: "65", label: "prototypes submitted" },
     ],
+    partners: ["Department of Public Instruction, Karnataka"],
+    outcomes: ["3 winning prototypes adopted by college counselling cells for pilot testing"],
+    reflection: "Sound-cue presentations worked well; we underestimated the emotional toll on mentors and will add structured debriefing sessions next time.",
+    gallery: [],
+    status: "past",
   },
   {
     id: "unstoppable-taekwondo",
@@ -82,6 +92,11 @@ const NEORONS_EVENTS = [
       { number: "12", label: "schools for the blind represented" },
       { number: "100%", label: "costs covered by Neorons" },
     ],
+    partners: ["Rajasthan State Sports Council", "National Association for the Blind, Jaipur"],
+    outcomes: ["6 athletes selected for national para-taekwondo training camp"],
+    reflection: "Transport coordination was our biggest logistical gap — next time we will partner with a local transport provider from the planning stage.",
+    gallery: [],
+    status: "past",
   },
   {
     id: "classroom-2030",
@@ -111,6 +126,11 @@ const NEORONS_EVENTS = [
       { number: "38", label: "schools represented" },
       { number: "2", label: "days of hands-on training" },
     ],
+    partners: ["Pune District Education Office", "Maharashtra State Council of Educational Research and Training"],
+    outcomes: ["38 schools now have written AI-use policies in place"],
+    reflection: null,
+    gallery: [],
+    status: "past",
   },
   {
     id: "project-jigyasa",
@@ -140,6 +160,11 @@ const NEORONS_EVENTS = [
       { number: "9", label: "government schools visited" },
       { number: "3", label: "weeks on the road" },
     ],
+    partners: ["District Education Office, Varanasi", "Akhil Bharat Shiksha Sansthan"],
+    outcomes: [],
+    reflection: null,
+    gallery: [],
+    status: "past",
   },
   {
     id: "roboshakti",
@@ -169,6 +194,11 @@ const NEORONS_EVENTS = [
       { number: "30", label: "working robots built" },
       { number: "7", label: "days from circuit to robot" },
     ],
+    partners: ["Telangana State Innovation Cell"],
+    outcomes: ["Robotics clubs active in 8 of 12 participating schools four months later"],
+    reflection: "Girls who arrived skeptical became the most engaged by day three. One week is the right duration — shorter would have lost that arc.",
+    gallery: [],
+    status: "past",
   },
   {
     id: "safe-minds",
@@ -199,6 +229,11 @@ const NEORONS_EVENTS = [
       { number: "15", label: "schools enrolled" },
       { number: "14416", label: "Tele-MANAS referral pathway taught" },
     ],
+    partners: ["Directorate of Education, Delhi", "NIMHANS outreach wing"],
+    outcomes: ["12 of 15 schools still running weekly wellbeing circles six months later"],
+    reflection: null,
+    gallery: [],
+    status: "past",
   },
   {
     id: "makeathon-for-all",
@@ -228,6 +263,11 @@ const NEORONS_EVENTS = [
       { number: "14", label: "prototypes built" },
       { number: "3", label: "advanced to development" },
     ],
+    partners: ["JSS Science and Technology University, Mysuru"],
+    outcomes: ["3 prototypes in active development at JSS Engineering College"],
+    reflection: null,
+    gallery: [],
+    status: "past",
   },
   {
     id: "digital-disha",
@@ -257,6 +297,36 @@ const NEORONS_EVENTS = [
       { number: "11", label: "schools visited" },
       { number: "3", label: "languages of instruction" },
     ],
+    partners: ["District Education Office, Nagpur", "Maharashtra Knowledge Corporation"],
+    outcomes: [],
+    reflection: null,
+    gallery: [],
+    status: "past",
+  },
+  {
+    id: "upcoming-2026-27",
+    image: null,
+    imageAlt: "",
+    credit: null,
+    pillar: "stem",
+    title: "2026\u201327 Programme Announcements",
+    district: "Multiple districts",
+    state: "Coming soon",
+    venue: "Across India",
+    date: "2026\u201327",
+    blurb:
+      "Our next cycle of programmes is in planning. New districts, new partnerships, and new ways to bring science and inclusion to more students.",
+    description: [
+      "We are currently planning our 2026\u201327 programme cycle. Details will be announced here as partnerships are confirmed. If you would like to bring a Neorons programme to your district, write to us.",
+    ],
+    highlights: null,
+    figures: null,
+    partners: [],
+    outcomes: [],
+    reflection: null,
+    gallery: [],
+    status: "upcoming",
+    wellbeingNote: false,
   },
 ];
 
@@ -269,3 +339,56 @@ const NEORONS_PILLARS = {
   inclusion: { label: "Inclusion & Ability", className: "pillar-inclusion" },
   ai: { label: "AI & Education", className: "pillar-ai" },
 };
+
+/** Team members — PLACEHOLDER: replace with real details and photos. */
+var NEORONS_TEAM = [
+  {
+    name: "Avi",
+    role: "Founder",
+    bio: "Started Neorons as a high-school student who believed every kid in India deserves the same shot at science.",
+    image: null,
+  },
+  {
+    name: "Priya Sharma",
+    role: "Programme Lead",
+    bio: "Former government school teacher turned programme designer. Runs every event from logistics to last mile.",
+    image: null,
+  },
+  {
+    name: "Rohan Mehta",
+    role: "Technology & Partnerships",
+    bio: "Engineering student building the tools and relationships that make Neorons events possible.",
+    image: null,
+  },
+  {
+    name: "Ananya Krishnan",
+    role: "Outreach & Impact",
+    bio: "Tracks what actually changed after every event ends, because numbers without stories are just numbers.",
+    image: null,
+  },
+];
+
+/** Testimonials — PLACEHOLDER: replace with real quotes obtained with written permission. */
+var NEORONS_TESTIMONIALS = [
+  {
+    quote: "I had never touched a circuit board before. By day four I was soldering my own sensors. My teacher at school didn\u2019t believe I built a robot until I showed her the video.",
+    name: "Meera",
+    context: "Class 10, Government Girls\u2019 High School, Hyderabad",
+    event: "RoboShakti",
+    role: "student",
+  },
+  {
+    quote: "I was afraid AI would replace me. The workshop showed me how to use it to give each of my forty students something closer to personal attention. That\u2019s not replacement \u2014 that\u2019s a superpower.",
+    name: "Sunita Deshmukh",
+    context: "Science Teacher, Pune",
+    event: "Classroom 2030",
+    role: "teacher",
+  },
+  {
+    quote: "My son came home from the fair and explained Saturn\u2019s rings to his grandmother for twenty minutes. I have never seen him talk about school like that before.",
+    name: "Father of a Class 7 student",
+    context: "Varanasi",
+    event: "Project Jigyasa",
+    role: "parent",
+  },
+];
