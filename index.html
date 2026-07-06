@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neorons — Science, Technology &amp; Inclusion for India's Youth</title>
-  <meta name="description" content="Neorons is a social-impact organization advancing STEM education, mental-health awareness, and inclusion for young people across India. 1,200+ students reached across 8 districts." />
+  <title>Neorons — Science, Technology &amp; Inclusion</title>
+  <meta name="description" content="Neorons designs and funds education programmes across India — STEM events, inclusive sport, and responsible AI in the classroom. 1,200+ students reached across 8 districts." />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Neorons" />
-  <meta property="og:title" content="Neorons — Science, Technology &amp; Inclusion for India's Youth" />
-  <meta property="og:description" content="Neorons is a social-impact organization advancing STEM education, mental-health awareness, and inclusion for young people across India. 1,200+ students reached across 8 districts." />
-  <meta name="twitter:card" content="summary" />
-  <!-- Once the site has a domain, add: og:url, og:image (1200x630), and rel="canonical". -->
+  <meta property="og:title" content="Neorons — Science, Technology &amp; Inclusion" />
+  <meta property="og:description" content="Neorons designs and funds education programmes across India — STEM events, inclusive sport, and responsible AI in the classroom. 1,200+ students reached across 8 districts." />
+  <meta property="og:image" content="images/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <!-- TODO: Add og:url and rel="canonical" once domain is live -->
   <link rel="preload" as="image" href="images/hero.jpg" fetchpriority="high" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230077d4'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23fff'/%3E%3C/svg%3E" />
@@ -48,11 +49,11 @@
         </button>
         <ul id="nav-menu" class="nav-menu">
           <li><a href="#mission">Who we are</a></li>
+          <li><a href="#people">Our people</a></li>
           <li><a href="#programmes">What we do</a></li>
-          <li><a href="#impact">Our impact</a></li>
           <li><a href="#events">Events</a></li>
           <li><a href="#reach">Where we work</a></li>
-          <li><a class="nav-cta" href="#contact">Partner with us</a></li>
+          <li><a class="nav-cta" href="#contact">Get in touch</a></li>
         </ul>
       </nav>
     </div>
@@ -123,11 +124,31 @@
       </div>
     </section>
 
+    <!-- Our people -->
+    <!-- PLACEHOLDER: Replace with real team member details and photos -->
+    <section class="section people" id="people">
+      <div class="container">
+        <p class="eyebrow reveal">Our people</p>
+        <h2 class="reveal">Founded and led by students.</h2>
+        <p class="section-sub reveal">
+          Neorons is youth-led — and that is not a caveat, it is the point.
+          We believe the people closest to the problem build the best solutions.
+        </p>
+        <div class="team-grid" id="team-grid">
+          <!-- Team cards rendered by js/main.js from js/events.js NEORONS_TEAM -->
+        </div>
+      </div>
+    </section>
+
     <!-- Programme areas -->
     <section class="section pillars" id="programmes">
       <div class="container">
         <p class="eyebrow reveal">What we do</p>
-        <h2 class="reveal">Our programme areas</h2>
+        <h2 class="reveal">Technology and opportunity as instruments of inclusion.</h2>
+        <p class="section-sub reveal">
+          Every programme we run is an expression of one idea: science and
+          technology should serve everyone. Three areas, one mission.
+        </p>
         <div class="pillar-grid">
           <article class="pillar">
             <svg class="pillar-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -159,7 +180,7 @@
               <path d="M10 2.5v4.5M14 2.5v4.5M10 17v4.5M14 17v4.5M2.5 10H7M2.5 14H7M17 10h4.5M17 14h4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
               <circle cx="12" cy="12" r="1.6" fill="currentColor"/>
             </svg>
-            <h3>AI &amp; Future-Ready Education</h3>
+            <h3>AI &amp; Education</h3>
             <p>
               Training teachers and equipping classrooms to use artificial intelligence
               responsibly, so that no district is left behind in the decade ahead.
@@ -192,6 +213,15 @@
             <span class="impact-label">blind and low-vision athletes supported in competitive sport</span>
           </div>
         </div>
+        <details class="methodology-note reveal">
+          <summary>How we count</summary>
+          <p>
+            "Students reached" means unique registered participants across all
+            programmes. We do not count family attendees, community visitors, or
+            online viewers. Our total of 1,200+ is conservative — the actual
+            number of people who experienced our events is higher.
+          </p>
+        </details>
       </div>
     </section>
 
@@ -224,16 +254,15 @@
       </div>
     </section>
 
-    <!-- Field voice -->
-    <section class="quote-band" aria-label="Voices from our programmes">
-      <div class="container narrow">
-        <blockquote class="quote reveal">
-          <p>
-            &ldquo;For many of our girls, it was the first time an audience cheered
-            for them by name. They walked out of that hall taller.&rdquo;
-          </p>
-          <cite>Coach, Unstoppable taekwondo championship &middot; Jaipur</cite>
-        </blockquote>
+    <!-- Voices -->
+    <!-- PLACEHOLDER: Replace all testimonials with real quotes obtained with written permission -->
+    <section class="section voices" id="voices" aria-label="Voices from our programmes">
+      <div class="container">
+        <p class="eyebrow reveal">Voices</p>
+        <h2 class="reveal">From the people who were there.</h2>
+        <div class="voices-grid" id="voices-grid">
+          <!-- Testimonial cards rendered by js/main.js from NEORONS_TESTIMONIALS -->
+        </div>
       </div>
     </section>
 
@@ -263,17 +292,79 @@
       </div>
     </section>
 
-    <!-- Partner CTA -->
+    <!-- Contact -->
     <section class="section cta-band" id="contact">
       <div class="container narrow cta-inner">
-        <p class="eyebrow reveal">Partner with us</p>
+        <p class="eyebrow reveal">Get in touch</p>
         <h2 class="reveal">Great programmes are built together.</h2>
         <p class="reveal">
-          We work with schools, universities, corporations, and government bodies to
-          bring our programmes to more districts every year. If our mission speaks to
-          yours, we would love to hear from you.
+          Schools, universities, corporations, and government bodies — if our
+          mission speaks to yours, we would love to hear from you.
         </p>
-        <a class="btn btn-light reveal" href="mailto:hello@neorons.org">hello@neorons.org</a>
+        <!-- TODO: Replace Formspree endpoint with your actual form ID -->
+        <form class="contact-form reveal" action="https://formspree.io/f/TODO" method="POST">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="contact-name">Name</label>
+              <input type="text" id="contact-name" name="name" required />
+            </div>
+            <div class="form-field">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" name="email" required />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="contact-org">Organization <span class="optional">(optional)</span></label>
+            <input type="text" id="contact-org" name="organization" />
+          </div>
+          <div class="form-field">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-light">Send message</button>
+        </form>
+        <p class="cta-fallback reveal">
+          Or email us directly at <a href="mailto:hello@neorons.org">hello@neorons.org</a>
+          <!-- TODO: Add real WhatsApp number -->
+          &nbsp;&middot;&nbsp; <a href="https://wa.me/TODO" target="_blank" rel="noopener">WhatsApp</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Get involved -->
+    <section class="section get-involved" id="get-involved">
+      <div class="container">
+        <p class="eyebrow reveal">Get involved</p>
+        <h2 class="reveal">There is more than one way to help.</h2>
+        <div class="involve-grid">
+          <article class="involve-card reveal">
+            <h3>Volunteer &amp; Mentor</h3>
+            <p>
+              Our events are powered by women engineers, clinical psychologists,
+              and college robotics teams. If you have skills and a weekend,
+              we have students who need you.
+            </p>
+            <a class="btn btn-primary" href="#contact">Join us</a>
+          </article>
+          <article class="involve-card reveal">
+            <h3>Partner</h3>
+            <p>
+              We work with schools, district education offices, universities,
+              and CSR teams to bring programmes to new districts every year.
+            </p>
+            <a class="btn btn-primary" href="mailto:hello@neorons.org">Write to us</a>
+          </article>
+          <article class="involve-card reveal">
+            <h3>Donate</h3>
+            <p>
+              Every programme is free for participants. Your support funds
+              travel, materials, boarding, and coaching for students who
+              could not attend otherwise.
+            </p>
+            <!-- TODO: Add real donation link -->
+            <a class="btn btn-primary" href="#contact">Support our work</a>
+          </article>
+        </div>
       </div>
     </section>
   </main>
@@ -285,13 +376,20 @@
         <span class="brand-name">Neorons</span>
         <p>
           A social-impact organization advancing science, technology, and inclusion
-          for young people across India.
+          for young people across India. Founded 2025.
         </p>
+        <!-- TODO: Add real social media URLs -->
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+          <a href="#" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg></a>
+          <a href="#" aria-label="X (Twitter)" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        </div>
       </div>
       <div class="footer-col">
         <h3>Explore</h3>
         <ul>
           <li><a href="#mission">Who we are</a></li>
+          <li><a href="#people">Our people</a></li>
           <li><a href="#programmes">What we do</a></li>
           <li><a href="#events">Events</a></li>
           <li><a href="#reach">Where we work</a></li>
@@ -301,8 +399,8 @@
         <h3>Contact</h3>
         <ul>
           <li><a href="mailto:hello@neorons.org">hello@neorons.org</a></li>
+          <!-- TODO: Add specific legal entity details (e.g., 501(c)(3) EIN, Indian partner entity) -->
           <li>Neorons Inc.</li>
-          <li>Registered in the United States &middot; Working across India</li>
         </ul>
       </div>
       <div class="footer-col footer-wellbeing">
@@ -315,6 +413,14 @@
     </div>
     <div class="container footer-legal">
       <p>&copy; 2026 Neorons Inc. All rights reserved.</p>
+      <p class="footer-links">
+        <a href="safeguarding.html">Safeguarding</a> &middot;
+        <a href="privacy.html">Privacy</a> &middot;
+        <a href="accessibility.html">Accessibility</a> &middot;
+        <a href="media.html">Press kit</a> &middot;
+        <a href="profile.html">One-page profile</a>
+      </p>
+      <p>Last updated July 2026.</p>
       <p id="photo-credits"><!-- Photo credits rendered by js/main.js --></p>
     </div>
   </footer>
