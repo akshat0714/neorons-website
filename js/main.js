@@ -61,6 +61,17 @@
     return figure;
   }
 
+  /** Wrap Hindi/Sanskrit words in <span lang="hi"> for correct pronunciation. */
+  var hindiWords = ["Jigyasa", "Disha", "Shakti"];
+  function wrapHindiWords(text) {
+    var result = text;
+    hindiWords.forEach(function (word) {
+      result = result.replace(new RegExp("(" + word + ")", "g"),
+        '<span lang="hi">$1</span>');
+    });
+    return result;
+  }
+
   function renderEventCard(event) {
     var pillar = NEORONS_PILLARS[event.pillar] || { label: "", className: "" };
     var featured = !!event.featured;
@@ -73,6 +84,10 @@
     );
     card.setAttribute("data-pillar", event.pillar);
     card.setAttribute("data-event-id", event.id);
+
+    if (event.status === "upcoming") {
+      card.classList.add("is-upcoming");
+    }
 
     var figure = makeImage(event, "event-figure", featured);
     if (figure) card.appendChild(figure);
@@ -87,7 +102,8 @@
     text.appendChild(el("p", "event-tag", pillar.label));
 
     var title = el("h3", "event-title");
-    var titleButton = el("button", "event-link", event.title);
+    var titleButton = el("button", "event-link");
+    titleButton.innerHTML = wrapHindiWords(event.title.replace(/</g, "&lt;"));
     titleButton.type = "button";
     titleButton.setAttribute("aria-haspopup", "dialog");
     title.appendChild(titleButton);
@@ -158,12 +174,127 @@
     });
   }
 
+  function renderTeam() {
+    var grid = document.getElementById("team-grid");
+    if (!grid || typeof NEORONS_TEAM === "undefined") return;
+
+    NEORONS_TEAM.forEach(function (member) {
+      var card = el("article", "team-card reveal");
+      var avatar = el("div", "team-avatar");
+      if (member.image) {
+        var img = document.createElement("img");
+        img.src = member.image;
+        img.alt = member.name;
+        img.width = 120;
+        img.height = 120;
+        img.loading = "lazy";
+        avatar.appendChild(img);
+      } else {
+        // Placeholder initial
+        avatar.appendChild(el("span", "team-initial", member.name.charAt(0)));
+      }
+      card.appendChild(avatar);
+      card.appendChild(el("h3", "team-name", member.name));
+      card.appendChild(el("p", "team-role", member.role));
+      card.appendChild(el("p", "team-bio", member.bio));
+      grid.appendChild(card);
+    });
+  }
+
+  function renderTestimonials() {
+    var grid = document.getElementById("voices-grid");
+    if (!grid || typeof NEORONS_TESTIMONIALS === "undefined") return;
+
+    NEORONS_TESTIMONIALS.forEach(function (item) {
+      var card = el("article", "voice-card reveal");
+      var blockquote = document.createElement("blockquote");
+      blockquote.className = "voice-quote";
+      blockquote.appendChild(el("p", null, "\u201C" + item.quote + "\u201D"));
+      var cite = document.createElement("cite");
+      cite.className = "voice-cite";
+      cite.appendChild(el("span", "voice-name", item.name));
+      cite.appendChild(document.createTextNode(" \u00B7 "));
+      cite.appendChild(el("span", "voice-context", item.context));
+      blockquote.appendChild(cite);
+      card.appendChild(blockquote);
+      card.appendChild(el("span", "voice-event", item.event));
+      grid.appendChild(card);
+    });
+  }
+
+  function renderTimeline() {
+    var container = document.querySelector(".events .section-head");
+    if (!container) return;
+
+    var pastEvents = NEORONS_EVENTS.filter(function (e) {
+      return e.status !== "upcoming";
+    });
+    // Sort by date (simple month-year parse)
+    var monthOrder = {
+      January: 1, February: 2, March: 3, April: 4, May: 5, June: 6,
+      July: 7, August: 8, September: 9, October: 10, November: 11, December: 12,
+    };
+    pastEvents.sort(function (a, b) {
+      var aMonth = a.date.split(" ")[0];
+      var bMonth = b.date.split(" ")[0];
+      var aYear = parseInt(a.date.split(" ")[1], 10) || 2025;
+      var bYear = parseInt(b.date.split(" ")[1], 10) || 2025;
+      if (aYear !== bYear) return aYear - bYear;
+      return (monthOrder[aMonth] || 0) - (monthOrder[bMonth] || 0);
+    });
+
+    var timeline = el("div", "event-timeline reveal");
+    timeline.setAttribute("aria-label", "Event timeline");
+    var track = el("div", "timeline-track");
+
+    pastEvents.forEach(function (event) {
+      var pillar = NEORONS_PILLARS[event.pillar] || { className: "" };
+      var dot = el("button", "timeline-dot " + pillar.className);
+      dot.type = "button";
+      dot.setAttribute("aria-label", event.title + ", " + event.date);
+      var label = el("span", "timeline-label");
+      label.appendChild(el("span", "timeline-date", event.date.split(" ")[0].substring(0, 3) + " " + (event.date.split(" ")[1] || "")));
+      label.appendChild(el("span", "timeline-title", event.title));
+      dot.appendChild(label);
+      dot.addEventListener("click", function () {
+        openModal(event, dot);
+      });
+      track.appendChild(dot);
+    });
+
+    timeline.appendChild(track);
+    container.parentNode.insertBefore(timeline, container.nextSibling);
+  }
+
   /* ---------------------------------------------------------------------- */
   /* Filters                                                                 */
   /* ---------------------------------------------------------------------- */
 
   function initFilters() {
     var buttons = document.querySelectorAll(".filter-btn");
+
+    // Compute counts per pillar (excluding upcoming)
+    var counts = { all: 0 };
+    NEORONS_EVENTS.forEach(function (e) {
+      if (e.status === "upcoming") return;
+      counts.all += 1;
+      counts[e.pillar] = (counts[e.pillar] || 0) + 1;
+    });
+
+    // Show counts on buttons
+    buttons.forEach(function (btn) {
+      var f = btn.getAttribute("data-filter");
+      var count = counts[f] || 0;
+      if (count) btn.textContent = btn.textContent + " (" + count + ")";
+    });
+
+    // Aria-live region for screen readers
+    var liveRegion = el("div", "sr-only");
+    liveRegion.setAttribute("aria-live", "polite");
+    liveRegion.setAttribute("role", "status");
+    var filterGroup = document.querySelector(".event-filters");
+    if (filterGroup) filterGroup.parentNode.insertBefore(liveRegion, filterGroup.nextSibling);
+
     buttons.forEach(function (btn) {
       btn.addEventListener("click", function () {
         if (btn.classList.contains("is-active")) return;
@@ -174,12 +305,15 @@
         });
         var filter = btn.getAttribute("data-filter");
         var enteringIndex = 0;
+        var showing = 0;
+        var total = 0;
         document.querySelectorAll(".event-card").forEach(function (card) {
+          if (card.classList.contains("is-upcoming")) return;
+          total += 1;
           var match = filter === "all" || card.getAttribute("data-pillar") === filter;
           var wasHidden = card.classList.contains("is-hidden");
           card.classList.toggle("is-hidden", !match);
-          // Animate only cards that are actually entering; cards that stay
-          // put should not blink or replay their entrance.
+          if (match) showing += 1;
           if (match && wasHidden && !reducedMotion()) {
             card.style.animationDelay = Math.min(enteringIndex * 45, 360) + "ms";
             card.classList.add("is-filtering");
@@ -192,6 +326,8 @@
             enteringIndex += 1;
           }
         });
+        // Announce to screen readers
+        liveRegion.textContent = "Showing " + showing + " of " + total + " events";
       });
     });
   }
@@ -223,9 +359,33 @@
       modalContent.appendChild(figureEl);
     }
 
+    // Gallery thumbnails
+    if (event.gallery && event.gallery.length) {
+      var gallery = el("div", "modal-gallery");
+      event.gallery.forEach(function (photo) {
+        var thumb = document.createElement("button");
+        thumb.className = "gallery-thumb";
+        thumb.type = "button";
+        var thumbImg = document.createElement("img");
+        thumbImg.src = photo.src;
+        thumbImg.alt = photo.alt || "";
+        thumbImg.width = 80;
+        thumbImg.height = 54;
+        thumbImg.loading = "lazy";
+        thumb.appendChild(thumbImg);
+        thumb.addEventListener("click", function () {
+          var mainImg = modalContent.querySelector(".modal-figure img");
+          if (mainImg) mainImg.src = photo.src;
+        });
+        gallery.appendChild(thumb);
+      });
+      modalContent.appendChild(gallery);
+    }
+
     var header = el("div", "modal-header " + pillar.className);
     header.appendChild(el("p", "event-tag", pillar.label));
-    var title = el("h2", "modal-title", event.title);
+    var title = el("h2", "modal-title");
+    title.innerHTML = wrapHindiWords(event.title.replace(/</g, "&lt;"));
     title.id = "modal-title";
     header.appendChild(title);
 
@@ -262,6 +422,30 @@
       body.appendChild(list);
     }
 
+    // Partners (proof layer)
+    if (event.partners && event.partners.length) {
+      var partnerLine = el("p", "modal-partners");
+      partnerLine.appendChild(el("strong", null, "In partnership with: "));
+      partnerLine.appendChild(document.createTextNode(event.partners.join(" \u00B7 ")));
+      body.appendChild(partnerLine);
+    }
+
+    // Outcomes (not just outputs)
+    if (event.outcomes && event.outcomes.length) {
+      body.appendChild(el("h3", "modal-subhead", "Outcomes"));
+      var outcomeList = el("ul", "modal-highlights");
+      event.outcomes.forEach(function (outcome) {
+        outcomeList.appendChild(el("li", null, outcome));
+      });
+      body.appendChild(outcomeList);
+    }
+
+    // Reflection ("What we learned")
+    if (event.reflection) {
+      body.appendChild(el("h3", "modal-subhead", "What we learned"));
+      body.appendChild(el("p", "modal-paragraph modal-reflection", event.reflection));
+    }
+
     // Safe-messaging: events that touch mental health always carry helpline info.
     if (event.wellbeingNote) {
       body.appendChild(
@@ -273,6 +457,42 @@
         )
       );
     }
+
+    // Share row
+    var shareRow = el("div", "modal-share");
+    var eventUrl = window.location.origin + window.location.pathname + "#event-" + event.id;
+
+    // WhatsApp
+    var waBtn = el("a", "share-btn share-whatsapp", "WhatsApp");
+    waBtn.href = "https://wa.me/?text=" + encodeURIComponent(event.title + " \u2014 " + eventUrl);
+    waBtn.target = "_blank";
+    waBtn.rel = "noopener";
+    shareRow.appendChild(waBtn);
+
+    // Copy link
+    var copyBtn = el("button", "share-btn share-copy", "Copy link");
+    copyBtn.type = "button";
+    copyBtn.addEventListener("click", function () {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(eventUrl).then(function () {
+          copyBtn.textContent = "Copied!";
+          window.setTimeout(function () { copyBtn.textContent = "Copy link"; }, 2000);
+        });
+      }
+    });
+    shareRow.appendChild(copyBtn);
+
+    // Native share (mobile)
+    if (navigator.share) {
+      var nativeBtn = el("button", "share-btn share-native", "Share\u2026");
+      nativeBtn.type = "button";
+      nativeBtn.addEventListener("click", function () {
+        navigator.share({ title: event.title, url: eventUrl });
+      });
+      shareRow.appendChild(nativeBtn);
+    }
+
+    body.appendChild(shareRow);
 
     body.appendChild(buildModalNav(event));
 
@@ -409,6 +629,13 @@
       if (keyEvent.key === "Escape") {
         closeModal();
         return;
+      }
+      // Arrow-key navigation between events
+      if (keyEvent.key === "ArrowLeft" || keyEvent.key === "ArrowRight") {
+        var navBtn = modal.querySelector(
+          keyEvent.key === "ArrowLeft" ? ".modal-nav-btn:not(.is-next)" : ".modal-nav-btn.is-next"
+        );
+        if (navBtn) navBtn.click();
       }
       // Simple focus trap: keep Tab cycling within the dialog.
       if (keyEvent.key === "Tab") {
@@ -615,6 +842,44 @@
     });
   }
 
+  function injectStructuredData() {
+    // Organization
+    var org = {
+      "@context": "https://schema.org",
+      "@type": "NGO",
+      "name": "Neorons",
+      "url": window.location.origin,
+      "description": "A social-impact organization advancing science, technology, and inclusion for young people across India.",
+      "foundingDate": "2025",
+      "areaServed": { "@type": "Country", "name": "India" },
+    };
+    var orgScript = document.createElement("script");
+    orgScript.type = "application/ld+json";
+    orgScript.textContent = JSON.stringify(org);
+    document.head.appendChild(orgScript);
+
+    // Events
+    var events = NEORONS_EVENTS.filter(function (e) { return e.status !== "upcoming"; }).map(function (e) {
+      return {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": e.title,
+        "description": e.blurb,
+        "startDate": e.date,
+        "location": {
+          "@type": "Place",
+          "name": e.venue,
+          "address": { "@type": "PostalAddress", "addressLocality": e.district, "addressRegion": e.state, "addressCountry": "IN" },
+        },
+        "organizer": { "@type": "Organization", "name": "Neorons" },
+      };
+    });
+    var eventsScript = document.createElement("script");
+    eventsScript.type = "application/ld+json";
+    eventsScript.textContent = JSON.stringify(events);
+    document.head.appendChild(eventsScript);
+  }
+
   /* ---------------------------------------------------------------------- */
 
   // Hero entrance + Ken Burns settle. Scheduled FIRST so no later failure can
@@ -638,6 +903,18 @@
   }
   try { renderPhotoCredits(); } catch (err) {
     if (window.console && console.error) console.error("Neorons: renderPhotoCredits failed", err);
+  }
+  try { renderTeam(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: renderTeam failed", err);
+  }
+  try { renderTestimonials(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: renderTestimonials failed", err);
+  }
+  try { renderTimeline(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: renderTimeline failed", err);
+  }
+  try { injectStructuredData(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: structured data failed", err);
   }
 
   // Interactive wiring; a failure here must not block the reveal system below.
