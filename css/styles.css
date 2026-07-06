@@ -140,7 +140,7 @@ a {
 
 /* Scroll-reveal system ------------------------------------------------------ */
 /* .reveal on single elements; grids stagger via --reveal-delay set by JS.
-   Hidden state is gated behind the .js class (set by an inline head script)
+   Hidden state is gated behind the .js class (set by main.js at load time)
    so content is always visible without JavaScript. Reveals run as keyframe
    animations so they never interfere with hover transitions. */
 

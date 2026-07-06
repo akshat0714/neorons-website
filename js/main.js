@@ -13,6 +13,14 @@
   // If this file fails to load, the site renders fully visible, unanimated.
   document.documentElement.classList.add("js");
 
+  // Hero image error handler (moved from inline onerror for CSP compliance).
+  var heroImg = document.querySelector(".hero-media img");
+  if (heroImg) {
+    heroImg.addEventListener("error", function () {
+      heroImg.parentElement.style.display = "none";
+    });
+  }
+
   var eventGrid = document.getElementById("event-grid");
   var districtGrid = document.getElementById("district-grid");
   var modal = document.getElementById("event-modal");
@@ -197,8 +205,8 @@
     currentEventId = event.id;
     modalContent.innerHTML = "";
 
-    var figure = makeImage(event, "modal-figure", true);
-    if (figure) {
+    var figureEl = makeImage(event, "modal-figure", true);
+    if (figureEl) {
       if (event.credit && event.credit.creator) {
         var caption = document.createElement("figcaption");
         if (event.credit.url) {
@@ -210,9 +218,9 @@
         } else {
           caption.textContent = "Photo: " + event.credit.creator + " (" + event.credit.license + ")";
         }
-        figure.appendChild(caption);
+        figureEl.appendChild(caption);
       }
-      modalContent.appendChild(figure);
+      modalContent.appendChild(figureEl);
     }
 
     var header = el("div", "modal-header " + pillar.className);
@@ -239,9 +247,11 @@
       body.appendChild(figures);
     }
 
-    event.description.forEach(function (paragraph) {
-      body.appendChild(el("p", "modal-paragraph", paragraph));
-    });
+    if (event.description && event.description.length) {
+      event.description.forEach(function (paragraph) {
+        body.appendChild(el("p", "modal-paragraph", paragraph));
+      });
+    }
 
     if (event.highlights && event.highlights.length) {
       body.appendChild(el("h3", "modal-subhead", "Highlights"));
@@ -619,14 +629,15 @@
   window.setTimeout(markLoaded, 600);
 
   // Data-dependent rendering degrades to an empty grid — never a hidden page.
-  try {
-    renderEvents();
-    renderDistricts();
-    renderPhotoCredits();
-  } catch (err) {
-    if (window.console && console.error) {
-      console.error("Neorons: failed to render event data", err);
-    }
+  // Each renderer is independent — one failure must not block the others.
+  try { renderEvents(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: renderEvents failed", err);
+  }
+  try { renderDistricts(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: renderDistricts failed", err);
+  }
+  try { renderPhotoCredits(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: renderPhotoCredits failed", err);
   }
 
   // Interactive wiring; a failure here must not block the reveal system below.
