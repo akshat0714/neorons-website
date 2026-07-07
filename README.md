@@ -71,6 +71,15 @@ The outline derives from Wikimedia Commons "India location map3.svg"
 footer automatically and must be kept while this outline is used; the
 share-alike terms apply to the map artwork itself.
 
+## Partners and supporters
+
+`NEORONS_SUPPORTERS` in `js/events.js` renders a "Supported by" strip above the
+footer when it has entries. It ships empty on purpose: add an institution,
+sponsor, or named advisor ONLY when the affiliation is real and you have their
+written consent to display it. Never list a university, company, or professor
+the organization has not actually worked with; false affiliation claims are a
+legal and reputational risk.
+
 ## Editing events
 
 All event data lives in `js/events.js`. Each event object has:

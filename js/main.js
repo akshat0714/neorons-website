@@ -977,6 +977,18 @@
     });
     svg.appendChild(outline);
 
+    // Internal state boundaries (detailed map), fading in after the outline.
+    if (NEORONS_INDIA_MAP.statePaths && NEORONS_INDIA_MAP.statePaths.length) {
+      var states = document.createElementNS(svgNS, "g");
+      states.setAttribute("class", "map-states");
+      NEORONS_INDIA_MAP.statePaths.forEach(function (d) {
+        var path = document.createElementNS(svgNS, "path");
+        path.setAttribute("d", d);
+        states.appendChild(path);
+      });
+      svg.appendChild(states);
+    }
+
     // Markers
     var markerLayer = document.createElementNS(svgNS, "g");
     var markerFor = {};
@@ -1139,20 +1151,21 @@
       }, 150);
     }
 
-    function zoomBy(factor, cx, cy) {
+    /** Zoom by a factor, keeping the focal point (cx,cy in svg coords) fixed. */
+    function zoomTarget(factor, cx, cy) {
+      if (cx === undefined) {
+        cx = view.x + view.w / 2;
+        cy = view.y + view.h / 2;
+      }
+      var kx = (cx - view.x) / view.w;
+      var ky = (cy - view.y) / view.h;
       var w = view.w * factor;
-      var h = view.h * factor;
-      var fx = cx === undefined ? view.x + view.w / 2 : cx;
-      var fy = cy === undefined ? view.y + view.h / 2 : cy;
-      flyTo(
-        {
-          x: fx - (fx - view.x) * (w / view.w) * (factor === 1 ? 1 : 1),
-          y: fy - (fy - view.y) * (h / view.h),
-          w: w,
-          h: h,
-        },
-        420
-      );
+      var h = w * (full.h / full.w);
+      return { x: cx - kx * w, y: cy - ky * h, w: w, h: h };
+    }
+
+    function zoomBy(factor, cx, cy) {
+      flyTo(zoomTarget(factor, cx, cy), 380);
     }
 
     function reset() {
@@ -1217,6 +1230,25 @@
       var cy = view.y + ((dblEvent.clientY - rect.top) / rect.height) * view.h;
       zoomBy(0.5, cx, cy);
     });
+
+    // Mouse-wheel / trackpad zoom toward the cursor. Applied directly (no
+    // tween) so successive wheel events feel tight; delta-proportional so
+    // trackpads are smooth and wheels step cleanly.
+    svg.addEventListener(
+      "wheel",
+      function (wheelEvent) {
+        wheelEvent.preventDefault();
+        var rect = svg.getBoundingClientRect();
+        var cx = view.x + ((wheelEvent.clientX - rect.left) / rect.width) * view.w;
+        var cy = view.y + ((wheelEvent.clientY - rect.top) / rect.height) * view.h;
+        var delta = wheelEvent.deltaMode === 1 ? wheelEvent.deltaY * 20 : wheelEvent.deltaY;
+        var factor = Math.max(0.65, Math.min(1.55, Math.pow(1.0018, delta)));
+        flightToken += 1; // cancel any active flight
+        view = clampView(zoomTarget(factor, cx, cy));
+        applyView();
+      },
+      { passive: false }
+    );
 
     // Draw-on-scroll: the outline traces itself, then markers pop in.
     function startDraw() {
@@ -1293,6 +1325,34 @@
       item.appendChild(btn);
       list.appendChild(item);
     });
+  }
+
+  /** "Supported by" strip above the footer; renders only with real entries. */
+  function renderSupporters() {
+    if (typeof NEORONS_SUPPORTERS === "undefined" || !NEORONS_SUPPORTERS.length) return;
+    var footer = document.querySelector(".site-footer");
+    if (!footer) return;
+    var strip = el("section", "supporters-strip");
+    strip.setAttribute("aria-label", "Supporters");
+    var inner = el("div", "container");
+    inner.appendChild(el("p", "eyebrow", "Supported by"));
+    var list = el("ul", "supporters-list");
+    NEORONS_SUPPORTERS.forEach(function (supporter) {
+      var item = el("li");
+      if (supporter.url) {
+        var link = el("a", null, supporter.name);
+        link.href = supporter.url;
+        link.target = "_blank";
+        link.rel = "noopener";
+        item.appendChild(link);
+      } else {
+        item.textContent = supporter.name;
+      }
+      list.appendChild(item);
+    });
+    inner.appendChild(list);
+    strip.appendChild(inner);
+    footer.parentNode.insertBefore(strip, footer);
   }
 
   /** Map attribution alongside the photo credits. */
@@ -1422,6 +1482,9 @@
   }
   try { renderMapCredit(); } catch (err) {
     if (window.console && console.error) console.error("Neorons: renderMapCredit failed", err);
+  }
+  try { renderSupporters(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: renderSupporters failed", err);
   }
   try { renderTeam(); } catch (err) {
     if (window.console && console.error) console.error("Neorons: renderTeam failed", err);

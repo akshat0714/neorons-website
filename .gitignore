@@ -1,2 +1,5 @@
 .DS_Store
 neorons-website/
+
+# Never commit local Claude Code state (may contain machine-local data)
+.claude/settings.local.json

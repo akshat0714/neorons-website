@@ -2620,3 +2620,56 @@ body.modal-open {
     border: 1px solid #999;
   }
 }
+
+/* Detailed map: internal state boundaries fade in after the outline draws. */
+.map-states path {
+  fill: none;
+  stroke: #a7b4c0;
+  stroke-width: 0.6;
+  vector-effect: non-scaling-stroke;
+}
+
+.india-map.is-drawing .map-states {
+  opacity: 0;
+  transition: opacity 0.9s ease 1.2s;
+}
+
+.india-map.is-drawn .map-states {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .india-map.is-drawing .map-states {
+    transition: none;
+    opacity: 1;
+  }
+}
+
+/* Supporters strip (renders only when NEORONS_SUPPORTERS has real entries) */
+.supporters-strip {
+  background: var(--gray-light);
+  border-top: 1px solid var(--line);
+  padding: 36px 0;
+}
+
+.supporters-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-head);
+  font-weight: 600;
+  color: var(--gray);
+}
+
+.supporters-list a {
+  color: var(--gray);
+  text-decoration: none;
+}
+
+.supporters-list a:hover {
+  color: var(--blue-deep);
+  text-decoration: underline;
+}

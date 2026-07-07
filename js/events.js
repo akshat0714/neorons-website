@@ -37,8 +37,8 @@ var NEORONS_EVENTS = [
     dates: "12–14 September 2025",
     featured: true,
     image: "images/mind-matters.jpg",
-    imageAlt: "Students collaborating on laptops during a hackathon",
-    credit: { creator: "TechCrunch", license: "CC BY 2.0", url: "https://www.flickr.com/photos/52522100@N07/10508993796" },
+    imageAlt: "Young people collaborating around a laptop at a hackathon in Mumbai",
+    credit: { creator: "Victor Grigas", license: "CC BY-SA 3.0", url: "https://commons.wikimedia.org/wiki/File:Hackathon_Mumbai_2011_-_4.jpg" },
     pillar: "stem",
     title: "Mind Matters Hackathon",
     district: "Bengaluru Urban",
@@ -50,7 +50,7 @@ var NEORONS_EVENTS = [
     wellbeingNote: true,
     description: [
       "Suicide among young people is preventable, yet it remains one of India's least talked-about public-health challenges. Mind Matters brought over 260 students together in Bengaluru for 48 hours to change that, pairing engineering talent with a challenge that is usually left to policy papers.",
-      "Working in teams of four, students prototyped tools for early distress detection, anonymous peer support, and faster connection to trained counsellors. Every team was mentored by both a software professional and a mental-health practitioner, so that empathy and clinical safety shaped the technology from the first line of code.",
+      "Working in teams of four, students prototyped concrete tools: an SMS check-in line for hostel students, an anonymous peer-support chat with trained-moderator handoff, a multilingual helpline finder, and a triage dashboard for college counselling cells. Every team was mentored by both a software professional and a mental-health practitioner, so that empathy and clinical safety shaped the technology from the first line of code.",
       "The winning prototypes were showcased to local health officials and college counselling cells, and the event closed with an open conversation on student mental health. For many participants, it was the first such conversation of their lives.",
     ],
     highlights: [
@@ -78,8 +78,8 @@ var NEORONS_EVENTS = [
     coords: { lat: 26.9124, lon: 75.7873 },
     dates: "17–18 January 2026",
     image: "images/unstoppable.jpg",
-    imageAlt: "Young athletes practising taekwondo",
-    credit: { creator: "Oluwatoyinp", license: "CC0 1.0", url: "https://commons.wikimedia.org/w/index.php?curid=183410747" },
+    imageAlt: "School students in taekwondo uniforms practising kicks in a school courtyard in Hyderabad",
+    credit: { creator: "RTNS2016, Wikimedia Commons", license: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Taekwondo_CHIREC.jpg" },
     pillar: "inclusion",
     title: "Unstoppable: Taekwondo Championship for Blind Girls",
     district: "Jaipur",
@@ -130,7 +130,7 @@ var NEORONS_EVENTS = [
       "A hands-on training summit helping teachers use AI responsibly to plan lessons, personalise practice, and save hours of administrative work.",
     description: [
       "Artificial intelligence will reshape every classroom in India this decade. The question is whether teachers shape it, or it shapes them. Classroom 2030 brought 140 school teachers from across Pune district together for two days of practical, hype-free training.",
-      "Sessions covered lesson planning with AI assistants, generating differentiated practice material for mixed-ability classrooms, and, just as importantly, the limits: bias, privacy, and why AI must never replace a teacher's judgement about a child.",
+      "The core of the summit was a lesson-plan clinic: each teacher rebuilt one real upcoming lesson with an AI assistant, then defended it to peers. Sessions also covered generating differentiated practice material for mixed-ability classrooms, and, just as importantly, the limits: bias, privacy, and why AI must never replace a teacher's judgement about a child.",
       "Every participating school left with a simple, written AI-use policy drafted during the summit, and teachers joined an ongoing peer network where they continue to share what works.",
     ],
     highlights: [
@@ -170,7 +170,7 @@ var NEORONS_EVENTS = [
       "A travelling science fair that brought hands-on experiments, telescope nights, and student exhibitions to government schools in rural Varanasi district.",
     description: [
       "Curiosity, jigyasa, does not check whether a school has a laboratory. Project Jigyasa took a travelling science fair to government schools across rural blocks of Varanasi district, reaching students who had never handled laboratory equipment before.",
-      "Over three weeks, students rotated through hands-on stations in physics, biology, and electronics, built take-home experiments from low-cost materials, and stayed late for telescope evenings that, for most, were their first look at Saturn's rings.",
+      "Over three weeks, students rotated through hands-on stations: a Van de Graaff generator, a water-rocket launch pad, microscope benches with pond-water slides, and a solder-free electronics table, built take-home experiments from low-cost materials, and stayed late for telescope evenings that, for most, were their first look at Saturn's rings.",
       "The fair culminated in a student exhibition where local children presented their own working models to their families and teachers, turning visitors into exhibitors.",
     ],
     highlights: [
@@ -195,8 +195,8 @@ var NEORONS_EVENTS = [
     coords: { lat: 17.3850, lon: 78.4867 },
     dates: "9–15 June 2025",
     image: "images/roboshakti.jpg",
-    imageAlt: "Students building a small robot",
-    credit: { creator: "U.S. Embassy Jerusalem", license: "CC BY 2.0", url: "https://www.flickr.com/photos/46886434@N04/33181647196" },
+    imageAlt: "Schoolgirls seated in a circle around a robot during a tinkering-lab workshop",
+    credit: { creator: "Al124aa, Wikimedia Commons", license: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Robotics_Workshop_in_Atal_Tinkering_Lab.jpg" },
     pillar: "stem",
     title: "RoboShakti: Girls' Robotics Bootcamp",
     district: "Hyderabad",
@@ -207,7 +207,7 @@ var NEORONS_EVENTS = [
       "A week-long residential robotics bootcamp for girls from government schools, taking them from first circuit to a working robot in seven days.",
     description: [
       "Girls remain sharply underrepresented in Indian engineering classrooms, and the gap begins well before college. RoboShakti was built to interrupt it early: a week-long residential robotics bootcamp in Hyderabad for 120 girls from government schools, most of whom had never touched a microcontroller.",
-      "Each day moved from fundamentals to building: circuits on day one, sensors and motors by mid-week, and by day seven every team had designed, built, and programmed a working robot of their own. Instruction came from women engineers and college robotics teams, so every student spent the week learning from someone whose path she could see herself on.",
+      "Each day moved from fundamentals to building: breadboard circuits on day one, ultrasonic sensors and motor drivers on Arduino kits by mid-week, and by day seven every team had a working robot of their own: line-followers, obstacle-avoiders, and one persistent team's robotic arm. Instruction came from women engineers and college robotics teams, so every student spent the week learning from someone whose path she could see herself on.",
       "The bootcamp ended with a friendly robot showcase, and every participating school received a robotics starter kit so the building didn't stop when the week did.",
     ],
     highlights: [
@@ -235,8 +235,8 @@ var NEORONS_EVENTS = [
     coords: { lat: 28.6139, lon: 77.2090 },
     dates: "10 October 2025 (World Mental Health Day)",
     image: "images/safe-minds.jpg",
-    imageAlt: "Students in a group discussion at school",
-    credit: { creator: "U.S. Department of Education", license: "CC BY 2.0", url: "https://www.flickr.com/photos/48445211@N06/14489447353" },
+    imageAlt: "Secondary-school students smiling during a group session in a Punjab classroom",
+    credit: { creator: "Jagseer S Sidhu", license: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Jagseer_S_Sidhu_teaching_school_students_about_Wikipedia.jpg" },
     pillar: "stem",
     title: "Safe Minds: Peer-Support Training",
     district: "New Delhi",
@@ -273,8 +273,8 @@ var NEORONS_EVENTS = [
     coords: { lat: 12.2958, lon: 76.6394 },
     dates: "7–8 March 2026",
     image: "images/makeathon.jpg",
-    imageAlt: "A student reading braille",
-    credit: { creator: "Ben Clare / AusAID", license: "CC BY 2.0", url: "https://commons.wikimedia.org/w/index.php?curid=32167999" },
+    imageAlt: "Blind students writing braille with slates and styluses as a teacher guides them",
+    credit: { creator: "Sumita Roy Dutta", license: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:New_normal_days_classes_of_Voice_Of_World_Blind_School_during_COVID_19_pandemic_in_Kolkata_DSCN9478VOW.jpg" },
     pillar: "inclusion",
     title: "Makeathon for All: Assistive Technology",
     district: "Mysuru",
@@ -285,7 +285,7 @@ var NEORONS_EVENTS = [
       "Blind, low-vision, and sighted students building assistive devices together: navigation aids, audio labels, and tactile learning tools designed with, not for.",
     description: [
       "The best assistive technology is designed with its users, not for them. Makeathon for All paired blind and low-vision students with sighted peers in mixed teams, and gave them two days, a workbench, and one brief: build something that makes daily life or learning easier.",
-      "Teams in Mysuru produced working prototypes of ultrasonic navigation aids, audio-label systems for household items, and tactile mathematics learning tools. Blind and low-vision students were designers and decision-makers on every team; their lived experience was the project's most valuable engineering input.",
+      "Teams in Mysuru produced working prototypes including a clip-on ultrasonic cane attachment, talking labels for household items and medicine boxes, and a tactile fraction kit for middle-school mathematics. Blind and low-vision students were designers and decision-makers on every team; their lived experience was the project's most valuable engineering input.",
       "Three prototypes were selected for continued development with a local engineering college, and the event's mixed-team model has become the template for our future inclusion programmes.",
     ],
     highlights: [
@@ -322,7 +322,7 @@ var NEORONS_EVENTS = [
       "A district-wide drive bringing practical AI literacy to secondary students and their families: what it is, what it isn't, and how to use it safely.",
     description: [
       "AI tools reached India's students before AI literacy did. Digital Disha travelled through schools across Nagpur district with a simple goal: make every student a confident, critical user of AI rather than a passive one.",
-      "Through demonstrations, hands-on sessions, and plain-language materials in Marathi, Hindi, and English, students learned how AI systems actually work, where they fail, how to spot AI-generated misinformation, and how to use AI tools to study better rather than shortcut learning.",
+      "Through demonstrations, hands-on sessions, and plain-language materials in Marathi, Hindi, and English, students learned how AI systems actually work, where they fail, how to spot AI-generated misinformation through a spot-the-fake exercise built from AI images of familiar local landmarks, and how to use AI tools to study better rather than shortcut learning.",
       "Evening sessions brought parents into the same conversation, because a student's digital safety is a family matter, and every school received a resource library for continued teaching.",
     ],
     highlights: [
@@ -368,6 +368,13 @@ var NEORONS_EVENTS = [
     wellbeingNote: false,
   },
 ];
+
+/**
+ * Real, confirmed supporters/partners ONLY. Renders a "Supported by" strip
+ * above the footer when non-empty. Add entries only with the partner's
+ * written consent: { name: "...", url: "..." (optional) }.
+ */
+var NEORONS_SUPPORTERS = [];
 
 /** Hero photo attribution ({ creator, license, url } or null). */
 var NEORONS_HERO_CREDIT = { creator: "McKay Savage", license: "CC BY 2.0", url: "https://commons.wikimedia.org/w/index.php?curid=11823848" };
