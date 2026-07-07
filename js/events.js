@@ -479,32 +479,32 @@ var NEORONS_TEAM = [
   {
     name: "Akshat Agarwal",
     role: "Founder",
-    bio: "Akshat founded Neorons in 2025 to bring science, inclusion, and honest AI literacy to students who are usually last in line for them. He leads programme design and partnerships across the districts where Neorons works.",
-    image: null,
+    bio: "Akshat founded Neorons in 2025 to bring science, inclusion, and honest AI literacy to students who are usually last in line for them. He leads programme design and partnerships across the regions where Neorons works.",
+    image: "images/team/akshat-agarwal.jpg",
     linkedin: null,
   },
   {
     name: "Avinash Amanchi",
     role: "Co-founder",
     bio: "Avinash runs Neorons' events on the ground, from residential bootcamps to district-wide drives. He manages our relationships with partner schools and makes sure every programme keeps its promises on the day.",
-    image: null,
+    image: "images/team/avinash-amanchi.jpg",
     linkedin: null,
   },
   {
     name: "Abhinav Gangadari",
     role: "Co-founder",
     bio: "Abhinav leads technology and curriculum: the Arduino kits and robot challenges, the AI-literacy materials in three languages, and the mentor guides our volunteers teach from. If a student built it at a Neorons event, Abhinav probably wrote the worksheet.",
-    image: null,
-    linkedin: null,
-  },
-  {
-    name: "Our advisory circle",
-    role: "Educators, clinicians and engineers",
-    bio: "An advisory group of teachers, mental-health clinicians, and engineers reviews every Neorons programme for safety and rigour before it reaches a classroom. They stay unnamed on this page, but nothing we run goes ahead without their review.",
-    image: null,
+    image: "images/team/abhinav-gangadari.jpg",
     linkedin: null,
   },
 ];
+
+/**
+ * Names rendered after the advisory thank-you line in the Our People section.
+ * Ships empty; add the actual psychiatrists/foundations Neorons works with,
+ * with their consent, e.g. ["...", "..."].
+ */
+var NEORONS_ADVISORY_THANKS = [];
 
 /**
  * Testimonials. All quotes are anonymous by design: attribution is by role

@@ -254,9 +254,13 @@
         img.width = 120;
         img.height = 120;
         img.loading = "lazy";
+        // Until the headshot file exists, show the initial instead.
+        img.addEventListener("error", function () {
+          avatar.removeChild(img);
+          avatar.appendChild(el("span", "team-initial", member.name.charAt(0)));
+        });
         avatar.appendChild(img);
       } else {
-        // Placeholder initial
         avatar.appendChild(el("span", "team-initial", member.name.charAt(0)));
       }
       card.appendChild(avatar);
@@ -265,6 +269,14 @@
       card.appendChild(el("p", "team-bio", member.bio));
       grid.appendChild(card);
     });
+  }
+
+  /** Append confirmed advisory names to the thank-you line when provided. */
+  function renderAdvisoryThanks() {
+    var slot = document.getElementById("advisory-names");
+    if (!slot || typeof NEORONS_ADVISORY_THANKS === "undefined") return;
+    if (!NEORONS_ADVISORY_THANKS.length) return;
+    slot.textContent = ", including " + NEORONS_ADVISORY_THANKS.join(", ");
   }
 
   function renderTestimonials() {
@@ -1019,12 +1031,13 @@
       zoom: 5,
       minZoom: 3.5,
       maxZoom: 18,
-      // Fractional zoom: small smooth steps instead of coarse integer jumps,
-      // a snappier wheel, and no rubber-band bounce at the zoom limits.
-      zoomSnap: 0.25,
-      zoomDelta: 0.75,
-      wheelDebounceTime: 25,
-      wheelPxPerZoomLevel: 80,
+      // Google-Maps-style zoom: zero debounce so every wheel tick responds
+      // instantly, roughly one full zoom level per mouse-wheel notch
+      // (proportional for trackpads), full-level +/- buttons, no bounce.
+      zoomSnap: 0.5,
+      zoomDelta: 1,
+      wheelDebounceTime: 0,
+      wheelPxPerZoomLevel: 50,
       bounceAtZoomLimits: false,
       zoomControl: true,
       scrollWheelZoom: true,
@@ -1328,6 +1341,9 @@
   }
   try { renderTeam(); } catch (err) {
     if (window.console && console.error) console.error("Neorons: renderTeam failed", err);
+  }
+  try { renderAdvisoryThanks(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: renderAdvisoryThanks failed", err);
   }
   try { renderTestimonials(); } catch (err) {
     if (window.console && console.error) console.error("Neorons: renderTestimonials failed", err);

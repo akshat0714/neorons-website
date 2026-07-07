@@ -2984,3 +2984,23 @@ body.modal-open {
     transform: none;
   }
 }
+
+/* Team headshots + advisory thanks ------------------------------------------ */
+
+.team-avatar {
+  width: 120px;
+  height: 120px;
+}
+
+.team-avatar img {
+  /* Bias the crop toward faces in portrait headshots. */
+  object-position: center 30%;
+}
+
+.team-thanks {
+  max-width: 680px;
+  margin: 40px auto 0;
+  text-align: center;
+  font-size: 0.98rem;
+  color: var(--gray);
+}
