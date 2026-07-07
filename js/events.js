@@ -27,7 +27,7 @@
  *   gallery     — [{src, alt}] additional photos for modal gallery (optional)
  *   status      — "past" | "upcoming" (default "past")
  */
-const NEORONS_EVENTS = [
+var NEORONS_EVENTS = [
   {
     id: "mind-matters-hackathon",
     featured: true,
@@ -331,10 +331,10 @@ const NEORONS_EVENTS = [
 ];
 
 /** Hero photo attribution ({ creator, license, url } or null). */
-const NEORONS_HERO_CREDIT = { creator: "McKay Savage", license: "CC BY 2.0", url: "https://commons.wikimedia.org/w/index.php?curid=11823848" };
+var NEORONS_HERO_CREDIT = { creator: "McKay Savage", license: "CC BY 2.0", url: "https://commons.wikimedia.org/w/index.php?curid=11823848" };
 
 /** Pillar display metadata (labels + card accent colours). */
-const NEORONS_PILLARS = {
+var NEORONS_PILLARS = {
   stem: { label: "STEM for Social Good", className: "pillar-stem" },
   inclusion: { label: "Inclusion & Ability", className: "pillar-inclusion" },
   ai: { label: "AI & Education", className: "pillar-ai" },

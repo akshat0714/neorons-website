@@ -1419,6 +1419,12 @@ body.is-loaded .hero-item {
   text-decoration: underline;
 }
 
+.footer-social {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
 .footer-wellbeing p {
   margin: 0;
   line-height: 1.6;

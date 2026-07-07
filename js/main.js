@@ -477,7 +477,7 @@
         navigator.clipboard.writeText(eventUrl).then(function () {
           copyBtn.textContent = "Copied!";
           window.setTimeout(function () { copyBtn.textContent = "Copy link"; }, 2000);
-        });
+        }).catch(function () { /* clipboard permission denied — silent fallback */ });
       }
     });
     shareRow.appendChild(copyBtn);
@@ -917,16 +917,19 @@
     if (window.console && console.error) console.error("Neorons: structured data failed", err);
   }
 
-  // Interactive wiring; a failure here must not block the reveal system below.
-  try {
-    initFilters();
-    initModal();
-    initNav();
-    initHeaderScroll();
-  } catch (err) {
-    if (window.console && console.error) {
-      console.error("Neorons: interactive init failed", err);
-    }
+  // Interactive wiring — each must run independently so one failure cannot
+  // take down navigation or scroll on subpages.
+  try { initFilters(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: initFilters failed", err);
+  }
+  try { initModal(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: initModal failed", err);
+  }
+  try { initNav(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: initNav failed", err);
+  }
+  try { initHeaderScroll(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: initHeaderScroll failed", err);
   }
 
   initReveal();
