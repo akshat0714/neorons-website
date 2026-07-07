@@ -152,7 +152,7 @@ p {
 }
 
 a {
-  color: var(--blue);
+  color: var(--blue-deep);
 }
 
 :focus-visible {
@@ -576,6 +576,132 @@ body.is-loaded .hero-item {
   color: var(--gray);
 }
 
+/* People / team ------------------------------------------------------------ */
+
+.people {
+  background: #fff;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.team-card {
+  text-align: center;
+}
+
+.team-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  background: var(--gray-light);
+  border: 3px solid var(--line);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-initial {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.team-name {
+  font-size: 1.1rem;
+  margin-bottom: 2px;
+}
+
+.team-role {
+  font-family: var(--font-head);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+
+.team-bio {
+  font-size: 0.92rem;
+  color: var(--gray);
+  margin: 0;
+}
+
+/* Voices ------------------------------------------------------------------- */
+
+.voices {
+  background: var(--blue-deep);
+  color: #fff;
+}
+
+.voices h2 {
+  color: #fff;
+}
+
+.voices .eyebrow {
+  color: #8ec4ee;
+}
+
+.voices-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 36px;
+}
+
+.voice-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 4px solid rgba(255, 255, 255, 0.5);
+  padding: 28px 24px;
+}
+
+.voice-quote {
+  margin: 0 0 14px;
+}
+
+.voice-quote p {
+  font-size: 1.02rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.voice-cite {
+  display: block;
+  font-style: normal;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 12px;
+}
+
+.voice-name {
+  font-weight: 600;
+  color: #fff;
+}
+
+.voice-event {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: var(--font-head);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
 /* Pillars ------------------------------------------------------------------ */
 
 .pillars {
@@ -659,6 +785,34 @@ body.is-loaded .hero-item {
   font-size: 0.94rem;
   color: rgba(255, 255, 255, 0.75);
   line-height: 1.5;
+}
+
+/* Methodology note --------------------------------------------------------- */
+
+.methodology-note {
+  margin-top: 32px;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.methodology-note summary {
+  cursor: pointer;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.methodology-note summary:hover {
+  color: #fff;
+}
+
+.methodology-note p {
+  margin-top: 10px;
+  max-width: 680px;
+  line-height: 1.6;
 }
 
 /* Events ------------------------------------------------------------------- */
@@ -750,6 +904,25 @@ body.is-loaded .hero-item {
   aspect-ratio: 3 / 2;
   overflow: hidden;
   background: var(--gray-light);
+  position: relative;
+}
+
+/* Subtle blue overlay to unify placeholder photography */
+.event-figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 119, 212, 0.08);
+  pointer-events: none;
+}
+
+.modal-figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 119, 212, 0.06);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .event-figure img {
@@ -883,6 +1056,113 @@ body.is-loaded .hero-item {
   margin-bottom: 14px;
 }
 
+/* Event timeline ----------------------------------------------------------- */
+
+.event-timeline {
+  margin-bottom: 36px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 8px;
+}
+
+.timeline-track {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  min-width: max-content;
+  position: relative;
+  padding: 12px 0 0;
+}
+
+.timeline-track::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--line);
+}
+
+.timeline-dot {
+  position: relative;
+  flex: 1;
+  min-width: 110px;
+  background: none;
+  border: none;
+  padding: 0 8px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.timeline-dot::before {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--blue);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px var(--blue);
+  margin: 0 auto 10px;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.2s ease;
+}
+
+.timeline-dot:hover::before {
+  transform: scale(1.3);
+}
+
+.timeline-dot.pillar-inclusion::before {
+  background: #e07c24;
+  box-shadow: 0 0 0 2px #e07c24;
+}
+
+.timeline-dot.pillar-ai::before {
+  background: #2ea87e;
+  box-shadow: 0 0 0 2px #2ea87e;
+}
+
+.timeline-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.timeline-date {
+  font-family: var(--font-head);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--gray);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.timeline-title {
+  font-size: 0.78rem;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.timeline-dot:hover .timeline-title {
+  color: var(--blue);
+}
+
+/* Upcoming event card ------------------------------------------------------ */
+
+.event-card.is-upcoming {
+  border: 2px dashed var(--line);
+  background: var(--gray-light);
+  opacity: 0.85;
+}
+
+.event-card.is-upcoming .event-tag::after {
+  content: " \00B7  Coming soon";
+  color: var(--gray);
+  font-weight: 400;
+}
+
 /* Quote band ----------------------------------------------------------------- */
 
 .quote-band {
@@ -990,6 +1270,96 @@ body.is-loaded .hero-item {
   max-width: 560px;
   margin: 0 auto 2em;
   color: rgba(255, 255, 255, 0.85);
+}
+
+/* Contact form ------------------------------------------------------------- */
+
+.contact-form {
+  max-width: 560px;
+  margin: 0 auto 1.5em;
+  text-align: left;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-field {
+  margin-bottom: 16px;
+}
+
+.form-field label {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 6px;
+}
+
+.form-field .optional {
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  padding: 10px 14px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: 2px solid var(--blue);
+  outline-offset: 1px;
+  border-color: var(--blue);
+}
+
+.cta-fallback {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.cta-fallback a {
+  color: #fff;
+}
+
+/* Get involved ------------------------------------------------------------- */
+
+.get-involved {
+  background: var(--gray-light);
+  border-top: 1px solid var(--line);
+}
+
+.involve-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 36px;
+}
+
+.involve-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--blue);
+  padding: 30px 28px;
+}
+
+.involve-card h3 {
+  font-size: 1.15rem;
+}
+
+.involve-card p {
+  color: var(--gray);
+  font-size: 0.95rem;
+  margin-bottom: 1.4em;
 }
 
 /* Footer --------------------------------------------------------------------- */
@@ -1374,6 +1744,96 @@ body.modal-open {
   margin-bottom: 2px;
 }
 
+/* Modal share buttons ------------------------------------------------------ */
+
+.modal-share {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.share-btn {
+  font-family: var(--font-head);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  background: var(--gray-light);
+  color: var(--ink);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.share-btn:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.share-whatsapp {
+  background: #25d366;
+  border-color: #25d366;
+  color: #fff;
+}
+
+.share-whatsapp:hover {
+  background: #1da851;
+  border-color: #1da851;
+  color: #fff;
+}
+
+/* Modal gallery thumbnails ------------------------------------------------- */
+
+.modal-gallery {
+  display: flex;
+  gap: 6px;
+  padding: 8px 0;
+  overflow-x: auto;
+}
+
+.gallery-thumb {
+  flex-shrink: 0;
+  width: 80px;
+  height: 54px;
+  padding: 0;
+  border: 2px solid transparent;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.gallery-thumb:hover,
+.gallery-thumb:focus-visible {
+  border-color: var(--blue);
+}
+
+.gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Modal partners/reflection ------------------------------------------------ */
+
+.modal-partners {
+  font-size: 0.92rem;
+  color: var(--gray);
+  margin-top: 20px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+
+.modal-partners strong {
+  color: var(--ink);
+}
+
+.modal-reflection {
+  font-style: italic;
+  color: var(--gray);
+}
+
 /* Reduced motion --------------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1510,6 +1970,22 @@ body.modal-open {
     text-align: center;
     margin-top: 8px;
   }
+
+  .team-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .voices-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .involve-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1547,6 +2023,11 @@ body.modal-open {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .team-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
 }
 
 /* Print --------------------------------------------------------------------- */
@@ -1557,7 +2038,10 @@ body.modal-open {
   .event-card,
   .district-card,
   .impact-item,
-  .hero-item {
+  .hero-item,
+  .team-card,
+  .voice-card,
+  .involve-card {
     opacity: 1 !important;
     transform: none !important;
   }
@@ -1581,14 +2065,21 @@ body.modal-open {
   .nav-menu,
   .modal,
   .event-filters,
+  .event-timeline,
   .hero-actions,
-  .skip-link {
+  .skip-link,
+  .cta-band,
+  .get-involved,
+  .contact-form,
+  .modal-share,
+  .footer-social {
     display: none !important;
   }
 
   .hero,
   .impact-band,
   .cta-band,
+  .voices,
   .quote-band,
   .site-footer {
     background: none !important;
@@ -1599,9 +2090,12 @@ body.modal-open {
   .hero-lede,
   .impact-band h2,
   .cta-band h2,
+  .voices h2,
   .impact-number,
   .quote p,
   .quote cite,
+  .voice-quote p,
+  .voice-cite,
   .footer-brand .brand-name,
   .footer-col h3 {
     color: #000 !important;
@@ -1615,11 +2109,25 @@ body.modal-open {
   .cta-band p,
   .site-footer,
   .footer-col a,
-  .footer-legal {
+  .footer-legal,
+  .voice-event,
+  .voice-name {
     color: #333 !important;
   }
 
   .site-header {
     position: static;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  /* Photo overlay not needed in print */
+  .event-figure::after,
+  .modal-figure::after {
+    display: none;
   }
 }
