@@ -59,6 +59,18 @@ python3 -m http.server 8080
 
 Then visit `http://localhost:8080`.
 
+## Interactive map
+
+The "Where we work" section renders an interactive map of India (zoom, pan,
+fly-to-marker, and a docked popover per event). Event positions come from the
+`coords: { lat, lon }` field in `js/events.js`; the outline and calibration
+live in `js/india-map.js`.
+
+The outline derives from Wikimedia Commons "India location map3.svg"
+(Uwe Dedering and contributors, CC BY-SA 3.0). Attribution renders in the
+footer automatically and must be kept while this outline is used; the
+share-alike terms apply to the map artwork itself.
+
 ## Editing events
 
 All event data lives in `js/events.js`. Each event object has:

@@ -2260,3 +2260,363 @@ body.modal-open {
     display: none !important;
   }
 }
+
+/* Interactive India map ------------------------------------------------------ */
+
+.map-layout {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.india-map {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--line);
+  min-height: 460px;
+  overflow: hidden;
+}
+
+.india-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  cursor: grab;
+  touch-action: none;
+}
+
+.india-svg.is-panning {
+  cursor: grabbing;
+}
+
+.map-outline path {
+  fill: var(--gray-light);
+  stroke: var(--dark);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Outline draws itself when the section scrolls into view (JS sets the
+   dash metrics; this transition plays them out). */
+.india-map.is-drawing .map-outline path {
+  fill-opacity: 0;
+  transition: stroke-dashoffset 1.6s var(--ease-out), fill-opacity 0.9s ease 1.1s;
+}
+
+.india-map.is-drawn .map-outline path {
+  stroke-dashoffset: 0 !important;
+  fill-opacity: 1;
+}
+
+/* Markers */
+.map-marker {
+  cursor: pointer;
+  outline: none;
+}
+
+.map-marker .marker-dot {
+  fill: var(--blue);
+  stroke: #fff;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.map-marker .marker-pulse {
+  fill: var(--blue);
+  opacity: 0;
+}
+
+.india-map.markers-live .map-marker {
+  animation: marker-pop 0.45s var(--ease-out) both;
+  animation-delay: var(--marker-delay, 0s);
+}
+
+.india-map:not(.markers-live) .map-marker {
+  opacity: 0;
+}
+
+@keyframes marker-pop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.india-map.markers-live .map-marker .marker-pulse {
+  animation: marker-pulse 2.6s ease-out infinite;
+  animation-delay: var(--marker-delay, 0s);
+}
+
+@keyframes marker-pulse {
+  0% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  70% {
+    opacity: 0;
+    transform: scale(3.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(3.2);
+  }
+}
+
+.map-marker .marker-pulse {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.map-marker:hover .marker-dot,
+.map-marker:focus-visible .marker-dot,
+.map-marker.is-active .marker-dot {
+  fill: var(--dark);
+}
+
+.map-marker:focus-visible {
+  outline: none;
+}
+
+.map-marker:focus-visible .marker-dot {
+  stroke: var(--blue);
+  stroke-width: 3;
+}
+
+/* Zoom controls */
+.map-controls {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.map-btn {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-family: var(--font-head);
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.map-btn:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+
+.map-btn:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 1px;
+}
+
+/* Popover: docked info card explaining the selected event */
+.map-popover {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 4;
+  width: min(340px, calc(100% - 24px));
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--blue);
+  box-shadow: 0 14px 40px rgba(13, 27, 42, 0.18);
+  padding: 18px 20px 16px;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+}
+
+.map-popover.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.map-popover .event-tag {
+  margin-bottom: 4px;
+}
+
+.map-popover h3 {
+  font-size: 1.05rem;
+  margin: 0 0 4px;
+}
+
+.map-popover .popover-meta {
+  font-size: 0.84rem;
+  color: var(--gray);
+  margin: 0 0 8px;
+}
+
+.map-popover .popover-blurb {
+  font-size: 0.9rem;
+  color: var(--gray);
+  margin: 0 0 12px;
+}
+
+.popover-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.popover-read {
+  font-family: var(--font-head);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--blue-deep);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.popover-read:hover {
+  text-decoration: underline;
+}
+
+.popover-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  color: var(--gray);
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.popover-close:hover {
+  color: var(--ink);
+}
+
+/* Location list beside the map */
+.map-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.map-list-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-body);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--blue);
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.2s var(--ease-out);
+}
+
+.map-list-btn:hover {
+  box-shadow: 0 8px 20px rgba(13, 27, 42, 0.09);
+  transform: translateX(3px);
+}
+
+.map-list-btn .map-list-title {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.map-list-btn:hover .map-list-title {
+  color: var(--blue-deep);
+}
+
+.map-list-btn .map-list-place {
+  display: block;
+  font-size: 0.84rem;
+  color: var(--gray);
+  margin-top: 2px;
+}
+
+/* Card affordance for jumping to the map */
+.event-more .map-hint {
+  font-weight: 400;
+  color: var(--gray);
+}
+
+@media (max-width: 900px) {
+  .map-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .india-map {
+    min-height: 420px;
+  }
+
+  .map-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .map-list li {
+    flex: 1 1 240px;
+  }
+}
+
+@media (max-width: 640px) {
+  .india-map {
+    min-height: 340px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .india-map.is-drawing .map-outline path {
+    transition: none;
+    stroke-dashoffset: 0 !important;
+    fill-opacity: 1 !important;
+  }
+
+  .india-map.markers-live .map-marker,
+  .india-map.markers-live .map-marker .marker-pulse {
+    animation: none;
+  }
+
+  .india-map:not(.markers-live) .map-marker {
+    opacity: 1;
+  }
+
+  .map-popover,
+  .map-list-btn,
+  .map-btn {
+    transition: none;
+  }
+
+  .map-list-btn:hover {
+    transform: none;
+  }
+}
+
+@media print {
+  .india-map {
+    display: none !important;
+  }
+
+  .map-list-btn {
+    border: 1px solid #999;
+  }
+}

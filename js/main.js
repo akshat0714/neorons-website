@@ -116,20 +116,26 @@
       event.district + " district, " + event.state
     );
     meta.appendChild(district);
-    meta.appendChild(document.createTextNode(" · " + event.date));
+    meta.appendChild(document.createTextNode(" · " + (event.dates || event.date)));
     text.appendChild(meta);
 
     text.appendChild(el("p", "event-blurb", event.blurb));
 
     var more = el("span", "event-more");
     more.setAttribute("aria-hidden", "true");
-    more.appendChild(document.createTextNode("Read more "));
+    more.appendChild(document.createTextNode("See it on the map "));
     more.appendChild(el("span", "arrow", "→"));
     text.appendChild(more);
 
     if (featured) card.appendChild(text);
 
-    card.addEventListener("click", function () {
+    // The title button opens the full story dialog; clicking anywhere else
+    // on the card flies to the event's location on the India map.
+    card.addEventListener("click", function (clickEvent) {
+      if (clickEvent.target.closest && clickEvent.target.closest(".event-link")) return;
+      locateOnMap(event, titleButton);
+    });
+    titleButton.addEventListener("click", function () {
       openModal(event, titleButton);
     });
 
@@ -390,7 +396,7 @@
     header.appendChild(title);
 
     var meta = el("p", "modal-meta");
-    meta.textContent = event.venue + "  ·  " + event.date;
+    meta.textContent = event.venue + "  ·  " + (event.dates || event.date);
     header.appendChild(meta);
     modalContent.appendChild(header);
 
@@ -918,6 +924,398 @@
   }
 
   /* ---------------------------------------------------------------------- */
+  /* Interactive India map                                                   */
+  /* ---------------------------------------------------------------------- */
+
+  var mapApi = null; // set by initMap; used by locateOnMap and the map list
+
+  /** Fly to an event's marker on the map, scrolling the map into view first. */
+  function locateOnMap(event, trigger) {
+    if (!mapApi || !event.coords) {
+      // Map unavailable: fall back to the full story dialog.
+      openModal(event, trigger || null);
+      return;
+    }
+    var host = document.getElementById("india-map");
+    host.scrollIntoView({
+      behavior: reducedMotion() ? "auto" : "smooth",
+      block: "center",
+    });
+    window.setTimeout(function () {
+      mapApi.select(event, true);
+    }, reducedMotion() ? 0 : 450);
+  }
+
+  function initMap() {
+    var host = document.getElementById("india-map");
+    if (!host || typeof NEORONS_INDIA_MAP === "undefined") return;
+
+    var svgNS = "http://www.w3.org/2000/svg";
+    var vbParts = NEORONS_INDIA_MAP.viewBox.split(/\s+/).map(Number);
+    var full = { x: vbParts[0], y: vbParts[1], w: vbParts[2], h: vbParts[3] };
+    var bounds = NEORONS_INDIA_MAP.bounds;
+
+    function project(lat, lon) {
+      return {
+        x: full.x + ((lon - bounds.west) / (bounds.east - bounds.west)) * full.w,
+        y: full.y + ((bounds.north - lat) / (bounds.north - bounds.south)) * full.h,
+      };
+    }
+
+    var svg = document.createElementNS(svgNS, "svg");
+    svg.setAttribute("viewBox", NEORONS_INDIA_MAP.viewBox);
+    svg.setAttribute("class", "india-svg");
+    svg.setAttribute("role", "img");
+    svg.setAttribute("aria-label", "Map of India showing where Neorons events took place");
+
+    var outline = document.createElementNS(svgNS, "g");
+    outline.setAttribute("class", "map-outline");
+    NEORONS_INDIA_MAP.paths.forEach(function (d) {
+      var path = document.createElementNS(svgNS, "path");
+      path.setAttribute("d", d);
+      outline.appendChild(path);
+    });
+    svg.appendChild(outline);
+
+    // Markers
+    var markerLayer = document.createElementNS(svgNS, "g");
+    var markerFor = {};
+    var dotRadius = full.w * 0.011;
+    var placed = NEORONS_EVENTS.filter(function (event) {
+      return event.coords;
+    });
+    placed.forEach(function (event, i) {
+      var p = project(event.coords.lat, event.coords.lon);
+      var g = document.createElementNS(svgNS, "g");
+      g.setAttribute("class", "map-marker");
+      g.setAttribute("transform", "translate(" + p.x + " " + p.y + ")");
+      g.setAttribute("tabindex", "0");
+      g.setAttribute("role", "button");
+      g.setAttribute(
+        "aria-label",
+        event.title + ", " + event.district + " district, " + event.state
+      );
+      g.style.setProperty("--marker-delay", i * 90 + "ms");
+
+      var pulse = document.createElementNS(svgNS, "circle");
+      pulse.setAttribute("class", "marker-pulse");
+      pulse.setAttribute("r", dotRadius);
+      g.appendChild(pulse);
+
+      var dot = document.createElementNS(svgNS, "circle");
+      dot.setAttribute("class", "marker-dot");
+      dot.setAttribute("r", dotRadius);
+      g.appendChild(dot);
+
+      g.addEventListener("click", function (clickEvent) {
+        clickEvent.stopPropagation();
+        select(event, true);
+      });
+      g.addEventListener("keydown", function (keyEvent) {
+        if (keyEvent.key === "Enter" || keyEvent.key === " ") {
+          keyEvent.preventDefault();
+          select(event, true);
+        }
+      });
+
+      markerFor[event.id] = g;
+      markerLayer.appendChild(g);
+    });
+    svg.appendChild(markerLayer);
+    host.appendChild(svg);
+
+    // Zoom controls
+    var controls = el("div", "map-controls");
+    [
+      { label: "+", title: "Zoom in", fn: function () { zoomBy(0.6); } },
+      { label: "−", title: "Zoom out", fn: function () { zoomBy(1 / 0.6); } },
+      { label: "⌂", title: "Reset view", fn: reset },
+    ].forEach(function (item) {
+      var btn = el("button", "map-btn", item.label);
+      btn.type = "button";
+      btn.setAttribute("aria-label", item.title);
+      btn.addEventListener("click", item.fn);
+      controls.appendChild(btn);
+    });
+    host.appendChild(controls);
+
+    // Popover (docked info card)
+    var popover = el("aside", "map-popover");
+    popover.setAttribute("aria-live", "polite");
+    host.appendChild(popover);
+
+    function hidePopover() {
+      popover.classList.remove("is-open");
+      Object.keys(markerFor).forEach(function (id) {
+        markerFor[id].classList.remove("is-active");
+      });
+    }
+
+    function showPopover(event) {
+      var pillar = NEORONS_PILLARS[event.pillar] || { label: "" };
+      popover.innerHTML = "";
+
+      var close = el("button", "popover-close", "×");
+      close.type = "button";
+      close.setAttribute("aria-label", "Close location details");
+      close.addEventListener("click", hidePopover);
+      popover.appendChild(close);
+
+      popover.appendChild(el("p", "event-tag", pillar.label));
+      popover.appendChild(el("h3", null, event.title));
+      popover.appendChild(
+        el("p", "popover-meta", event.venue + " · " + (event.dates || event.date))
+      );
+      popover.appendChild(el("p", "popover-blurb", event.blurb));
+
+      var actions = el("div", "popover-actions");
+      var read = el("button", "popover-read", "Read the full story →");
+      read.type = "button";
+      read.addEventListener("click", function () {
+        openModal(event, read);
+      });
+      actions.appendChild(read);
+      popover.appendChild(actions);
+
+      popover.classList.add("is-open");
+    }
+
+    // ViewBox state + animated fly-to
+    var view = { x: full.x, y: full.y, w: full.w, h: full.h };
+    var flightToken = 0;
+
+    function applyView() {
+      svg.setAttribute("viewBox", view.x + " " + view.y + " " + view.w + " " + view.h);
+    }
+
+    function clampView(v) {
+      var minW = full.w * 0.08;
+      v.w = Math.max(minW, Math.min(v.w, full.w));
+      v.h = v.w * (full.h / full.w);
+      var slack = 0.15;
+      v.x = Math.max(full.x - full.w * slack, Math.min(v.x, full.x + full.w * (1 + slack) - v.w));
+      v.y = Math.max(full.y - full.h * slack, Math.min(v.y, full.y + full.h * (1 + slack) - v.h));
+      return v;
+    }
+
+    function flyTo(target, duration) {
+      target = clampView(target);
+      flightToken += 1;
+      var token = flightToken;
+      if (reducedMotion() || !duration) {
+        view = target;
+        applyView();
+        return;
+      }
+      var from = { x: view.x, y: view.y, w: view.w, h: view.h };
+      var start = null;
+      var started = false;
+      function ease(t) {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      }
+      function frame(now) {
+        if (token !== flightToken) return;
+        started = true;
+        if (start === null) start = now;
+        var t = Math.min((now - start) / duration, 1);
+        var k = ease(t);
+        view = {
+          x: from.x + (target.x - from.x) * k,
+          y: from.y + (target.y - from.y) * k,
+          w: from.w + (target.w - from.w) * k,
+          h: from.h + (target.h - from.h) * k,
+        };
+        applyView();
+        if (t < 1) window.requestAnimationFrame(frame);
+      }
+      window.requestAnimationFrame(frame);
+      // rAF can be throttled in embedded webviews: land instantly rather
+      // than not at all.
+      window.setTimeout(function () {
+        if (!started && token === flightToken) {
+          view = target;
+          applyView();
+        }
+      }, 150);
+    }
+
+    function zoomBy(factor, cx, cy) {
+      var w = view.w * factor;
+      var h = view.h * factor;
+      var fx = cx === undefined ? view.x + view.w / 2 : cx;
+      var fy = cy === undefined ? view.y + view.h / 2 : cy;
+      flyTo(
+        {
+          x: fx - (fx - view.x) * (w / view.w) * (factor === 1 ? 1 : 1),
+          y: fy - (fy - view.y) * (h / view.h),
+          w: w,
+          h: h,
+        },
+        420
+      );
+    }
+
+    function reset() {
+      hidePopover();
+      flyTo({ x: full.x, y: full.y, w: full.w, h: full.h }, 650);
+    }
+
+    function select(event, fly) {
+      hidePopover();
+      var marker = markerFor[event.id];
+      if (marker) marker.classList.add("is-active");
+      showPopover(event);
+      if (fly && event.coords) {
+        var p = project(event.coords.lat, event.coords.lon);
+        var w = full.w * 0.24;
+        var h = w * (full.h / full.w);
+        flyTo({ x: p.x - w / 2, y: p.y - h * 0.45, w: w, h: h }, 850);
+      }
+    }
+
+    // Drag to pan
+    var pan = null;
+    svg.addEventListener("pointerdown", function (downEvent) {
+      if (downEvent.target.closest && downEvent.target.closest(".map-marker")) return;
+      pan = {
+        px: downEvent.clientX,
+        py: downEvent.clientY,
+        vx: view.x,
+        vy: view.y,
+        moved: false,
+      };
+      svg.classList.add("is-panning");
+      if (svg.setPointerCapture) svg.setPointerCapture(downEvent.pointerId);
+    });
+    svg.addEventListener("pointermove", function (moveEvent) {
+      if (!pan) return;
+      var rect = svg.getBoundingClientRect();
+      var dx = ((moveEvent.clientX - pan.px) / rect.width) * view.w;
+      var dy = ((moveEvent.clientY - pan.py) / rect.height) * view.h;
+      if (Math.abs(moveEvent.clientX - pan.px) + Math.abs(moveEvent.clientY - pan.py) > 4) {
+        pan.moved = true;
+      }
+      flightToken += 1; // cancel any active flight
+      view = clampView({ x: pan.vx - dx, y: pan.vy - dy, w: view.w, h: view.h });
+      applyView();
+    });
+    function endPan(upEvent) {
+      if (!pan) return;
+      var moved = pan.moved;
+      pan = null;
+      svg.classList.remove("is-panning");
+      // A clean background click (no drag) dismisses the popover.
+      if (!moved && upEvent.type === "pointerup") hidePopover();
+    }
+    svg.addEventListener("pointerup", endPan);
+    svg.addEventListener("pointercancel", endPan);
+
+    // Double-click zooms toward the pointer.
+    svg.addEventListener("dblclick", function (dblEvent) {
+      var rect = svg.getBoundingClientRect();
+      var cx = view.x + ((dblEvent.clientX - rect.left) / rect.width) * view.w;
+      var cy = view.y + ((dblEvent.clientY - rect.top) / rect.height) * view.h;
+      zoomBy(0.5, cx, cy);
+    });
+
+    // Draw-on-scroll: the outline traces itself, then markers pop in.
+    function startDraw() {
+      if (reducedMotion()) {
+        host.classList.add("is-drawn", "markers-live");
+        return;
+      }
+      var paths = outline.querySelectorAll("path");
+      paths.forEach(function (path) {
+        var len = path.getTotalLength();
+        path.style.strokeDasharray = String(len);
+        path.style.strokeDashoffset = String(len);
+      });
+      host.classList.add("is-drawing");
+      window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(function () {
+          host.classList.add("is-drawn");
+        });
+      });
+      window.setTimeout(function () {
+        host.classList.add("markers-live");
+      }, 1300);
+      // Fallback for rAF-throttled contexts.
+      window.setTimeout(function () {
+        host.classList.add("is-drawn", "markers-live");
+      }, 2600);
+    }
+
+    if ("IntersectionObserver" in window && !reducedMotion()) {
+      var drawObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              startDraw();
+              drawObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.25 }
+      );
+      drawObserver.observe(host);
+    } else {
+      startDraw();
+    }
+
+    mapApi = { select: select, reset: reset };
+  }
+
+  /** Location list beside the map; each entry flies to its marker. */
+  function renderMapList() {
+    var list = document.getElementById("map-list");
+    if (!list) return;
+    NEORONS_EVENTS.filter(function (event) {
+      return event.coords;
+    }).forEach(function (event) {
+      var item = el("li");
+      var btn = el("button", "map-list-btn");
+      btn.type = "button";
+      btn.appendChild(el("span", "map-list-title", event.title));
+      btn.appendChild(
+        el(
+          "span",
+          "map-list-place",
+          event.district + " district, " + event.state + " · " + (event.dates || event.date)
+        )
+      );
+      btn.addEventListener("click", function () {
+        if (mapApi) {
+          mapApi.select(event, true);
+        } else {
+          openModal(event, btn);
+        }
+      });
+      item.appendChild(btn);
+      list.appendChild(item);
+    });
+  }
+
+  /** Map attribution alongside the photo credits. */
+  function renderMapCredit() {
+    var target = document.getElementById("photo-credits");
+    if (!target || typeof NEORONS_INDIA_MAP === "undefined") return;
+    var credit = NEORONS_INDIA_MAP.credit;
+    if (!credit || !credit.creator) return;
+    if (target.textContent) target.appendChild(document.createTextNode(" · "));
+    target.appendChild(document.createTextNode("Map: "));
+    var text = credit.creator + " (" + credit.license + ")";
+    if (credit.url) {
+      var link = el("a", null, text);
+      link.href = credit.url;
+      link.target = "_blank";
+      link.rel = "noopener";
+      target.appendChild(link);
+    } else {
+      target.appendChild(document.createTextNode(text));
+    }
+  }
+
+  /* ---------------------------------------------------------------------- */
   /* Photo credits (footer)                                                  */
   /* ---------------------------------------------------------------------- */
 
@@ -1015,6 +1413,15 @@
   }
   try { renderPhotoCredits(); } catch (err) {
     if (window.console && console.error) console.error("Neorons: renderPhotoCredits failed", err);
+  }
+  try { initMap(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: initMap failed", err);
+  }
+  try { renderMapList(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: renderMapList failed", err);
+  }
+  try { renderMapCredit(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: renderMapCredit failed", err);
   }
   try { renderTeam(); } catch (err) {
     if (window.console && console.error) console.error("Neorons: renderTeam failed", err);

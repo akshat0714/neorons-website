@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Neorons: Science, Technology &amp; Inclusion</title>
-  <meta name="description" content="Neorons designs and funds education programmes across India: STEM events, inclusive sport, and responsible AI in the classroom. 1,200+ students reached across 8 districts." />
+  <meta name="description" content="Neorons designs and funds education programmes across India: STEM events, inclusive sport, and responsible AI in the classroom. 1,200+ students reached across India." />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Neorons" />
   <meta property="og:title" content="Neorons: Science, Technology &amp; Inclusion" />
-  <meta property="og:description" content="Neorons designs and funds education programmes across India: STEM events, inclusive sport, and responsible AI in the classroom. 1,200+ students reached across 8 districts." />
+  <meta property="og:description" content="Neorons designs and funds education programmes across India: STEM events, inclusive sport, and responsible AI in the classroom. 1,200+ students reached across India." />
   <meta property="og:image" content="https://akshat0714.github.io/neorons-website/images/og-image.png" />
   <meta property="og:url" content="https://akshat0714.github.io/neorons-website/" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -24,7 +24,7 @@
 
   <!-- Announcement bar -->
   <div class="topbar">
-    <p>Serving <strong>1,200+ students</strong> across <strong>8 districts</strong> of India</p>
+    <p>Serving <strong>1,200+ students</strong> in regions <strong>across India</strong></p>
   </div>
 
   <!-- Header -->
@@ -90,7 +90,7 @@
         </div>
         <div class="stat">
           <span class="stat-number" data-count="8">8</span>
-          <span class="stat-label">Districts served</span>
+          <span class="stat-label">Events delivered</span>
         </div>
         <div class="stat">
           <span class="stat-number" data-count="6">6</span>
@@ -205,7 +205,7 @@
           </div>
           <div class="impact-item">
             <span class="impact-number" data-count="8">8</span>
-            <span class="impact-label">districts served, from Varanasi to Mysuru and Jaipur to Hyderabad</span>
+            <span class="impact-label">regions reached across India, from Jaipur in the north to Mysuru in the south</span>
           </div>
           <div class="impact-item">
             <span class="impact-number" data-count="140">140</span>
@@ -236,7 +236,7 @@
             <p class="eyebrow reveal">Our events</p>
             <h2 class="reveal">On the ground, across India</h2>
             <p class="section-sub reveal">
-              Eight events across eight districts, 2025–2026. Every one took place
+              Eight events in regions across India, 2025–2026. Every one took place
               with local schools and partners. Select any event to read more.
             </p>
           </div>
@@ -273,9 +273,10 @@
     <section class="section reach" id="reach">
       <div class="container">
         <p class="eyebrow reveal">Where we work</p>
-        <h2 class="reveal">Eight districts. Five states and Delhi.</h2>
+        <h2 class="reveal">Regions across India</h2>
         <p class="section-sub narrow-sub reveal">
           We go where the need is: metropolitan classrooms and rural school blocks alike.
+          Zoom and pan the map, or select an event to fly to where it happened.
         </p>
         <noscript>
           <ul class="district-grid">
@@ -289,9 +290,14 @@
             <li class="district-card"><span class="district-name">Nagpur</span><span class="district-state">Maharashtra</span></li>
           </ul>
         </noscript>
-        <ul class="district-grid" id="district-grid">
-          <!-- Districts rendered by js/main.js -->
-        </ul>
+        <div class="map-layout">
+          <div class="india-map" id="india-map">
+            <!-- India map SVG, markers, controls, and popover rendered by js/main.js -->
+          </div>
+          <ul class="map-list" id="map-list">
+            <!-- Event locations rendered by js/main.js -->
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -411,6 +417,7 @@
     </div>
   </div>
 
+  <script src="js/india-map.js"></script>
   <script src="js/events.js"></script>
   <script src="js/main.js"></script>
 </body>

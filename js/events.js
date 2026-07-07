@@ -15,6 +15,9 @@
  *   image     — card/modal photo path (images/...); frame hides if file missing
  *   imageAlt  — short description of the photo for screen readers
  *   credit    — photo attribution { creator, license, url } or null
+ *   coords    — { lat, lon } for the interactive India map marker
+ *   dates     — specific display dates (cards, modal, map); "date" below stays
+ *               "Month Year" because the timeline sorts by it
  *   venue     — venue / locality line shown in the modal
  *   date      — human-readable date or range
  *   blurb     — one-to-two sentence summary shown on the card
@@ -30,6 +33,8 @@
 var NEORONS_EVENTS = [
   {
     id: "mind-matters-hackathon",
+    coords: { lat: 12.9716, lon: 77.5946 },
+    dates: "12–14 September 2025",
     featured: true,
     image: "images/mind-matters.jpg",
     imageAlt: "Students collaborating on laptops during a hackathon",
@@ -38,7 +43,7 @@ var NEORONS_EVENTS = [
     title: "Mind Matters Hackathon",
     district: "Bengaluru Urban",
     state: "Karnataka",
-    venue: "Bengaluru, Karnataka",
+    venue: "Partner engineering-college campus, Bengaluru",
     date: "September 2025",
     blurb:
       "A 48-hour hackathon where student teams built technology for suicide prevention and early mental-health support, guided by clinicians and engineers.",
@@ -70,6 +75,8 @@ var NEORONS_EVENTS = [
   },
   {
     id: "unstoppable-taekwondo",
+    coords: { lat: 26.9124, lon: 75.7873 },
+    dates: "17–18 January 2026",
     image: "images/unstoppable.jpg",
     imageAlt: "Young athletes practising taekwondo",
     credit: { creator: "Oluwatoyinp", license: "CC0 1.0", url: "https://commons.wikimedia.org/w/index.php?curid=183410747" },
@@ -77,7 +84,7 @@ var NEORONS_EVENTS = [
     title: "Unstoppable: Taekwondo Championship for Blind Girls",
     district: "Jaipur",
     state: "Rajasthan",
-    venue: "Jaipur, Rajasthan",
+    venue: "District indoor sports hall, Jaipur",
     date: "January 2026",
     blurb:
       "A fully funded state-level taekwondo championship for blind and low-vision girls, with coaching camps, adaptive officiating, and a stage that belonged to the athletes.",
@@ -108,6 +115,8 @@ var NEORONS_EVENTS = [
   },
   {
     id: "classroom-2030",
+    coords: { lat: 18.5204, lon: 73.8567 },
+    dates: "14–15 November 2025",
     image: "images/classroom-2030.jpg",
     imageAlt: "Teachers in a training workshop",
     credit: { creator: "Shemaroo, Wikimedia Commons", license: "CC BY 3.0", url: "https://commons.wikimedia.org/w/index.php?curid=79100053" },
@@ -115,7 +124,7 @@ var NEORONS_EVENTS = [
     title: "Classroom 2030: AI for Educators",
     district: "Pune",
     state: "Maharashtra",
-    venue: "Pune, Maharashtra",
+    venue: "Teacher-training institute, Pune",
     date: "November 2025",
     blurb:
       "A hands-on training summit helping teachers use AI responsibly to plan lessons, personalise practice, and save hours of administrative work.",
@@ -146,6 +155,8 @@ var NEORONS_EVENTS = [
   },
   {
     id: "project-jigyasa",
+    coords: { lat: 25.3176, lon: 82.9739 },
+    dates: "4–22 August 2025",
     image: "images/project-jigyasa.jpg",
     imageAlt: "School students doing a hands-on science experiment",
     credit: { creator: "Biswarup Ganguly", license: "CC BY 3.0", url: "https://commons.wikimedia.org/w/index.php?curid=45319990" },
@@ -153,7 +164,7 @@ var NEORONS_EVENTS = [
     title: "Project Jigyasa: Rural Science Fair",
     district: "Varanasi",
     state: "Uttar Pradesh",
-    venue: "Varanasi district, Uttar Pradesh",
+    venue: "Government schools, Sevapuri and Araziline blocks, Varanasi district",
     date: "August 2025",
     blurb:
       "A travelling science fair that brought hands-on experiments, telescope nights, and student exhibitions to government schools in rural Varanasi district.",
@@ -181,6 +192,8 @@ var NEORONS_EVENTS = [
   },
   {
     id: "roboshakti",
+    coords: { lat: 17.3850, lon: 78.4867 },
+    dates: "9–15 June 2025",
     image: "images/roboshakti.jpg",
     imageAlt: "Students building a small robot",
     credit: { creator: "U.S. Embassy Jerusalem", license: "CC BY 2.0", url: "https://www.flickr.com/photos/46886434@N04/33181647196" },
@@ -188,7 +201,7 @@ var NEORONS_EVENTS = [
     title: "RoboShakti: Girls' Robotics Bootcamp",
     district: "Hyderabad",
     state: "Telangana",
-    venue: "Hyderabad, Telangana",
+    venue: "Residential campus, Gachibowli, Hyderabad",
     date: "June 2025",
     blurb:
       "A week-long residential robotics bootcamp for girls from government schools, taking them from first circuit to a working robot in seven days.",
@@ -219,6 +232,8 @@ var NEORONS_EVENTS = [
   },
   {
     id: "safe-minds",
+    coords: { lat: 28.6139, lon: 77.2090 },
+    dates: "10 October 2025 (World Mental Health Day)",
     image: "images/safe-minds.jpg",
     imageAlt: "Students in a group discussion at school",
     credit: { creator: "U.S. Department of Education", license: "CC BY 2.0", url: "https://www.flickr.com/photos/48445211@N06/14489447353" },
@@ -226,7 +241,7 @@ var NEORONS_EVENTS = [
     title: "Safe Minds: Peer-Support Training",
     district: "New Delhi",
     state: "Delhi",
-    venue: "New Delhi",
+    venue: "Senior secondary schools, South and West Delhi",
     date: "October 2025",
     blurb:
       "Training senior students as peer supporters who know how to listen and refer, because the first person a struggling teenager talks to is almost always another teenager.",
@@ -255,6 +270,8 @@ var NEORONS_EVENTS = [
   },
   {
     id: "makeathon-for-all",
+    coords: { lat: 12.2958, lon: 76.6394 },
+    dates: "7–8 March 2026",
     image: "images/makeathon.jpg",
     imageAlt: "A student reading braille",
     credit: { creator: "Ben Clare / AusAID", license: "CC BY 2.0", url: "https://commons.wikimedia.org/w/index.php?curid=32167999" },
@@ -262,7 +279,7 @@ var NEORONS_EVENTS = [
     title: "Makeathon for All: Assistive Technology",
     district: "Mysuru",
     state: "Karnataka",
-    venue: "Mysuru, Karnataka",
+    venue: "Community makerspace, Mysuru",
     date: "March 2026",
     blurb:
       "Blind, low-vision, and sighted students building assistive devices together: navigation aids, audio labels, and tactile learning tools designed with, not for.",
@@ -290,6 +307,8 @@ var NEORONS_EVENTS = [
   },
   {
     id: "digital-disha",
+    coords: { lat: 21.1458, lon: 79.0882 },
+    dates: "2–20 February 2026",
     image: "images/digital-disha.jpg",
     imageAlt: "Students at computers in a school classroom",
     credit: { creator: "One Laptop per Child", license: "CC BY 2.0", url: "https://commons.wikimedia.org/w/index.php?curid=17583955" },
@@ -297,7 +316,7 @@ var NEORONS_EVENTS = [
     title: "Digital Disha: AI Awareness Drive",
     district: "Nagpur",
     state: "Maharashtra",
-    venue: "Nagpur district, Maharashtra",
+    venue: "Government schools, Hingna and Kamptee blocks, Nagpur district",
     date: "February 2026",
     blurb:
       "A district-wide drive bringing practical AI literacy to secondary students and their families: what it is, what it isn't, and how to use it safely.",
