@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- TODO: Replace TODO-DOMAIN with actual domain -->
-  <url><loc>https://TODO-DOMAIN/</loc><priority>1.0</priority></url>
-  <url><loc>https://TODO-DOMAIN/safeguarding.html</loc></url>
-  <url><loc>https://TODO-DOMAIN/privacy.html</loc></url>
-  <url><loc>https://TODO-DOMAIN/accessibility.html</loc></url>
-  <url><loc>https://TODO-DOMAIN/media.html</loc></url>
-  <url><loc>https://TODO-DOMAIN/profile.html</loc></url>
+  <url><loc>https://akshat0714.github.io/neorons-website/</loc><priority>1.0</priority></url>
+  <url><loc>https://akshat0714.github.io/neorons-website/safeguarding.html</loc></url>
+  <url><loc>https://akshat0714.github.io/neorons-website/privacy.html</loc></url>
+  <url><loc>https://akshat0714.github.io/neorons-website/accessibility.html</loc></url>
+  <url><loc>https://akshat0714.github.io/neorons-website/media.html</loc></url>
+  <url><loc>https://akshat0714.github.io/neorons-website/profile.html</loc></url>
 </urlset>

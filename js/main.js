@@ -464,7 +464,7 @@
 
     // WhatsApp
     var waBtn = el("a", "share-btn share-whatsapp", "WhatsApp");
-    waBtn.href = "https://wa.me/?text=" + encodeURIComponent(event.title + " \u2014 " + eventUrl);
+    waBtn.href = "https://wa.me/?text=" + encodeURIComponent(event.title + ": " + eventUrl);
     waBtn.target = "_blank";
     waBtn.rel = "noopener";
     shareRow.appendChild(waBtn);
@@ -713,6 +713,118 @@
   }
 
   /* ---------------------------------------------------------------------- */
+  /* Scroll-driven motion: progress bar, hero parallax, back-to-top          */
+  /* ---------------------------------------------------------------------- */
+
+  function initScrollEffects() {
+    // Reading progress bar (injected so it never exists without JS).
+    var progress = el("div", "scroll-progress");
+    progress.setAttribute("aria-hidden", "true");
+    var progressBar = el("span");
+    progress.appendChild(progressBar);
+    document.body.appendChild(progress);
+
+    // Back-to-top button.
+    var backTop = el("button", "back-to-top", "↑");
+    backTop.type = "button";
+    backTop.setAttribute("aria-label", "Back to top");
+    backTop.addEventListener("click", function () {
+      window.scrollTo({ top: 0 });
+      var target = document.querySelector(".skip-link") || document.body;
+      if (target.focus) target.focus();
+    });
+    document.body.appendChild(backTop);
+
+    // Hero parallax targets (absent on subpages).
+    var heroSection = document.querySelector(".hero");
+    var heroMedia = document.querySelector(".hero-media");
+    var heroInner = document.querySelector(".hero-inner");
+
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      var y = window.scrollY || 0;
+      var doc = document.documentElement;
+      var max = doc.scrollHeight - window.innerHeight;
+
+      progressBar.style.transform = "scaleX(" + (max > 0 ? Math.min(y / max, 1) : 0) + ")";
+      backTop.classList.toggle("is-visible", y > 600);
+
+      // Parallax: background drifts slower than the page; foreground eases
+      // away slightly. Transform-only, and skipped under reduced motion or
+      // once the hero has left the viewport.
+      if (heroSection && !reducedMotion()) {
+        var heroHeight = heroSection.offsetHeight;
+        if (y <= heroHeight) {
+          if (heroMedia) heroMedia.style.transform = "translateY(" + y * 0.22 + "px)";
+          if (heroInner) {
+            heroInner.style.transform = "translateY(" + y * 0.1 + "px)";
+            heroInner.style.opacity = String(Math.max(1 - y / (heroHeight * 0.9), 0));
+          }
+        }
+      } else if (heroMedia || heroInner) {
+        if (heroMedia) heroMedia.style.transform = "";
+        if (heroInner) {
+          heroInner.style.transform = "";
+          heroInner.style.opacity = "";
+        }
+      }
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    update();
+  }
+
+  /** Highlight the nav link for the section currently on screen. */
+  function initScrollSpy() {
+    var links = document.querySelectorAll('.nav-menu a[href^="#"]');
+    if (!links.length || !("IntersectionObserver" in window)) return;
+
+    var linkFor = {};
+    var sections = [];
+    links.forEach(function (link) {
+      var id = link.getAttribute("href").slice(1);
+      var section = document.getElementById(id);
+      if (section && id !== "top") {
+        linkFor[id] = link;
+        sections.push(section);
+      }
+    });
+    if (!sections.length) return;
+
+    var currentId = null;
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) currentId = entry.target.id;
+        });
+        links.forEach(function (link) {
+          var active = linkFor[currentId] === link;
+          link.classList.toggle("is-current", active);
+          if (active) {
+            link.setAttribute("aria-current", "location");
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        });
+      },
+      // A shallow band just below the header decides which section is current.
+      { rootMargin: "-15% 0px -70% 0px" }
+    );
+    sections.forEach(function (section) {
+      observer.observe(section);
+    });
+  }
+
+  /* ---------------------------------------------------------------------- */
   /* Motion: scroll reveals + count-ups                                      */
   /* ---------------------------------------------------------------------- */
 
@@ -930,6 +1042,12 @@
   }
   try { initHeaderScroll(); } catch (err) {
     if (window.console && console.error) console.error("Neorons: initHeaderScroll failed", err);
+  }
+  try { initScrollEffects(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: initScrollEffects failed", err);
+  }
+  try { initScrollSpy(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: initScrollSpy failed", err);
   }
 
   initReveal();

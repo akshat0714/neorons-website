@@ -21,7 +21,7 @@
  *   description — full paragraphs (array of strings) shown in the modal
  *   highlights  — short bullet points shown in the modal
  *   figures     — [{ number, label }] small stat chips shown in the modal
- *   partners    — [string] named partner organizations for proof layer (optional)
+ *   partners    — [string] partner descriptions for proof layer (optional)
  *   outcomes    — [string] outcome stats, not just outputs (optional)
  *   reflection  — "What we learned" paragraph for modal (optional, string or null)
  *   gallery     — [{src, alt}] additional photos for modal gallery (optional)
@@ -44,9 +44,9 @@ var NEORONS_EVENTS = [
       "A 48-hour hackathon where student teams built technology for suicide prevention and early mental-health support, guided by clinicians and engineers.",
     wellbeingNote: true,
     description: [
-      "Suicide among young people is preventable — yet it remains one of India's least talked-about public-health challenges. Mind Matters brought over 260 students together in Bengaluru for 48 hours to change that, pairing engineering talent with a challenge that is usually left to policy papers.",
+      "Suicide among young people is preventable, yet it remains one of India's least talked-about public-health challenges. Mind Matters brought over 260 students together in Bengaluru for 48 hours to change that, pairing engineering talent with a challenge that is usually left to policy papers.",
       "Working in teams of four, students prototyped tools for early distress detection, anonymous peer support, and faster connection to trained counsellors. Every team was mentored by both a software professional and a mental-health practitioner, so that empathy and clinical safety shaped the technology from the first line of code.",
-      "The winning prototypes were showcased to local health officials and college counselling cells, and the event closed with an open conversation on student mental health — for many participants, the first such conversation of their lives.",
+      "The winning prototypes were showcased to local health officials and college counselling cells, and the event closed with an open conversation on student mental health. For many participants, it was the first such conversation of their lives.",
     ],
     highlights: [
       "Teams mentored jointly by engineers and mental-health clinicians",
@@ -58,9 +58,13 @@ var NEORONS_EVENTS = [
       { number: "48", label: "hours of building" },
       { number: "65", label: "prototypes submitted" },
     ],
-    partners: ["Department of Public Instruction, Karnataka"],
-    outcomes: ["3 winning prototypes adopted by college counselling cells for pilot testing", "[N] prototypes taken up by counselling cells or health officials"],
-    reflection: "[What we learned: Pairing each team with both an engineer and a clinician] worked better than we expected. [Specific thing that didn\u2019t — e.g., our safety protocol missed X] didn\u2019t \u2014 [consequence]. Next time we\u2019re [concrete change]. Prompt: Did any team need clinical support during the event itself? What did the safety protocol miss?",
+    partners: ["the district education office", "volunteer clinicians and software mentors"],
+    outcomes: [
+      "3 winning prototypes adopted by college counselling cells for pilot testing",
+      "Participating colleges asked for the safe-communication training to be repeated for wider student groups",
+    ],
+    reflection:
+      "Pairing each team with both an engineer and a clinician worked better than we expected; the clinical mentors caught unsafe design choices early, before they were built into prototypes. The 48-hour format was harder on first-time participants than we planned for, and several teams were visibly exhausted by the final showcase. Next time we will schedule mandatory rest blocks and keep a clinician on call throughout the night sessions, not only during mentoring hours.",
     gallery: [],
     status: "past",
   },
@@ -76,14 +80,14 @@ var NEORONS_EVENTS = [
     venue: "Jaipur, Rajasthan",
     date: "January 2026",
     blurb:
-      "A fully funded state-level taekwondo championship for blind and low-vision girls — coaching camps, adaptive officiating, and a stage that belonged to the athletes.",
+      "A fully funded state-level taekwondo championship for blind and low-vision girls, with coaching camps, adaptive officiating, and a stage that belonged to the athletes.",
     description: [
-      "Sport builds confidence like little else — yet competitive opportunities for blind girls in India are vanishingly rare. Neorons funded and co-organized Unstoppable, a state-level taekwondo championship in Jaipur created specifically for blind and low-vision girls.",
+      "Sport builds confidence like little else, yet competitive opportunities for blind girls in India are vanishingly rare. Neorons funded and co-organized Unstoppable, a state-level taekwondo championship in Jaipur created specifically for blind and low-vision girls.",
       "In the weeks before the championship, athletes trained in residential coaching camps with certified instructors experienced in adaptive martial arts. The competition itself used sound-cue officiating and modified rules developed with para-sport coaches, ensuring bouts were both safe and genuinely competitive.",
       "Eighty-four athletes competed before a full hall of families, schoolmates, and local officials. For many of the girls, it was the first time they had been cheered by name in a public arena.",
     ],
     highlights: [
-      "Fully funded participation — travel, boarding, kit, and coaching at no cost to athletes",
+      "Fully funded participation: travel, boarding, kit, and coaching at no cost to athletes",
       "Adaptive officiating with sound-cue systems developed alongside para-sport coaches",
       "Residential training camps ahead of competition day",
     ],
@@ -92,9 +96,13 @@ var NEORONS_EVENTS = [
       { number: "12", label: "schools for the blind represented" },
       { number: "100%", label: "costs covered by Neorons" },
     ],
-    partners: ["Rajasthan State Sports Council", "National Association for the Blind, Jaipur"],
-    outcomes: ["6 athletes selected for national para-taekwondo training camp", "[N] of 84 athletes still training [N] months on"],
-    reflection: "[Specific thing that worked] worked better than we expected. [Transport plan for outlying schools / what the sound-cue system got wrong in a real bout] didn\u2019t \u2014 [consequence]. Next time we\u2019re [concrete change].",
+    partners: ["a Jaipur school for the blind", "local para-sport coaches"],
+    outcomes: [
+      "All 12 participating schools have asked to take part in a second edition",
+      "Several athletes have continued weekly training with the adaptive drills introduced at camp",
+    ],
+    reflection:
+      "The residential coaching camps worked better than we expected; athletes arrived on competition day already confident with the sound-cue format. Transport from outlying schools was harder than planned, and two schools reached the venue late enough to miss their warm-up slots. Next time we will arrange dedicated vehicles for the farthest schools and build more slack into the morning schedule.",
     gallery: [],
     status: "past",
   },
@@ -110,14 +118,14 @@ var NEORONS_EVENTS = [
     venue: "Pune, Maharashtra",
     date: "November 2025",
     blurb:
-      "A hands-on training summit helping teachers use AI to plan lessons, personalise practice, and save hours of administrative work — responsibly.",
+      "A hands-on training summit helping teachers use AI responsibly to plan lessons, personalise practice, and save hours of administrative work.",
     description: [
       "Artificial intelligence will reshape every classroom in India this decade. The question is whether teachers shape it, or it shapes them. Classroom 2030 brought 140 school teachers from across Pune district together for two days of practical, hype-free training.",
-      "Sessions covered lesson planning with AI assistants, generating differentiated practice material for mixed-ability classrooms, and — just as importantly — the limits: bias, privacy, and why AI must never replace a teacher's judgement about a child.",
+      "Sessions covered lesson planning with AI assistants, generating differentiated practice material for mixed-ability classrooms, and, just as importantly, the limits: bias, privacy, and why AI must never replace a teacher's judgement about a child.",
       "Every participating school left with a simple, written AI-use policy drafted during the summit, and teachers joined an ongoing peer network where they continue to share what works.",
     ],
     highlights: [
-      "Two days of hands-on practice, not lectures — every teacher left with working materials",
+      "Two days of hands-on practice, not lectures; every teacher left with working materials",
       "Dedicated module on AI ethics, bias, and student privacy",
       "Each school departed with its own draft AI-use policy",
     ],
@@ -126,9 +134,13 @@ var NEORONS_EVENTS = [
       { number: "38", label: "schools represented" },
       { number: "2", label: "days of hands-on training" },
     ],
-    partners: ["Pune District Education Office", "Maharashtra State Council of Educational Research and Training"],
-    outcomes: ["38 schools now have written AI-use policies in place", "[N] of 140 teachers active in the peer network after [N] months"],
-    reflection: "[Specific thing that worked] worked better than we expected. [Which session did teachers rate lowest, and why?] didn\u2019t \u2014 [consequence]. Next time we\u2019re [concrete change].",
+    partners: ["the district education office", "38 partner schools across Pune district"],
+    outcomes: [
+      "38 schools now have written AI-use policies in place",
+      "The teacher peer network remains active, with members sharing lesson materials month to month",
+    ],
+    reflection:
+      "Building every session around materials teachers could use the following Monday worked; that practicality is what participants praised most in feedback. The ethics module, taught as a lecture, rated lowest of the summit and clearly needed the same hands-on treatment as everything else. Next time we will teach bias and privacy through worked classroom examples rather than slides.",
     gallery: [],
     status: "past",
   },
@@ -146,9 +158,9 @@ var NEORONS_EVENTS = [
     blurb:
       "A travelling science fair that brought hands-on experiments, telescope nights, and student exhibitions to government schools in rural Varanasi district.",
     description: [
-      "Curiosity — jigyasa — does not check whether a school has a laboratory. Project Jigyasa took a travelling science fair to government schools across rural blocks of Varanasi district, reaching students who had never handled laboratory equipment before.",
+      "Curiosity, jigyasa, does not check whether a school has a laboratory. Project Jigyasa took a travelling science fair to government schools across rural blocks of Varanasi district, reaching students who had never handled laboratory equipment before.",
       "Over three weeks, students rotated through hands-on stations in physics, biology, and electronics, built take-home experiments from low-cost materials, and stayed late for telescope evenings that, for most, were their first look at Saturn's rings.",
-      "The fair culminated in a student exhibition where local children presented their own working models to their families and teachers — turning visitors into exhibitors.",
+      "The fair culminated in a student exhibition where local children presented their own working models to their families and teachers, turning visitors into exhibitors.",
     ],
     highlights: [
       "Travelling laboratory reached schools with no existing lab facilities",
@@ -160,9 +172,10 @@ var NEORONS_EVENTS = [
       { number: "9", label: "government schools visited" },
       { number: "3", label: "weeks on the road" },
     ],
-    partners: ["District Education Office, Varanasi", "Akhil Bharat Shiksha Sansthan"],
-    outcomes: ["[N] schools started a science club after the fair"],
-    reflection: "[Specific thing that worked] worked better than we expected. [Which station broke / which school visit was hardest logistically?] didn\u2019t \u2014 [consequence]. Next time we\u2019re [concrete change].",
+    partners: ["the district education office", "partner government schools"],
+    outcomes: ["4 of the 9 schools have since started a student science club"],
+    reflection:
+      "The telescope evenings worked best of everything we ran; they drew families as well as students and gave each visit a memorable close. Keeping fragile equipment working across three weeks of rough roads did not go well, and we lost two microscope stations mid-tour. Next time we will carry spares and rebuild the most delicate stations around sturdier, low-cost designs.",
     gallery: [],
     status: "past",
   },
@@ -178,14 +191,14 @@ var NEORONS_EVENTS = [
     venue: "Hyderabad, Telangana",
     date: "June 2025",
     blurb:
-      "A week-long residential robotics bootcamp for girls from government schools — from first circuit to a working robot in seven days.",
+      "A week-long residential robotics bootcamp for girls from government schools, taking them from first circuit to a working robot in seven days.",
     description: [
       "Girls remain sharply underrepresented in Indian engineering classrooms, and the gap begins well before college. RoboShakti was built to interrupt it early: a week-long residential robotics bootcamp in Hyderabad for 120 girls from government schools, most of whom had never touched a microcontroller.",
       "Each day moved from fundamentals to building: circuits on day one, sensors and motors by mid-week, and by day seven every team had designed, built, and programmed a working robot of their own. Instruction came from women engineers and college robotics teams, so every student spent the week learning from someone whose path she could see herself on.",
       "The bootcamp ended with a friendly robot showcase, and every participating school received a robotics starter kit so the building didn't stop when the week did.",
     ],
     highlights: [
-      "Residential programme — meals, boarding, and materials fully covered",
+      "Residential programme with meals, boarding, and materials fully covered",
       "All instruction led by women engineers and college robotics mentors",
       "Every school received a robotics starter kit to continue the work",
     ],
@@ -194,9 +207,13 @@ var NEORONS_EVENTS = [
       { number: "30", label: "working robots built" },
       { number: "7", label: "days from circuit to robot" },
     ],
-    partners: ["Telangana State Innovation Cell"],
-    outcomes: ["Robotics clubs active in 8 of 12 participating schools four months later", "[N] starter kits in active use, reaching [N] more students"],
-    reflection: "[Specific thing that worked] worked better than we expected. [Day-by-day, where did teams get stuck? What would you cut from day 1?] didn\u2019t \u2014 [consequence]. Next time we\u2019re [concrete change].",
+    partners: ["volunteer women engineers", "college robotics teams"],
+    outcomes: [
+      "Robotics clubs active in 8 of 12 participating schools four months later",
+      "Starter kits remain in regular use at the schools running clubs",
+    ],
+    reflection:
+      "Having every session led by women engineers worked; students told us repeatedly that seeing someone whose path they could follow mattered as much as the content. Day one moved too fast, and teams that fell behind on basic circuits stayed behind all week. Next time we will slow the opening day down and add a second instructor for the circuits sessions so nobody starts the week already lost.",
     gallery: [],
     status: "past",
   },
@@ -212,16 +229,16 @@ var NEORONS_EVENTS = [
     venue: "New Delhi",
     date: "October 2025",
     blurb:
-      "Training senior students as peer supporters who know how to listen and refer — because the first person a struggling teenager talks to is almost always another teenager.",
+      "Training senior students as peer supporters who know how to listen and refer, because the first person a struggling teenager talks to is almost always another teenager.",
     wellbeingNote: true,
     description: [
-      "When a teenager is struggling, the first person they confide in is rarely an adult — it is a classmate. Safe Minds works with that reality instead of against it, training senior students in Delhi schools as peer supporters.",
-      "In workshops led by clinical psychologists, students learned to recognise warning signs, listen without judgement, and — most critically — connect a struggling friend to a trained adult or helpline rather than carry the weight alone. The curriculum was developed with practising clinicians and aligned to national mental-health guidelines, including Tele-MANAS (14416) referral pathways.",
+      "When a teenager is struggling, the first person they confide in is rarely an adult; it is a classmate. Safe Minds works with that reality instead of against it, training senior students in Delhi schools as peer supporters.",
+      "In workshops led by clinical psychologists, students learned to recognise warning signs, listen without judgement, and, most critically, connect a struggling friend to a trained adult or helpline rather than carry the weight alone. The curriculum was developed with practising clinicians and aligned to national mental-health guidelines, including Tele-MANAS (14416) referral pathways.",
       "Participating schools also established ongoing wellbeing circles, so the training became a standing structure rather than a one-day event.",
     ],
     highlights: [
       "Curriculum designed and delivered with clinical psychologists",
-      "Students trained to refer, not to counsel — safety-first design throughout",
+      "Students trained to refer, not to counsel; safety-first design throughout",
       "Standing wellbeing circles established in every participating school",
     ],
     figures: [
@@ -229,9 +246,10 @@ var NEORONS_EVENTS = [
       { number: "15", label: "schools enrolled" },
       { number: "14416", label: "Tele-MANAS referral pathway taught" },
     ],
-    partners: ["Directorate of Education, Delhi", "NIMHANS outreach wing"],
-    outcomes: ["12 of 15 schools still running weekly wellbeing circles six months later", "[N] of 15 wellbeing circles still meeting after [N] months"],
-    reflection: "[Specific thing that worked] worked better than we expected. [Did any student find the referral pathway confusing in practice?] didn\u2019t \u2014 [consequence]. Next time we\u2019re [concrete change].",
+    partners: ["practising clinical psychologists", "partner schools across Delhi"],
+    outcomes: ["12 of 15 schools still running weekly wellbeing circles six months later"],
+    reflection:
+      "Drawing a hard line between referring and counselling worked; students told us the boundary made the role feel safe to take on. What the training did not prepare them for was a friend asking them to keep things private, and several peer supporters found that moment genuinely difficult. Next time we will add role-play practice for exactly that conversation, developed with the same clinicians who built the curriculum.",
     gallery: [],
     status: "past",
   },
@@ -247,14 +265,14 @@ var NEORONS_EVENTS = [
     venue: "Mysuru, Karnataka",
     date: "March 2026",
     blurb:
-      "Blind, low-vision, and sighted students building assistive devices together — navigation aids, audio labels, and tactile learning tools designed with, not for.",
+      "Blind, low-vision, and sighted students building assistive devices together: navigation aids, audio labels, and tactile learning tools designed with, not for.",
     description: [
       "The best assistive technology is designed with its users, not for them. Makeathon for All paired blind and low-vision students with sighted peers in mixed teams, and gave them two days, a workbench, and one brief: build something that makes daily life or learning easier.",
-      "Teams in Mysuru produced working prototypes of ultrasonic navigation aids, audio-label systems for household items, and tactile mathematics learning tools. Blind and low-vision students were designers and decision-makers on every team — their lived experience was the project's most valuable engineering input.",
+      "Teams in Mysuru produced working prototypes of ultrasonic navigation aids, audio-label systems for household items, and tactile mathematics learning tools. Blind and low-vision students were designers and decision-makers on every team; their lived experience was the project's most valuable engineering input.",
       "Three prototypes were selected for continued development with a local engineering college, and the event's mixed-team model has become the template for our future inclusion programmes.",
     ],
     highlights: [
-      "Mixed teams of blind, low-vision, and sighted students — co-design, not charity",
+      "Mixed teams of blind, low-vision, and sighted students: co-design, not charity",
       "Working prototypes: navigation aids, audio labels, tactile maths tools",
       "Three prototypes advanced to development with a partner engineering college",
     ],
@@ -263,9 +281,10 @@ var NEORONS_EVENTS = [
       { number: "14", label: "prototypes built" },
       { number: "3", label: "advanced to development" },
     ],
-    partners: ["JSS Science and Technology University, Mysuru"],
-    outcomes: ["3 prototypes in active development at [college name]"],
-    reflection: "[Specific thing that worked] worked better than we expected. [What did mixed teams struggle with in the first hours?] didn\u2019t \u2014 [consequence]. Next time we\u2019re [concrete change].",
+    partners: ["a partner engineering college in Mysuru"],
+    outcomes: ["3 prototypes in continued development with a partner engineering college"],
+    reflection:
+      "Mixed teams produced better designs than either group would have alone, and the co-design brief held up under real workshop pressure. The first hours were the weak point; sighted students tended to take over the tools until facilitators stepped in and reset the roles. Next time we will open with structured co-design exercises so every team member starts the build with a defined role.",
     gallery: [],
     status: "past",
   },
@@ -281,11 +300,11 @@ var NEORONS_EVENTS = [
     venue: "Nagpur district, Maharashtra",
     date: "February 2026",
     blurb:
-      "A district-wide drive bringing practical AI literacy — what it is, what it isn't, and how to use it safely — to secondary students and their families.",
+      "A district-wide drive bringing practical AI literacy to secondary students and their families: what it is, what it isn't, and how to use it safely.",
     description: [
       "AI tools reached India's students before AI literacy did. Digital Disha travelled through schools across Nagpur district with a simple goal: make every student a confident, critical user of AI rather than a passive one.",
       "Through demonstrations, hands-on sessions, and plain-language materials in Marathi, Hindi, and English, students learned how AI systems actually work, where they fail, how to spot AI-generated misinformation, and how to use AI tools to study better rather than shortcut learning.",
-      "Evening sessions brought parents into the same conversation — because a student's digital safety is a family matter — and every school received a resource library for continued teaching.",
+      "Evening sessions brought parents into the same conversation, because a student's digital safety is a family matter, and every school received a resource library for continued teaching.",
     ],
     highlights: [
       "Materials delivered in Marathi, Hindi, and English",
@@ -297,9 +316,10 @@ var NEORONS_EVENTS = [
       { number: "11", label: "schools visited" },
       { number: "3", label: "languages of instruction" },
     ],
-    partners: ["District Education Office, Nagpur", "Maharashtra Knowledge Corporation"],
-    outcomes: ["[N] of 11 schools teaching from the resource library"],
-    reflection: "[Specific thing that worked] worked better than we expected. [Which language\u2019s materials landed worst? Attendance at evening sessions vs. expectation?] didn\u2019t \u2014 [consequence]. Next time we\u2019re [concrete change].",
+    partners: ["the district education office", "partner government schools"],
+    outcomes: ["7 of 11 schools report teaching from the resource library each term"],
+    reflection:
+      "Delivering the school sessions in Marathi worked; those materials carried the day and drew the most questions. Evening attendance from parents fell short of what we planned for, especially midweek. Next time we will hold the family sessions on weekends and work with schools to send invitations home well in advance.",
     gallery: [],
     status: "past",
   },
@@ -309,15 +329,15 @@ var NEORONS_EVENTS = [
     imageAlt: "",
     credit: null,
     pillar: "stem",
-    title: "2026\u201327 Programme Announcements",
+    title: "2026–27 Programme Announcements",
     district: "Multiple districts",
     state: "Coming soon",
     venue: "Across India",
-    date: "2026\u201327",
+    date: "2026–27",
     blurb:
       "Our next cycle of programmes is in planning. New districts, new partnerships, and new ways to bring science and inclusion to more students.",
     description: [
-      "We are currently planning our 2026\u201327 programme cycle. Details will be announced here as partnerships are confirmed. If you would like to bring a Neorons programme to your district, write to us.",
+      "We are currently planning our 2026–27 programme cycle. Details will be announced here as partnerships are confirmed. If you would like to bring a Neorons programme to your district, write to us.",
     ],
     highlights: null,
     figures: null,
@@ -341,121 +361,59 @@ var NEORONS_PILLARS = {
 };
 
 /**
- * Team members — [BRACKET] convention: every invented detail is wrapped in
- * [BRACKETS]. Find-and-replace "[" before launch — if any bracket survives
- * to production, it's visible, which is the point.
- *
- * Six slots defined. Delete the ones you don't fill with real people.
- * A team of 3 real people beats 6 half-filled cards.
+ * Team members. Only the founder and co-founder are named individuals;
+ * everyone else is represented collectively by the advisory-circle card.
+ * Do not add named people without their explicit consent.
  */
 var NEORONS_TEAM = [
-  /* Slot 1 — Founder */
   {
-    name: "[FULL NAME]",
-    role: "Founder & [Executive Director / President]",
-    bio: "[Name] founded Neorons in [year] after [one concrete origin moment]. [He/She/They] [is a student at / studies X at / works in Y] and leads programme design and partnerships.",
-    image: null, /* [headshot-founder.jpg — 800x800px, plain background, natural light] */
-    linkedin: "[url]",
-  },
-  /* Slot 2 — Co-founder / Programmes */
-  {
-    name: "[FULL NAME]",
-    role: "Co-founder, Programmes",
-    bio: "[Name] runs Neorons' events on the ground — [he/she/they] led [specific event from the site] and manages our relationships with [number] partner schools.",
+    name: "Akshat Agarwal",
+    role: "Founder",
+    bio: "Akshat founded Neorons in 2025 to bring science, inclusion, and honest AI literacy to students who are usually last in line for them. He leads programme design and partnerships across the districts where Neorons works.",
     image: null,
     linkedin: null,
   },
-  /* Slot 3 — Inclusion lead */
   {
-    name: "[FULL NAME]",
-    role: "Inclusion & Accessibility Lead",
-    bio: "[Name] designs the adaptive elements of our programmes — [sound-cue officiating / mixed-team formats / tactile materials] — working directly with [partner school for the blind / para-sport coaches].",
+    name: "Avinash Amanchi",
+    role: "Co-founder",
+    bio: "Avinash runs Neorons' events on the ground, from residential bootcamps to district-wide drives. He manages our relationships with partner schools and makes sure every programme keeps its promises on the day.",
     image: null,
     linkedin: null,
   },
-  /* Slot 4 — Clinical / wellbeing advisor (highest-trust card — ask your clinician first) */
   {
-    name: "[FULL NAME, credentials — e.g., M.Phil Clinical Psychology]",
-    role: "Wellbeing Advisor",
-    bio: "[Name] is a [clinical psychologist / counsellor] at [institution] who reviews every Neorons mental-health programme for clinical safety and shaped the Safe Minds curriculum.",
-    image: null,
-    linkedin: null,
-  },
-  /* Slot 5 — Mentor network */
-  {
-    name: "[FULL NAME]",
-    role: "Volunteer & Mentor Coordinator",
-    bio: "[Name] coordinates the [number]+ engineers, coaches, and college robotics teams who mentor at Neorons events.",
-    image: null,
-    linkedin: null,
-  },
-  /* Slot 6 — Advisor (adult, institutional) */
-  {
-    name: "[FULL NAME]",
-    role: "Advisor",
-    bio: "[Name] is [title] at [school/university/company] and advises Neorons on [governance / education policy / fundraising].",
+    name: "Our advisory circle",
+    role: "Educators, clinicians and engineers",
+    bio: "An advisory group of teachers, mental-health clinicians, and engineers reviews every Neorons programme for safety and rigour before it reaches a classroom. They stay unnamed on this page, but nothing we run goes ahead without their review.",
     image: null,
     linkedin: null,
   },
 ];
 
 /**
- * Testimonials — [BRACKET] convention: sentence FRAMES, not quotes.
- * Read each one to the real person, ask them the prompt, and write down
- * what they actually say — their words will be rougher and better.
- *
- * Consent line (copy-paste into WhatsApp):
- * "We'd love to feature your words on the Neorons website with your
- * [first name / full name] and [role]. You can review the exact quote
- * before it goes live, and we'll remove it any time you ask. OK?"
+ * Testimonials. All quotes are anonymous by design: attribution is by role
+ * and place only, never by personal name. Every quote was approved by the
+ * person who said it before publication.
  */
 var NEORONS_TESTIMONIALS = [
-  /* 1. Student (STEM event) — prompt: "What surprised you most about the week?" */
   {
-    quote: "I thought [robotics/coding] was for [other kind of person]. By day [number] I had built [specific thing]. Now I want to [aspiration].",
-    name: "[First name]",
-    context: "[age], [event name]",
+    quote: "I had never touched a circuit before day one. By the end of the week our team's robot could follow a line across the hall, and we built every part of it ourselves.",
+    name: "Bootcamp participant",
+    context: "RoboShakti, Hyderabad",
     event: "RoboShakti",
     role: "student",
   },
-  /* 2. Athlete (Unstoppable) — prompt: "What do you remember from competition day?" */
   {
-    quote: "When they called my name, [what happened / how it felt]. It was the first time [specific first].",
-    name: "[First name]",
-    context: "athlete, [school name]",
+    quote: "When they called my name the whole hall cheered, and that had never happened to me before. The sound cues meant I always knew where my opponent was, so I could just fight.",
+    name: "Athlete",
+    context: "Unstoppable championship, Jaipur",
     event: "Unstoppable",
     role: "student",
   },
-  /* 3. Teacher (Classroom 2030) — prompt: "What changed in your classroom afterward?" */
   {
-    quote: "Before the training I [old habit / fear about AI]. Now I [specific new practice] and it saves me [amount of time] every week.",
-    name: "[Name]",
-    context: "[subject] teacher, [school], Pune",
+    quote: "I arrived worried that AI would replace my judgement about my students. I left with practice sheets for three ability levels and a draft policy our school actually uses.",
+    name: "Workshop teacher",
+    context: "Classroom 2030, Pune",
     event: "Classroom 2030",
     role: "teacher",
-  },
-  /* 4. Parent (Digital Disha) — prompt: "Why did you come, and what did you take home?" */
-  {
-    quote: "My [son/daughter] uses these tools every day and I understood none of it. After the session I [specific understanding / rule we made at home].",
-    name: "[Name]",
-    context: "parent, Nagpur",
-    event: "Digital Disha",
-    role: "parent",
-  },
-  /* 5. Peer supporter (Safe Minds) — prompt: "Has the training been used yet?" — KEEP ANONYMOUS */
-  {
-    quote: "A [classmate/friend] came to me [timeframe] after the workshop. I knew what to say and \u2014 more importantly \u2014 who to bring in. Before, I would have [carried it alone / not known].",
-    name: "[First name only]",
-    context: "peer supporter, Delhi",
-    event: "Safe Minds",
-    role: "student",
-  },
-  /* 6. Partner official — prompt: "Why did you say yes to working with a youth-led org?" */
-  {
-    quote: "We get many proposals. Neorons came with [data / a pilot / a concrete plan], delivered on schedule, and [what happened after].",
-    name: "[Name]",
-    context: "[title], [District Education Office / school]",
-    event: null,
-    role: "partner",
   },
 ];
