@@ -2030,6 +2030,34 @@ body.modal-open {
   }
 }
 
+/* Subpage content ---------------------------------------------------------- */
+
+.page-content h1 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: 0.3em;
+}
+
+.page-content h2 {
+  font-size: 1.2rem;
+  margin-top: 2em;
+}
+
+.page-content ul {
+  padding-left: 20px;
+  margin-bottom: 1.2em;
+}
+
+.page-content li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.page-updated {
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin-bottom: 2em;
+}
+
 /* Print --------------------------------------------------------------------- */
 
 @media print {
