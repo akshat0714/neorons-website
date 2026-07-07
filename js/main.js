@@ -72,6 +72,20 @@
     return result;
   }
 
+  /** "See it on the map" button: the only card control that goes to the map. */
+  function makeLocateButton(event) {
+    var locate = el("button", "event-locate");
+    locate.type = "button";
+    locate.setAttribute("aria-label", "See " + event.title + " on the map");
+    locate.appendChild(document.createTextNode("See it on the map "));
+    locate.appendChild(el("span", "arrow", "\u2192"));
+    locate.addEventListener("click", function (clickEvent) {
+      clickEvent.stopPropagation();
+      locateOnMap(event, locate);
+    });
+    return locate;
+  }
+
   function renderEventCard(event) {
     var pillar = NEORONS_PILLARS[event.pillar] || { label: "", className: "" };
     var featured = !!event.featured;
@@ -121,19 +135,17 @@
 
     text.appendChild(el("p", "event-blurb", event.blurb));
 
-    var more = el("span", "event-more");
-    more.setAttribute("aria-hidden", "true");
-    more.appendChild(document.createTextNode("See it on the map "));
-    more.appendChild(el("span", "arrow", "→"));
-    text.appendChild(more);
+    text.appendChild(makeLocateButton(event));
 
     if (featured) card.appendChild(text);
 
-    // The title button opens the full story dialog; clicking anywhere else
-    // on the card flies to the event's location on the India map.
+    // Clicking the card (or its title) opens the full story; only the
+    // "See it on the map" button flies to the map.
     card.addEventListener("click", function (clickEvent) {
-      if (clickEvent.target.closest && clickEvent.target.closest(".event-link")) return;
-      locateOnMap(event, titleButton);
+      if (clickEvent.target.closest &&
+          (clickEvent.target.closest(".event-link") ||
+           clickEvent.target.closest(".event-locate"))) return;
+      openModal(event, titleButton);
     });
     titleButton.addEventListener("click", function () {
       openModal(event, titleButton);
@@ -144,12 +156,60 @@
 
   function renderEvents() {
     if (!eventGrid) return;
-    // Featured event first, keeping data order otherwise.
-    var ordered = NEORONS_EVENTS.slice().sort(function (a, b) {
+    // Past events only (upcoming ones get their own section), featured first.
+    var ordered = NEORONS_EVENTS.filter(function (event) {
+      return event.status !== "upcoming";
+    }).sort(function (a, b) {
       return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
     });
     ordered.forEach(function (event) {
       eventGrid.appendChild(renderEventCard(event));
+    });
+  }
+
+  /** Clean, compact cards for planned events in their own section. */
+  function renderUpcoming() {
+    var grid = document.getElementById("upcoming-grid");
+    if (!grid) return;
+    NEORONS_EVENTS.filter(function (event) {
+      return event.status === "upcoming";
+    }).forEach(function (event) {
+      var pillar = NEORONS_PILLARS[event.pillar] || { label: "" };
+      var card = el("article", "upcoming-card reveal");
+      card.setAttribute("data-event-id", event.id);
+
+      card.appendChild(el("p", "upcoming-flag", "Coming soon"));
+      card.appendChild(el("p", "event-tag", pillar.label));
+
+      var title = el("h3", "upcoming-title");
+      var titleButton = el("button", "event-link");
+      titleButton.type = "button";
+      titleButton.setAttribute("aria-haspopup", "dialog");
+      titleButton.innerHTML = wrapHindiWords(event.title.replace(/</g, "&lt;"));
+      title.appendChild(titleButton);
+      card.appendChild(title);
+
+      var meta = el("p", "event-meta");
+      meta.appendChild(
+        el("span", "event-district", event.district + " district, " + event.state)
+      );
+      meta.appendChild(document.createTextNode(" · " + (event.dates || event.date)));
+      card.appendChild(meta);
+
+      card.appendChild(el("p", "event-blurb", event.blurb));
+      card.appendChild(makeLocateButton(event));
+
+      titleButton.addEventListener("click", function () {
+        openModal(event, titleButton);
+      });
+      card.addEventListener("click", function (clickEvent) {
+        if (clickEvent.target.closest &&
+            (clickEvent.target.closest(".event-link") ||
+             clickEvent.target.closest(".event-locate"))) return;
+        openModal(event, titleButton);
+      });
+
+      grid.appendChild(card);
     });
   }
 
@@ -1141,14 +1201,26 @@
     var list = el("ul", "supporters-list");
     NEORONS_SUPPORTERS.forEach(function (supporter) {
       var item = el("li");
+      var content;
+      if (supporter.logo) {
+        content = document.createElement("img");
+        content.src = supporter.logo;
+        content.alt = supporter.name;
+        content.className = "supporter-logo";
+        content.loading = "lazy";
+      } else {
+        content = document.createTextNode(supporter.name);
+      }
       if (supporter.url) {
-        var link = el("a", null, supporter.name);
+        var link = el("a");
         link.href = supporter.url;
         link.target = "_blank";
         link.rel = "noopener";
+        if (supporter.logo) link.setAttribute("aria-label", supporter.name);
+        link.appendChild(content);
         item.appendChild(link);
       } else {
-        item.textContent = supporter.name;
+        item.appendChild(content);
       }
       list.appendChild(item);
     });
@@ -1277,6 +1349,9 @@
   // Each renderer is independent — one failure must not block the others.
   try { renderEvents(); } catch (err) {
     if (window.console && console.error) console.error("Neorons: renderEvents failed", err);
+  }
+  try { renderUpcoming(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: renderUpcoming failed", err);
   }
   try { renderDistricts(); } catch (err) {
     if (window.console && console.error) console.error("Neorons: renderDistricts failed", err);
