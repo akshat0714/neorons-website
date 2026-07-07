@@ -135,9 +135,12 @@ Flickr, CC BY / CC0). Replace them with real event photography by overwriting
 the files in `images/` (keep the filenames, or update the `image` field per
 event in `js/events.js`).
 
-Each event's `credit` field renders an attribution caption in the modal and
-footer. CC BY images **require** attribution, so keep the credits until you
-replace those photos. When you use your own photos, set `credit: null`.
+Attribution is **no longer rendered on the site** (removed at the founder's
+request; credits are handled separately). The license data still lives in each
+event's `credit` field in `js/events.js` for reference. Reminder: the current
+placeholder photos are CC BY / CC BY-SA and legally require attribution
+somewhere reasonable (e.g. a public credits page) until they are replaced with
+the organisation's own photography.
 
 ## Deployment
 

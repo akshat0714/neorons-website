@@ -408,22 +408,7 @@
     modalContent.innerHTML = "";
 
     var figureEl = makeImage(event, "modal-figure", true);
-    if (figureEl) {
-      if (event.credit && event.credit.creator) {
-        var caption = document.createElement("figcaption");
-        if (event.credit.url) {
-          var creditLink = el("a", null, "Photo: " + event.credit.creator + " (" + event.credit.license + ")");
-          creditLink.href = event.credit.url;
-          creditLink.target = "_blank";
-          creditLink.rel = "noopener";
-          caption.appendChild(creditLink);
-        } else {
-          caption.textContent = "Photo: " + event.credit.creator + " (" + event.credit.license + ")";
-        }
-        figureEl.appendChild(caption);
-      }
-      modalContent.appendChild(figureEl);
-    }
+    if (figureEl) modalContent.appendChild(figureEl);
 
     // Gallery thumbnails
     if (event.gallery && event.gallery.length) {
@@ -1032,13 +1017,20 @@
     var map = L.map(host, {
       center: [22.8, 80.0],
       zoom: 5,
-      minZoom: 4,
-      maxZoom: 17,
+      minZoom: 3.5,
+      maxZoom: 18,
+      // Fractional zoom: small smooth steps instead of coarse integer jumps,
+      // a snappier wheel, and no rubber-band bounce at the zoom limits.
+      zoomSnap: 0.25,
+      zoomDelta: 0.75,
+      wheelDebounceTime: 25,
+      wheelPxPerZoomLevel: 80,
+      bounceAtZoomLimits: false,
       zoomControl: true,
       scrollWheelZoom: true,
       attributionControl: true,
-      maxBounds: L.latLngBounds([2, 60], [40, 104]),
-      maxBoundsViscosity: 0.8,
+      maxBounds: L.latLngBounds([-2, 50], [44, 112]),
+      maxBoundsViscosity: 0.6,
     });
 
     // CARTO Voyager: designed cartography, retina ({r} -> @2x) tiles.
@@ -1263,39 +1255,6 @@
   /* Photo credits (footer)                                                  */
   /* ---------------------------------------------------------------------- */
 
-  function renderPhotoCredits() {
-    var target = document.getElementById("photo-credits");
-    if (!target) return;
-    var credits = [];
-    if (typeof NEORONS_HERO_CREDIT !== "undefined" && NEORONS_HERO_CREDIT && NEORONS_HERO_CREDIT.creator) {
-      credits.push(NEORONS_HERO_CREDIT);
-    }
-    NEORONS_EVENTS.forEach(function (event) {
-      if (event.credit && event.credit.creator) credits.push(event.credit);
-    });
-    if (!credits.length) return;
-    var seen = {};
-    target.appendChild(document.createTextNode("Photography: "));
-    var first = true;
-    credits.forEach(function (credit) {
-      var key = credit.creator + "|" + credit.license;
-      if (seen[key]) return;
-      seen[key] = true;
-      if (!first) target.appendChild(document.createTextNode(" · "));
-      first = false;
-      var text = credit.creator + " (" + credit.license + ")";
-      if (credit.url) {
-        var link = el("a", null, text);
-        link.href = credit.url;
-        link.target = "_blank";
-        link.rel = "noopener";
-        target.appendChild(link);
-      } else {
-        target.appendChild(document.createTextNode(text));
-      }
-    });
-  }
-
   function injectStructuredData() {
     // Organization
     var org = {
@@ -1357,9 +1316,6 @@
   }
   try { renderDistricts(); } catch (err) {
     if (window.console && console.error) console.error("Neorons: renderDistricts failed", err);
-  }
-  try { renderPhotoCredits(); } catch (err) {
-    if (window.console && console.error) console.error("Neorons: renderPhotoCredits failed", err);
   }
   try { initMap(); } catch (err) {
     if (window.console && console.error) console.error("Neorons: initMap failed", err);
