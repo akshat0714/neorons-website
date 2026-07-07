@@ -59,8 +59,8 @@ var NEORONS_EVENTS = [
       { number: "65", label: "prototypes submitted" },
     ],
     partners: ["Department of Public Instruction, Karnataka"],
-    outcomes: ["3 winning prototypes adopted by college counselling cells for pilot testing"],
-    reflection: "Sound-cue presentations worked well; we underestimated the emotional toll on mentors and will add structured debriefing sessions next time.",
+    outcomes: ["3 winning prototypes adopted by college counselling cells for pilot testing", "[N] prototypes taken up by counselling cells or health officials"],
+    reflection: "[What we learned: Pairing each team with both an engineer and a clinician] worked better than we expected. [Specific thing that didn\u2019t — e.g., our safety protocol missed X] didn\u2019t \u2014 [consequence]. Next time we\u2019re [concrete change]. Prompt: Did any team need clinical support during the event itself? What did the safety protocol miss?",
     gallery: [],
     status: "past",
   },
@@ -93,8 +93,8 @@ var NEORONS_EVENTS = [
       { number: "100%", label: "costs covered by Neorons" },
     ],
     partners: ["Rajasthan State Sports Council", "National Association for the Blind, Jaipur"],
-    outcomes: ["6 athletes selected for national para-taekwondo training camp"],
-    reflection: "Transport coordination was our biggest logistical gap — next time we will partner with a local transport provider from the planning stage.",
+    outcomes: ["6 athletes selected for national para-taekwondo training camp", "[N] of 84 athletes still training [N] months on"],
+    reflection: "[Specific thing that worked] worked better than we expected. [Transport plan for outlying schools / what the sound-cue system got wrong in a real bout] didn\u2019t \u2014 [consequence]. Next time we\u2019re [concrete change].",
     gallery: [],
     status: "past",
   },
@@ -127,8 +127,8 @@ var NEORONS_EVENTS = [
       { number: "2", label: "days of hands-on training" },
     ],
     partners: ["Pune District Education Office", "Maharashtra State Council of Educational Research and Training"],
-    outcomes: ["38 schools now have written AI-use policies in place"],
-    reflection: null,
+    outcomes: ["38 schools now have written AI-use policies in place", "[N] of 140 teachers active in the peer network after [N] months"],
+    reflection: "[Specific thing that worked] worked better than we expected. [Which session did teachers rate lowest, and why?] didn\u2019t \u2014 [consequence]. Next time we\u2019re [concrete change].",
     gallery: [],
     status: "past",
   },
@@ -161,8 +161,8 @@ var NEORONS_EVENTS = [
       { number: "3", label: "weeks on the road" },
     ],
     partners: ["District Education Office, Varanasi", "Akhil Bharat Shiksha Sansthan"],
-    outcomes: [],
-    reflection: null,
+    outcomes: ["[N] schools started a science club after the fair"],
+    reflection: "[Specific thing that worked] worked better than we expected. [Which station broke / which school visit was hardest logistically?] didn\u2019t \u2014 [consequence]. Next time we\u2019re [concrete change].",
     gallery: [],
     status: "past",
   },
@@ -195,8 +195,8 @@ var NEORONS_EVENTS = [
       { number: "7", label: "days from circuit to robot" },
     ],
     partners: ["Telangana State Innovation Cell"],
-    outcomes: ["Robotics clubs active in 8 of 12 participating schools four months later"],
-    reflection: "Girls who arrived skeptical became the most engaged by day three. One week is the right duration — shorter would have lost that arc.",
+    outcomes: ["Robotics clubs active in 8 of 12 participating schools four months later", "[N] starter kits in active use, reaching [N] more students"],
+    reflection: "[Specific thing that worked] worked better than we expected. [Day-by-day, where did teams get stuck? What would you cut from day 1?] didn\u2019t \u2014 [consequence]. Next time we\u2019re [concrete change].",
     gallery: [],
     status: "past",
   },
@@ -230,8 +230,8 @@ var NEORONS_EVENTS = [
       { number: "14416", label: "Tele-MANAS referral pathway taught" },
     ],
     partners: ["Directorate of Education, Delhi", "NIMHANS outreach wing"],
-    outcomes: ["12 of 15 schools still running weekly wellbeing circles six months later"],
-    reflection: null,
+    outcomes: ["12 of 15 schools still running weekly wellbeing circles six months later", "[N] of 15 wellbeing circles still meeting after [N] months"],
+    reflection: "[Specific thing that worked] worked better than we expected. [Did any student find the referral pathway confusing in practice?] didn\u2019t \u2014 [consequence]. Next time we\u2019re [concrete change].",
     gallery: [],
     status: "past",
   },
@@ -264,8 +264,8 @@ var NEORONS_EVENTS = [
       { number: "3", label: "advanced to development" },
     ],
     partners: ["JSS Science and Technology University, Mysuru"],
-    outcomes: ["3 prototypes in active development at JSS Engineering College"],
-    reflection: null,
+    outcomes: ["3 prototypes in active development at [college name]"],
+    reflection: "[Specific thing that worked] worked better than we expected. [What did mixed teams struggle with in the first hours?] didn\u2019t \u2014 [consequence]. Next time we\u2019re [concrete change].",
     gallery: [],
     status: "past",
   },
@@ -298,8 +298,8 @@ var NEORONS_EVENTS = [
       { number: "3", label: "languages of instruction" },
     ],
     partners: ["District Education Office, Nagpur", "Maharashtra Knowledge Corporation"],
-    outcomes: [],
-    reflection: null,
+    outcomes: ["[N] of 11 schools teaching from the resource library"],
+    reflection: "[Specific thing that worked] worked better than we expected. [Which language\u2019s materials landed worst? Attendance at evening sessions vs. expectation?] didn\u2019t \u2014 [consequence]. Next time we\u2019re [concrete change].",
     gallery: [],
     status: "past",
   },
@@ -340,55 +340,122 @@ var NEORONS_PILLARS = {
   ai: { label: "AI & Education", className: "pillar-ai" },
 };
 
-/** Team members — PLACEHOLDER: replace with real details and photos. */
+/**
+ * Team members — [BRACKET] convention: every invented detail is wrapped in
+ * [BRACKETS]. Find-and-replace "[" before launch — if any bracket survives
+ * to production, it's visible, which is the point.
+ *
+ * Six slots defined. Delete the ones you don't fill with real people.
+ * A team of 3 real people beats 6 half-filled cards.
+ */
 var NEORONS_TEAM = [
+  /* Slot 1 — Founder */
   {
-    name: "Avi",
-    role: "Founder",
-    bio: "Started Neorons as a high-school student who believed every kid in India deserves the same shot at science.",
-    image: null,
+    name: "[FULL NAME]",
+    role: "Founder & [Executive Director / President]",
+    bio: "[Name] founded Neorons in [year] after [one concrete origin moment]. [He/She/They] [is a student at / studies X at / works in Y] and leads programme design and partnerships.",
+    image: null, /* [headshot-founder.jpg — 800x800px, plain background, natural light] */
+    linkedin: "[url]",
   },
+  /* Slot 2 — Co-founder / Programmes */
   {
-    name: "Priya Sharma",
-    role: "Programme Lead",
-    bio: "Former government school teacher turned programme designer. Runs every event from logistics to last mile.",
+    name: "[FULL NAME]",
+    role: "Co-founder, Programmes",
+    bio: "[Name] runs Neorons' events on the ground — [he/she/they] led [specific event from the site] and manages our relationships with [number] partner schools.",
     image: null,
+    linkedin: null,
   },
+  /* Slot 3 — Inclusion lead */
   {
-    name: "Rohan Mehta",
-    role: "Technology & Partnerships",
-    bio: "Engineering student building the tools and relationships that make Neorons events possible.",
+    name: "[FULL NAME]",
+    role: "Inclusion & Accessibility Lead",
+    bio: "[Name] designs the adaptive elements of our programmes — [sound-cue officiating / mixed-team formats / tactile materials] — working directly with [partner school for the blind / para-sport coaches].",
     image: null,
+    linkedin: null,
   },
+  /* Slot 4 — Clinical / wellbeing advisor (highest-trust card — ask your clinician first) */
   {
-    name: "Ananya Krishnan",
-    role: "Outreach & Impact",
-    bio: "Tracks what actually changed after every event ends, because numbers without stories are just numbers.",
+    name: "[FULL NAME, credentials — e.g., M.Phil Clinical Psychology]",
+    role: "Wellbeing Advisor",
+    bio: "[Name] is a [clinical psychologist / counsellor] at [institution] who reviews every Neorons mental-health programme for clinical safety and shaped the Safe Minds curriculum.",
     image: null,
+    linkedin: null,
+  },
+  /* Slot 5 — Mentor network */
+  {
+    name: "[FULL NAME]",
+    role: "Volunteer & Mentor Coordinator",
+    bio: "[Name] coordinates the [number]+ engineers, coaches, and college robotics teams who mentor at Neorons events.",
+    image: null,
+    linkedin: null,
+  },
+  /* Slot 6 — Advisor (adult, institutional) */
+  {
+    name: "[FULL NAME]",
+    role: "Advisor",
+    bio: "[Name] is [title] at [school/university/company] and advises Neorons on [governance / education policy / fundraising].",
+    image: null,
+    linkedin: null,
   },
 ];
 
-/** Testimonials — PLACEHOLDER: replace with real quotes obtained with written permission. */
+/**
+ * Testimonials — [BRACKET] convention: sentence FRAMES, not quotes.
+ * Read each one to the real person, ask them the prompt, and write down
+ * what they actually say — their words will be rougher and better.
+ *
+ * Consent line (copy-paste into WhatsApp):
+ * "We'd love to feature your words on the Neorons website with your
+ * [first name / full name] and [role]. You can review the exact quote
+ * before it goes live, and we'll remove it any time you ask. OK?"
+ */
 var NEORONS_TESTIMONIALS = [
+  /* 1. Student (STEM event) — prompt: "What surprised you most about the week?" */
   {
-    quote: "I had never touched a circuit board before. By day four I was soldering my own sensors. My teacher at school didn\u2019t believe I built a robot until I showed her the video.",
-    name: "Meera",
-    context: "Class 10, Government Girls\u2019 High School, Hyderabad",
+    quote: "I thought [robotics/coding] was for [other kind of person]. By day [number] I had built [specific thing]. Now I want to [aspiration].",
+    name: "[First name]",
+    context: "[age], [event name]",
     event: "RoboShakti",
     role: "student",
   },
+  /* 2. Athlete (Unstoppable) — prompt: "What do you remember from competition day?" */
   {
-    quote: "I was afraid AI would replace me. The workshop showed me how to use it to give each of my forty students something closer to personal attention. That\u2019s not replacement \u2014 that\u2019s a superpower.",
-    name: "Sunita Deshmukh",
-    context: "Science Teacher, Pune",
+    quote: "When they called my name, [what happened / how it felt]. It was the first time [specific first].",
+    name: "[First name]",
+    context: "athlete, [school name]",
+    event: "Unstoppable",
+    role: "student",
+  },
+  /* 3. Teacher (Classroom 2030) — prompt: "What changed in your classroom afterward?" */
+  {
+    quote: "Before the training I [old habit / fear about AI]. Now I [specific new practice] and it saves me [amount of time] every week.",
+    name: "[Name]",
+    context: "[subject] teacher, [school], Pune",
     event: "Classroom 2030",
     role: "teacher",
   },
+  /* 4. Parent (Digital Disha) — prompt: "Why did you come, and what did you take home?" */
   {
-    quote: "My son came home from the fair and explained Saturn\u2019s rings to his grandmother for twenty minutes. I have never seen him talk about school like that before.",
-    name: "Father of a Class 7 student",
-    context: "Varanasi",
-    event: "Project Jigyasa",
+    quote: "My [son/daughter] uses these tools every day and I understood none of it. After the session I [specific understanding / rule we made at home].",
+    name: "[Name]",
+    context: "parent, Nagpur",
+    event: "Digital Disha",
     role: "parent",
+  },
+  /* 5. Peer supporter (Safe Minds) — prompt: "Has the training been used yet?" — KEEP ANONYMOUS */
+  {
+    quote: "A [classmate/friend] came to me [timeframe] after the workshop. I knew what to say and \u2014 more importantly \u2014 who to bring in. Before, I would have [carried it alone / not known].",
+    name: "[First name only]",
+    context: "peer supporter, Delhi",
+    event: "Safe Minds",
+    role: "student",
+  },
+  /* 6. Partner official — prompt: "Why did you say yes to working with a youth-led org?" */
+  {
+    quote: "We get many proposals. Neorons came with [data / a pilot / a concrete plan], delivered on schedule, and [what happened after].",
+    name: "[Name]",
+    context: "[title], [District Education Office / school]",
+    event: null,
+    role: "partner",
   },
 ];
