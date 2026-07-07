@@ -1,0 +1,16 @@
+{
+  "name": "Neorons",
+  "short_name": "Neorons",
+  "description": "Science, technology and inclusion for every student in India.",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#0077d4",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
