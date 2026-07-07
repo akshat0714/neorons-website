@@ -2673,3 +2673,191 @@ body.modal-open {
   color: var(--blue-deep);
   text-decoration: underline;
 }
+
+/* Leaflet tile map ----------------------------------------------------------- */
+
+.india-map {
+  height: 540px;
+  z-index: 0;
+}
+
+.leaflet-container {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+}
+
+/* Markers: blue dots for completed events, red for upcoming. */
+.nmap-marker {
+  background: none;
+  border: none;
+}
+
+.nmap-dot {
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--blue);
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(13, 27, 42, 0.4);
+  animation: nmap-pop 0.45s var(--ease-out) both;
+}
+
+.nmap-pulse {
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0;
+  animation: nmap-pulse 2.6s ease-out infinite;
+}
+
+.nmap-marker.is-upcoming .nmap-dot,
+.nmap-marker.is-upcoming .nmap-pulse {
+  background: #c62828;
+}
+
+@keyframes nmap-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes nmap-pulse {
+  0% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  70% {
+    opacity: 0;
+    transform: scale(2.8);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.8);
+  }
+}
+
+/* Popups: square-cornered, institutional. */
+.nmap-popup .leaflet-popup-content-wrapper {
+  border-radius: 0;
+  border-top: 4px solid var(--blue);
+  box-shadow: 0 14px 40px rgba(13, 27, 42, 0.22);
+}
+
+.nmap-popup.is-upcoming .leaflet-popup-content-wrapper {
+  border-top-color: #c62828;
+}
+
+.nmap-popup .leaflet-popup-content {
+  margin: 16px 18px 14px;
+  line-height: 1.5;
+}
+
+.nmap-popup-body .event-tag {
+  margin: 0 0 4px;
+}
+
+.nmap-popup.is-upcoming .event-tag {
+  color: #c62828;
+}
+
+.nmap-popup-body h3 {
+  font-size: 1.02rem;
+  margin: 0 0 4px;
+}
+
+.nmap-popup-body .popover-meta {
+  font-size: 0.82rem;
+  color: var(--gray);
+  margin: 0 0 8px;
+}
+
+.nmap-popup-body .popover-blurb {
+  font-size: 0.88rem;
+  color: var(--gray);
+  margin: 0 0 10px;
+}
+
+.nmap-popup-body .popover-read {
+  font-family: var(--font-head);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--blue-deep);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.nmap-popup-body .popover-read:hover {
+  text-decoration: underline;
+}
+
+/* Legend */
+.nmap-legend {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 7px 12px;
+  display: flex;
+  gap: 14px;
+  font-family: var(--font-head);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--gray);
+}
+
+.nmap-legend .legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nmap-legend .legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--blue);
+  border: 1.5px solid #fff;
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+.nmap-legend .legend-dot.is-upcoming {
+  background: #c62828;
+}
+
+/* Zoom control, square-cornered to match the design system */
+.leaflet-control-zoom a {
+  border-radius: 0 !important;
+}
+
+@media (max-width: 900px) {
+  .india-map {
+    height: 440px;
+  }
+}
+
+@media (max-width: 640px) {
+  .india-map {
+    height: 380px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nmap-dot,
+  .nmap-pulse {
+    animation: none;
+  }
+
+  .nmap-dot {
+    opacity: 1;
+  }
+
+  .nmap-pulse {
+    opacity: 0;
+  }
+}

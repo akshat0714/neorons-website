@@ -61,15 +61,12 @@ Then visit `http://localhost:8080`.
 
 ## Interactive map
 
-The "Where we work" section renders an interactive map of India (zoom, pan,
-fly-to-marker, and a docked popover per event). Event positions come from the
-`coords: { lat, lon }` field in `js/events.js`; the outline and calibration
-live in `js/india-map.js`.
-
-The outline derives from Wikimedia Commons "India location map3.svg"
-(Uwe Dedering and contributors, CC BY-SA 3.0). Attribution renders in the
-footer automatically and must be kept while this outline is used; the
-share-alike terms apply to the map artwork itself.
+The "Where we work" section renders a Leaflet tile map (OpenStreetMap tiles,
+self-hosted Leaflet 1.9.4 in `vendor/leaflet/`). Completed events appear as
+blue markers, upcoming events as red ones; positions come from the
+`coords: { lat, lon }` field in `js/events.js`. OSM attribution renders on the
+map itself, as its license requires. Note: OpenStreetMap draws de-facto
+international boundaries, which differ from Survey of India maps in Kashmir.
 
 ## Partners and supporters
 

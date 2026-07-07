@@ -707,6 +707,25 @@
     });
   }
 
+  /** Contact form: composes an email in the visitor's mail app on submit. */
+  function initContactForm() {
+    var form = document.getElementById("contact-form");
+    if (!form) return;
+    form.addEventListener("submit", function (submitEvent) {
+      submitEvent.preventDefault();
+      if (form.reportValidity && !form.reportValidity()) return;
+      var name = form.elements.name.value.trim();
+      var email = form.elements.email.value.trim();
+      var org = form.elements.organization.value.trim();
+      var message = form.elements.message.value.trim();
+      var subject = "Partnership enquiry from " + name + (org ? " (" + org + ")" : "");
+      var body = message + "\n\n--\n" + name + (org ? "\n" + org : "") + "\n" + email;
+      window.location.href =
+        "mailto:hello@neorons.org?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+    });
+  }
+
   /** Shadow + compact header once the page is scrolled. */
   function initHeaderScroll() {
     var header = document.querySelector(".site-header");
@@ -948,353 +967,136 @@
 
   function initMap() {
     var host = document.getElementById("india-map");
-    if (!host || typeof NEORONS_INDIA_MAP === "undefined") return;
+    if (!host || typeof L === "undefined" || typeof NEORONS_EVENTS === "undefined") return;
 
-    var svgNS = "http://www.w3.org/2000/svg";
-    var vbParts = NEORONS_INDIA_MAP.viewBox.split(/\s+/).map(Number);
-    var full = { x: vbParts[0], y: vbParts[1], w: vbParts[2], h: vbParts[3] };
-    var bounds = NEORONS_INDIA_MAP.bounds;
-
-    function project(lat, lon) {
-      return {
-        x: full.x + ((lon - bounds.west) / (bounds.east - bounds.west)) * full.w,
-        y: full.y + ((bounds.north - lat) / (bounds.north - bounds.south)) * full.h,
-      };
-    }
-
-    var svg = document.createElementNS(svgNS, "svg");
-    svg.setAttribute("viewBox", NEORONS_INDIA_MAP.viewBox);
-    svg.setAttribute("class", "india-svg");
-    svg.setAttribute("role", "img");
-    svg.setAttribute("aria-label", "Map of India showing where Neorons events took place");
-
-    var outline = document.createElementNS(svgNS, "g");
-    outline.setAttribute("class", "map-outline");
-    NEORONS_INDIA_MAP.paths.forEach(function (d) {
-      var path = document.createElementNS(svgNS, "path");
-      path.setAttribute("d", d);
-      outline.appendChild(path);
+    var map = L.map(host, {
+      center: [22.8, 80.0],
+      zoom: 5,
+      minZoom: 4,
+      maxZoom: 17,
+      zoomControl: true,
+      scrollWheelZoom: true,
+      attributionControl: true,
+      maxBounds: L.latLngBounds([2, 60], [40, 104]),
+      maxBoundsViscosity: 0.8,
     });
-    svg.appendChild(outline);
 
-    // Internal state boundaries (detailed map), fading in after the outline.
-    if (NEORONS_INDIA_MAP.statePaths && NEORONS_INDIA_MAP.statePaths.length) {
-      var states = document.createElementNS(svgNS, "g");
-      states.setAttribute("class", "map-states");
-      NEORONS_INDIA_MAP.statePaths.forEach(function (d) {
-        var path = document.createElementNS(svgNS, "path");
-        path.setAttribute("d", d);
-        states.appendChild(path);
-      });
-      svg.appendChild(states);
-    }
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
+      maxZoom: 19,
+    }).addTo(map);
 
-    // Markers
-    var markerLayer = document.createElementNS(svgNS, "g");
     var markerFor = {};
-    var dotRadius = full.w * 0.011;
+    var allPoints = [];
     var placed = NEORONS_EVENTS.filter(function (event) {
       return event.coords;
     });
+
     placed.forEach(function (event, i) {
-      var p = project(event.coords.lat, event.coords.lon);
-      var g = document.createElementNS(svgNS, "g");
-      g.setAttribute("class", "map-marker");
-      g.setAttribute("transform", "translate(" + p.x + " " + p.y + ")");
-      g.setAttribute("tabindex", "0");
-      g.setAttribute("role", "button");
-      g.setAttribute(
-        "aria-label",
-        event.title + ", " + event.district + " district, " + event.state
-      );
-      g.style.setProperty("--marker-delay", i * 90 + "ms");
-
-      var pulse = document.createElementNS(svgNS, "circle");
-      pulse.setAttribute("class", "marker-pulse");
-      pulse.setAttribute("r", dotRadius);
-      g.appendChild(pulse);
-
-      var dot = document.createElementNS(svgNS, "circle");
-      dot.setAttribute("class", "marker-dot");
-      dot.setAttribute("r", dotRadius);
-      g.appendChild(dot);
-
-      g.addEventListener("click", function (clickEvent) {
-        clickEvent.stopPropagation();
-        select(event, true);
+      var upcoming = event.status === "upcoming";
+      var icon = L.divIcon({
+        className: "nmap-marker" + (upcoming ? " is-upcoming" : ""),
+        html:
+          '<span class="nmap-pulse"></span>' +
+          '<span class="nmap-dot" style="animation-delay:' + i * 90 + 'ms"></span>',
+        iconSize: [18, 18],
+        iconAnchor: [9, 9],
+        popupAnchor: [0, -10],
       });
-      g.addEventListener("keydown", function (keyEvent) {
-        if (keyEvent.key === "Enter" || keyEvent.key === " ") {
-          keyEvent.preventDefault();
-          select(event, true);
-        }
+      var marker = L.marker([event.coords.lat, event.coords.lon], {
+        icon: icon,
+        title: event.title,
+        alt: event.title + ", " + event.district + " district, " + event.state,
+        keyboard: true,
+      }).addTo(map);
+      marker.bindPopup(buildMapPopup(event), {
+        className: "nmap-popup" + (upcoming ? " is-upcoming" : ""),
+        maxWidth: 300,
       });
-
-      markerFor[event.id] = g;
-      markerLayer.appendChild(g);
+      markerFor[event.id] = marker;
+      allPoints.push([event.coords.lat, event.coords.lon]);
     });
-    svg.appendChild(markerLayer);
-    host.appendChild(svg);
 
-    // Zoom controls
-    var controls = el("div", "map-controls");
-    [
-      { label: "+", title: "Zoom in", fn: function () { zoomBy(0.6); } },
-      { label: "−", title: "Zoom out", fn: function () { zoomBy(1 / 0.6); } },
-      { label: "⌂", title: "Reset view", fn: reset },
-    ].forEach(function (item) {
-      var btn = el("button", "map-btn", item.label);
-      btn.type = "button";
-      btn.setAttribute("aria-label", item.title);
-      btn.addEventListener("click", item.fn);
-      controls.appendChild(btn);
-    });
-    host.appendChild(controls);
-
-    // Popover (docked info card)
-    var popover = el("aside", "map-popover");
-    popover.setAttribute("aria-live", "polite");
-    host.appendChild(popover);
-
-    function hidePopover() {
-      popover.classList.remove("is-open");
-      Object.keys(markerFor).forEach(function (id) {
-        markerFor[id].classList.remove("is-active");
-      });
+    if (allPoints.length) {
+      map.fitBounds(L.latLngBounds(allPoints).pad(0.18));
     }
 
-    function showPopover(event) {
-      var pillar = NEORONS_PILLARS[event.pillar] || { label: "" };
-      popover.innerHTML = "";
+    // Legend: completed (blue) vs upcoming (red).
+    var legend = L.control({ position: "bottomleft" });
+    legend.onAdd = function () {
+      var div = L.DomUtil.create("div", "nmap-legend");
+      div.innerHTML =
+        '<span class="legend-item"><span class="legend-dot"></span>Completed</span>' +
+        '<span class="legend-item"><span class="legend-dot is-upcoming"></span>Upcoming</span>';
+      return div;
+    };
+    legend.addTo(map);
 
-      var close = el("button", "popover-close", "×");
-      close.type = "button";
-      close.setAttribute("aria-label", "Close location details");
-      close.addEventListener("click", hidePopover);
-      popover.appendChild(close);
-
-      popover.appendChild(el("p", "event-tag", pillar.label));
-      popover.appendChild(el("h3", null, event.title));
-      popover.appendChild(
-        el("p", "popover-meta", event.venue + " · " + (event.dates || event.date))
-      );
-      popover.appendChild(el("p", "popover-blurb", event.blurb));
-
-      var actions = el("div", "popover-actions");
-      var read = el("button", "popover-read", "Read the full story →");
-      read.type = "button";
-      read.addEventListener("click", function () {
-        openModal(event, read);
-      });
-      actions.appendChild(read);
-      popover.appendChild(actions);
-
-      popover.classList.add("is-open");
-    }
-
-    // ViewBox state + animated fly-to
-    var view = { x: full.x, y: full.y, w: full.w, h: full.h };
-    var flightToken = 0;
-
-    function applyView() {
-      svg.setAttribute("viewBox", view.x + " " + view.y + " " + view.w + " " + view.h);
-    }
-
-    function clampView(v) {
-      var minW = full.w * 0.08;
-      v.w = Math.max(minW, Math.min(v.w, full.w));
-      v.h = v.w * (full.h / full.w);
-      var slack = 0.15;
-      v.x = Math.max(full.x - full.w * slack, Math.min(v.x, full.x + full.w * (1 + slack) - v.w));
-      v.y = Math.max(full.y - full.h * slack, Math.min(v.y, full.y + full.h * (1 + slack) - v.h));
-      return v;
-    }
-
-    function flyTo(target, duration) {
-      target = clampView(target);
-      flightToken += 1;
-      var token = flightToken;
-      if (reducedMotion() || !duration) {
-        view = target;
-        applyView();
-        return;
+    function select(event, fly) {
+      var marker = markerFor[event.id];
+      if (!marker) return;
+      var opened = false;
+      var open = function () {
+        if (opened) return;
+        opened = true;
+        marker.openPopup();
+      };
+      if (fly && !reducedMotion()) {
+        // Open the popup when the flight lands (with a fallback in case the
+        // view was already there and no move happens).
+        var fallback = window.setTimeout(open, 1700);
+        map.once("moveend", function () {
+          window.clearTimeout(fallback);
+          open();
+        });
+        map.flyTo(marker.getLatLng(), 9, { duration: 1.3 });
+      } else if (fly) {
+        map.setView(marker.getLatLng(), 9);
+        open();
+      } else {
+        open();
       }
-      var from = { x: view.x, y: view.y, w: view.w, h: view.h };
-      var start = null;
-      var started = false;
-      function ease(t) {
-        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-      }
-      function frame(now) {
-        if (token !== flightToken) return;
-        started = true;
-        if (start === null) start = now;
-        var t = Math.min((now - start) / duration, 1);
-        var k = ease(t);
-        view = {
-          x: from.x + (target.x - from.x) * k,
-          y: from.y + (target.y - from.y) * k,
-          w: from.w + (target.w - from.w) * k,
-          h: from.h + (target.h - from.h) * k,
-        };
-        applyView();
-        if (t < 1) window.requestAnimationFrame(frame);
-      }
-      window.requestAnimationFrame(frame);
-      // rAF can be throttled in embedded webviews: land instantly rather
-      // than not at all.
-      window.setTimeout(function () {
-        if (!started && token === flightToken) {
-          view = target;
-          applyView();
-        }
-      }, 150);
-    }
-
-    /** Zoom by a factor, keeping the focal point (cx,cy in svg coords) fixed. */
-    function zoomTarget(factor, cx, cy) {
-      if (cx === undefined) {
-        cx = view.x + view.w / 2;
-        cy = view.y + view.h / 2;
-      }
-      var kx = (cx - view.x) / view.w;
-      var ky = (cy - view.y) / view.h;
-      var w = view.w * factor;
-      var h = w * (full.h / full.w);
-      return { x: cx - kx * w, y: cy - ky * h, w: w, h: h };
-    }
-
-    function zoomBy(factor, cx, cy) {
-      flyTo(zoomTarget(factor, cx, cy), 380);
     }
 
     function reset() {
-      hidePopover();
-      flyTo({ x: full.x, y: full.y, w: full.w, h: full.h }, 650);
-    }
-
-    function select(event, fly) {
-      hidePopover();
-      var marker = markerFor[event.id];
-      if (marker) marker.classList.add("is-active");
-      showPopover(event);
-      if (fly && event.coords) {
-        var p = project(event.coords.lat, event.coords.lon);
-        var w = full.w * 0.24;
-        var h = w * (full.h / full.w);
-        flyTo({ x: p.x - w / 2, y: p.y - h * 0.45, w: w, h: h }, 850);
+      map.closePopup();
+      if (allPoints.length) {
+        if (reducedMotion()) {
+          map.fitBounds(L.latLngBounds(allPoints).pad(0.18));
+        } else {
+          map.flyToBounds(L.latLngBounds(allPoints).pad(0.18), { duration: 0.8 });
+        }
       }
-    }
-
-    // Drag to pan
-    var pan = null;
-    svg.addEventListener("pointerdown", function (downEvent) {
-      if (downEvent.target.closest && downEvent.target.closest(".map-marker")) return;
-      pan = {
-        px: downEvent.clientX,
-        py: downEvent.clientY,
-        vx: view.x,
-        vy: view.y,
-        moved: false,
-      };
-      svg.classList.add("is-panning");
-      if (svg.setPointerCapture) svg.setPointerCapture(downEvent.pointerId);
-    });
-    svg.addEventListener("pointermove", function (moveEvent) {
-      if (!pan) return;
-      var rect = svg.getBoundingClientRect();
-      var dx = ((moveEvent.clientX - pan.px) / rect.width) * view.w;
-      var dy = ((moveEvent.clientY - pan.py) / rect.height) * view.h;
-      if (Math.abs(moveEvent.clientX - pan.px) + Math.abs(moveEvent.clientY - pan.py) > 4) {
-        pan.moved = true;
-      }
-      flightToken += 1; // cancel any active flight
-      view = clampView({ x: pan.vx - dx, y: pan.vy - dy, w: view.w, h: view.h });
-      applyView();
-    });
-    function endPan(upEvent) {
-      if (!pan) return;
-      var moved = pan.moved;
-      pan = null;
-      svg.classList.remove("is-panning");
-      // A clean background click (no drag) dismisses the popover.
-      if (!moved && upEvent.type === "pointerup") hidePopover();
-    }
-    svg.addEventListener("pointerup", endPan);
-    svg.addEventListener("pointercancel", endPan);
-
-    // Double-click zooms toward the pointer.
-    svg.addEventListener("dblclick", function (dblEvent) {
-      var rect = svg.getBoundingClientRect();
-      var cx = view.x + ((dblEvent.clientX - rect.left) / rect.width) * view.w;
-      var cy = view.y + ((dblEvent.clientY - rect.top) / rect.height) * view.h;
-      zoomBy(0.5, cx, cy);
-    });
-
-    // Mouse-wheel / trackpad zoom toward the cursor. Applied directly (no
-    // tween) so successive wheel events feel tight; delta-proportional so
-    // trackpads are smooth and wheels step cleanly.
-    svg.addEventListener(
-      "wheel",
-      function (wheelEvent) {
-        wheelEvent.preventDefault();
-        var rect = svg.getBoundingClientRect();
-        var cx = view.x + ((wheelEvent.clientX - rect.left) / rect.width) * view.w;
-        var cy = view.y + ((wheelEvent.clientY - rect.top) / rect.height) * view.h;
-        var delta = wheelEvent.deltaMode === 1 ? wheelEvent.deltaY * 20 : wheelEvent.deltaY;
-        var factor = Math.max(0.65, Math.min(1.55, Math.pow(1.0018, delta)));
-        flightToken += 1; // cancel any active flight
-        view = clampView(zoomTarget(factor, cx, cy));
-        applyView();
-      },
-      { passive: false }
-    );
-
-    // Draw-on-scroll: the outline traces itself, then markers pop in.
-    function startDraw() {
-      if (reducedMotion()) {
-        host.classList.add("is-drawn", "markers-live");
-        return;
-      }
-      var paths = outline.querySelectorAll("path");
-      paths.forEach(function (path) {
-        var len = path.getTotalLength();
-        path.style.strokeDasharray = String(len);
-        path.style.strokeDashoffset = String(len);
-      });
-      host.classList.add("is-drawing");
-      window.requestAnimationFrame(function () {
-        window.requestAnimationFrame(function () {
-          host.classList.add("is-drawn");
-        });
-      });
-      window.setTimeout(function () {
-        host.classList.add("markers-live");
-      }, 1300);
-      // Fallback for rAF-throttled contexts.
-      window.setTimeout(function () {
-        host.classList.add("is-drawn", "markers-live");
-      }, 2600);
-    }
-
-    if ("IntersectionObserver" in window && !reducedMotion()) {
-      var drawObserver = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              startDraw();
-              drawObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.25 }
-      );
-      drawObserver.observe(host);
-    } else {
-      startDraw();
     }
 
     mapApi = { select: select, reset: reset };
+  }
+
+  /** Popup content for a map marker, built as DOM so the button stays wired. */
+  function buildMapPopup(event) {
+    var pillar = NEORONS_PILLARS[event.pillar] || { label: "" };
+    var upcoming = event.status === "upcoming";
+    var box = el("div", "nmap-popup-body");
+    box.appendChild(
+      el("p", "event-tag", (upcoming ? "Upcoming · " : "") + pillar.label)
+    );
+    box.appendChild(el("h3", null, event.title));
+    box.appendChild(
+      el("p", "popover-meta", event.venue + " · " + (event.dates || event.date))
+    );
+    box.appendChild(el("p", "popover-blurb", event.blurb));
+    var read = el(
+      "button",
+      "popover-read",
+      upcoming ? "Event details →" : "Read the full story →"
+    );
+    read.type = "button";
+    read.addEventListener("click", function () {
+      openModal(event, read);
+    });
+    box.appendChild(read);
+    return box;
   }
 
   /** Location list beside the map; each entry flies to its marker. */
@@ -1355,24 +1157,32 @@
     footer.parentNode.insertBefore(strip, footer);
   }
 
-  /** Map attribution alongside the photo credits. */
-  function renderMapCredit() {
-    var target = document.getElementById("photo-credits");
-    if (!target || typeof NEORONS_INDIA_MAP === "undefined") return;
-    var credit = NEORONS_INDIA_MAP.credit;
-    if (!credit || !credit.creator) return;
-    if (target.textContent) target.appendChild(document.createTextNode(" · "));
-    target.appendChild(document.createTextNode("Map: "));
-    var text = credit.creator + " (" + credit.license + ")";
-    if (credit.url) {
-      var link = el("a", null, text);
-      link.href = credit.url;
-      link.target = "_blank";
-      link.rel = "noopener";
-      target.appendChild(link);
-    } else {
-      target.appendChild(document.createTextNode(text));
-    }
+  /** "Supported by" strip above the footer; renders only with real entries. */
+  function renderSupporters() {
+    if (typeof NEORONS_SUPPORTERS === "undefined" || !NEORONS_SUPPORTERS.length) return;
+    var footer = document.querySelector(".site-footer");
+    if (!footer) return;
+    var strip = el("section", "supporters-strip");
+    strip.setAttribute("aria-label", "Supporters");
+    var inner = el("div", "container");
+    inner.appendChild(el("p", "eyebrow", "Supported by"));
+    var list = el("ul", "supporters-list");
+    NEORONS_SUPPORTERS.forEach(function (supporter) {
+      var item = el("li");
+      if (supporter.url) {
+        var link = el("a", null, supporter.name);
+        link.href = supporter.url;
+        link.target = "_blank";
+        link.rel = "noopener";
+        item.appendChild(link);
+      } else {
+        item.textContent = supporter.name;
+      }
+      list.appendChild(item);
+    });
+    inner.appendChild(list);
+    strip.appendChild(inner);
+    footer.parentNode.insertBefore(strip, footer);
   }
 
   /* ---------------------------------------------------------------------- */
@@ -1480,9 +1290,6 @@
   try { renderMapList(); } catch (err) {
     if (window.console && console.error) console.error("Neorons: renderMapList failed", err);
   }
-  try { renderMapCredit(); } catch (err) {
-    if (window.console && console.error) console.error("Neorons: renderMapCredit failed", err);
-  }
   try { renderSupporters(); } catch (err) {
     if (window.console && console.error) console.error("Neorons: renderSupporters failed", err);
   }
@@ -1506,6 +1313,9 @@
   }
   try { initModal(); } catch (err) {
     if (window.console && console.error) console.error("Neorons: initModal failed", err);
+  }
+  try { initContactForm(); } catch (err) {
+    if (window.console && console.error) console.error("Neorons: initContactForm failed", err);
   }
   try { initNav(); } catch (err) {
     if (window.console && console.error) console.error("Neorons: initNav failed", err);
