@@ -1041,9 +1041,11 @@
       maxBoundsViscosity: 0.8,
     });
 
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    // CARTO Voyager: designed cartography, retina ({r} -> @2x) tiles.
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
       attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
+        '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>',
+      subdomains: "abcd",
       maxZoom: 19,
     }).addTo(map);
 
@@ -1197,7 +1199,7 @@
     var strip = el("section", "supporters-strip");
     strip.setAttribute("aria-label", "Supporters");
     var inner = el("div", "container");
-    inner.appendChild(el("p", "eyebrow", "Supported by"));
+    inner.appendChild(el("p", "eyebrow", "Partners & collaborators"));
     var list = el("ul", "supporters-list");
     NEORONS_SUPPORTERS.forEach(function (supporter) {
       var item = el("li");
@@ -1237,7 +1239,7 @@
     var strip = el("section", "supporters-strip");
     strip.setAttribute("aria-label", "Supporters");
     var inner = el("div", "container");
-    inner.appendChild(el("p", "eyebrow", "Supported by"));
+    inner.appendChild(el("p", "eyebrow", "Partners & collaborators"));
     var list = el("ul", "supporters-list");
     NEORONS_SUPPORTERS.forEach(function (supporter) {
       var item = el("li");

@@ -455,7 +455,10 @@ var NEORONS_EVENTS = [
  * above the footer when non-empty. Add entries only with the partner's
  * written consent: { name: "...", url: "..." (optional) }.
  */
-var NEORONS_SUPPORTERS = [];
+var NEORONS_SUPPORTERS = [
+  { name: "IIT Bhubaneswar", url: "https://www.iitbbs.ac.in/" },
+  { name: "READ India" },
+];
 
 /** Hero photo attribution ({ creator, license, url } or null). */
 var NEORONS_HERO_CREDIT = { creator: "McKay Savage", license: "CC BY 2.0", url: "https://commons.wikimedia.org/w/index.php?curid=11823848" };
