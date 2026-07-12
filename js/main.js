@@ -525,13 +525,6 @@
     var shareRow = el("div", "modal-share");
     var eventUrl = window.location.origin + window.location.pathname + "#event-" + event.id;
 
-    // WhatsApp
-    var waBtn = el("a", "share-btn share-whatsapp", "WhatsApp");
-    waBtn.href = "https://wa.me/?text=" + encodeURIComponent(event.title + ": " + eventUrl);
-    waBtn.target = "_blank";
-    waBtn.rel = "noopener";
-    shareRow.appendChild(waBtn);
-
     // Copy link
     var copyBtn = el("button", "share-btn share-copy", "Copy link");
     copyBtn.type = "button";

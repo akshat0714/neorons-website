@@ -1340,9 +1340,10 @@ body.is-loaded .hero-item {
 
 .involve-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 28px;
   margin-top: 36px;
+  max-width: 880px;
 }
 
 .involve-card {
@@ -1778,17 +1779,6 @@ body.modal-open {
   color: var(--blue);
 }
 
-.share-whatsapp {
-  background: #25d366;
-  border-color: #25d366;
-  color: #fff;
-}
-
-.share-whatsapp:hover {
-  background: #1da851;
-  border-color: #1da851;
-  color: #fff;
-}
 
 /* Modal gallery thumbnails ------------------------------------------------- */
 
