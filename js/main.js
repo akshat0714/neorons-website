@@ -771,7 +771,7 @@
       var subject = "Partnership enquiry from " + name + (org ? " (" + org + ")" : "");
       var body = message + "\n\n--\n" + name + (org ? "\n" + org : "") + "\n" + email;
       window.location.href =
-        "mailto:hello@neorons.org?subject=" + encodeURIComponent(subject) +
+        "mailto:neoronsai@gmail.com?subject=" + encodeURIComponent(subject) +
         "&body=" + encodeURIComponent(body);
     });
   }
