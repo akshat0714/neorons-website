@@ -144,10 +144,10 @@ the organisation's own photography.
 
 ## Deployment
 
-The site is live at <https://neorons.vercel.app/>, hosted on
-GitHub Pages. It auto-deploys from the `main` branch: push to `main` and GitHub
-Pages republishes the repository root. There is no build command and no output
-directory.
+The site is live at <https://neorons.vercel.app/>, hosted on Vercel.
+It auto-deploys from the `main` branch: push to `main` and Vercel republishes
+the repository root within seconds. There is no build command and no output
+directory. The security headers and 404 rewrite in `vercel.json` are active.
 
 The repository also carries ready-made config for other static hosts:
 
