@@ -478,22 +478,22 @@ var NEORONS_PILLARS = {
 var NEORONS_TEAM = [
   {
     name: "Akshat Agarwal",
-    role: "Founder",
-    bio: "Akshat founded Neorons in 2025 to bring science, inclusion, and honest AI literacy to students who are usually last in line for them. He leads programme design and partnerships across the regions where Neorons works.",
+    role: "Founder & Executive Director",
+    bio: "Akshat founded Neorons and leads it: he sets programme direction, builds the school and partner relationships, and makes the final call on what Neorons runs and why. His background is in AI and suicidology, with published research in machine learning and bioethics, and it shapes the organization's safety-first approach to technology in education.",
     image: "images/team/akshat-agarwal.jpg",
     linkedin: null,
   },
   {
     name: "Avinash Amanchi",
-    role: "Co-founder",
-    bio: "Avinash runs Neorons' events on the ground, from residential bootcamps to district-wide drives. He manages our relationships with partner schools and makes sure every programme keeps its promises on the day.",
+    role: "Co-founder & Technology Lead",
+    bio: "Avinash leads technology and curriculum: the Arduino kits, the robot challenges, the AI-literacy materials, and the mentor guides our volunteers teach from. He studies data science and builds accessibility software of his own, including a communication tool for people with aphasia. He also instruments what we run, from registration data to the counting methodology behind our impact numbers, so we know whether a lesson landed, not just that it happened.",
     image: "images/team/avinash-amanchi.jpg",
     linkedin: null,
   },
   {
     name: "Abhinav Gangadari",
-    role: "Co-founder",
-    bio: "Abhinav leads technology and curriculum: the Arduino kits and robot challenges, the AI-literacy materials in three languages, and the mentor guides our volunteers teach from. If a student built it at a Neorons event, Abhinav probably wrote the worksheet.",
+    role: "Co-founder & Lead Financial Advisor",
+    bio: "Abhinav directs financial strategy and resource allocation, overseeing budget modelling, programme funding, and cost optimization across all initiatives. He manages financial operations and capital management to ensure scalable, sustainable growth and maximum resource efficiency for Neorons' programmes.",
     image: "images/team/abhinav-gangadari.jpg",
     linkedin: null,
   },
