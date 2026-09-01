@@ -1,0 +1,25 @@
+# Neorons website — Cloud Build trigger config
+# Connect the GitHub repo in Cloud Build and point a push-to-main trigger at
+# this file. Pick ONE of the two variants below and delete the other.
+
+# --- Variant 1: deploy to Cloud Run (pairs with deploy/gcp/Dockerfile) -------
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: ["build", "-f", "deploy/gcp/Dockerfile", "-t",
+           "gcr.io/$PROJECT_ID/neorons-website:$COMMIT_SHA", "."]
+  - name: gcr.io/cloud-builders/docker
+    args: ["push", "gcr.io/$PROJECT_ID/neorons-website:$COMMIT_SHA"]
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gcloud
+    args: ["run", "deploy", "neorons-website",
+           "--image", "gcr.io/$PROJECT_ID/neorons-website:$COMMIT_SHA",
+           "--region", "asia-south1", "--allow-unauthenticated"]
+images:
+  - "gcr.io/$PROJECT_ID/neorons-website:$COMMIT_SHA"
+
+# --- Variant 2: sync to a Cloud Storage bucket (Option C) --------------------
+# steps:
+#   - name: gcr.io/cloud-builders/gsutil
+#     args: ["-m", "rsync", "-r", "-d",
+#            "-x", "\\.git.*|deploy/.*|scripts/.*",
+#            ".", "gs://YOUR_BUCKET_NAME"]
