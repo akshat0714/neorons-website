@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://neorons.vercel.app/sitemap.xml
+Sitemap: https://neorons.com/sitemap.xml

@@ -144,7 +144,7 @@ the organisation's own photography.
 
 ## Deployment
 
-The site is live at <https://neorons.vercel.app/>, hosted on Vercel.
+The site is live at <https://neorons.com/>, hosted on Vercel.
 It auto-deploys from the `main` branch: push to `main` and Vercel republishes
 the repository root within seconds. There is no build command and no output
 directory. The security headers and 404 rewrite in `vercel.json` are active.
@@ -174,7 +174,7 @@ To generate `og-image.png`:
 
 - [ ] **OG image**: screenshot `images/og-template.html` at 1200 x 630, save as `images/og-image.png`
 - [ ] **Apple touch icon**: generate `images/apple-touch-icon.png` (180 x 180 px) from the brand SVG, then re-add the icon entry to `site.webmanifest`
-- [ ] **og:url + canonical**: add `<meta property="og:url">` and `<link rel="canonical">` pointing at `https://neorons.vercel.app/` in all HTML files
+- [ ] **og:url + canonical**: add `<meta property="og:url">` and `<link rel="canonical">` pointing at `https://neorons.com/` in all HTML files
 - [ ] **Contact form**: add Formspree (or equivalent) endpoint to the contact `<form>` in `index.html`
 - [ ] **Real photos**: replace placeholder images in `images/` with actual event photography; set `credit: null` in `js/events.js`
 - [ ] **Real testimonials**: replace placeholder quotes in `js/main.js` with real participant quotes (obtain permission)
