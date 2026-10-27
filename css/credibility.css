@@ -1,0 +1,221 @@
+/* Reusable official-logo rows. Load after the shared site styles. */
+.credibility {
+  padding-block: 30px 75px;
+}
+.credibility-group {
+  padding: 36px 40px 39px;
+  border: 1px solid #e5e3dc;
+  border-radius: 24px;
+  background: #fff;
+}
+.credibility-group + .credibility-group {
+  margin-top: 24px;
+}
+.credibility-group-programmes {
+  background: #fffdf8;
+}
+.credibility-group h2 {
+  margin: 0 0 31px;
+  color: #454a40;
+  font-family: var(--sans, Arial, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.015em;
+  text-align: center;
+}
+.credibility-logos {
+  display: grid;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 30px;
+}
+.credibility-technology {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.credibility-programmes {
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 0.7fr) repeat(
+      2,
+      minmax(0, 1fr)
+    );
+  gap: 34px;
+}
+.credibility-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 76px;
+  padding: 0;
+  margin: 0;
+}
+.credibility-mark img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.credibility-google img {
+  width: 142px;
+}
+.credibility-amazon img {
+  width: 153px;
+}
+.credibility-microsoft img {
+  width: 176px;
+}
+.credibility-meta img {
+  width: 152px;
+}
+.credibility-openai-frame {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 174px);
+  aspect-ratio: 1164 / 342;
+}
+/* The official SVG has a 1604 × 718 canvas around a much smaller wordmark.
+   This frame removes only surrounding blank space; the image scales uniformly. */
+.credibility-openai-frame img {
+  position: absolute;
+  width: 137.8%;
+  max-width: none;
+  height: auto;
+  left: -18.8%;
+  top: -64.1%;
+}
+.credibility-unicef img {
+  width: 342px;
+}
+.credibility-undp img {
+  width: 54px;
+}
+.credibility-unfpa img {
+  width: 173px;
+}
+.credibility-india-government {
+  flex-direction: column;
+  gap: 10px;
+}
+.credibility-india-government img {
+  width: 49px;
+}
+.credibility-india-government span {
+  color: #30362d;
+  font-size: 11px;
+  line-height: 1.4;
+  text-align: center;
+}
+@media (max-width: 1100px) {
+  .credibility-group {
+    padding-inline: 30px;
+  }
+  .credibility-logos {
+    gap: 25px;
+  }
+  .credibility-programmes {
+    gap: 28px;
+  }
+}
+@media (max-width: 900px) {
+  .credibility-technology {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 28px 25px;
+  }
+  .credibility-technology .credibility-mark {
+    grid-column: span 2;
+  }
+  .credibility-technology .credibility-mark:nth-last-child(-n + 2) {
+    grid-column: span 3;
+  }
+  .credibility-programmes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 35px 30px;
+  }
+  .credibility-unicef img {
+    width: 320px;
+  }
+}
+@media (max-width: 600px) {
+  .credibility {
+    padding-block: 15px 48px;
+  }
+  .credibility-group {
+    padding: 28px 24px 31px;
+    border-radius: 20px;
+  }
+  .credibility-group + .credibility-group {
+    margin-top: 19px;
+  }
+  .credibility-group h2 {
+    margin-bottom: 25px;
+    font-size: 12px;
+  }
+  .credibility-technology {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 25px;
+  }
+  .credibility-technology .credibility-mark,
+  .credibility-technology .credibility-mark:nth-last-child(-n + 2) {
+    grid-column: auto;
+  }
+  .credibility-technology .credibility-mark:last-child {
+    grid-column: 1 / -1;
+  }
+  .credibility-mark {
+    min-height: 64px;
+  }
+  .credibility-google img {
+    width: 132px;
+  }
+  .credibility-amazon img {
+    width: 143px;
+  }
+  .credibility-meta img {
+    width: 142px;
+  }
+  .credibility-programmes {
+    gap: 32px 25px;
+  }
+  .credibility-unicef,
+  .credibility-india-government {
+    grid-column: 1 / -1;
+  }
+  .credibility-unicef {
+    min-height: 58px;
+  }
+  .credibility-unicef img {
+    width: 330px;
+  }
+  .credibility-undp img {
+    width: 52px;
+  }
+  .credibility-unfpa img {
+    width: 154px;
+  }
+  .credibility-india-government img {
+    width: 48px;
+  }
+}
+@media (max-width: 380px) {
+  .credibility-group {
+    padding-inline: 20px;
+  }
+  .credibility-logos {
+    column-gap: 20px;
+  }
+}
+@media print {
+  .credibility {
+    padding-block: 15px;
+  }
+  .credibility-group {
+    background: white;
+    border-radius: 0;
+    padding: 20px;
+    break-inside: avoid;
+  }
+}

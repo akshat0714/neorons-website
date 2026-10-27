@@ -4,11 +4,11 @@ A static, international nonprofit website centred on suicide prevention, multili
 
 ## Pages
 
-- `index.html`: international mission, programme overview, reach and supporters.
+- `index.html`: international mission, programme overview, reach, prominent supporter logos, and programme photo stories.
 - `about.html`: organisation and existing team biographies.
 - `programs.html`: multilingual AI phone service, campus and community programmes.
 - `fellowship.html`: planned six-week virtual fellowship, six areas of support, a proposed weekly journey, with details coming soon; no FAQ or borrowed alumni claims.
-- `impact.html`: international reach, disability inclusion metrics, six programme highlights, and fundraising.
+- `impact.html`: international reach, five programme photo stories with inclusion outcomes, and fundraising.
 - `india.html`: all 11 original India programme records, including three marked as originally planned. Expandable records and filters work with `js/india.js`; the records are readable without JavaScript.
 - `contact.html`, `media.html`, `profile.html`: contact, press and printable organisation profile.
 - `privacy.html`, `safeguarding.html`, `accessibility.html`, `credits.html`: policies and photography attribution.
@@ -23,9 +23,9 @@ Navigation, footer, and page content are ordinary HTML and can be edited directl
 python3 -m http.server 8080
 ```
 
-Open http://localhost:8080. All fonts and images are served locally. The homepage photograph is illustrative; its source/licence and archive photograph credits are publicly linked. The existing team portraits are retained. No generated testimonials are displayed.
+Open http://localhost:8080. All fonts and images are served locally. The five programme photos were supplied by Neorons; their provenance is recorded in `docs/impact-photo-sources.md`. Archive illustrative photographs retain public source/licence credits. The existing team portraits are retained. No generated testimonials are displayed.
 
-Official logos are self-hosted in `images/supporters/`; their published sources are recorded in `docs/supporter-logo-sources.md` and `credits.html`. Preserve their colours and proportions. The AI campus gallery has been removed; the India page contains the earlier 11 programme records. Fellowship styling is in `css/fellowship.css`. Programme dates and application details remain pending; no fellowship interest or application link is published. Inclusion metrics and programme highlights share `css/inclusion.css` across the homepage and Impact page.
+Official logos are self-hosted in `images/supporters/`; their published sources are recorded in `docs/supporter-logo-sources.md` and `credits.html`. Preserve their colours and proportions. The AI campus gallery has been removed; the India page contains the earlier 11 programme records. Fellowship styling is in `css/fellowship.css`. Programme dates and application details remain pending; no fellowship interest or application link is published. Homepage and Impact photo stories share `css/editorial.css`. Large supporter rows use `css/credibility.css`. Programme figures describe overall work, not individual people or sessions pictured.
 
 ## Editorial facts
 
