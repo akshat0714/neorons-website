@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://neorons.com/</loc><priority>1.0</priority></url>
-  <url><loc>https://neorons.com/safeguarding.html</loc></url>
-  <url><loc>https://neorons.com/privacy.html</loc></url>
-  <url><loc>https://neorons.com/accessibility.html</loc></url>
-  <url><loc>https://neorons.com/media.html</loc></url>
-  <url><loc>https://neorons.com/profile.html</loc></url>
+  <url><loc>https://neorons.com/</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://neorons.com/about.html</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://neorons.com/programs.html</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://neorons.com/impact.html</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://neorons.com/india.html</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://neorons.com/contact.html</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://neorons.com/media.html</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://neorons.com/profile.html</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://neorons.com/privacy.html</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://neorons.com/safeguarding.html</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://neorons.com/accessibility.html</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://neorons.com/credits.html</loc><lastmod>2026-10-26</lastmod></url>
 </urlset>

@@ -1,9 +1,16 @@
 {
   "name": "Neorons",
   "short_name": "Neorons",
-  "description": "Science, technology and inclusion for every student in India.",
+  "description": "Suicide prevention, across languages and borders.",
   "start_url": "./",
   "display": "browser",
-  "theme_color": "#0077d4",
-  "background_color": "#ffffff"
+  "theme_color": "#234c40",
+  "background_color": "#fcfaf6",
+  "icons": [
+    {
+      "src": "images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
 }
