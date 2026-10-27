@@ -4,8 +4,8 @@
   "description": "Suicide prevention, across languages and borders.",
   "start_url": "./",
   "display": "browser",
-  "theme_color": "#234c40",
-  "background_color": "#fcfaf6",
+  "theme_color": "#171816",
+  "background_color": "#faf8f5",
   "icons": [
     {
       "src": "images/favicon.svg",

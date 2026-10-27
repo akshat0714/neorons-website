@@ -12,6 +12,8 @@ A static, international nonprofit website centred on suicide prevention, multili
 - `contact.html`, `media.html`, `profile.html`: contact, press and printable organisation profile.
 - `privacy.html`, `safeguarding.html`, `accessibility.html`, `credits.html`: policies and photography attribution.
 
+The visual design uses a floating navigation bar, textured colour panels, layered paper compositions, and short programme copy. Decorative movement includes entrance transitions, scroll reveals, subtle parallax, and a voice waveform. The homepage Pause motion control remembers the preference locally; system reduced-motion settings are respected, including changes while the page is open. Content and navigation remain available without JavaScript.
+
 Navigation, footer, and page content are ordinary HTML and can be edited directly. Styles are in `css/styles.css`. Shared navigation and old homepage fragment redirects are in `js/main.js`. The original programme/team source data is preserved in `js/events.js`; the public archive is static HTML. When correcting an event, update both its source data and its archive record.
 
 ## Run locally

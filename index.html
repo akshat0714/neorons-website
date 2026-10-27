@@ -8,7 +8,7 @@
       name="description"
       content="A nonprofit connecting people, communities and technology for suicide prevention. 500,000+ people reached across 80+ countries."
     />
-    <meta name="theme-color" content="#234c40" />
+    <meta name="theme-color" content="#171816" />
     <link rel="canonical" href="https://neorons.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Neorons" />
@@ -30,18 +30,12 @@
     <link rel="manifest" href="site.webmanifest" />
     <link
       rel="preload"
-      href="fonts/source-sans-3-v19-latin-regular.woff2"
+      href="fonts/archivo-v25-latin-800.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
     <link rel="stylesheet" href="css/styles.css" />
-    <link
-      rel="preload"
-      as="image"
-      href="images/community.jpg"
-      fetchpriority="high"
-    />
     <noscript
       ><style>
         @media (max-width: 960px) {
@@ -66,7 +60,7 @@
           .nav-menu li a {
             padding: 3px;
           }
-          .nav-menu .nav-donate {
+          .nav-menu .nav-cta {
             margin: 0;
             padding: 3px 10px;
           }
@@ -76,33 +70,10 @@
   </head>
   <body data-page="index">
     <a class="skip-link" href="#main">Skip to main content</a>
-    <div class="topbar">
-      <a href="impact.html"
-        >500,000+ people. 80+ countries. One shared mission.<span
-          >Discover our impact →</span
-        ></a
-      >
-    </div>
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="index.html" aria-label="Neorons home"
-          ><svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
-            <circle
-              cx="20"
-              cy="20"
-              r="18"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-            />
-            <circle cx="20" cy="20" r="5" fill="currentColor" />
-            <path
-              d="M20 2v9m0 18v9M4.4 11l7.8 4.5m15.6 9L35.6 29M4.4 29l7.8-4.5m15.6-9L35.6 11"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-            /></svg
-          ><span class="brand-name">Neorons</span></a
+          ><span class="brand-name">neorons</span></a
         >
         <nav class="site-nav" aria-label="Primary">
           <button
@@ -115,13 +86,12 @@
             Menu <span aria-hidden="true">☰</span>
           </button>
           <ul class="nav-menu" id="nav-menu">
-            <li><a href="about.html">About us</a></li>
-            <li><a href="programs.html">Our programmes</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="programs.html">Programmes</a></li>
             <li><a href="impact.html">Impact</a></li>
-            <li><a href="india.html">India programmes</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="india.html">India archive</a></li>
             <li>
-              <a class="nav-donate" href="contact.html"
+              <a class="nav-cta" href="contact.html"
                 >Get involved <span aria-hidden="true">↗</span></a
               >
             </li>
@@ -130,267 +100,313 @@
       </div>
     </header>
     <main id="main">
-      <section class="hero container">
-        <p class="eyebrow">Suicide prevention. Without borders.</p>
-        <h1>
-          A world where no one<br />
-          has to <em>struggle alone.</em>
-        </h1>
-        <p class="intro-copy">
-          We bring people, communities and technology together to make suicide
-          prevention more accessible, across languages and borders.
+      <section class="home-hero" aria-labelledby="home-title">
+        <div class="hero-text">
+          <p class="eyebrow">Neorons · A suicide-prevention nonprofit</p>
+          <h1 id="home-title">Suicide prevention,<br />without borders.</h1>
+          <p>Working to make suicide prevention more accessible.</p>
+          <a class="button" href="#our-work"
+            >Explore our work <span aria-hidden="true">↓</span></a
+          >
+        </div>
+        <div class="hero-landscape" aria-hidden="true">
+          <div class="paper-ridge ridge-one"></div>
+          <div class="paper-ridge ridge-two"></div>
+          <div class="paper-ridge ridge-three"></div>
+          <div class="cloud cloud-one"></div>
+          <div class="cloud cloud-two"></div>
+        </div>
+        <div class="hero-collage">
+          <div class="collage-note note-phone">
+            <span class="note-label">Multilingual AI phone service</span>
+            <div class="mini-wave" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <strong>125,000</strong><span>people reached</span>
+          </div>
+          <div class="impact-paper">
+            <div class="paper-masthead">
+              <span>NEORONS</span><span>Our work, worldwide.</span
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 1v22M1 12h22M4.2 4.2l15.6 15.6M4.2 19.8L19.8 4.2"
+                />
+              </svg>
+            </div>
+            <div class="paper-main">
+              <div>
+                <span class="note-label">A growing global community</span
+                ><strong>500,000<span>+</span></strong>
+                <p>people reached through our work</p>
+              </div>
+              <div class="paper-globe" aria-hidden="true">
+                <svg viewBox="0 0 240 240">
+                  <circle cx="120" cy="120" r="102" />
+                  <ellipse cx="120" cy="120" rx="58" ry="102" />
+                  <ellipse cx="120" cy="120" rx="23" ry="102" />
+                  <ellipse cx="120" cy="120" rx="102" ry="40" />
+                  <path
+                    d="M18 120h204M39 57c51 25 111 25 162 0M39 183c51-25 111-25 162 0"
+                  />
+                  <circle class="globe-dot" cx="63" cy="89" r="7" />
+                  <circle class="globe-dot" cx="153" cy="155" r="7" />
+                  <circle class="globe-dot" cx="180" cy="70" r="7" />
+                </svg>
+              </div>
+            </div>
+            <div class="paper-bottom">
+              <span>Suicide prevention</span><span>Technology</span
+              ><span>Inclusion</span>
+            </div>
+          </div>
+          <div class="country-stamp">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2v20M2 12h20M5 5l14 14M5 19L19 5" /></svg
+            ><strong>80+</strong><span>countries</span>
+          </div>
+          <div class="collage-tab" aria-hidden="true">
+            People first. Always.
+          </div>
+        </div>
+        <button class="motion-toggle" type="button" aria-pressed="false" hidden>
+          <span class="motion-icon" aria-hidden="true">Ⅱ</span
+          ><span class="motion-label">Pause motion</span>
+        </button>
+        <a class="hero-footnote" href="impact.html"
+          >Explore our impact <span aria-hidden="true">↗</span></a
+        >
+      </section>
+
+      <section class="home-intro container" id="our-work">
+        <p class="eyebrow" data-reveal>Our work</p>
+        <h2 data-reveal>A global mission.<br />Three ways we work.</h2>
+        <p class="section-deck" data-reveal>
+          We work on suicide prevention through multilingual technology,
+          inclusive campuses, and community programmes.
         </p>
-        <div class="button-row">
-          <a class="button" href="programs.html"
-            >Explore our work <span aria-hidden="true">↗</span></a
-          ><a class="button secondary" href="about.html"
-            >Our story <span aria-hidden="true">→</span></a
+        <div class="work-links" data-reveal>
+          <a href="#phone"
+            ><svg viewBox="0 0 48 48" aria-hidden="true">
+              <path
+                d="M15 8c-3 0-5 2-5 5 0 13 12 25 25 25 3 0 5-2 5-5l-7-5-5 4c-5-2-10-7-12-12l4-5-5-7Z"
+              />
+              <path d="M29 7c7 1 11 5 12 12M29 14c3 0 5 2 5 5" /></svg
+            ><span>Phone service</span></a
+          >
+          <a href="#campuses"
+            ><svg viewBox="0 0 48 48" aria-hidden="true">
+              <path
+                d="m4 17 20-9 20 9-20 9-20-9Zm8 5v12c8 6 16 6 24 0V22M44 18v16"
+              /></svg
+            ><span>Campus programmes</span></a
+          >
+          <a href="#community"
+            ><svg viewBox="0 0 48 48" aria-hidden="true">
+              <circle cx="24" cy="14" r="6" />
+              <path
+                d="M13 40v-7c0-6 4-10 11-10s11 4 11 10v7M12 12a5 5 0 0 0-3 9M36 12a5 5 0 0 1 3 9M5 38v-8c0-4 3-6 7-6M43 38v-8c0-4-3-6-7-6"
+              /></svg
+            ><span>Community programmes</span></a
           >
         </div>
-        <figure class="hero-photo">
-          <img
-            src="images/community.jpg"
-            width="1800"
-            height="1013"
-            alt="Friends sharing a moment together outdoors"
-            fetchpriority="high"
-          />
-          <div class="photo-statement" aria-hidden="true">
-            Human connection.<br />A shared future.
-          </div>
-          <figcaption class="photo-credit">
-            Illustrative photography ·
-            <a href="credits.html">Vitaly Gariev / Unsplash</a>
-          </figcaption>
-        </figure>
       </section>
+
       <section
-        class="container impact-band"
-        aria-label="Our international reach"
+        class="feature-panel phone-panel container"
+        id="phone"
+        data-reveal
       >
-        <div>
-          <strong>500,000+</strong><span>people reached through our work</span>
-        </div>
-        <div><strong>80+</strong><span>countries reached</span></div>
-        <div>
-          <strong>125,000</strong
-          ><span>people reached through our AI phone service</span>
-        </div>
-      </section>
-      <section class="mission" id="mission">
-        <div class="container mission-inner">
-          <div>
-            <p class="eyebrow">One mission. A global community.</p>
-            <h2>Everyone deserves to feel heard. Everywhere.</h2>
+        <div
+          class="phone-stage"
+          aria-label="Illustration of the multilingual phone service"
+        >
+          <div class="language-paper language-back" aria-hidden="true">
+            <span>Many languages.</span>
+            <div>One conversation.</div>
+            <svg viewBox="0 0 260 160">
+              <path d="M12 80c30-90 58 90 88 0S158-10 188 80s28 45 60-12" />
+            </svg>
           </div>
-          <div class="mission-copy">
-            <p>
-              Neorons is a nonprofit working towards a world where suicide
-              prevention is within everyone’s reach. Our mission begins with
-              people: their languages, their communities, and their need for
-              connection.
-            </p>
-            <p>
-              From inclusive campus programmes to a multilingual conversational
-              AI phone service, we are growing the ways people can connect with
-              our work.
-            </p>
-            <a class="text-link" href="about.html"
-              >Get to know Neorons <span aria-hidden="true">↗</span></a
-            >
-          </div>
-        </div>
-      </section>
-      <section class="supporter-section" aria-label="Our supporters">
-        <div class="container supporter-layout">
-          <div class="supporter-group">
-            <p>Our phone service is supported by</p>
-            <div class="supporter-names">
-              <span class="google">Google</span
-              ><span class="amazon">amazon</span
-              ><span class="microsoft">Microsoft</span>
+          <div class="voice-paper">
+            <div class="voice-top">
+              <span class="tiny-brand">neorons</span
+              ><span class="voice-tag">VOICE</span>
+            </div>
+            <p>In your<br /><em>language.</em></p>
+            <div class="voice-wave" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+              ><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="voice-bottom">
+              <span>Multilingual.<br />Conversational.</span
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M7 3c-2 0-3 2-3 4 0 7 6 13 13 13 2 0 4-1 4-3l-5-3-2 3c-4-2-6-4-8-8l3-2-2-4Z"
+                />
+              </svg>
             </div>
           </div>
-          <div class="supporter-group">
-            <p>Our programmes are supported by</p>
-            <div class="supporter-names">
-              <span class="unicef">unicef</span
-              ><span class="unesco">UNESCO</span><span class="undp">UNDP</span>
-            </div>
-          </div>
+          <span class="reach-ticket"><strong>125k</strong> people reached</span>
         </div>
-      </section>
-      <section class="section" id="programmes">
-        <div class="container">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">What we do</p>
-              <h2>More ways to connect.<br />More reasons for hope.</h2>
-            </div>
-            <p>
-              Technology, community and inclusion, working together for suicide
-              prevention.
-            </p>
-          </div>
-          <div class="program-list">
-            <article class="program-card">
-              <span class="program-number">01 / ACCESS</span>
-              <h3>Conversations<br />across languages</h3>
-              <p>
-                Our novel multilingual conversational AI phone service brings
-                our work to more people through the familiarity of a phone call.
-              </p>
-              <a class="text-link" href="programs.html#phone-service"
-                >Explore the phone service <span aria-hidden="true">↗</span></a
-              >
-            </article>
-            <article class="program-card">
-              <span class="program-number">02 / BELONGING</span>
-              <h3>More inclusive<br />campus communities</h3>
-              <p>
-                We have worked across all 23 IIT campuses and 22 IIM campuses,
-                running inclusive programmes that put participation and
-                belonging first.
-              </p>
-              <a class="text-link" href="programs.html#campus-programs"
-                >Our campus work <span aria-hidden="true">↗</span></a
-              >
-            </article>
-            <article class="program-card">
-              <span class="program-number">03 / COMMUNITY</span>
-              <h3>Prevention through<br />connection</h3>
-              <p>
-                We bring suicide prevention into community life through
-                outreach, awareness and opportunities to take part.
-              </p>
-              <a class="text-link" href="programs.html#community-programs"
-                >Our community programmes <span aria-hidden="true">↗</span></a
-              >
-            </article>
-          </div>
-        </div>
-      </section>
-      <section class="service-section">
-        <div class="container service-layout">
-          <div
-            class="conversation-art"
-            role="img"
-            aria-label="Illustration of a voice conversation connecting people across languages"
+        <div class="feature-copy">
+          <p class="eyebrow">01 / Multilingual access</p>
+          <h2>A conversation.<br />In more languages.</h2>
+          <p>
+            Our conversational AI phone service now reaches 125,000 people,
+            extending our suicide-prevention work across languages.
+          </p>
+          <a class="button glass" href="programs.html#phone-service"
+            >About the service <span aria-hidden="true">↗</span></a
           >
-            <div class="voice-symbol" aria-hidden="true">
-              <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <div class="feature-support">
+            <span>Service supported by</span>
+            <div><b>Google</b><b>amazon</b><b>Microsoft</b></div>
+          </div>
+          <p class="service-note">
+            AI conversations do not replace professional care or emergency
+            services.
+          </p>
+        </div>
+      </section>
+
+      <section class="campus-section container" id="campuses">
+        <div class="center-heading" data-reveal>
+          <p class="eyebrow">02 / Inclusive campuses</p>
+          <h2>Across campuses.<br />Open to everyone.</h2>
+          <p>
+            We have run inclusive programmes across all 23 IIT campuses and 22
+            IIM campuses.
+          </p>
+        </div>
+        <div class="campus-cards" data-reveal>
+          <div class="campus-card iit-card">
+            <div class="campus-card-top">
+              <span>Indian Institutes of Technology</span
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 1v22M1 12h22M4 4l16 16M4 20L20 4" />
+              </svg>
             </div>
-            <span class="language-label one">A conversation.</span
-            ><span class="language-label two">A connection.</span
-            ><span class="language-label three">Across languages.</span
-            ><span class="language-label four">Across borders.</span
-            ><span class="art-caption"
-              >Technology in service of human connection</span
-            >
+            <strong>23</strong>
+            <div class="campus-card-bottom">
+              <span>IIT campuses</span><span>All campuses ↗</span>
+            </div>
           </div>
-          <div class="service-copy">
-            <p class="eyebrow">Technology with a human purpose</p>
-            <h2>A conversation can<br />open a door.</h2>
-            <p>
-              Language should never be a barrier to connection. Our multilingual
-              conversational AI phone service is now reaching
-              <strong>125,000 people</strong>, extending Neorons’
-              suicide-prevention mission beyond geographical boundaries.
-            </p>
-            <p>Supported by Google, Amazon and Microsoft.</p>
-            <a class="text-link" href="programs.html#phone-service"
-              >Meet our multilingual service
-              <span aria-hidden="true">↗</span></a
-            >
-            <p class="service-footnote">
-              AI conversations are not a substitute for professional care or
-              emergency services.
-            </p>
+          <div class="campus-card iim-card">
+            <div class="campus-card-top">
+              <span>Indian Institutes of Management</span
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 1v22M1 12h22M4 4l16 16M4 20L20 4" />
+              </svg>
+            </div>
+            <strong>22</strong>
+            <div class="campus-card-bottom">
+              <span>IIM campuses</span><span>All campuses ↗</span>
+            </div>
+          </div>
+        </div>
+        <div class="center-link">
+          <a class="text-link" href="programs.html#campus-programs"
+            >Our campus programmes <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </section>
+
+      <section
+        class="feature-panel community-panel container"
+        id="community"
+        data-reveal
+      >
+        <div class="community-art">
+          <div class="photo-sheet">
+            <img
+              src="images/community.jpg"
+              width="1800"
+              height="1013"
+              loading="lazy"
+              alt="A group of friends taking a photograph outdoors"
+            /><span>People. Participation. Community.</span>
+          </div>
+          <div class="community-note">
+            <span class="note-label">Our programmes</span
+            ><span>Education.<br />Wellbeing.<br />Inclusion.</span
+            ><svg viewBox="0 0 80 80" aria-hidden="true">
+              <path
+                d="M8 40c30-36 56-36 56-16 0 22-32 35-31 13 1-15 29-3 32 33m-14-9 14 9 7-16"
+              />
+            </svg>
+          </div>
+          <a class="art-credit" href="credits.html"
+            >Illustrative photography · Credits ↗</a
+          >
+        </div>
+        <div class="feature-copy">
+          <p class="eyebrow">03 / Community programmes</p>
+          <h2>It starts with<br />taking part.</h2>
+          <p>
+            Our community programmes bring together education, wellbeing,
+            science, and inclusion—with schools, volunteers, and local
+            organisations.
+          </p>
+          <a class="button glass" href="programs.html#community-programs"
+            >Our community work <span aria-hidden="true">↗</span></a
+          >
+          <div class="feature-support">
+            <span>Programmes supported by</span>
+            <div><b>UNICEF</b><b>UNESCO</b><b>UNDP</b></div>
           </div>
         </div>
       </section>
-      <section class="section">
-        <div class="container campus-layout">
-          <div>
-            <p class="eyebrow">Inclusion on campus</p>
-            <h2>A place to belong.<br />A community to lean on.</h2>
-            <p>
-              Our inclusive programmes have brought Neorons to all 23 IIT
-              campuses and 22 IIM campuses. This work is part of a wider
-              commitment: making connection and participation possible for more
-              people.
-            </p>
-            <a class="text-link" href="impact.html"
-              >Explore our impact <span aria-hidden="true">↗</span></a
-            >
-          </div>
-          <div class="campus-numbers">
-            <div><strong>23</strong><span>IIT campuses</span></div>
-            <div><strong>22</strong><span>IIM campuses</span></div>
-          </div>
+
+      <section class="home-impact container" data-reveal>
+        <div>
+          <p class="eyebrow">Our impact</p>
+          <h2>A growing effort<br />for suicide prevention.</h2>
+          <a class="text-link" href="impact.html"
+            >The numbers behind our work <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <div class="fundraising-note">
+          <span>Raised for suicide prevention</span
+          ><strong>US$75,000<span>+</span></strong
+          ><span>Through our fundraising efforts.</span
+          ><svg viewBox="0 0 350 45" aria-hidden="true">
+            <path d="M8 29c96-35 209-28 330-18M18 37c117-22 205-24 301-19" />
+          </svg>
         </div>
       </section>
-      <section class="india-strip">
-        <div class="container india-strip-inner">
-          <div>
-            <h3>Our work in India has a home of its own.</h3>
-            <p>
-              Explore our camps, workshops and local programmes in the dedicated
-              India programme archive.
-            </p>
-          </div>
+
+      <section class="archive-banner container" data-reveal>
+        <div class="archive-folder" aria-hidden="true">
+          <span>NEORONS</span><span>INDIA<br />PROGRAMMES</span>
+        </div>
+        <div>
+          <p class="eyebrow">From our programme archive</p>
+          <h2>Our work in India.</h2>
+          <p>
+            Camps, workshops, and local programmes now have a dedicated home.
+          </p>
           <a class="text-link" href="india.html"
-            >India programmes <span aria-hidden="true">↗</span></a
+            >Explore the archive <span aria-hidden="true">↗</span></a
           >
         </div>
       </section>
-      <section class="donation-section">
-        <div class="container donation-inner">
-          <div>
-            <p class="eyebrow">Help make connection possible</p>
-            <h2>Be part of a future<br />with more hope.</h2>
-            <p>
-              With over
-              <strong>US$75,000 raised for suicide prevention</strong>, our
-              community is helping this mission grow. Your support can help us
-              reach further.
-            </p>
-          </div>
-          <div class="donation-actions">
-            <a class="button light" href="contact.html"
-              >Get involved <span aria-hidden="true">↗</span></a
-            >
-            <p>Partner. Volunteer. Make a difference.</p>
-          </div>
-        </div>
+
+      <section class="join-section container" data-reveal>
+        <p class="eyebrow">Get involved</p>
+        <h2>Work with<br /><em>Neorons.</em></h2>
+        <p>Programme partnerships. Campus collaborations. Volunteering.</p>
+        <a class="button" href="contact.html"
+          >Work with Neorons <span aria-hidden="true">↗</span></a
+        ><span class="join-asterisk" aria-hidden="true">✳</span>
       </section>
     </main>
     <footer class="site-footer">
       <div class="container footer-grid">
         <div class="footer-brand">
           <a class="brand" href="index.html" aria-label="Neorons home"
-            ><svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
-              <circle
-                cx="20"
-                cy="20"
-                r="18"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-              />
-              <circle cx="20" cy="20" r="5" fill="currentColor" />
-              <path
-                d="M20 2v9m0 18v9M4.4 11l7.8 4.5m15.6 9L35.6 29M4.4 29l7.8-4.5m15.6-9L35.6 11"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-              /></svg
-            ><span class="brand-name">Neorons</span></a
+            ><span class="brand-name">neorons</span></a
           >
-          <p>
-            Connecting people, communities and technology for suicide
-            prevention. Across languages. Across borders.
-          </p>
+          <p>A nonprofit working internationally for suicide prevention.</p>
         </div>
         <div class="footer-col">
           <h3>Discover</h3>
