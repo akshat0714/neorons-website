@@ -1,0 +1,317 @@
+[
+  {
+    "slug": "iit-bhilai",
+    "name": "IIT Bhilai",
+    "family": "IIT",
+    "city": "Bhilai–Durg",
+    "officialURL": "https://www.iitbhilai.ac.in/"
+  },
+  {
+    "slug": "iit-bhubaneswar",
+    "name": "IIT Bhubaneswar",
+    "family": "IIT",
+    "city": "Bhubaneswar",
+    "officialURL": "https://www.iitbbs.ac.in/"
+  },
+  {
+    "slug": "iit-bombay",
+    "name": "IIT Bombay",
+    "family": "IIT",
+    "city": "Mumbai",
+    "officialURL": "https://www.iitb.ac.in/"
+  },
+  {
+    "slug": "iit-delhi",
+    "name": "IIT Delhi",
+    "family": "IIT",
+    "city": "New Delhi",
+    "officialURL": "https://www.iitd.ac.in/"
+  },
+  {
+    "slug": "iit-dharwad",
+    "name": "IIT Dharwad",
+    "family": "IIT",
+    "city": "Dharwad",
+    "officialURL": "https://www.iitdh.ac.in/"
+  },
+  {
+    "slug": "iit-gandhinagar",
+    "name": "IIT Gandhinagar",
+    "family": "IIT",
+    "city": "Gandhinagar",
+    "officialURL": "https://www.iitgn.ac.in/"
+  },
+  {
+    "slug": "iit-goa",
+    "name": "IIT Goa",
+    "family": "IIT",
+    "city": "Ponda",
+    "officialURL": "https://www.iitgoa.ac.in/"
+  },
+  {
+    "slug": "iit-guwahati",
+    "name": "IIT Guwahati",
+    "family": "IIT",
+    "city": "Guwahati",
+    "officialURL": "https://www.iitg.ac.in/"
+  },
+  {
+    "slug": "iit-hyderabad",
+    "name": "IIT Hyderabad",
+    "family": "IIT",
+    "city": "Hyderabad (Kandi, Sangareddy)",
+    "officialURL": "https://www.iith.ac.in/"
+  },
+  {
+    "slug": "iit-indore",
+    "name": "IIT Indore",
+    "family": "IIT",
+    "city": "Indore",
+    "officialURL": "https://www.iiti.ac.in/"
+  },
+  {
+    "slug": "iit-ism-dhanbad",
+    "name": "IIT (ISM) Dhanbad",
+    "family": "IIT",
+    "city": "Dhanbad",
+    "officialURL": "https://www.iitism.ac.in/"
+  },
+  {
+    "slug": "iit-jammu",
+    "name": "IIT Jammu",
+    "family": "IIT",
+    "city": "Jammu",
+    "officialURL": "https://iitjammu.ac.in/"
+  },
+  {
+    "slug": "iit-jodhpur",
+    "name": "IIT Jodhpur",
+    "family": "IIT",
+    "city": "Jodhpur",
+    "officialURL": "https://www.iitj.ac.in/"
+  },
+  {
+    "slug": "iit-kanpur",
+    "name": "IIT Kanpur",
+    "family": "IIT",
+    "city": "Kanpur",
+    "officialURL": "https://www.iitk.ac.in/"
+  },
+  {
+    "slug": "iit-kharagpur",
+    "name": "IIT Kharagpur",
+    "family": "IIT",
+    "city": "Kharagpur",
+    "officialURL": "https://www.iitkgp.ac.in/"
+  },
+  {
+    "slug": "iit-madras",
+    "name": "IIT Madras",
+    "family": "IIT",
+    "city": "Chennai",
+    "officialURL": "https://www.iitm.ac.in/"
+  },
+  {
+    "slug": "iit-mandi",
+    "name": "IIT Mandi",
+    "family": "IIT",
+    "city": "Mandi",
+    "officialURL": "https://www.iitmandi.ac.in/"
+  },
+  {
+    "slug": "iit-palakkad",
+    "name": "IIT Palakkad",
+    "family": "IIT",
+    "city": "Palakkad",
+    "officialURL": "https://iitpkd.ac.in/"
+  },
+  {
+    "slug": "iit-patna",
+    "name": "IIT Patna",
+    "family": "IIT",
+    "city": "Patna",
+    "officialURL": "https://www.iitp.ac.in/"
+  },
+  {
+    "slug": "iit-roorkee",
+    "name": "IIT Roorkee",
+    "family": "IIT",
+    "city": "Roorkee",
+    "officialURL": "https://www.iitr.ac.in/"
+  },
+  {
+    "slug": "iit-ropar",
+    "name": "IIT Ropar",
+    "family": "IIT",
+    "city": "Rupnagar",
+    "officialURL": "https://www.iitrpr.ac.in/"
+  },
+  {
+    "slug": "iit-tirupati",
+    "name": "IIT Tirupati",
+    "family": "IIT",
+    "city": "Tirupati",
+    "officialURL": "https://www.iittp.ac.in/"
+  },
+  {
+    "slug": "iit-bhu-varanasi",
+    "name": "IIT (BHU) Varanasi",
+    "family": "IIT",
+    "city": "Varanasi",
+    "officialURL": "https://www.iitbhu.ac.in/"
+  },
+  {
+    "slug": "iim-ahmedabad",
+    "name": "IIM Ahmedabad",
+    "family": "IIM",
+    "city": "Ahmedabad",
+    "officialURL": "https://www.iima.ac.in/"
+  },
+  {
+    "slug": "iim-amritsar",
+    "name": "IIM Amritsar",
+    "family": "IIM",
+    "city": "Amritsar",
+    "officialURL": "https://www.iimamritsar.ac.in/"
+  },
+  {
+    "slug": "iim-bangalore",
+    "name": "IIM Bangalore",
+    "family": "IIM",
+    "city": "Bengaluru",
+    "officialURL": "https://www.iimb.ac.in/"
+  },
+  {
+    "slug": "iim-bodh-gaya",
+    "name": "IIM Bodh Gaya",
+    "family": "IIM",
+    "city": "Bodh Gaya",
+    "officialURL": "https://www.iimbg.ac.in/"
+  },
+  {
+    "slug": "iim-calcutta",
+    "name": "IIM Calcutta",
+    "family": "IIM",
+    "city": "Kolkata",
+    "officialURL": "https://www.iimcal.ac.in/"
+  },
+  {
+    "slug": "iim-guwahati",
+    "name": "IIM Guwahati",
+    "family": "IIM",
+    "city": "Guwahati (Bongora, Kamrup)",
+    "officialURL": "https://www.iimg.ac.in/"
+  },
+  {
+    "slug": "iim-indore",
+    "name": "IIM Indore",
+    "family": "IIM",
+    "city": "Indore",
+    "officialURL": "https://www.iimidr.ac.in/"
+  },
+  {
+    "slug": "iim-jammu",
+    "name": "IIM Jammu",
+    "family": "IIM",
+    "city": "Jammu",
+    "officialURL": "https://www.iimj.ac.in/"
+  },
+  {
+    "slug": "iim-kashipur",
+    "name": "IIM Kashipur",
+    "family": "IIM",
+    "city": "Kashipur",
+    "officialURL": "https://www.iimkashipur.ac.in/"
+  },
+  {
+    "slug": "iim-kozhikode",
+    "name": "IIM Kozhikode",
+    "family": "IIM",
+    "city": "Kozhikode",
+    "officialURL": "https://www.iimk.ac.in/"
+  },
+  {
+    "slug": "iim-lucknow",
+    "name": "IIM Lucknow",
+    "family": "IIM",
+    "city": "Lucknow",
+    "officialURL": "https://www.iiml.ac.in/"
+  },
+  {
+    "slug": "iim-mumbai",
+    "name": "IIM Mumbai",
+    "family": "IIM",
+    "city": "Mumbai",
+    "officialURL": "https://www.iimmumbai.ac.in/"
+  },
+  {
+    "slug": "iim-nagpur",
+    "name": "IIM Nagpur",
+    "family": "IIM",
+    "city": "Nagpur",
+    "officialURL": "https://www.iimnagpur.ac.in/"
+  },
+  {
+    "slug": "iim-raipur",
+    "name": "IIM Raipur",
+    "family": "IIM",
+    "city": "Raipur",
+    "officialURL": "https://www.iimraipur.ac.in/"
+  },
+  {
+    "slug": "iim-ranchi",
+    "name": "IIM Ranchi",
+    "family": "IIM",
+    "city": "Ranchi",
+    "officialURL": "https://www.iimranchi.ac.in/"
+  },
+  {
+    "slug": "iim-rohtak",
+    "name": "IIM Rohtak",
+    "family": "IIM",
+    "city": "Rohtak",
+    "officialURL": "https://www.iimrohtak.ac.in/"
+  },
+  {
+    "slug": "iim-sambalpur",
+    "name": "IIM Sambalpur",
+    "family": "IIM",
+    "city": "Sambalpur",
+    "officialURL": "https://www.iimsambalpur.ac.in/"
+  },
+  {
+    "slug": "iim-shillong",
+    "name": "IIM Shillong",
+    "family": "IIM",
+    "city": "Shillong",
+    "officialURL": "https://www.iimshillong.ac.in/"
+  },
+  {
+    "slug": "iim-sirmaur",
+    "name": "IIM Sirmaur",
+    "family": "IIM",
+    "city": "Dhaula Kuan, Sirmaur",
+    "officialURL": "https://www.iimsirmaur.ac.in/"
+  },
+  {
+    "slug": "iim-tiruchirappalli",
+    "name": "IIM Tiruchirappalli",
+    "family": "IIM",
+    "city": "Tiruchirappalli",
+    "officialURL": "https://www.iimtrichy.ac.in/"
+  },
+  {
+    "slug": "iim-udaipur",
+    "name": "IIM Udaipur",
+    "family": "IIM",
+    "city": "Udaipur",
+    "officialURL": "https://www.iimu.ac.in/"
+  },
+  {
+    "slug": "iim-visakhapatnam",
+    "name": "IIM Visakhapatnam",
+    "family": "IIM",
+    "city": "Visakhapatnam",
+    "officialURL": "https://www.iimv.ac.in/"
+  }
+]

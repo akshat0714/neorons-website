@@ -1585,3 +1585,6 @@ body:not([data-page="index"]) .site-footer {
 .prose .button:not(.secondary):not(.light):not(.glass) {
   color: #fff;
 }
+.paper-card > .supporter-logos {
+  min-height: 92px;
+}

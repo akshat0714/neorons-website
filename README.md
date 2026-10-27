@@ -8,7 +8,7 @@ A static, international nonprofit website centred on suicide prevention, multili
 - `about.html`: organisation and existing team biographies.
 - `programs.html`: multilingual AI phone service, campus and community programmes.
 - `impact.html`: reported reach and fundraising.
-- `india.html`: all 11 original India programme records, including three marked as originally planned. Expandable records and filters work with `js/india.js`; the records are readable without JavaScript.
+- `india.html`: a searchable directory of 23 IITs and 22 IIMs, followed by all 11 original India programme records, including three marked as originally planned. Campus filters and progressive expansion use `js/campuses.js`; original record filters and details use `js/india.js`. All entries remain readable without JavaScript.
 - `contact.html`, `media.html`, `profile.html`: contact, press and printable organisation profile.
 - `privacy.html`, `safeguarding.html`, `accessibility.html`, `credits.html`: policies and photography attribution.
 
@@ -23,6 +23,14 @@ python3 -m http.server 8080
 ```
 
 Open http://localhost:8080. All fonts and images are served locally. The homepage photograph is illustrative; its source/licence and archive photograph credits are publicly linked. The existing team portraits are retained. No generated testimonials are displayed.
+
+## Campus gallery and official logos
+
+The campus gallery uses 45 distinct AI-generated illustrations of fictional adults in generic university rooms. Each image has a visible label and descriptive alternative text. Neither the scenes nor their programme examples document an actual event or a specific campus building. Do not remove those disclosures or add unsupported event dates, attendance figures or outcomes. Replace an illustration with an actual event photograph only when its campus attribution and publication permission are established.
+
+Campus cards are static HTML in `india.html`, styled by `css/campuses.css`. `js/campuses.js` provides combined institution filters and name/city search, shows nine matching cards initially, supports keyboard use, and reveals directly linked campuses. To change a campus name, update its heading, search text, alternative text and official link together. Institution sources are recorded in `docs/campus-roster-provenance.txt` and `docs/campus-roster.json`.
+
+The six supporter marks in `images/supporters/` are official downloaded artwork, with sources in `docs/supporter-logo-sources.md`. Preserve original colours, proportions and clear space. Keep Google, Amazon and Microsoft scoped to the phone service, and UNICEF, UNESCO and UNDP scoped to programmes; do not broaden the organisation-supplied support claims. Public image and logo attribution is on `credits.html`.
 
 ## Editorial facts
 
@@ -59,6 +67,7 @@ The archive contains public HTML, CSS, JavaScript, fonts, images, the manifest a
 python3 scripts/check-site.py
 node --check js/main.js
 node --check js/india.js
+node --check js/campuses.js
 ```
 
-Check the homepage, small-screen menu, programme links, India category filters and expandable records after updates. Legacy homepage event URLs redirect to the India archive. No analytics, embedded maps or third-party scripts are used in the redesigned pages.
+Check the homepage, small-screen menu, programme links, campus search and filters, direct campus links, India category filters and expandable records after updates. Legacy homepage event URLs redirect to the India archive. No analytics, embedded maps or third-party scripts are used in the redesigned pages.
