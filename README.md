@@ -7,8 +7,8 @@ A static, international nonprofit website centred on suicide prevention, multili
 - `index.html`: international mission, programme overview, reach and supporters.
 - `about.html`: organisation and existing team biographies.
 - `programs.html`: multilingual AI phone service, campus and community programmes.
-- `fellowship.html`: planned six-week virtual fellowship, six areas of support, a proposed weekly journey, and email interest enquiries; no FAQ or borrowed alumni claims.
-- `impact.html`: reported reach and fundraising.
+- `fellowship.html`: planned six-week virtual fellowship, six areas of support, a proposed weekly journey, with details coming soon; no FAQ or borrowed alumni claims.
+- `impact.html`: international reach, disability inclusion metrics, six programme highlights, and fundraising.
 - `india.html`: all 11 original India programme records, including three marked as originally planned. Expandable records and filters work with `js/india.js`; the records are readable without JavaScript.
 - `contact.html`, `media.html`, `profile.html`: contact, press and printable organisation profile.
 - `privacy.html`, `safeguarding.html`, `accessibility.html`, `credits.html`: policies and photography attribution.
@@ -25,7 +25,7 @@ python3 -m http.server 8080
 
 Open http://localhost:8080. All fonts and images are served locally. The homepage photograph is illustrative; its source/licence and archive photograph credits are publicly linked. The existing team portraits are retained. No generated testimonials are displayed.
 
-Official logos are self-hosted in `images/supporters/`; their published sources are recorded in `docs/supporter-logo-sources.md` and `credits.html`. Preserve their colours and proportions. The AI campus gallery has been removed; the India page contains the earlier 11 programme records. Fellowship styling is in `css/fellowship.css`. Programme dates and application details remain pending; the interest links open an email application.
+Official logos are self-hosted in `images/supporters/`; their published sources are recorded in `docs/supporter-logo-sources.md` and `credits.html`. Preserve their colours and proportions. The AI campus gallery has been removed; the India page contains the earlier 11 programme records. Fellowship styling is in `css/fellowship.css`. Programme dates and application details remain pending; no fellowship interest or application link is published. Inclusion metrics and programme highlights share `css/inclusion.css` across the homepage and Impact page.
 
 ## Editorial facts
 
@@ -37,6 +37,8 @@ International figures and support relationships were supplied by Neorons:
 - Over US$75,000 raised for suicide prevention.
 - Google, Amazon, Microsoft, OpenAI and Meta are listed as organisations that trust the phone service.
 - UNICEF, UNDP, UNFPA and the Government of India support programmes and awareness work.
+
+The owner confirmed on 27 October 2026 that the additional inclusion results belong to Neorons: 50,000+ people with disabilities impacted, 2.3 million+ accessible pages, $150,000+ collective earnings, 18,000+ jobs accessed, 70+ nonprofit partners, and work across 15 Indian states. Six highlights cover Jyotirgamya training, NClude information services (14,000+ users), career discovery (105,000+ sessions), employer events (1,000+ participants and 100+ direct placements), accessible STEM materials ($100,000+ collective earnings), and job access (7,500+ users). These are distinct, potentially overlapping measures; earnings and fundraising are not combined.
 
 The phone-service reach is not added to the overall reach. Reach figures are not presented as clinical outcomes or lives saved. No phone number is published, as requested. Donation links and buttons are hidden at the owner's request; there is currently no payment flow. General enquiries use `neoronsai@gmail.com` and open an email application.
 
