@@ -1,0 +1,182 @@
+.campus-network {
+  padding-block: 45px 90px;
+}
+.campus-network-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: 42px;
+}
+.campus-network-heading h2 {
+  font-size: clamp(43px, 5vw, 62px);
+}
+.campus-network-heading > p {
+  max-width: 370px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.campus-logo-group {
+  border-top: 1px solid #ced4c5;
+}
+.campus-logo-group + .campus-logo-group {
+  margin-top: 38px;
+}
+.campus-logo-group > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  list-style: none;
+  cursor: pointer;
+  padding: 25px 4px;
+}
+.campus-logo-group > summary::-webkit-details-marker {
+  display: none;
+}
+.campus-logo-group > summary::after {
+  content: "+";
+  font: 300 30px/1 var(--sans);
+  margin-left: 4px;
+}
+.campus-logo-group[open] > summary::after {
+  content: "−";
+}
+.campus-logo-group > summary h3 {
+  font-size: 29px;
+  line-height: 1.15;
+  margin-right: auto;
+}
+.campus-logo-group > summary span {
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.campus-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.campus-logo-card {
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #e4e4da;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.campus-logo-card.logo-wide {
+  grid-column: span 2;
+}
+.campus-logo-card > a {
+  display: flex;
+  height: 100%;
+  min-height: 158px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+  padding: 21px 17px 17px;
+  color: #404b38;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.campus-logo-card > a:hover {
+  background: #f7f8f2;
+}
+.campus-logo-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 86px;
+}
+.campus-logo-image img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 86px;
+  object-fit: contain;
+}
+.campus-logo-card a > span:last-child {
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.4;
+}
+.campus-logo-card a:focus-visible {
+  outline-offset: -5px;
+}
+.campus-logo-source {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 25px;
+}
+@media (max-width: 1000px) {
+  .campus-logo-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .campus-network-heading {
+    gap: 35px;
+  }
+  .campus-network-heading > p {
+    max-width: 310px;
+  }
+}
+@media (max-width: 700px) {
+  .campus-network {
+    padding-block: 35px 55px;
+  }
+  .campus-network-heading {
+    display: block;
+    margin-bottom: 30px;
+  }
+  .campus-network-heading h2 {
+    font-size: 44px;
+  }
+  .campus-network-heading > p {
+    margin-top: 22px;
+    font-size: 14px;
+  }
+  .campus-logo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .campus-logo-card > a {
+    min-height: 153px;
+    padding-inline: 14px;
+  }
+  .campus-logo-group > summary {
+    gap: 12px;
+    padding-block: 23px;
+  }
+  .campus-logo-group > summary h3 {
+    font-size: 24px;
+  }
+  .campus-logo-group > summary span {
+    font-size: 10px;
+  }
+  .campus-logo-group > summary::after {
+    font-size: 24px;
+  }
+  .campus-logo-card a > span:last-child {
+    font-size: 11px;
+  }
+}
+@media print {
+  .campus-logo-group {
+    display: block;
+  }
+  .campus-logo-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  .campus-logo-card {
+    break-inside: avoid;
+  }
+  .campus-logo-group > summary::after {
+    display: none;
+  }
+}

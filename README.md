@@ -4,11 +4,11 @@ A static, international nonprofit website centred on suicide prevention, multili
 
 ## Pages
 
-- `index.html`: international mission, programme overview, reach, prominent supporter logos, and programme photo stories.
+- `index.html`: international mission, programme overview, reach and prominent supporter logos; programme photography appears only on Impact.
 - `about.html`: organisation and existing team biographies.
-- `programs.html`: multilingual AI phone service, campus and community programmes.
+- `programs.html`: multilingual AI phone service, interactive conceptual research diagrams, campus and community programmes.
 - `fellowship.html`: planned six-week virtual fellowship, six areas of support, a proposed weekly journey, with details coming soon; no FAQ or borrowed alumni claims.
-- `impact.html`: international reach, five programme photo stories with inclusion outcomes, and fundraising.
+- `impact.html`: international reach, five programme photo stories with inclusion outcomes, all 23 IIT and 22 IIM logos, and fundraising.
 - `india.html`: all 11 original India programme records, including three marked as originally planned. Expandable records and filters work with `js/india.js`; the records are readable without JavaScript.
 - `contact.html`, `media.html`, `profile.html`: contact, press and printable organisation profile.
 - `privacy.html`, `safeguarding.html`, `accessibility.html`, `credits.html`: policies and photography attribution.
@@ -25,7 +25,7 @@ python3 -m http.server 8080
 
 Open http://localhost:8080. All fonts and images are served locally. The five programme photos were supplied by Neorons; their provenance is recorded in `docs/impact-photo-sources.md`. Archive illustrative photographs retain public source/licence credits. The existing team portraits are retained. No generated testimonials are displayed.
 
-Official logos are self-hosted in `images/supporters/`; their published sources are recorded in `docs/supporter-logo-sources.md` and `credits.html`. Preserve their colours and proportions. The AI campus gallery has been removed; the India page contains the earlier 11 programme records. Fellowship styling is in `css/fellowship.css`. Programme dates and application details remain pending; no fellowship interest or application link is published. Homepage and Impact photo stories share `css/editorial.css`. Large supporter rows use `css/credibility.css`. Programme figures describe overall work, not individual people or sessions pictured.
+Official logos are self-hosted in `images/supporters/`; their published sources are recorded in `docs/supporter-logo-sources.md` and `credits.html`. Preserve their colours and proportions. The AI campus gallery has been removed; the India page contains the earlier 11 programme records. Fellowship styling is in `css/fellowship.css`. Programme dates and application details remain pending; no fellowship interest or application link is published. Impact photo stories use `css/editorial.css`; the homepage links to them without displaying photos. Large supporter rows use `css/credibility.css`. Programme figures describe overall work, not individual people or sessions pictured.
 
 ## Editorial facts
 
@@ -67,3 +67,9 @@ node --check js/india.js
 ```
 
 Check the homepage, small-screen menu, programme links, India category filters and expandable records after updates. Legacy homepage event URLs redirect to the India archive. No analytics, embedded maps or third-party scripts are used in the redesigned pages.
+
+## Technology diagrams and campus marks
+
+`css/technology.css` and `js/technology.js` provide a conceptual voice-AI pipeline and transformer schematic, with primary research citations, keyboard-accessible stage controls and text alternatives. They do not assert Neorons’ actual model providers, language count, safety systems, architecture or clinical outcomes. Patent and Westly Prize claims await a patent identifier and official finalist announcement; neither is published.
+
+The Impact campus directory uses `css/campus-network.css` with 45 official institution marks. Provenance is in `docs/campus-logos.json`, `docs/iit-logo-sources.md` and `docs/iim-logo-sources.md`. These identify programme campuses, not additional sponsors.

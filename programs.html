@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="css/pages.css" />
     <link rel="stylesheet" href="css/credibility.css" />
     <link rel="stylesheet" href="css/editorial.css" />
+    <link rel="stylesheet" href="css/technology.css" />
     <noscript
       ><style>
         @media (max-width: 960px) {
@@ -274,56 +275,655 @@
       </section>
 
       <section
-        class="paper-panel tone-lilac container"
+        class="phone-overview container"
         id="phone-service"
+        aria-labelledby="phone-heading"
         data-reveal
       >
-        <div class="panel-heading">
+        <div>
           <p class="eyebrow">01 / Multilingual access</p>
-          <h2>A conversation.<br />In more languages.</h2>
+          <h2 id="phone-heading">A phone call.<br />More ways to be heard.</h2>
+          <p class="phone-deck">
+            Our novel multilingual conversational AI phone service brings spoken
+            interaction to Neorons’ suicide-prevention work.
+          </p>
+          <p>
+            Voice offers a different way to engage: speaking and listening
+            instead of typing and reading. Multilingual conversation extends
+            that approach across languages.
+          </p>
+          <a class="text-link" href="#voice-research"
+            >Explore the technology <span aria-hidden="true">↓</span></a
+          >
         </div>
-        <div class="card-grid">
-          <div class="panel-copy prose">
-            <p>
-              <strong>125,000 people reached</strong> through multilingual AI
-              conversations.
-            </p>
+        <aside class="phone-reach">
+          <span class="eyebrow">People reached</span><strong>125,000</strong>
+          <div class="research-wave" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+            ><i></i><i></i>
+          </div>
+          <p>Through our multilingual AI phone service.</p>
+        </aside>
+        <p class="phone-care-note">
+          AI conversations do not replace professional care or emergency
+          services.
+        </p>
+      </section>
 
-            <p class="service-note">
-              AI conversations do not replace professional care or emergency
-              services.
+      <section
+        class="technology-section container"
+        id="voice-research"
+        aria-labelledby="technology-heading"
+      >
+        <header class="technology-heading" data-reveal>
+          <p class="eyebrow">A closer look / voice AI</p>
+          <h2 id="technology-heading">
+            From speech.<br />To a spoken response.
+          </h2>
+          <p>
+            Speech recognition, language generation, and speech synthesis can
+            work together to support a conversation.
+          </p>
+          <p class="diagram-context">
+            Conceptual reference diagrams. Neorons’ deployed models, supported
+            languages, and implementation details are not specified here.
+          </p>
+        </header>
+        <figure class="research-figure" data-reveal>
+          <figcaption>
+            <span>01 / Conversation architecture</span
+            ><span>Speech · context · generation</span>
+          </figcaption>
+          <p class="diagram-pan-hint">
+            Swipe or scroll sideways to explore the diagram
+            <span aria-hidden="true">→</span>
+          </p>
+          <div
+            class="diagram-scroll"
+            tabindex="0"
+            role="region"
+            aria-label="Conceptual voice architecture diagram; scroll horizontally on small screens"
+          >
+            <svg
+              class="voice-architecture"
+              viewBox="0 0 1120 600"
+              role="img"
+              aria-labelledby="voice-diagram-title voice-diagram-description"
+            >
+              <title id="voice-diagram-title">
+                A conceptual speech-to-language-model-to-speech system
+              </title>
+              <desc id="voice-diagram-description">
+                Audio input passes through speech processing and recognition. A
+                transcript and prior conversation form a context for a language
+                model. Generated text passes to speech synthesis and returns as
+                spoken audio. Language cues and conversation history are
+                supporting inputs. The diagram illustrates common components,
+                not Neorons implementation details.
+              </desc>
+              <defs>
+                <marker
+                  id="voice-arrow"
+                  markerWidth="7"
+                  markerHeight="7"
+                  refX="6"
+                  refY="3.5"
+                  orient="auto"
+                >
+                  <path d="M0 0 7 3.5 0 7Z" fill="#677665" />
+                </marker>
+              </defs>
+              <rect
+                class="diagram-zone"
+                x="20"
+                y="26"
+                width="1080"
+                height="548"
+                rx="24"
+              />
+              <text class="diagram-eyebrow" x="48" y="61">
+                CONCEPTUAL VOICE CONVERSATION
+              </text>
+              <path
+                class="diagram-path"
+                d="M175 266H211M371 266H409M589 266H629M799 266H839M999 266H1050"
+              />
+              <path
+                class="diagram-path diagram-path-secondary"
+                d="M499 178V132H714V178M499 414V357"
+              />
+              <text class="diagram-line-label" x="584" y="117">
+                language cues
+              </text>
+              <rect
+                class="diagram-node"
+                x="399"
+                y="414"
+                width="200"
+                height="43"
+                rx="10"
+              />
+              <text class="diagram-small" x="499" y="440" text-anchor="middle">
+                Conversation history
+              </text>
+              <g data-diagram-stage="input">
+                <rect
+                  class="diagram-node"
+                  x="43"
+                  y="204"
+                  width="132"
+                  height="124"
+                  rx="14"
+                />
+                <path
+                  class="audio-line"
+                  d="M66 263h8l5-17 6 38 6-49 6 59 6-46 6 29 6-18h8l6-15 6 31 6-12h11"
+                />
+                <text
+                  class="diagram-label"
+                  x="109"
+                  y="229"
+                  text-anchor="middle"
+                >
+                  Spoken audio
+                </text>
+                <text
+                  class="diagram-small"
+                  x="109"
+                  y="312"
+                  text-anchor="middle"
+                >
+                  phone interface
+                </text>
+              </g>
+              <g data-diagram-stage="recognition">
+                <rect
+                  class="diagram-node diagram-blue"
+                  x="211"
+                  y="178"
+                  width="160"
+                  height="174"
+                  rx="15"
+                />
+                <text class="diagram-step" x="230" y="204">01</text>
+                <text class="diagram-label" x="230" y="231">
+                  Speech processing
+                </text>
+                <text class="diagram-small" x="230" y="255">
+                  Audio segments
+                </text>
+                <text class="diagram-small" x="230" y="277">
+                  Speech recognition
+                </text>
+                <path class="diagram-divider" d="M230 293H351" />
+                <text class="diagram-small" x="230" y="317">
+                  Audio → transcript
+                </text>
+                <text class="diagram-micro" x="230" y="335">ASR</text>
+              </g>
+              <g data-diagram-stage="context">
+                <rect
+                  class="diagram-node diagram-yellow"
+                  x="409"
+                  y="178"
+                  width="180"
+                  height="174"
+                  rx="15"
+                />
+                <text class="diagram-step" x="429" y="204">02</text>
+                <text class="diagram-label" x="429" y="231">
+                  Conversation context
+                </text>
+                <text class="diagram-small" x="429" y="255">
+                  Current transcript
+                </text>
+                <text class="diagram-small" x="429" y="277">
+                  Relevant prior turns
+                </text>
+                <path class="diagram-divider" d="M429 293H569" />
+                <text class="diagram-small" x="429" y="317">
+                  Prompt / token sequence
+                </text>
+                <text class="diagram-micro" x="429" y="335">
+                  CONTEXT ASSEMBLY
+                </text>
+              </g>
+              <g data-diagram-stage="generation">
+                <rect
+                  class="diagram-node diagram-lilac"
+                  x="629"
+                  y="178"
+                  width="170"
+                  height="174"
+                  rx="15"
+                />
+                <text class="diagram-step" x="649" y="204">03</text>
+                <text class="diagram-label" x="649" y="231">
+                  Language model
+                </text>
+                <text class="diagram-small" x="649" y="255">
+                  Contextual processing
+                </text>
+                <text class="diagram-small" x="649" y="277">
+                  Token-by-token output
+                </text>
+                <path class="diagram-divider" d="M649 293H779" />
+                <text class="diagram-small" x="649" y="317">Response text</text>
+                <text class="diagram-micro" x="649" y="335">LLM</text>
+              </g>
+              <g data-diagram-stage="speech">
+                <rect
+                  class="diagram-node diagram-sage"
+                  x="839"
+                  y="178"
+                  width="160"
+                  height="174"
+                  rx="15"
+                />
+                <text class="diagram-step" x="859" y="204">04</text>
+                <text class="diagram-label" x="859" y="231">
+                  Speech synthesis
+                </text>
+                <text class="diagram-small" x="859" y="255">
+                  Text representation
+                </text>
+                <text class="diagram-small" x="859" y="277">
+                  Generated waveform
+                </text>
+                <path class="diagram-divider" d="M859 293H979" />
+                <text class="diagram-small" x="859" y="317">
+                  Text → spoken audio
+                </text>
+                <text class="diagram-micro" x="859" y="335">TTS</text>
+              </g>
+              <path class="diagram-path" d="M1050 266V493H109V343" />
+              <text class="diagram-line-label" x="438" y="518">
+                spoken response returns to the conversation
+              </text>
+              <text class="diagram-micro" x="49" y="552">
+                COMPONENT CHOICES, LATENCY, LANGUAGE COVERAGE AND SAFEGUARDS
+                VARY BY IMPLEMENTATION.
+              </text>
+            </svg>
+          </div>
+          <div class="diagram-guide" aria-label="Explore voice AI stages">
+            <button type="button" data-stage="recognition" aria-pressed="true">
+              01 Listen</button
+            ><button type="button" data-stage="context" aria-pressed="false">
+              02 Context</button
+            ><button type="button" data-stage="generation" aria-pressed="false">
+              03 Generate</button
+            ><button type="button" data-stage="speech" aria-pressed="false">
+              04 Speak
+            </button>
+          </div>
+          <div class="stage-explanation" aria-live="polite">
+            <h3>Turning speech into a transcript.</h3>
+            <p>
+              Automatic speech recognition (ASR) maps audio to text. Accents,
+              background noise, and changes between languages can affect the
+              transcript a system receives.
             </p>
-            <a
-              class="button"
-              href="mailto:neoronsai@gmail.com?subject=Multilingual%20phone%20service%20partnership"
-              >Partner on multilingual access
-              <span aria-hidden="true">↗</span></a
-            >
           </div>
-          <div class="programme-illustration phone-stage" aria-hidden="true">
-            <div class="voice-paper">
-              <div class="voice-top">
-                <span class="tiny-brand">neorons</span
-                ><span class="voice-tag">VOICE</span>
-              </div>
-              <p>In your<br /><em>language.</em></p>
-              <div class="voice-wave">
-                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
-                ><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-              </div>
-              <div class="voice-bottom">
-                <span>Multilingual.<br />Conversational.</span
-                ><svg viewBox="0 0 24 24">
-                  <path
-                    d="M7 3c-2 0-3 2-3 4 0 7 6 13 13 13 2 0 4-1 4-3l-5-3-2 3c-4-2-6-4-8-8l3-2-2-4Z"
-                  />
-                </svg>
-              </div>
-            </div>
-            <span class="reach-ticket"
-              ><strong>125k</strong> people reached</span
+          <details class="diagram-transcript">
+            <summary>Read the complete flow</summary>
+            <ol>
+              <li>Spoken audio enters through a phone interface.</li>
+              <li>Speech recognition produces a transcript.</li>
+              <li>
+                The current transcript and relevant prior turns form the model
+                context.
+              </li>
+              <li>
+                A language model generates a response as a sequence of tokens.
+              </li>
+              <li>Text-to-speech synthesis turns the response into audio.</li>
+              <li>The next spoken turn continues the conversation.</li>
+            </ol>
+          </details>
+        </figure>
+
+        <figure class="research-figure model-figure" data-reveal>
+          <figcaption>
+            <span>02 / Inside a language model</span
+            ><span>Transformer reference schematic</span>
+          </figcaption>
+          <p class="diagram-pan-hint">
+            Swipe or scroll sideways to explore the diagram
+            <span aria-hidden="true">→</span>
+          </p>
+          <div
+            class="diagram-scroll"
+            tabindex="0"
+            role="region"
+            aria-label="Conceptual transformer diagram; scroll horizontally on small screens"
+          >
+            <svg
+              class="transformer-diagram"
+              viewBox="0 0 1120 650"
+              role="img"
+              aria-labelledby="model-diagram-title model-diagram-description"
             >
+              <title id="model-diagram-title">
+                Conceptual transformer attention and text generation
+              </title>
+              <desc id="model-diagram-description">
+                Tokens become numerical representations. A representative
+                transformer block combines masked self-attention, residual
+                connections, normalisation and a feed-forward network. Query,
+                key and value projections form attention weights and contextual
+                representations. Repeated blocks feed an output projection that
+                predicts the next token. This does not specify Neorons model
+                architecture.
+              </desc>
+              <defs>
+                <marker
+                  id="model-arrow"
+                  markerWidth="7"
+                  markerHeight="7"
+                  refX="6"
+                  refY="3.5"
+                  orient="auto"
+                >
+                  <path d="M0 0 7 3.5 0 7Z" fill="#677665" />
+                </marker>
+              </defs>
+              <rect
+                class="diagram-zone"
+                x="20"
+                y="25"
+                width="1080"
+                height="600"
+                rx="24"
+              />
+              <text class="diagram-eyebrow" x="48" y="61">
+                CONTEXT → REPRESENTATIONS → NEXT-TOKEN GENERATION
+              </text>
+              <g>
+                <rect
+                  class="diagram-node diagram-yellow"
+                  x="46"
+                  y="116"
+                  width="168"
+                  height="149"
+                  rx="14"
+                />
+                <text class="diagram-label" x="65" y="146">Context tokens</text>
+                <rect
+                  class="token"
+                  x="65"
+                  y="167"
+                  width="40"
+                  height="27"
+                  rx="5"
+                />
+                <rect
+                  class="token"
+                  x="112"
+                  y="167"
+                  width="40"
+                  height="27"
+                  rx="5"
+                />
+                <rect
+                  class="token"
+                  x="159"
+                  y="167"
+                  width="35"
+                  height="27"
+                  rx="5"
+                />
+                <text class="diagram-small" x="77" y="186">t₁</text>
+                <text class="diagram-small" x="124" y="186">t₂</text>
+                <text class="diagram-small" x="169" y="186">t₃</text>
+                <text class="diagram-small" x="65" y="222">
+                  Embedding + position
+                </text>
+                <text class="diagram-micro" x="65" y="245">
+                  NUMERICAL VECTORS
+                </text>
+              </g>
+              <path class="model-path" d="M214 190H270V245H309" />
+              <rect
+                class="diagram-layer"
+                x="302"
+                y="94"
+                width="463"
+                height="362"
+                rx="20"
+              />
+              <rect
+                class="diagram-layer"
+                x="294"
+                y="102"
+                width="463"
+                height="362"
+                rx="20"
+              />
+              <rect
+                class="diagram-node diagram-lilac"
+                x="286"
+                y="110"
+                width="463"
+                height="362"
+                rx="20"
+              />
+              <text class="diagram-label" x="311" y="143">
+                Representative transformer block
+              </text>
+              <text class="diagram-small" x="311" y="166">
+                Repeated across model layers
+              </text>
+              <rect
+                class="diagram-node"
+                x="314"
+                y="191"
+                width="217"
+                height="105"
+                rx="11"
+              />
+              <text class="diagram-label" x="332" y="215">
+                Masked self-attention
+              </text>
+              <text class="diagram-small" x="332" y="238">
+                Query · key · value
+              </text>
+              <text class="diagram-small" x="332" y="263">
+                Context-weighted mixing
+              </text>
+              <text class="diagram-micro" x="332" y="282">
+                MULTIPLE ATTENTION HEADS
+              </text>
+              <path class="model-path" d="M531 245H563" />
+              <rect
+                class="diagram-node"
+                x="563"
+                y="191"
+                width="158"
+                height="105"
+                rx="11"
+              />
+              <text class="diagram-label" x="581" y="222">Residual + norm</text>
+              <text class="diagram-small" x="581" y="247">
+                Preserve + combine
+              </text>
+              <text class="diagram-small" x="581" y="269">representations</text>
+              <path class="model-path" d="M642 296V328H427" />
+              <rect
+                class="diagram-node"
+                x="314"
+                y="347"
+                width="217"
+                height="91"
+                rx="11"
+              />
+              <text class="diagram-label" x="332" y="375">
+                Feed-forward network
+              </text>
+              <text class="diagram-small" x="332" y="400">
+                Position-wise transformation
+              </text>
+              <text class="diagram-micro" x="332" y="421">
+                LEARNED PARAMETERS
+              </text>
+              <path class="model-path" d="M427 328V342M531 392H563" />
+              <rect
+                class="diagram-node"
+                x="563"
+                y="347"
+                width="158"
+                height="91"
+                rx="11"
+              />
+              <text class="diagram-label" x="580" y="377">Residual + norm</text>
+              <text class="diagram-small" x="580" y="404">
+                To the next layer
+              </text>
+              <path
+                class="model-path model-path-secondary"
+                d="M270 245V179H642V186M642 316H737V456H642V443"
+              />
+              <text class="diagram-micro" x="774" y="443">
+                BLOCK ORDER VARIES
+              </text>
+              <path class="model-path" d="M721 392H800V220H839" />
+              <rect
+                class="diagram-node diagram-sage"
+                x="839"
+                y="116"
+                width="224"
+                height="218"
+                rx="14"
+              />
+              <text class="diagram-label" x="860" y="146">
+                Output projection
+              </text>
+              <text class="diagram-small" x="860" y="171">
+                Scores across vocabulary
+              </text>
+              <rect
+                class="prob-bar"
+                x="862"
+                y="191"
+                width="113"
+                height="11"
+                rx="3"
+              />
+              <rect
+                class="prob-bar"
+                x="862"
+                y="211"
+                width="75"
+                height="11"
+                rx="3"
+              />
+              <rect
+                class="prob-bar"
+                x="862"
+                y="231"
+                width="43"
+                height="11"
+                rx="3"
+              />
+              <text class="diagram-small" x="860" y="274">
+                Select the next token
+              </text>
+              <text class="diagram-micro" x="860" y="304">
+                CONTINUE UNTIL RESPONSE ENDS
+              </text>
+              <rect
+                class="attention-equation"
+                x="46"
+                y="502"
+                width="1017"
+                height="90"
+                rx="14"
+              />
+              <text class="equation-text" x="70" y="540">
+                Attention(Q, K, V) = softmax(QKᵀ / √dₖ + M)V
+              </text>
+              <text class="diagram-small" x="70" y="568">
+                Q: queries · K: keys · V: values · dₖ: key dimension · M: causal
+                mask
+              </text>
+              <text class="diagram-small" x="682" y="535">
+                Attention assigns weights to context.
+              </text>
+              <text class="diagram-small" x="682" y="560">
+                It does not establish that a reply is correct.
+              </text>
+            </svg>
           </div>
+          <details class="diagram-transcript">
+            <summary>Read the model explanation</summary>
+            <p>
+              Tokens are represented as vectors. Masked attention combines
+              information from earlier tokens while preventing access to future
+              tokens; feed-forward layers transform those representations.
+              Residual connections and normalisation support processing across
+              layers. The model scores possible next tokens and continues
+              generating. Architectures differ in layer order, training, size
+              and other choices.
+            </p>
+          </details>
+        </figure>
+
+        <div class="research-considerations" data-reveal>
+          <article>
+            <span>01 / Language</span>
+            <h3>Meaning across languages.</h3>
+            <p>
+              Evaluation needs to consider accents, code-switching, and
+              meaning—not just whether a transcript looks fluent.
+            </p>
+          </article>
+          <article>
+            <span>02 / Conversation</span>
+            <h3>Timing matters.</h3>
+            <p>
+              Speech recognition, generation, and synthesis each add delay.
+              Turn-taking and interruptions are separate engineering questions.
+            </p>
+          </article>
+          <article>
+            <span>03 / Reliability</span>
+            <h3>Fluency is not evidence.</h3>
+            <p>
+              LLMs can generate incorrect content. Safety, privacy, and clinical
+              suitability require their own evaluation.
+            </p>
+          </article>
+        </div>
+        <div class="research-sources">
+          <p class="eyebrow">Research references</p>
+          <p>Background research for these conceptual illustrations.</p>
+          <ol>
+            <li>
+              <a href="https://arxiv.org/abs/2212.04356"
+                >Radford et al. · Robust Speech Recognition via Large-Scale Weak
+                Supervision <span aria-hidden="true">↗</span></a
+              >
+            </li>
+            <li>
+              <a href="https://arxiv.org/abs/1706.03762"
+                >Vaswani et al. · Attention Is All You Need
+                <span aria-hidden="true">↗</span></a
+              >
+            </li>
+            <li>
+              <a href="https://arxiv.org/abs/2005.14165"
+                >Brown et al. · Language Models are Few-Shot Learners
+                <span aria-hidden="true">↗</span></a
+              >
+            </li>
+            <li>
+              <a href="https://arxiv.org/abs/1712.05884"
+                >Shen et al. · Natural TTS Synthesis by Conditioning WaveNet on
+                Mel Spectrogram Predictions
+                <span aria-hidden="true">↗</span></a
+              >
+            </li>
+          </ol>
         </div>
       </section>
 
@@ -387,16 +987,12 @@
               <span aria-hidden="true">↗</span></a
             >
           </div>
-          <figure class="programme-photo">
-            <img
-              src="images/impact/workshop-discussion.webp"
-              alt="Participants taking part in a workshop discussion"
-              width="1716"
-              height="1282"
-              loading="lazy"
-              decoding="async"
-            />
-          </figure>
+          <ul class="community-themes" aria-label="Community programme themes">
+            <li>Education.</li>
+            <li>Wellbeing.</li>
+            <li>Science.</li>
+            <li>Inclusion.</li>
+          </ul>
         </div>
       </section>
 
@@ -491,5 +1087,6 @@
       </div>
     </footer>
     <script src="js/main.js" defer></script>
+    <script src="js/technology.js" defer></script>
   </body>
 </html>
