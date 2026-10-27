@@ -33,6 +33,7 @@
       crossorigin
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/pages.css" />
     <noscript
       ><style>
         @media (max-width: 960px) {
@@ -97,22 +98,49 @@
       </div>
     </header>
     <main id="main">
-      <section class="page-intro container">
-        <p class="eyebrow">Our work in India</p>
-        <h1>Our work in India.</h1>
-        <p class="intro-copy">
-          Explore the camps, workshops and community programmes that form part
-          of Neorons’ work in India, alongside our wider international mission
-          for suicide prevention.
-        </p>
-        <p>
-          <a class="text-link" href="programs.html"
-            >Explore our global programmes <span aria-hidden="true">↗</span></a
-          >
-        </p>
+      <section class="inner-hero tone-yellow">
+        <div class="page-intro container">
+          <p class="eyebrow">Programme archive</p>
+          <h1>Our work in India.</h1>
+          <p class="intro-copy">
+            Explore the camps, workshops and community programmes that form part
+            of Neorons’ work in India, alongside our wider international mission
+            for suicide prevention.
+          </p>
+          <nav class="chapter-links" aria-label="India archive sections">
+            <a href="#records"
+              >Browse programme records <span aria-hidden="true">↓</span></a
+            ><a href="programs.html"
+              >Global programmes <span aria-hidden="true">↗</span></a
+            >
+          </nav>
+        </div>
+        <div class="inner-art inner-art-left" aria-hidden="true">
+          <div class="mini-paper">
+            <span>NEORONS</span
+            ><svg viewBox="0 0 60 60">
+              <path d="M8 16h17l5 6h23v29H8V16Zm0 6h22M18 33h25M18 41h17" />
+            </svg>
+            <div class="paper-rules"><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="inner-art inner-art-right" aria-hidden="true">
+          <div class="mini-stamp">
+            <svg viewBox="0 0 60 60">
+              <path d="M30 4v52M4 30h52M12 12l36 36M12 48l36-36" /></svg
+            ><span>Field notes</span>
+          </div>
+        </div>
+        <button class="motion-toggle" type="button" aria-pressed="false" hidden>
+          <span class="motion-icon" aria-hidden="true">Ⅱ</span
+          ><span class="motion-label">Pause motion</span></button
+        ><span class="inner-signature" aria-hidden="true"
+          >neorons / field notes</span
+        >
       </section>
       <section
         class="section archive-section"
+        id="records"
         aria-label="India programme archive"
       >
         <div class="container archive-introduction">
@@ -1459,10 +1487,13 @@
           </article>
         </div>
       </section>
-      <section class="section archive-contact">
+      <section
+        class="container paper-panel tone-sage archive-contact"
+        data-reveal
+      >
         <div class="container narrow">
           <p class="eyebrow">Work with us</p>
-          <h2>Help build the next chapter.</h2>
+          <h2>Work with Neorons.</h2>
           <p>
             For programme updates or to explore a collaboration with Neorons,
             get in touch with our team.

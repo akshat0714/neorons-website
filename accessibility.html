@@ -33,6 +33,7 @@
       crossorigin
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/pages.css" />
     <noscript
       ><style>
         @media (max-width: 960px) {
@@ -97,24 +98,60 @@
       </div>
     </header>
     <main id="main">
-      <section class="page-intro container">
-        <p class="eyebrow">Our commitment</p>
-        <h1>Accessibility</h1>
-        <p class="intro-copy">
-          Connection should be open to everyone. We aim to make this website
-          usable by the widest possible audience.
-        </p>
+      <section class="inner-hero tone-blue">
+        <div class="page-intro container">
+          <p class="eyebrow">Our commitment</p>
+          <h1>Accessibility</h1>
+          <p class="intro-copy">
+            Connection should be open to everyone. We aim to make this website
+            usable by the widest possible audience.
+          </p>
+        </div>
+        <div class="inner-art inner-art-left" aria-hidden="true">
+          <div class="mini-paper">
+            <span>NEORONS</span
+            ><svg viewBox="0 0 60 60">
+              <path
+                d="M16 7h23l9 10v36H16V7Zm23 0v12h9M24 29h15M24 37h15M24 45h9"
+              />
+            </svg>
+            <div class="paper-rules"><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="inner-art inner-art-right" aria-hidden="true">
+          <div class="mini-stamp">
+            <svg viewBox="0 0 60 60">
+              <path d="M30 4v52M4 30h52M12 12l36 36M12 48l36-36" /></svg
+            ><span>For everyone</span>
+          </div>
+        </div>
+        <button class="motion-toggle" type="button" aria-pressed="false" hidden>
+          <span class="motion-icon" aria-hidden="true">Ⅱ</span
+          ><span class="motion-label">Pause motion</span></button
+        ><span class="inner-signature" aria-hidden="true"
+          >neorons / for everyone</span
+        >
       </section>
-      <section class="section">
-        <div class="container narrow prose">
+      <section class="document-section container">
+        <nav class="document-index" aria-label="On this page">
+          <p class="eyebrow">On this page</p>
+          <a href="#section-our-approach">Our approach</a
+          ><a href="#section-design-features">Design features</a
+          ><a href="#section-contact">Contact</a
+          ><a href="#section-reporting-barriers">Reporting barriers</a>
+        </nav>
+        <div class="document-paper prose">
+          <div class="document-masthead">
+            <span>NEORONS</span><span>For everyone</span>
+          </div>
           <p>Website information updated: October 2026</p>
-          <h2>Our approach</h2>
+          <h2 id="section-our-approach">Our approach</h2>
           <p>
             Neorons is committed to making this website accessible to people
             with disabilities. This website aims to conform to the Web Content
             Accessibility Guidelines (WCAG) 2.1 at Level AA.
           </p>
-          <h2>Design features</h2>
+          <h2 id="section-design-features">Design features</h2>
           <ul>
             <li>
               <strong>Keyboard access:</strong> Navigation and interactive
@@ -142,18 +179,18 @@
             </li>
             <li>
               Decorative motion follows your device’s reduced-motion setting.
-              Use “Pause motion” on the homepage to stop animation; your choice
-              is remembered in this browser.
+              Use “Pause motion” in the page header to stop animation; your
+              choice is remembered in this browser.
             </li>
           </ul>
-          <h2>Contact</h2>
+          <h2 id="section-contact">Contact</h2>
           <p>
             Email links open your email application. If that does not work on
             your device, copy
             <a href="mailto:neoronsai@gmail.com">neoronsai@gmail.com</a> into
             your preferred email service.
           </p>
-          <h2>Reporting barriers</h2>
+          <h2 id="section-reporting-barriers">Reporting barriers</h2>
           <p>
             If you experience any difficulty accessing this website, please
             contact us at

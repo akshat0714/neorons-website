@@ -37,8 +37,10 @@
   // Decorative motion has a single control and follows the system preference.
   const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
   const control = document.querySelector(".motion-toggle");
-  const hero = document.querySelector(".home-hero");
-  const movingPanels = [...document.querySelectorAll(".feature-panel")];
+  const hero = document.querySelector(".home-hero, .inner-hero");
+  const movingPanels = [
+    ...document.querySelectorAll(".feature-panel, .paper-panel"),
+  ];
   let paused = false;
   try {
     paused = localStorage.getItem("neorons-motion-paused") === "true";

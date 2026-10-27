@@ -33,6 +33,7 @@
       crossorigin
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/pages.css" />
     <noscript
       ><style>
         @media (max-width: 960px) {
@@ -97,132 +98,203 @@
       </div>
     </header>
     <main id="main">
-      <section class="page-intro container">
-        <p class="eyebrow">About Neorons</p>
-        <h1>About Neorons</h1>
-        <p class="intro-copy">
-          Neorons is a nonprofit focused on suicide prevention. Our work has
-          reached more than 500,000 people across over 80 countries.
-        </p>
-      </section>
-      <section class="section">
-        <div class="container split">
-          <div>
-            <p class="eyebrow">Our mission</p>
-            <h2>Suicide prevention<br />and inclusion.</h2>
-          </div>
-          <div class="prose">
-            <p>
-              We develop a multilingual conversational AI phone service and run
-              inclusive campus and community programs.
-            </p>
-            <p>
-              Our phone service now reaches 125,000 people. We have also run
-              inclusive programs across all 23 IIT campuses and 22 IIM campuses.
-            </p>
-            <p>
-              Our India archive documents camps, workshops, and programs
-              delivered with schools and local partners.
-            </p>
-            <a class="text-link" href="india.html"
-              >Explore our India programs <span aria-hidden="true">→</span></a
-            >
-          </div>
-        </div>
-      </section>
-      <section class="section" id="people">
-        <div class="container">
-          <p class="eyebrow">Our people</p>
-          <h2>Our team</h2>
+      <section class="inner-hero tone-blue">
+        <div class="page-intro container">
+          <p class="eyebrow">Who we are</p>
+          <h1>About Neorons</h1>
           <p class="intro-copy">
-            Neorons is founded and led by students and recent graduates.
+            Neorons is a nonprofit focused on suicide prevention. Our work has
+            reached more than 500,000 people across over 80 countries.
           </p>
-          <article class="split team-member">
-            <figure>
-              <img
-                src="images/team/akshat-agarwal.jpg"
-                alt="Akshat Agarwal"
-                width="360"
-                height="360"
-                loading="lazy"
-                decoding="async"
+          <nav class="chapter-links" aria-label="About Neorons">
+            <a href="#mission">Our mission <span aria-hidden="true">↓</span></a
+            ><a href="#people">Our team <span aria-hidden="true">↓</span></a
+            ><a href="#supporters"
+              >Supporters <span aria-hidden="true">↓</span></a
+            >
+          </nav>
+        </div>
+        <div class="inner-art inner-art-left" aria-hidden="true">
+          <div class="mini-paper">
+            <span>NEORONS</span
+            ><svg viewBox="0 0 60 60">
+              <circle cx="30" cy="20" r="8" />
+              <path
+                d="M15 50v-7c0-9 6-14 15-14s15 5 15 14v7M14 17a6 6 0 0 0-4 11M46 17a6 6 0 0 1 4 11"
               />
-            </figure>
-            <div class="prose">
-              <p class="eyebrow">Founder &amp; Executive Director</p>
-              <h3>Akshat Agarwal</h3>
-              <p>
-                Akshat founded Neorons and leads it: he sets programme
-                direction, builds the school and partner relationships, and
-                makes the final call on what Neorons runs and why. His
-                background is in AI and suicidology, with published research in
-                machine learning and bioethics, and it shapes the
-                organization&#x27;s safety-first approach to technology in
-                education.
-              </p>
-            </div>
+            </svg>
+            <div class="paper-rules"><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="inner-art inner-art-right" aria-hidden="true">
+          <div class="mini-stamp">
+            <svg viewBox="0 0 60 60">
+              <path d="M30 4v52M4 30h52M12 12l36 36M12 48l36-36" /></svg
+            ><span>Our people</span>
+          </div>
+        </div>
+        <button class="motion-toggle" type="button" aria-pressed="false" hidden>
+          <span class="motion-icon" aria-hidden="true">Ⅱ</span
+          ><span class="motion-label">Pause motion</span></button
+        ><span class="inner-signature" aria-hidden="true"
+          >neorons / our people</span
+        >
+      </section>
+      <section
+        class="container paper-panel tone-lilac"
+        id="mission"
+        data-reveal
+      >
+        <div class="panel-heading">
+          <p class="section-kicker">Our mission</p>
+          <h2>Suicide prevention<br />and inclusion.</h2>
+          <p>
+            We develop a multilingual conversational AI phone service and run
+            inclusive campus and community programs.
+          </p>
+        </div>
+        <div class="card-grid">
+          <article class="paper-card" data-reveal>
+            <p class="section-kicker">Multilingual access</p>
+            <h3>125,000 people</h3>
+            <p>
+              Our multilingual conversational AI phone service now reaches
+              125,000 people.
+            </p>
+            <a class="text-link" href="programs.html#phone-service"
+              >About the phone service <span aria-hidden="true">→</span></a
+            >
           </article>
-          <article class="split team-member">
-            <figure>
-              <img
-                src="images/team/avinash-amanchi.jpg"
-                alt="Avinash Amanchi"
-                width="360"
-                height="360"
-                loading="lazy"
-                decoding="async"
-              />
-            </figure>
-            <div class="prose">
-              <p class="eyebrow">Co-founder &amp; Technology Lead</p>
-              <h3>Avinash Amanchi</h3>
-              <p>
-                Avinash leads technology and curriculum: the Arduino kits, the
-                robot challenges, the AI-literacy materials, and the mentor
-                guides our volunteers teach from. He studies data science and
-                builds accessibility software of his own, including a
-                communication tool for people with aphasia. He also instruments
-                what we run, from registration data to the counting methodology
-                behind our impact numbers, so we know whether a lesson landed,
-                not just that it happened.
-              </p>
-            </div>
-          </article>
-          <article class="split team-member">
-            <figure>
-              <img
-                src="images/team/abhinav-gangadari.jpg"
-                alt="Abhinav Gangadari"
-                width="360"
-                height="360"
-                loading="lazy"
-                decoding="async"
-              />
-            </figure>
-            <div class="prose">
-              <p class="eyebrow">Co-founder &amp; Lead Financial Advisor</p>
-              <h3>Abhinav Gangadari</h3>
-              <p>
-                Abhinav directs financial strategy and resource allocation,
-                overseeing budget modelling, programme funding, and cost
-                optimization across all initiatives. He manages financial
-                operations and capital management to ensure scalable,
-                sustainable growth and maximum resource efficiency for
-                Neorons&#x27; programmes.
-              </p>
-            </div>
+          <article class="paper-card" data-reveal>
+            <p class="section-kicker">Inclusive programs</p>
+            <h3>23 IIT and 22 IIM campuses</h3>
+            <p>
+              We have run inclusive programs across all 23 IIT campuses and 22
+              IIM campuses.
+            </p>
+            <a class="text-link" href="programs.html#campus-programs"
+              >Our campus programs <span aria-hidden="true">→</span></a
+            >
           </article>
         </div>
-      </section>
-      <section class="section">
-        <div class="container narrow prose">
-          <p class="eyebrow">Working with Neorons</p>
-          <h2>Supporters and partners</h2>
+        <div class="chapter-links">
           <p>
-            Our multilingual conversational AI phone service is supported by
-            Google, Amazon, and Microsoft. Our programs are supported by UNICEF,
-            UNESCO, and UNDP.
+            Our India archive documents camps, workshops, and programs delivered
+            with schools and local partners.
           </p>
+          <a class="text-link" href="india.html"
+            >Explore our India programs <span aria-hidden="true">→</span></a
+          >
+        </div>
+      </section>
+      <section class="container paper-panel tone-sage" id="people" data-reveal>
+        <div class="panel-heading">
+          <p class="section-kicker">Our people</p>
+          <h2>Our team</h2>
+          <p>Neorons is founded and led by students and recent graduates.</p>
+        </div>
+        <article class="paper-card split team-member" data-reveal>
+          <figure class="team-portrait">
+            <img
+              src="images/team/akshat-agarwal.jpg"
+              alt="Akshat Agarwal"
+              width="360"
+              height="360"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div class="prose">
+            <p class="section-kicker">Founder &amp; Executive Director</p>
+            <h3>Akshat Agarwal</h3>
+            <p>
+              Akshat founded Neorons and leads it: he sets programme direction,
+              builds the school and partner relationships, and makes the final
+              call on what Neorons runs and why. His background is in AI and
+              suicidology, with published research in machine learning and
+              bioethics, and it shapes the organization&#x27;s safety-first
+              approach to technology in education.
+            </p>
+          </div>
+        </article>
+        <article class="paper-card split team-member" data-reveal>
+          <figure class="team-portrait">
+            <img
+              src="images/team/avinash-amanchi.jpg"
+              alt="Avinash Amanchi"
+              width="360"
+              height="360"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div class="prose">
+            <p class="section-kicker">Co-founder &amp; Technology Lead</p>
+            <h3>Avinash Amanchi</h3>
+            <p>
+              Avinash leads technology and curriculum: the Arduino kits, the
+              robot challenges, the AI-literacy materials, and the mentor guides
+              our volunteers teach from. He studies data science and builds
+              accessibility software of his own, including a communication tool
+              for people with aphasia. He also instruments what we run, from
+              registration data to the counting methodology behind our impact
+              numbers, so we know whether a lesson landed, not just that it
+              happened.
+            </p>
+          </div>
+        </article>
+        <article class="paper-card split team-member" data-reveal>
+          <figure class="team-portrait">
+            <img
+              src="images/team/abhinav-gangadari.jpg"
+              alt="Abhinav Gangadari"
+              width="360"
+              height="360"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div class="prose">
+            <p class="section-kicker">
+              Co-founder &amp; Lead Financial Advisor
+            </p>
+            <h3>Abhinav Gangadari</h3>
+            <p>
+              Abhinav directs financial strategy and resource allocation,
+              overseeing budget modelling, programme funding, and cost
+              optimization across all initiatives. He manages financial
+              operations and capital management to ensure scalable, sustainable
+              growth and maximum resource efficiency for Neorons&#x27;
+              programmes.
+            </p>
+          </div>
+        </article>
+      </section>
+      <section
+        class="container paper-panel tone-blue"
+        id="supporters"
+        data-reveal
+      >
+        <div class="panel-heading">
+          <p class="section-kicker">Working with Neorons</p>
+          <h2>Supporters and partners</h2>
+        </div>
+        <div class="card-grid">
+          <article class="paper-card" data-reveal>
+            <p class="section-kicker">Phone service</p>
+            <h3>Google, Amazon &amp; Microsoft</h3>
+            <p>
+              Our multilingual conversational AI phone service is supported by
+              Google, Amazon, and Microsoft.
+            </p>
+          </article>
+          <article class="paper-card" data-reveal>
+            <p class="section-kicker">Programs</p>
+            <h3>UNICEF, UNESCO &amp; UNDP</h3>
+            <p>Our programs are supported by UNICEF, UNESCO, and UNDP.</p>
+          </article>
+        </div>
+        <div class="chapter-links">
           <p>
             Contact us about program partnerships, campus collaborations, and
             volunteering.

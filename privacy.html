@@ -33,6 +33,7 @@
       crossorigin
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/pages.css" />
     <noscript
       ><style>
         @media (max-width: 960px) {
@@ -97,24 +98,65 @@
       </div>
     </header>
     <main id="main">
-      <section class="page-intro container">
-        <p class="eyebrow">Policy</p>
-        <h1>Privacy policy</h1>
-        <p class="intro-copy">
-          How this website handles information and how to contact us about your
-          data.
-        </p>
+      <section class="inner-hero tone-lilac">
+        <div class="page-intro container">
+          <p class="eyebrow">Policy</p>
+          <h1>Privacy policy</h1>
+          <p class="intro-copy">
+            How this website handles information and how to contact us about
+            your data.
+          </p>
+        </div>
+        <div class="inner-art inner-art-left" aria-hidden="true">
+          <div class="mini-paper">
+            <span>NEORONS</span
+            ><svg viewBox="0 0 60 60">
+              <path
+                d="M16 7h23l9 10v36H16V7Zm23 0v12h9M24 29h15M24 37h15M24 45h9"
+              />
+            </svg>
+            <div class="paper-rules"><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="inner-art inner-art-right" aria-hidden="true">
+          <div class="mini-stamp">
+            <svg viewBox="0 0 60 60">
+              <path d="M30 4v52M4 30h52M12 12l36 36M12 48l36-36" /></svg
+            ><span>Your privacy</span>
+          </div>
+        </div>
+        <button class="motion-toggle" type="button" aria-pressed="false" hidden>
+          <span class="motion-icon" aria-hidden="true">Ⅱ</span
+          ><span class="motion-label">Pause motion</span></button
+        ><span class="inner-signature" aria-hidden="true"
+          >neorons / your privacy</span
+        >
       </section>
-      <section class="section">
-        <div class="container narrow prose">
+      <section class="document-section container">
+        <nav class="document-index" aria-label="On this page">
+          <p class="eyebrow">On this page</p>
+          <a href="#section-who-we-are">Who we are</a
+          ><a href="#section-what-we-collect">What we collect</a
+          ><a href="#section-your-display-preferences"
+            >Your display preferences</a
+          ><a href="#section-photography-of-participants"
+            >Photography of participants</a
+          ><a href="#section-third-parties">Third parties</a
+          ><a href="#section-india-dpdp-act-2023">India DPDP Act 2023</a
+          ><a href="#section-your-rights">Your rights</a>
+        </nav>
+        <div class="document-paper prose">
+          <div class="document-masthead">
+            <span>NEORONS</span><span>Your privacy</span>
+          </div>
           <p>Website information updated: October 2026</p>
-          <h2>Who we are</h2>
+          <h2 id="section-who-we-are">Who we are</h2>
           <p>
             Neorons Inc. operates this website as part of its international
             suicide-prevention and inclusion work. For the purposes of
             applicable data protection law, Neorons Inc. is the data controller.
           </p>
-          <h2>What we collect</h2>
+          <h2 id="section-what-we-collect">What we collect</h2>
           <p>
             This website does not set cookies, use analytics services, or
             collect personal data through tracking. Contact email links open
@@ -126,27 +168,31 @@
             you include in your message. We use this information to respond to
             your enquiry.
           </p>
-          <h2>Your display preferences</h2>
+          <h2 id="section-your-display-preferences">
+            Your display preferences
+          </h2>
           <p>
             If you pause decorative motion, this website stores that choice in
             your browser’s local storage. The setting stays on your device and
             is not sent to us. It does not identify you.
           </p>
-          <h2>Photography of participants</h2>
+          <h2 id="section-photography-of-participants">
+            Photography of participants
+          </h2>
           <p>
             Photographs taken during Neorons events are covered by separate
             consent processes described in our
             <a href="safeguarding.html">Safeguarding Policy</a>. Published
             images are stripped of EXIF metadata.
           </p>
-          <h2>Third parties</h2>
+          <h2 id="section-third-parties">Third parties</h2>
           <p>
             We do not share personal data with third parties for marketing
             purposes. Email enquiries are handled through email services. When
             you follow an external link, the destination website’s privacy
             policy applies.
           </p>
-          <h2>India DPDP Act 2023</h2>
+          <h2 id="section-india-dpdp-act-2023">India DPDP Act 2023</h2>
           <p>
             We acknowledge the provisions of India’s Digital Personal Data
             Protection Act, 2023. Where our programs collect personal data of
@@ -155,7 +201,7 @@
             requirements. Data subjects may exercise their rights by writing to
             us.
           </p>
-          <h2>Your rights</h2>
+          <h2 id="section-your-rights">Your rights</h2>
           <p>
             You may request access to, correction of, or deletion of any
             personal data we hold about you. Contact us at

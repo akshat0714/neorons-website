@@ -33,6 +33,7 @@
       crossorigin
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/pages.css" />
     <noscript
       ><style>
         @media (max-width: 960px) {
@@ -97,13 +98,48 @@
       </div>
     </header>
     <main id="main">
-      <section class="page-intro container narrow">
-        <p class="eyebrow">Organization profile</p>
-        <h1>Neorons</h1>
-        <p class="intro-copy">Suicide prevention and inclusive programs.</p>
+      <section class="inner-hero tone-yellow">
+        <div class="page-intro container">
+          <p class="eyebrow">Organisation profile</p>
+          <h1>Neorons</h1>
+          <p class="intro-copy">Suicide prevention and inclusive programs.</p>
+        </div>
+        <div class="inner-art inner-art-left" aria-hidden="true">
+          <div class="mini-paper">
+            <span>NEORONS</span
+            ><svg viewBox="0 0 60 60">
+              <path
+                d="M16 7h23l9 10v36H16V7Zm23 0v12h9M24 29h15M24 37h15M24 45h9"
+              />
+            </svg>
+            <div class="paper-rules"><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="inner-art inner-art-right" aria-hidden="true">
+          <div class="mini-stamp">
+            <svg viewBox="0 0 60 60">
+              <path d="M30 4v52M4 30h52M12 12l36 36M12 48l36-36" /></svg
+            ><span>Neorons</span>
+          </div>
+        </div>
+        <button class="motion-toggle" type="button" aria-pressed="false" hidden>
+          <span class="motion-icon" aria-hidden="true">Ⅱ</span
+          ><span class="motion-label">Pause motion</span></button
+        ><span class="inner-signature" aria-hidden="true"
+          >neorons / neorons</span
+        >
       </section>
-      <section class="section">
-        <div class="container narrow prose">
+      <section class="document-section container">
+        <nav class="document-index" aria-label="On this page">
+          <p class="eyebrow">On this page</p>
+          <a href="#section-our-work">Our work</a
+          ><a href="#section-our-team">Our team</a
+          ><a href="#section-contact">Contact</a>
+        </nav>
+        <div class="document-paper prose">
+          <div class="document-masthead">
+            <span>NEORONS</span><span>Neorons</span>
+          </div>
           <p>
             Neorons is a nonprofit focused on suicide prevention, with a
             multilingual AI phone service and inclusive campus and community
@@ -125,7 +161,7 @@
               ><span>raised for suicide prevention</span>
             </div>
           </div>
-          <h2>Our work</h2>
+          <h2 id="section-our-work">Our work</h2>
           <p>
             <strong>Multilingual AI phone service.</strong> Our novel
             conversational AI phone service reaches 125,000 people in multiple
@@ -144,13 +180,13 @@
             Our India camps and events are documented separately at
             <a href="india.html">neorons.com/india.html</a>.
           </p>
-          <h2>Our team</h2>
+          <h2 id="section-our-team">Our team</h2>
           <p>
             Akshat Agarwal, Founder &amp; Executive Director<br />Avinash
             Amanchi, Co-founder &amp; Technology Lead<br />Abhinav Gangadari,
             Co-founder &amp; Lead Financial Advisor
           </p>
-          <h2>Contact</h2>
+          <h2 id="section-contact">Contact</h2>
           <p>
             <a href="mailto:neoronsai@gmail.com">neoronsai@gmail.com</a> ·
             <a href="https://neorons.com/">neorons.com</a><br />Founded 2025 ·

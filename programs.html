@@ -33,6 +33,7 @@
       crossorigin
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/pages.css" />
     <noscript
       ><style>
         @media (max-width: 960px) {
@@ -97,93 +98,204 @@
       </div>
     </header>
     <main id="main">
-      <section class="page-intro container">
-        <p class="eyebrow">Our programs</p>
-        <h1>Our programs</h1>
-        <p class="intro-copy">
-          Our suicide-prevention work includes a multilingual AI phone service,
-          inclusive campus programs, and community education.
-        </p>
-      </section>
-      <section class="section" id="phone-service">
-        <div class="container split">
-          <div>
-            <p class="eyebrow">01 / Multilingual access</p>
-            <h2>Multilingual AI<br />phone service</h2>
+      <section class="inner-hero tone-lilac">
+        <div class="page-intro container">
+          <p class="eyebrow">What we do</p>
+          <h1>Our programmes</h1>
+          <p class="intro-copy">
+            Our suicide-prevention work includes a multilingual AI phone
+            service, inclusive campus programmes, and community education.
+          </p>
+          <nav class="chapter-links" aria-label="Explore our programmes">
+            <a href="#phone-service"
+              ><span>01</span> Multilingual access
+              <span aria-hidden="true">↓</span></a
+            >
+            <a href="#campus-programs"
+              ><span>02</span> Inclusive campuses
+              <span aria-hidden="true">↓</span></a
+            >
+            <a href="#community-programs"
+              ><span>03</span> Community programmes
+              <span aria-hidden="true">↓</span></a
+            >
+          </nav>
+        </div>
+        <div class="inner-art inner-art-left" aria-hidden="true">
+          <div class="mini-paper">
+            <span>NEORONS</span
+            ><svg viewBox="0 0 60 60">
+              <path
+                d="M13 9h29l7 7v35H13V9Zm29 0v9h7M21 28h20M21 36h20M21 44h12"
+              />
+            </svg>
+            <div class="paper-rules"><i></i><i></i></div>
           </div>
-          <div class="prose">
+        </div>
+        <div class="inner-art inner-art-right" aria-hidden="true">
+          <div class="mini-stamp">
+            <svg viewBox="0 0 60 60">
+              <path d="M30 4v52M4 30h52M12 12l36 36M12 48l36-36" /></svg
+            ><span>Our work</span>
+          </div>
+        </div>
+        <button class="motion-toggle" type="button" aria-pressed="false" hidden>
+          <span class="motion-icon" aria-hidden="true">Ⅱ</span
+          ><span class="motion-label">Pause motion</span></button
+        ><span class="inner-signature" aria-hidden="true"
+          >neorons / our work</span
+        >
+      </section>
+
+      <section
+        class="paper-panel tone-lilac container"
+        id="phone-service"
+        data-reveal
+      >
+        <div class="panel-heading">
+          <p class="eyebrow">01 / Multilingual access</p>
+          <h2>A conversation.<br />In more languages.</h2>
+        </div>
+        <div class="card-grid">
+          <div class="panel-copy prose">
             <p>
               Our novel multilingual conversational AI phone service now reaches
-              125,000 people.
+              <strong>125,000 people</strong>, extending our suicide-prevention
+              work across languages.
             </p>
-            <p>
-              <strong
-                >Service supported by Google, Amazon, and Microsoft.</strong
-              >
+
+            <div class="feature-support">
+              <span>Service supported by</span>
+              <div><b>Google</b><b>Amazon</b><b>Microsoft</b></div>
+            </div>
+            <p class="service-note">
+              AI conversations do not replace professional care or emergency
+              services.
             </p>
             <a
-              class="text-link"
+              class="button"
               href="mailto:neoronsai@gmail.com?subject=Multilingual%20phone%20service%20partnership"
               >Partner on multilingual access
               <span aria-hidden="true">↗</span></a
             >
           </div>
-        </div>
-      </section>
-      <section class="section" id="campus-programs">
-        <div class="container split">
-          <div>
-            <p class="eyebrow">02 / Inclusive campuses</p>
-            <h2>Inclusive campus<br />programs</h2>
-          </div>
-          <div class="prose">
-            <p>
-              We have worked across all 23 IIT campuses and 22 IIM campuses,
-              running inclusive programs.
-            </p>
-            <a
-              class="text-link"
-              href="mailto:neoronsai@gmail.com?subject=Campus%20program%20partnership"
-              >Bring Neorons to your campus
-              <span aria-hidden="true">↗</span></a
+          <div class="programme-illustration phone-stage" aria-hidden="true">
+            <div class="voice-paper">
+              <div class="voice-top">
+                <span class="tiny-brand">neorons</span
+                ><span class="voice-tag">VOICE</span>
+              </div>
+              <p>In your<br /><em>language.</em></p>
+              <div class="voice-wave">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                ><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+              <div class="voice-bottom">
+                <span>Multilingual.<br />Conversational.</span
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M7 3c-2 0-3 2-3 4 0 7 6 13 13 13 2 0 4-1 4-3l-5-3-2 3c-4-2-6-4-8-8l3-2-2-4Z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <span class="reach-ticket"
+              ><strong>125k</strong> people reached</span
             >
           </div>
         </div>
       </section>
-      <section class="section" id="community-programs">
-        <div class="container split">
-          <div>
-            <p class="eyebrow">03 / Community programs</p>
-            <h2>Community programs</h2>
+
+      <section
+        class="paper-panel tone-peach container"
+        id="campus-programs"
+        data-reveal
+      >
+        <div class="panel-heading">
+          <p class="eyebrow">02 / Inclusive campuses</p>
+          <h2>Across campuses.<br />Open to everyone.</h2>
+        </div>
+        <div class="panel-copy prose">
+          <p>
+            We have worked across all <strong>23 IIT campuses</strong> and
+            <strong>22 IIM campuses</strong>, running inclusive programmes.
+            Participation and belonging are part of our wider commitment to
+            suicide prevention.
+          </p>
+        </div>
+        <div class="card-grid">
+          <div class="paper-card campus-metric">
+            <p class="eyebrow">Indian Institutes of Technology</p>
+            <strong>23</strong>
+            <span>IIT campuses</span>
           </div>
-          <div class="prose">
+          <div class="paper-card campus-metric">
+            <p class="eyebrow">Indian Institutes of Management</p>
+            <strong>22</strong>
+            <span>IIM campuses</span>
+          </div>
+        </div>
+        <div class="panel-actions">
+          <a
+            class="text-link"
+            href="mailto:neoronsai@gmail.com?subject=Campus%20program%20partnership"
+            >Bring Neorons to your campus <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </section>
+
+      <section
+        class="paper-panel tone-sage container"
+        id="community-programs"
+        data-reveal
+      >
+        <div class="panel-heading">
+          <p class="eyebrow">03 / Community programmes</p>
+          <h2>It starts with<br />taking part.</h2>
+        </div>
+        <div class="card-grid">
+          <div class="panel-copy prose">
             <p>
               We work with schools, educators, volunteers, and local
-              organizations on education, wellbeing, science, and inclusion
-              programs.
+              organisations on education, wellbeing, science, and inclusion
+              programmes.
             </p>
             <p>
               In India, this includes peer-support training, STEM events,
-              inclusive sport, assistive technology, and AI education. Explore
-              the dedicated archive for event details and photographs.
+              inclusive sport, assistive technology, and AI education. The
+              dedicated archive brings together the event details and
+              photographs.
             </p>
-            <p>
-              <strong
-                >Our programs are supported by UNICEF, UNESCO, and UNDP.</strong
-              >
-            </p>
-            <a class="text-link" href="india.html"
-              >View India programs and camps
-              <span aria-hidden="true">→</span></a
+            <a class="button" href="india.html"
+              >Explore India programmes and camps
+              <span aria-hidden="true">↗</span></a
             >
+          </div>
+          <div class="paper-card">
+            <p class="eyebrow">People. Participation. Community.</p>
+            <h3>More ways<br />to take part.</h3>
+            <ul class="programme-tags" aria-label="Community programme themes">
+              <li>Education</li>
+              <li>Wellbeing</li>
+              <li>Science</li>
+              <li>Inclusion</li>
+            </ul>
+            <div class="feature-support">
+              <span>Programmes supported by</span>
+              <div><b>UNICEF</b><b>UNESCO</b><b>UNDP</b></div>
+            </div>
           </div>
         </div>
       </section>
-      <section class="section">
-        <div class="container narrow prose">
-          <h2>Program partnerships</h2>
+
+      <section class="paper-panel tone-yellow container" data-reveal>
+        <div class="panel-heading">
+          <p class="eyebrow">Programme partnerships</p>
+          <h2>Help shape what<br />comes next.</h2>
+        </div>
+        <div class="panel-copy prose">
           <p>
-            Join us as a program partner, campus collaborator, or volunteer.
+            Join us as a programme partner, campus collaborator, or volunteer.
           </p>
           <a class="button" href="contact.html"
             >Get involved <span aria-hidden="true">↗</span></a

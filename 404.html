@@ -29,6 +29,7 @@
       crossorigin
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/pages.css" />
     <noscript
       ><style>
         @media (max-width: 960px) {
@@ -93,16 +94,43 @@
       </div>
     </header>
     <main id="main">
-      <section class="page-intro container">
-        <p class="eyebrow">404 / Page not found</p>
-        <h1>Let’s find your way back.</h1>
-        <p class="intro-copy">
-          This page may have moved. Explore our work or return to the homepage.
-        </p>
-        <div class="button-row">
-          <a class="button" href="index.html">Back to home →</a
-          ><a class="button secondary" href="programs.html">Our programmes</a>
+      <section class="inner-hero tone-lilac">
+        <div class="page-intro container">
+          <p class="eyebrow">404 / Page not found</p>
+          <h1>Let’s find your way back.</h1>
+          <p class="intro-copy">
+            This page may have moved. Explore our work or return to the
+            homepage.
+          </p>
+          <div class="button-row">
+            <a class="button" href="index.html">Back to home →</a
+            ><a class="button secondary" href="programs.html">Our programmes</a>
+          </div>
         </div>
+        <div class="inner-art inner-art-left" aria-hidden="true">
+          <div class="mini-paper">
+            <span>NEORONS</span
+            ><svg viewBox="0 0 60 60">
+              <path
+                d="M16 7h23l9 10v36H16V7Zm23 0v12h9M24 29h15M24 37h15M24 45h9"
+              />
+            </svg>
+            <div class="paper-rules"><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="inner-art inner-art-right" aria-hidden="true">
+          <div class="mini-stamp">
+            <svg viewBox="0 0 60 60">
+              <path d="M30 4v52M4 30h52M12 12l36 36M12 48l36-36" /></svg
+            ><span>This way</span>
+          </div>
+        </div>
+        <button class="motion-toggle" type="button" aria-pressed="false" hidden>
+          <span class="motion-icon" aria-hidden="true">Ⅱ</span
+          ><span class="motion-label">Pause motion</span></button
+        ><span class="inner-signature" aria-hidden="true"
+          >neorons / this way</span
+        >
       </section>
     </main>
     <footer class="site-footer">

@@ -33,6 +33,7 @@
       crossorigin
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/pages.css" />
     <noscript
       ><style>
         @media (max-width: 960px) {
@@ -97,17 +98,53 @@
       </div>
     </header>
     <main id="main">
-      <section class="page-intro container">
-        <p class="eyebrow">Photography</p>
-        <h1>Images &amp; credits.</h1>
-        <p class="intro-copy">
-          Photography helps express the value of connection. Illustrative images
-          are not presented as photographs of Neorons participants or events.
-        </p>
+      <section class="inner-hero tone-peach">
+        <div class="page-intro container">
+          <p class="eyebrow">Photography</p>
+          <h1>Images &amp; credits.</h1>
+          <p class="intro-copy">
+            Photography helps express the value of connection. Illustrative
+            images are not presented as photographs of Neorons participants or
+            events.
+          </p>
+        </div>
+        <div class="inner-art inner-art-left" aria-hidden="true">
+          <div class="mini-paper">
+            <span>NEORONS</span
+            ><svg viewBox="0 0 60 60">
+              <path
+                d="M16 7h23l9 10v36H16V7Zm23 0v12h9M24 29h15M24 37h15M24 45h9"
+              />
+            </svg>
+            <div class="paper-rules"><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="inner-art inner-art-right" aria-hidden="true">
+          <div class="mini-stamp">
+            <svg viewBox="0 0 60 60">
+              <path d="M30 4v52M4 30h52M12 12l36 36M12 48l36-36" /></svg
+            ><span>Credits</span>
+          </div>
+        </div>
+        <button class="motion-toggle" type="button" aria-pressed="false" hidden>
+          <span class="motion-icon" aria-hidden="true">Ⅱ</span
+          ><span class="motion-label">Pause motion</span></button
+        ><span class="inner-signature" aria-hidden="true"
+          >neorons / credits</span
+        >
       </section>
-      <section class="section">
-        <div class="container narrow prose photo-credits">
-          <h2>Homepage</h2>
+      <section class="document-section container">
+        <nav class="document-index" aria-label="On this page">
+          <p class="eyebrow">On this page</p>
+          <a href="#section-homepage">Homepage</a
+          ><a href="#section-india-programme-archive">India programme archive</a
+          ><a href="#section-our-team">Our team</a>
+        </nav>
+        <div class="document-paper prose photo-credits">
+          <div class="document-masthead">
+            <span>NEORONS</span><span>Credits</span>
+          </div>
+          <h2 id="section-homepage">Homepage</h2>
           <p>
             “A diverse group of friends smiling together outdoors” by
             <a
@@ -117,7 +154,7 @@
             <a href="https://unsplash.com/license">Unsplash License</a>.
             Displayed with a responsive crop.
           </p>
-          <h2>India programme archive</h2>
+          <h2 id="section-india-programme-archive">India programme archive</h2>
           <p>
             Illustrative images retained from the original Neorons website have
             individual creator, source and licence links beneath each photograph
@@ -125,7 +162,7 @@
             images illustrate programme themes; they do not document the events
             described.
           </p>
-          <h2>Our team</h2>
+          <h2 id="section-our-team">Our team</h2>
           <p>
             Team photographs are retained from the Neorons website repository.
             For photography or media enquiries, email
