@@ -7,8 +7,9 @@ A static, international nonprofit website centred on suicide prevention, multili
 - `index.html`: international mission, programme overview, reach and supporters.
 - `about.html`: organisation and existing team biographies.
 - `programs.html`: multilingual AI phone service, campus and community programmes.
+- `fellowship.html`: planned six-week virtual fellowship, six areas of support, a proposed weekly journey, and email interest enquiries; no FAQ or borrowed alumni claims.
 - `impact.html`: reported reach and fundraising.
-- `india.html`: a searchable directory of 23 IITs and 22 IIMs, followed by all 11 original India programme records, including three marked as originally planned. Campus filters and progressive expansion use `js/campuses.js`; original record filters and details use `js/india.js`. All entries remain readable without JavaScript.
+- `india.html`: all 11 original India programme records, including three marked as originally planned. Expandable records and filters work with `js/india.js`; the records are readable without JavaScript.
 - `contact.html`, `media.html`, `profile.html`: contact, press and printable organisation profile.
 - `privacy.html`, `safeguarding.html`, `accessibility.html`, `credits.html`: policies and photography attribution.
 
@@ -24,13 +25,7 @@ python3 -m http.server 8080
 
 Open http://localhost:8080. All fonts and images are served locally. The homepage photograph is illustrative; its source/licence and archive photograph credits are publicly linked. The existing team portraits are retained. No generated testimonials are displayed.
 
-## Campus gallery and official logos
-
-The campus gallery uses 45 distinct AI-generated illustrations of fictional adults in generic university rooms. Each image has a visible label and descriptive alternative text. Neither the scenes nor their programme examples document an actual event or a specific campus building. Do not remove those disclosures or add unsupported event dates, attendance figures or outcomes. Replace an illustration with an actual event photograph only when its campus attribution and publication permission are established.
-
-Campus cards are static HTML in `india.html`, styled by `css/campuses.css`. `js/campuses.js` provides combined institution filters and name/city search, shows nine matching cards initially, supports keyboard use, and reveals directly linked campuses. To change a campus name, update its heading, search text, alternative text and official link together. Institution sources are recorded in `docs/campus-roster-provenance.txt` and `docs/campus-roster.json`.
-
-The six supporter marks in `images/supporters/` are official downloaded artwork, with sources in `docs/supporter-logo-sources.md`. Preserve original colours, proportions and clear space. Keep Google, Amazon and Microsoft scoped to the phone service, and UNICEF, UNESCO and UNDP scoped to programmes; do not broaden the organisation-supplied support claims. Public image and logo attribution is on `credits.html`.
+Official logos are self-hosted in `images/supporters/`; their published sources are recorded in `docs/supporter-logo-sources.md` and `credits.html`. Preserve their colours and proportions. The AI campus gallery has been removed; the India page contains the earlier 11 programme records. Fellowship styling is in `css/fellowship.css`. Programme dates and application details remain pending; the interest links open an email application.
 
 ## Editorial facts
 
@@ -40,8 +35,8 @@ International figures and support relationships were supplied by Neorons:
 - 125,000 people reached through the multilingual conversational AI phone service.
 - Inclusive programmes across all 23 IIT campuses and 22 IIM campuses.
 - Over US$75,000 raised for suicide prevention.
-- Google, Amazon and Microsoft support the phone service.
-- UNICEF, UNESCO and UNDP support programmes.
+- Google, Amazon, Microsoft, OpenAI and Meta are listed as organisations that trust the phone service.
+- UNICEF, UNDP, UNFPA and the Government of India support programmes and awareness work.
 
 The phone-service reach is not added to the overall reach. Reach figures are not presented as clinical outcomes or lives saved. No phone number is published, as requested. Donation links and buttons are hidden at the owner's request; there is currently no payment flow. General enquiries use `neoronsai@gmail.com` and open an email application.
 
@@ -67,7 +62,6 @@ The archive contains public HTML, CSS, JavaScript, fonts, images, the manifest a
 python3 scripts/check-site.py
 node --check js/main.js
 node --check js/india.js
-node --check js/campuses.js
 ```
 
-Check the homepage, small-screen menu, programme links, campus search and filters, direct campus links, India category filters and expandable records after updates. Legacy homepage event URLs redirect to the India archive. No analytics, embedded maps or third-party scripts are used in the redesigned pages.
+Check the homepage, small-screen menu, programme links, India category filters and expandable records after updates. Legacy homepage event URLs redirect to the India archive. No analytics, embedded maps or third-party scripts are used in the redesigned pages.

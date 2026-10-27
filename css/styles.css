@@ -1240,6 +1240,56 @@ svg {
   width: 27px;
   height: auto;
 }
+.supporter-logos .logo-openai {
+  width: 130px;
+  height: auto;
+}
+.supporter-logos .logo-meta {
+  width: 90px;
+  height: auto;
+}
+.supporter-logos .logo-unfpa {
+  width: 104px;
+  height: auto;
+}
+.supporter-logos.logos-programmes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  width: 340px;
+  justify-items: center;
+  gap: 20px 18px;
+}
+.government-mark {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+  min-width: 0;
+}
+.supporter-logos .logo-india-government {
+  width: 29px;
+  height: 50px;
+}
+.government-mark span {
+  font-size: 10px;
+  color: #171816;
+  line-height: 1.4;
+}
+@media (max-width: 400px) {
+  .supporter-logos.logos-programmes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .supporter-logos.logos-technology {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    width: 340px;
+    justify-items: center;
+  }
+}
 .feature-copy .service-note {
   font-size: 11px;
   line-height: 1.5;

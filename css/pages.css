@@ -1586,5 +1586,5 @@ body:not([data-page="index"]) .site-footer {
   color: #fff;
 }
 .paper-card > .supporter-logos {
-  min-height: 92px;
+  min-height: 168px;
 }
