@@ -1,0 +1,292 @@
+/* Mission: language, culture and the people who shape their own futures. */
+body[data-page="mission"] {
+  --mission-paper: #faf8f3;
+  --mission-green: #294d3c;
+  --mission-muted: #60685a;
+  --mission-sage: #e8eddf;
+  background: var(--mission-paper);
+}
+#community-atlas, #rights, #community-rights, #phone-service, #campus-programs, #our-work { scroll-margin-top: 110px; }
+
+.mission-opening { padding-block: 150px 72px; text-align: center; }
+.mission-opening .eyebrow { font-size: 10px; margin-bottom: 28px; }
+.mission-opening h1 { font-size: clamp(54px, 6.5vw, 86px); line-height: 1.025; letter-spacing: -.055em; }
+.mission-opening h1 em,
+.atlas-heading h2 em,
+.rights-heading h2 em,
+.mission-practice h2 em,
+.mission-closing h2 em { color: #6a7b5e; font-weight: 400; }
+.mission-intro { max-width: 620px; margin: 26px auto 0; color: var(--mission-muted); font-size: 18px; line-height: 1.75; }
+.mission-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 17px 28px; margin-top: 29px; }
+.mission-actions .button { font-size: 13px; gap: 20px; }
+.mission-actions > a:not(.button) { border: 0; padding: 10px 0; font-size: 13px; text-decoration: none; }
+.mission-actions > a:not(.button):hover { text-decoration: underline; }
+.mission-actions > a:not(.button) span { margin-left: 8px; }
+.mission-values { display: flex; justify-content: center; flex-wrap: wrap; align-items: baseline; gap: 16px 44px; margin: 55px auto 0; color: #5e6c53; font: 400 25px/1.3 var(--serif); letter-spacing: -.025em; }
+.mission-values > * { margin: 0; }
+
+/* An explorable world, with room for each community's own context. */
+.community-atlas { width: min(1180px, calc(100% - 80px)); padding-top: 24px; }
+.atlas-heading { max-width: 720px; text-align: center; margin: 0 auto 32px; }
+.atlas-heading .eyebrow, .rights-heading .eyebrow { font-size: 10px; margin-bottom: 23px; }
+.atlas-heading h2 { font-size: clamp(43px, 4.8vw, 62px); line-height: 1.04; }
+.atlas-heading > p:last-child { max-width: 565px; margin: 22px auto 0; color: var(--mission-muted); font-size: 15px; line-height: 1.75; }
+.atlas-navigation { margin-bottom: 28px; }
+.atlas-region-nav { margin-bottom: 28px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.atlas-region-nav button { appearance: none; border: 0; border-radius: 100px; background: #eeeee6; color: #5c6856; padding: 12px 19px; min-height: 43px; font-size: 12px; font-weight: 600; line-height: 1.4; white-space: nowrap; transition: background .2s ease, color .2s ease; }
+.atlas-region-nav button:hover { background: #e0e7d5; color: #294d3c; }
+.atlas-region-nav button[aria-selected="true"] { background: #294d3c; color: #fffdf5; }
+.atlas-display { display: grid; grid-template-columns: minmax(0, .42fr) minmax(0, .58fr); gap: 52px; align-items: start; }
+.atlas-world { position: sticky; top: 115px; min-width: 0; padding: 23px 25px 25px; border-radius: 27px; background: var(--mission-sage); }
+.atlas-world-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: #50634b; font-size: 11px; }
+.atlas-step-controls { display: flex; gap: 6px; }
+.atlas-step-controls button { display: grid; place-items: center; width: 32px; height: 32px; border: 0; border-radius: 50%; background: #ffffff90; color: #36563d; font-size: 17px; padding: 0; transition: background .2s ease; }
+.atlas-step-controls button:hover { background: #fffdf8; }
+.atlas-canvas-wrap { display: flex; align-items: center; justify-content: center; position: relative; width: 100%; height: 410px; }
+#community-globe { display: block; width: 100%; height: 100%; cursor: grab; touch-action: pan-y; }
+#community-globe:active { cursor: grabbing; }
+.atlas-fallback { max-width: 300px; padding: 28px; text-align: center; color: #687e58; font: 400 28px/1.3 var(--serif); letter-spacing: -.03em; }
+.atlas-map-footer { display: flex; justify-content: space-between; align-items: baseline; gap: 13px; color: #40553b; }
+.atlas-current-label { max-width: 245px; font-size: 13px; font-weight: 600; line-height: 1.5; }
+.atlas-coordinate { flex-shrink: 0; color: #5e6c53; font-size: 9px; line-height: 1.5; white-space: nowrap; }
+.atlas-tools { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 20px; }
+.atlas-tools button { border: 0; border-radius: 40px; background: #ffffff80; color: #465b40; padding: 9px 12px; font-size: 10px; line-height: 1.5; transition: background .2s ease; }
+.atlas-tools button:hover { background: #fffdf8; }
+.atlas-tools [data-atlas-tour] { background: #3b593e; color: #fffdf7; }
+.atlas-tools [data-atlas-tour]:hover { background: #294d32; }
+.atlas-tools [data-atlas-motion][aria-pressed="true"] { background: #d4dfc9; }
+.atlas-tools button:disabled { opacity: .6; cursor: default; }
+.atlas-drag-hint { margin-top: 14px; color: #5e6c53; font-size: 9px; line-height: 1.65; }
+.atlas-progress { display: none; }
+.atlas-panels, .region-panel { min-width: 0; }
+.region-panel { padding: 18px 0 0; }
+.region-location { display: flex; justify-content: space-between; gap: 15px; color: #5e6c53; font-size: 10px; line-height: 1.6; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 17px; }
+.region-location > span:first-child { min-width: 0; }
+.region-location > span:last-child { flex-shrink: 0; letter-spacing: .025em; color: #5e6c53; }
+.region-panel h3 { font-size: clamp(35px, 3.5vw, 44px); line-height: 1.07; letter-spacing: -.04em; margin-bottom: 24px; }
+.culture-value { font: italic 400 28px/1.3 var(--serif); letter-spacing: -.025em; color: #71815c; margin: 23px 0 0; max-width: 510px; }
+.culture-summary { font-size: 16px; line-height: 1.8; color: #586551; max-width: 540px; }
+.culture-care { margin-top: 26px; color: #606a57; font-size: 15px; line-height: 1.75; }
+.culture-care > p, .culture-care > div { margin: 0; }
+.culture-care > span:first-child, .culture-care > strong:first-child, .culture-care > h4 { display: block; color: #425e39; font: 600 11px/1.5 var(--sans); letter-spacing: .025em; margin: 0 0 8px; }
+.culture-law { display: inline-flex; align-items: center; gap: 15px; margin-top: 24px; border: 0; border-radius: 100px; background: #e9eddf; color: #3d5937; padding: 11px 17px; font-size: 11px; font-weight: 600; line-height: 1.55; text-decoration: none; }
+.culture-law:hover { color: #294d32; background: #dfe7d3; }
+.culture-law a { color: inherit; text-decoration: none; }
+.region-sources { margin-top: 18px; }
+.region-sources summary { display: inline-flex; align-items: center; gap: 23px; list-style: none; color: #506747; font-size: 11px; font-weight: 600; line-height: 1.6; cursor: pointer; padding: 7px 0; }
+.region-sources summary::-webkit-details-marker { display: none; }
+.region-sources summary > span { font-size: 19px; line-height: 1; font-weight: 400; transition: transform .2s ease; }
+.region-sources[open] summary > span { transform: rotate(45deg); }
+.region-sources > div { padding-top: 12px; }
+.region-sources p, .region-sources li { color: #64705b; font-size: 13px; line-height: 1.8; }
+.region-sources p + p { margin-top: 12px; }
+.region-sources ul { padding-left: 18px; margin-top: 12px; }
+.region-source-links { display: flex; flex-wrap: wrap; gap: 9px 18px; margin-top: 16px; }
+.region-source-links a, .region-sources > div > a { color: #49653d; font-size: 11px; line-height: 1.7; text-decoration-color: #b9c6ac; }
+.atlas-footnote { max-width: 780px; margin: 27px auto 0; color: #5e6c53; font-size: 11px; line-height: 1.75; text-align: center; }
+.atlas-enter { animation: mission-story-in .5s ease both; }
+@keyframes mission-story-in { from { opacity: 0; } to { opacity: 1; } }
+.community-atlas:not(.atlas-ready) .atlas-region-nav,
+.community-atlas:not(.atlas-ready) .atlas-navigation,
+.community-atlas:not(.atlas-ready) .atlas-drag-hint,
+.community-atlas:not(.atlas-ready) .atlas-world-top { display: none; }
+.community-atlas:not(.atlas-ready) .atlas-display { display: block; }
+.community-atlas:not(.atlas-ready) .atlas-world { display: none; }
+.community-atlas:not(.atlas-ready) .atlas-panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 45px 60px; }
+
+/* Rights remain readable, inspectable and useful without JavaScript. */
+.mission-rights { padding-top: 110px; }
+.rights-heading { max-width: 760px; margin: 0 auto 31px; text-align: center; }
+.rights-heading h2 { font-size: clamp(42px, 4.6vw, 56px); line-height: 1.06; }
+.rights-heading > p:last-child { max-width: 630px; margin: 23px auto 0; font-size: 15px; color: var(--mission-muted); line-height: 1.75; }
+.rights-filters { display: flex; justify-content: center; flex-wrap: wrap; gap: 9px; margin-bottom: 27px; }
+.rights-filters button { border: 0; border-radius: 100px; background: #eeeee6; color: #63705a; min-height: 42px; padding: 11px 21px; font-size: 12px; font-weight: 600; line-height: 1.5; transition: background .2s ease, color .2s ease; }
+.rights-filters button:hover { background: #e0e7d5; }
+.rights-filters button[aria-pressed="true"], .rights-filters button[aria-selected="true"], .rights-filters button.is-active { background: #294d3c; color: #fffdf5; }
+.law-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: start; }
+.law-entry { min-width: 0; background: #f0f1e8; padding: 28px 29px; border: 0; border-radius: 20px; scroll-margin-top: 120px; }
+.law-entry:nth-child(4n+2), .law-entry:nth-child(4n+3) { background: #f1eee5; }
+.law-entry summary { position: relative; list-style: none; padding-right: 31px; cursor: pointer; }
+.law-entry summary::-webkit-details-marker { display: none; }
+.law-jurisdiction { display: block; color: #5e6c53; font-size: 10px; font-weight: 600; line-height: 1.5; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 13px; }
+.law-title { font: 400 26px/1.15 var(--serif); letter-spacing: -.03em; margin: 0 0 13px; color: #273824; }
+.law-summary { font-size: 13px; line-height: 1.75; color: #5e6c53; margin: 0; }
+.law-toggle { position: absolute; top: 0; right: 0; color: #536f42; font-size: 23px; font-weight: 400; line-height: 1; transition: transform .2s ease; }
+.law-entry[open] .law-toggle { transform: rotate(45deg); }
+.law-entry[open] { background: #eaf0df; }
+.law-detail { padding-top: 24px; }
+.law-detail h4 { font: 600 11px/1.6 var(--sans); letter-spacing: .03em; color: #4d6540; margin: 23px 0 8px; }
+.law-detail h4:first-child { margin-top: 0; }
+.law-detail p, .law-detail li { color: #606d55; font-size: 14px; line-height: 1.8; }
+.law-detail p + p { margin-top: 13px; }
+.law-detail ul { padding-left: 18px; margin-block: 12px; }
+.law-status-label { display: block; color: #5e6c53; font-size: 10px; font-weight: 600; line-height: 1.6; margin-top: 16px; }
+.law-detail .law-status { color: #606d55; font-size: 12px; line-height: 1.85; margin-top: 20px; }
+.law-status strong { display: inline-block; font-weight: 600; margin-bottom: 4px; }
+.law-source { display: flex; flex-direction: column; align-items: start; gap: 8px; margin-top: 17px; color: #49643c; font-size: 11px; line-height: 1.65; text-decoration-color: #b2c3a0; }
+.law-source a { color: inherit; font-size: inherit; }
+.rights-note { margin: 23px auto 0; max-width: 850px; color: #5e6c53; font-size: 12px; line-height: 1.75; text-align: center; }
+
+/* A practical invitation, followed by the existing voice experience. */
+.mission-practice { padding-block: 100px 65px; }
+.mission-practice > header { text-align: center; max-width: 740px; margin: 0 auto 35px; }
+.mission-practice .eyebrow { font-size: 10px; margin-bottom: 24px; }
+.mission-practice h2 { font-size: clamp(40px, 4.3vw, 48px); line-height: 1.06; }
+.mission-practice > header > p:last-child { color: var(--mission-muted); font-size: 15px; line-height: 1.75; margin: 21px auto 0; max-width: 590px; }
+.practice-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 23px; }
+.practice-grid > article, .practice-grid > div { display: flex; flex-direction: column; align-items: start; min-width: 0; padding: 36px 38px; background: #e8eddd; border-radius: 23px; }
+.practice-grid > :nth-child(2) { background: #eee7df; }
+.practice-number { display: block; color: #526747; font-size: 10px; letter-spacing: .05em; line-height: 1.5; margin-bottom: 25px; }
+.practice-grid h3 { font-size: 30px; line-height: 1.12; margin-bottom: 17px; }
+.practice-grid p { font-size: 14px; line-height: 1.8; color: #5b674f; margin-bottom: 24px; max-width: 460px; }
+.practice-grid a { border: 0; margin-top: auto; font-size: 12px; font-weight: 600; line-height: 1.65; color: #465e39; text-decoration: none; }
+.practice-grid a:hover { text-decoration: underline; }
+body[data-page="mission"] .voice-intro { padding-top: 30px; }
+body[data-page="mission"] .voice-intro-aside .voice-reach { border: 0; padding-top: 0; margin-top: 22px; }
+body[data-page="mission"] .voice-notes { padding-bottom: 40px; }
+body[data-page="mission"] .voice-notes details { border: 0; }
+.mission-closing { padding-block: 65px 105px; text-align: center; }
+.mission-closing .eyebrow { font-size: 10px; margin-bottom: 25px; }
+.mission-closing h2 { font-size: clamp(42px, 4.7vw, 56px); line-height: 1.06; margin-bottom: 31px; }
+.mission-closing > p:not(.eyebrow) { max-width: 560px; font-size: 15px; line-height: 1.75; color: var(--mission-muted); margin: 20px auto 28px; }
+.mission-closing .button { font-size: 13px; }
+body[data-page="mission"] button:focus-visible,
+body[data-page="mission"] a:focus-visible,
+body[data-page="mission"] summary:focus-visible,
+body[data-page="mission"] [role="tabpanel"]:focus-visible { outline: 2px solid #406b51; outline-offset: 5px; }
+#community-globe[hidden], .atlas-fallback[hidden], .atlas-tools[hidden], .region-panel[hidden], .rights-filters[hidden], .law-entry[hidden] { display: none; }
+
+@media (max-width: 1100px) {
+  .atlas-display { gap: 34px; }
+  .atlas-world { padding-inline: 21px; }
+  .atlas-canvas-wrap { height: 365px; }
+  .atlas-current-label { max-width: 185px; }
+  .atlas-coordinate { flex-shrink: 1; white-space: normal; text-align: right; }
+  .region-panel h3 { font-size: 39px; }
+  .culture-value { font-size: 26px; }
+  .culture-summary { font-size: 15px; }
+  .culture-care { font-size: 14px; margin-top: 22px; }
+  .practice-grid > article, .practice-grid > div { padding: 32px; }
+}
+@media (max-width: 800px) {
+  .mission-opening { padding-block: 130px 56px; }
+  .mission-values { margin-top: 43px; gap: 14px 28px; font-size: 23px; }
+  .community-atlas { width: calc(100% - 48px); }
+  .atlas-heading { margin-bottom: 28px; }
+  .atlas-region-nav { gap: 8px; }
+  .atlas-region-nav button { padding: 11px 17px; }
+  .atlas-display { grid-template-columns: 1fr; gap: 32px; }
+  .atlas-world { position: static; width: min(510px, 100%); margin-inline: auto; padding: 23px 26px; }
+  .atlas-canvas-wrap { height: 390px; }
+  .atlas-current-label { max-width: 290px; }
+  .atlas-coordinate { flex-shrink: 0; white-space: nowrap; }
+  .region-panel { max-width: 650px; margin-inline: auto; padding-top: 0; }
+  .region-panel h3 { font-size: 43px; margin-bottom: 21px; }
+  .culture-value { font-size: 28px; max-width: none; }
+  .culture-summary { font-size: 16px; max-width: none; }
+  .culture-care { font-size: 15px; }
+  .atlas-footnote { margin-top: 24px; max-width: 650px; }
+  .community-atlas:not(.atlas-ready) .atlas-panels { grid-template-columns: 1fr; gap: 40px; }
+  .mission-rights { padding-top: 80px; }
+  .law-entry { padding: 25px; }
+  .law-title { font-size: 25px; }
+  .mission-practice { padding-block: 80px 45px; }
+  .practice-grid { gap: 18px; }
+  .practice-grid > article, .practice-grid > div { padding: 28px; }
+  .practice-grid h3 { font-size: 28px; }
+  .practice-grid p { font-size: 13px; }
+  .mission-closing { padding-block: 55px 85px; }
+}
+@media (max-width: 600px) {
+  .mission-opening { padding-block: 117px 42px; }
+  .mission-opening .eyebrow { font-size: 9px; margin-bottom: 22px; }
+  .mission-opening h1 { font-size: clamp(48px, 12.5vw, 65px); }
+  .mission-intro { font-size: 15px; line-height: 1.75; margin-top: 22px; }
+  .mission-actions { gap: 12px 22px; margin-top: 25px; }
+  .mission-actions .button { font-size: 11px; padding: 13px 17px; gap: 13px; }
+  .mission-actions > a:not(.button) { font-size: 11px; }
+  .mission-values { gap: 9px 22px; max-width: 340px; margin-top: 35px; font-size: 22px; }
+  .community-atlas { width: calc(100% - 40px); padding-top: 22px; }
+  .atlas-heading .eyebrow, .rights-heading .eyebrow { font-size: 9px; margin-bottom: 19px; }
+  .atlas-heading h2, .rights-heading h2 { font-size: 39px; }
+  .atlas-heading > p:last-child { font-size: 13px; margin-top: 20px; }
+  .atlas-navigation { margin-bottom: 22px; }
+  .atlas-region-nav { gap: 7px 6px; }
+  .atlas-region-nav button { min-height: 38px; padding: 10px 14px; font-size: 10px; }
+  .atlas-display { gap: 29px; }
+  .atlas-world { padding: 19px 20px 21px; border-radius: 22px; }
+  .atlas-world-top { font-size: 10px; }
+  .atlas-canvas-wrap { height: 300px; }
+  .atlas-current-label { max-width: 190px; font-size: 12px; }
+  .atlas-coordinate { font-size: 8px; }
+  .atlas-tools { gap: 6px; margin-top: 17px; }
+  .atlas-tools button { font-size: 9px; padding: 9px 11px; }
+  .atlas-drag-hint { font-size: 8px; }
+  .region-location { font-size: 9px; margin-bottom: 13px; }
+  .region-panel h3 { font-size: 36px; margin-bottom: 20px; }
+  .culture-value { font-size: 27px; margin-top: 20px; }
+  .culture-summary { font-size: 14px; }
+  .culture-care { font-size: 13px; margin-top: 22px; }
+  .culture-care > span:first-child, .culture-care > strong:first-child, .culture-care > h4 { font-size: 10px; }
+  .culture-law { font-size: 10px; margin-top: 20px; padding: 10px 15px; }
+  .region-sources { margin-top: 15px; }
+  .region-sources summary { font-size: 10px; }
+  .region-sources p, .region-sources li { font-size: 12px; }
+  .region-source-links a, .region-sources > div > a { font-size: 10px; }
+  .atlas-footnote { font-size: 10px; margin-top: 21px; }
+  .mission-rights { padding-top: 65px; }
+  .rights-heading { margin-bottom: 25px; }
+  .rights-heading > p:last-child { font-size: 13px; margin-top: 20px; }
+  .rights-filters { gap: 7px; margin-bottom: 21px; }
+  .rights-filters button { font-size: 10px; min-height: 38px; padding: 10px 16px; }
+  .law-grid { grid-template-columns: 1fr; gap: 13px; }
+  .law-entry { padding: 25px 24px; border-radius: 18px; }
+  .law-title { font-size: 27px; }
+  .law-summary { font-size: 13px; }
+  .law-jurisdiction { font-size: 9px; margin-bottom: 12px; }
+  .law-detail { padding-top: 21px; }
+  .law-detail p, .law-detail li { font-size: 13px; }
+  .law-detail h4 { font-size: 10px; }
+  .law-source { font-size: 10px; }
+  .rights-note { font-size: 10px; margin-top: 20px; }
+  .mission-practice { padding-block: 65px 30px; }
+  .mission-practice > header { margin-bottom: 28px; }
+  .mission-practice .eyebrow { font-size: 9px; margin-bottom: 19px; }
+  .mission-practice h2 { font-size: 39px; }
+  .mission-practice > header > p:last-child { font-size: 13px; margin-top: 20px; }
+  .practice-grid { grid-template-columns: 1fr; gap: 14px; }
+  .practice-grid > article, .practice-grid > div { padding: 29px 27px; border-radius: 20px; }
+  .practice-grid h3 { font-size: 29px; margin-bottom: 15px; }
+  .practice-grid p { font-size: 13px; margin-bottom: 22px; }
+  .practice-grid a { font-size: 11px; }
+  body[data-page="mission"] .voice-intro { padding-top: 25px; }
+  body[data-page="mission"] .voice-notes { padding-bottom: 25px; }
+  .mission-closing { padding-block: 45px 65px; }
+  .mission-closing .eyebrow { font-size: 9px; margin-bottom: 22px; }
+  .mission-closing h2 { font-size: 40px; margin-bottom: 28px; }
+  .mission-closing > p:not(.eyebrow) { font-size: 13px; }
+}
+@media (max-width: 360px) {
+  .mission-opening h1 { font-size: 44px; }
+  .atlas-region-nav button { padding-inline: 12px; }
+  .atlas-canvas-wrap { height: 265px; }
+  .atlas-coordinate { white-space: normal; }
+  .region-panel h3 { font-size: 33px; }
+  .culture-value { font-size: 25px; }
+  .rights-filters button { padding-inline: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .atlas-enter { animation: none; }
+  .atlas-region-nav button, .atlas-tools button, .atlas-step-controls button, .rights-filters button, .region-sources summary > span, .law-toggle { transition: none; }
+}
+.atlas-motion-off .atlas-enter, .motion-paused .atlas-enter { animation: none; }
+.motion-paused .atlas-region-nav button, .motion-paused .rights-filters button, .motion-paused .law-toggle { transition: none; }
+@media print {
+  .mission-opening { padding-top: 20px; }
+  .atlas-navigation, .atlas-world, .rights-filters, .mission-actions { display: none; }
+  .atlas-display, .atlas-panels, .law-grid { display: block; }
+  .region-panel[hidden], .law-entry[hidden] { display: block !important; }
+  .region-panel, .law-entry { margin-block: 25px; break-inside: avoid; }
+  .atlas-enter { animation: none; }
+  .mission-rights, .mission-practice, .mission-closing { padding-block: 30px; }
+}

@@ -176,11 +176,11 @@
     const routeLegacyHash = () => {
       const hash = window.location.hash;
       if (/^#event-[a-z0-9-]+$/.test(hash))
-        window.location.replace(`india.html${hash}`);
+        window.location.replace("mission.html");
       else if (hash === "#events" || hash === "#reach")
-        window.location.replace("india.html");
-      else if (hash === "#mission") window.location.replace("about.html");
-      else if (hash === "#programmes") window.location.replace("programs.html");
+        window.location.replace("mission.html");
+      else if (hash === "#mission") window.location.replace("mission.html");
+      else if (hash === "#programmes") window.location.replace("mission.html");
       else if (hash === "#impact") window.location.replace("impact.html");
       else if (hash === "#people") window.location.replace("about.html#people");
       else if (hash === "#contact") window.location.replace("contact.html");
