@@ -331,6 +331,13 @@
       event.preventDefault(); tabs[next].focus(); tabs[next].click();
     });
   });
+  // The hero links keep their native atlas anchor while selecting its story.
+  document.querySelectorAll("[data-story-link]").forEach(function (link) {
+    link.addEventListener("click", function () {
+      var index = items.findIndex(function (item) { return item.id === link.dataset.storyLink; });
+      if (index !== -1) choose(index, false);
+    });
+  });
   if (play) play.addEventListener("click", function () {
     if (tourActive) { stopTour(true); draw(); }
     else startTour();

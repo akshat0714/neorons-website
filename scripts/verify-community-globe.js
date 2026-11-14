@@ -9,6 +9,16 @@ const path = require("node:path");
 const vm = require("node:vm");
 const assert = require("node:assert/strict");
 const repo = path.resolve(__dirname, "..");
+const communitySource = fs.readFileSync(path.join(repo, "js/communities-data.js"), "utf8");
+const dataContext = { window: {} };
+vm.runInNewContext(communitySource, dataContext, { filename: "js/communities-data.js" });
+const communities = Array.from(dataContext.window.NeoronsCommunities);
+const ids = communities.map(community => community.id);
+assert(ids.length >= 3, "The interaction scenarios need at least three communities");
+const sceneDuration = 12000;
+const frameDuration = 80;
+const framesPerScene = sceneDuration / frameDuration;
+const lastIndex = ids.length - 1;
 
 function harness(options = {}) {
   let sequence = 0;
@@ -57,8 +67,8 @@ function harness(options = {}) {
   const { root, canvas, wrap, fallback, status, tools, play, reduce, prev, next, reset, zoom, label, coords, body, panelGroup } = elements;
   canvas.hidden = true;
   tools.hidden = true;
-  const ids = ["inuit", "aboriginal", "maori", "sami"];
   const tabs = ids.map(id => { const tab = new Element(); tab.dataset.region = id; return tab; });
+  const storyLinks = ids.map(id => { const link = new Element(); link.dataset.storyLink = id; link.setAttribute("href", "#community-atlas"); return link; });
   const panels = ids.map(() => new Element());
   const noop = () => {};
   const context = new Proxy({
@@ -91,6 +101,7 @@ function harness(options = {}) {
   const document = {
     body, hidden: false,
     querySelector: selector => selector === "[data-atlas]" ? root : null,
+    querySelectorAll: selector => selector === "[data-story-link]" ? storyLinks : [],
     getElementById: id => id === "community-globe" ? canvas : panels[ids.indexOf(id.replace("region-", ""))],
     addEventListener(type, listener) { this[type] = listener; }
   };
@@ -113,7 +124,7 @@ function harness(options = {}) {
   if (options.noGeo) delete environment.d3;
   if (options.noLand) delete environment.NeoronsWorldLand;
   vm.runInContext(fs.readFileSync(path.join(repo, "js/community-globe.js"), "utf8"), environment, { filename: "js/community-globe.js" });
-  function step(ms = 80) {
+  function step(ms = frameDuration) {
     now += ms;
     const callbacks = [...frameQueue.values()];
     frameQueue.clear();
@@ -123,7 +134,7 @@ function harness(options = {}) {
   function frames(count) { for (let index = 0; index < count; index++) step(); }
   function windowEvent(type) { windowListeners[type]?.forEach(callback => callback()); }
   return {
-    ...elements, tabs, panels, preference, document, environment, step, frames,
+    ...elements, tabs, panels, storyLinks, preference, document, environment, step, frames,
     visible: value => intersectionCallback?.([{ isIntersecting: value }]),
     resize(width, height, dpr = 2) {
       wrap.rect.width = width; wrap.rect.height = height;
@@ -146,7 +157,7 @@ function harness(options = {}) {
 const h = harness();
 assert(h.root.classList.contains("atlas-ready"));
 assert.equal(h.panels.filter(panel => !panel.hidden).length, 1);
-assert.equal(h.root.dataset.activeRegion, "inuit");
+assert.equal(h.root.dataset.activeRegion, ids[0]);
 assert.equal(h.canvas.hidden, false);
 assert.equal(h.fallback.hidden, true);
 assert.equal(h.queue(), 0, "Offscreen initialization does not start a frame loop");
@@ -158,11 +169,21 @@ assert.equal(h.tabs[2].attrs["aria-selected"], "true");
 assert.equal(h.tabs.filter(tab => tab.attrs.tabindex === "0").length, 1);
 h.frames(30);
 
+// Hero snapshots select a story without canceling the native anchor navigation.
+const heroEvent = { defaultPrevented: false, preventDefault() { this.defaultPrevented = true; } };
+h.storyLinks[lastIndex].listeners.click(heroEvent);
+assert.equal(h.root.dataset.activeRegion, ids[lastIndex]);
+assert.equal(h.panels[lastIndex].hidden, false);
+assert.equal(h.label.textContent, communities[lastIndex].name);
+assert.equal(h.storyLinks[lastIndex].attrs.href, "#community-atlas");
+assert.equal(heroEvent.defaultPrevented, false);
+h.frames(25);
+
 // Tour transitions, completion and repeated starts must never fork RAF loops.
 h.play.click();
-assert.equal(h.root.dataset.activeRegion, "inuit");
-h.frames(155);
-assert.equal(h.root.dataset.activeRegion, "aboriginal");
+assert.equal(h.root.dataset.activeRegion, ids[0]);
+h.frames(framesPerScene + 5);
+assert.equal(h.root.dataset.activeRegion, ids[1]);
 const progressBeforeResize = h.root.properties["--tour-progress"];
 h.resize(390, 330, 3);
 assert.equal(h.canvas.width, 780, "DPR is capped at 2");
@@ -176,9 +197,14 @@ h.step();
 assert.equal(h.queue(), 0);
 assert(h.root.classList.contains("atlas-motion-off"));
 h.play.click();
-h.frames(460);
+for (let index = 2; index < ids.length; index++) {
+  h.frames(framesPerScene);
+  assert.equal(h.root.dataset.activeRegion, ids[index], "The journey visits every configured community in order");
+  assert.equal(h.label.textContent, communities[index].name);
+}
+h.frames(framesPerScene);
 assert.equal(h.play.textContent, "Replay journey");
-assert.equal(h.root.dataset.activeRegion, "sami");
+assert.equal(h.root.dataset.activeRegion, ids[lastIndex]);
 h.step();
 assert.equal(h.queue(), 0);
 assert.equal(Number(h.root.properties["--tour-progress"]), 1);
@@ -232,12 +258,12 @@ assert.equal(h.play.textContent, "Resume journey", "Resuming site motion does no
 
 // Keyboard, next/previous and zoom controls expose the full pointer experience.
 h.tabs[0].listeners.keydown({ key: "ArrowLeft", preventDefault() {} });
-assert.equal(h.root.dataset.activeRegion, "sami");
-assert(h.tabs[3].focused);
+assert.equal(h.root.dataset.activeRegion, ids[lastIndex]);
+assert(h.tabs[lastIndex].focused);
 h.next.click();
-assert.equal(h.root.dataset.activeRegion, "inuit");
+assert.equal(h.root.dataset.activeRegion, ids[0]);
 h.prev.click();
-assert.equal(h.root.dataset.activeRegion, "sami");
+assert.equal(h.root.dataset.activeRegion, ids[lastIndex]);
 h.zoom.click();
 assert.equal(h.zoom.textContent, "Pull back");
 h.frames(25);
@@ -268,30 +294,30 @@ assert.equal(h.root.classList.contains("atlas-dragging"), false);
 const reading = harness();
 reading.visible(true);
 reading.play.click();
-reading.frames(145);
-assert.equal(reading.root.dataset.activeRegion, "inuit");
+reading.frames(framesPerScene - 5);
+assert.equal(reading.root.dataset.activeRegion, ids[0]);
 reading.panelGroup.listeners.focusin({ target: { tagName: "A" } });
 assert.equal(reading.play.textContent, "Resume journey");
 assert.equal(reading.queue(), 0);
-reading.frames(200);
-assert.equal(reading.root.dataset.activeRegion, "inuit", "Focused story remains selected beyond its original deadline");
+reading.frames(framesPerScene + 50);
+assert.equal(reading.root.dataset.activeRegion, ids[0], "Focused story remains selected beyond its original deadline");
 assert.equal(reading.panels[0].hidden, false);
 reading.play.click();
 reading.frames(10);
-assert.equal(reading.root.dataset.activeRegion, "aboriginal", "Explicit resume continues the paused journey");
+assert.equal(reading.root.dataset.activeRegion, ids[1], "Explicit resume continues the paused journey");
 for (const event of ["pointerenter", "pointerdown", "wheel"]) {
   reading.panelGroup.listeners[event]({});
   assert.equal(reading.play.textContent, "Resume journey");
   assert.equal(reading.queue(), 0);
-  reading.frames(155);
-  assert.equal(reading.root.dataset.activeRegion, "aboriginal", "Reading interaction pauses scene replacement");
+  reading.frames(framesPerScene + 5);
+  assert.equal(reading.root.dataset.activeRegion, ids[1], "Reading interaction pauses scene replacement");
   reading.play.click();
 }
 
 for (const option of ["noGeo", "noCanvas", "noLand"]) {
   const fallback = harness({ [option]: true });
   assert.equal(fallback.root.classList.contains("atlas-ready"), false);
-  assert.equal(fallback.panels.filter(panel => !panel.hidden).length, 4);
+  assert.equal(fallback.panels.filter(panel => !panel.hidden).length, ids.length);
   assert.equal(fallback.canvas.hidden, true);
   assert.equal(fallback.fallback.hidden, false);
   assert.equal(fallback.queue(), 0);
@@ -305,4 +331,4 @@ legacy.root.rect.bottom = 1500;
 legacy.windowEvent("scroll");
 assert.equal(legacy.queue(), 0);
 
-console.log("PASS: single RAF loop; complete tour/replay; resize and DPR cap; viewport/tab suspension; combined motion preferences; keyboard/step/zoom controls; touch scrolling; focus and reading pause; geographic/canvas and observer fallbacks.");
+console.log(`PASS: ${ids.length} communities; ${ids.length * sceneDuration / 1000}-second complete journey/replay; hero anchors; single RAF loop; resize and DPR cap; viewport/tab suspension; combined motion preferences; keyboard/step/zoom controls; touch scrolling; focus and reading pause; geographic/canvas and observer fallbacks.`);
