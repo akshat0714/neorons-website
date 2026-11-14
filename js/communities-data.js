@@ -1,0 +1,2 @@
+/* Geographic anchors for the research atlas; not programme locations. */
+window.NeoronsCommunities = [{"id":"inuit","name":"Inuit communities","coordinates":[-95.0,67.0]},{"id":"aboriginal","name":"Aboriginal and Torres Strait Islander peoples","coordinates":[133.8,-25.3]},{"id":"maori","name":"Māori","coordinates":[176.0,-39.0]},{"id":"sami","name":"Sámi communities","coordinates":[23.5,69.0]}];
