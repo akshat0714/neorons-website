@@ -1,4 +1,4 @@
-/* Progressive enhancement for the statically rendered India programme archive. */
+/* Progressive enhancement for the statically rendered India project archive. */
 (function () {
   "use strict";
 
@@ -26,7 +26,7 @@
     }).length;
     count.textContent =
       shown.length +
-      " programmes: " +
+      " projects: " +
       (shown.length - planned) +
       " completed, " +
       planned +
@@ -47,8 +47,6 @@
     });
     if (!record) return;
     if (record.hidden) showCategory("all");
-    var details = record.querySelector("details");
-    if (details) details.open = true;
     record.scrollIntoView({ block: "start" });
   }
 

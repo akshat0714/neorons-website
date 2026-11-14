@@ -1,0 +1,136 @@
+/* Text-only project archive, using the site's existing type and paper palette. */
+body.page-india .india-projects-intro {
+  padding-block: 145px 56px;
+  text-align: left;
+}
+body.page-india .india-projects-intro h1 {
+  margin-inline: 0;
+  font-size: clamp(48px, 6.5vw, 84px);
+}
+body.page-india .india-projects-intro .intro-copy {
+  margin-inline: 0;
+  max-width: 570px;
+  font-size: 19px;
+  line-height: 1.6;
+}
+body.page-india .archive-section { padding: 0 0 100px; }
+body.page-india .archive-introduction {
+  max-width: 1180px;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 32px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+body.page-india .archive-introduction p { max-width: 690px; }
+body.page-india .archive-toolbar {
+  padding: 0;
+  margin-bottom: 30px;
+  background: none;
+  border-radius: 0;
+}
+body.page-india .archive-filters { gap: 10px; }
+body.page-india .archive-filter {
+  padding: 11px 17px;
+  border: 1px solid var(--line);
+  background: transparent;
+  box-shadow: none;
+  font-size: 12px;
+}
+body.page-india .archive-filter[aria-pressed="true"] {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+body.page-india .archive-count { margin-top: 18px; font-size: 12px; }
+body.page-india .archive-grid { display: block; }
+body.page-india .archive-event {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr) 215px;
+  align-items: start;
+  gap: 32px;
+  padding: 34px 0 38px;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+  transition: none;
+  scroll-margin-top: 110px;
+}
+body.page-india .archive-event:last-child { border-bottom: 1px solid var(--line); }
+body.page-india .archive-event[hidden] { display: none; }
+body.page-india .project-number {
+  display: block;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+body.page-india .event-category {
+  display: block;
+  margin: 0 0 8px;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--ink);
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: .03em;
+}
+body.page-india .project-status {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+body.page-india .archive-planned .project-status { color: #775c34; }
+body.page-india .archive-event-content { padding: 0; }
+body.page-india .archive-event h2 {
+  margin: 0 0 14px;
+  font-size: clamp(24px, 2.5vw, 31px);
+  line-height: 1.18;
+  letter-spacing: -.025em;
+}
+body.page-india .event-summary {
+  max-width: 550px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+body.page-india .event-meta {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-top: 4px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+body.page-india .event-meta span:first-child { color: var(--ink); }
+@media (max-width: 1000px) {
+  body.page-india .archive-event {
+    grid-template-columns: 140px minmax(0, 1fr) 180px;
+    gap: 24px;
+  }
+}
+@media (max-width: 760px) {
+  body.page-india .india-projects-intro { padding-block: 120px 35px; }
+  body.page-india .india-projects-intro .intro-copy { font-size: 17px; }
+  body.page-india .archive-introduction { font-size: 12px; margin-bottom: 24px; }
+  body.page-india .archive-filters { gap: 8px; }
+  body.page-india .archive-filter { padding: 9px 12px; font-size: 11px; }
+  body.page-india .archive-event { grid-template-columns: minmax(0, 1fr); gap: 19px; padding-block: 27px 30px; }
+  body.page-india .project-label { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 14px; }
+  body.page-india .project-number { margin: 0; }
+  body.page-india .event-category { margin: 0; }
+  body.page-india .project-status { margin-left: auto; }
+  body.page-india .archive-event h2 { font-size: 28px; max-width: 500px; }
+  body.page-india .event-meta { gap: 4px; padding: 0; }
+  body.page-india .archive-section { padding-bottom: 65px; }
+}
