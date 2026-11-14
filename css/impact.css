@@ -36,6 +36,23 @@ body[data-page="impact"] { --impact-green: #183e35; }
 .policy-location { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
 .policy-location span { display: inline-block; margin-left: 13px; color: #286446; letter-spacing: 0; text-transform: none; font-weight: 600; }
 .state-policy-copy .text-link { display: inline-block; font-size: 12px; margin-top: 13px; }
+.sb1318-heading h2 em { color: #55715c; font-weight: 400; }
+.sb1318-heading > p:last-child strong { color: var(--ink); font-weight: 600; }
+.sb1318-feature { border: 0; padding-top: 0; align-items: start; gap: 38px 55px; scroll-margin-top: 120px; }
+.sb1318-feature figure img { border-radius: 14px; }
+.sb1318-feature figure { margin-top: 5px; }
+.sb1318-feature .state-policy-copy h3 { margin: 15px 0 13px; font-size: 36px; }
+.sb1318-feature .state-policy-copy .sb1318-subheading { margin-top: 25px; font-size: 25px; }
+.sb1318-feature .state-policy-copy > p:not(.policy-location) { font-size: 14px; line-height: 1.8; }
+.sb1318-feature .state-policy-copy > .sb1318-purpose { color: #385747; }
+.sb1318-report { grid-column: 1/-1; display: grid; grid-template-columns: 1.5fr 1fr; gap: 35px; align-items: center; background: #e9eee3; border-radius: 17px; padding: 28px 32px; }
+.sb1318-report .eyebrow { color: #47604d; font-size: 9px; margin-bottom: 13px; }
+.sb1318-report > div:first-child > a { display: flex; gap: 20px; justify-content: space-between; max-width: 580px; font: 400 24px/1.2 var(--serif); letter-spacing: -.025em; text-decoration: none; }
+.sb1318-report > div:first-child > a:hover { text-decoration: underline; }
+.sb1318-report > div:first-child > a > span:last-child { flex-shrink: 0; font: 400 20px/1.5 var(--sans); }
+.sb1318-report > div:first-child > p:last-child { font-size: 12px; color: #4d6052; margin-top: 13px; }
+.sb1318-records { display: flex; flex-direction: column; align-items: flex-start; gap: 17px; padding-left: 28px; }
+.sb1318-records a { font-size: 12px; line-height: 1.6; color: #36533f; }
 .federal-policy { margin-top: 65px; }
 .federal-heading { display: flex; justify-content: space-between; gap: 35px; margin-bottom: 30px; align-items: end; }
 .federal-heading .eyebrow { font-size: 10px; margin-bottom: 14px; }
@@ -110,6 +127,11 @@ body[data-page="impact"] .credibility-group { border-radius: 3px; }
   .impact-section-heading > p:last-child { font-size: 14px; }
   .state-policy { grid-template-columns: 1fr; gap: 26px; padding-block: 25px 35px; }
   .state-policy-copy h3 { font-size: 32px; }
+  .sb1318-feature { gap: 25px; padding-top: 0; }
+  .sb1318-feature .state-policy-copy h3 { font-size: 32px; }
+  .sb1318-report { grid-template-columns: 1fr; gap: 24px; padding: 25px; }
+  .sb1318-records { padding-left: 0; }
+  .sb1318-report > div:first-child > a { font-size: 23px; }
   .federal-policy { margin-top: 40px; }
   .federal-heading { display: block; }
   .federal-heading > p { margin-top: 15px; }

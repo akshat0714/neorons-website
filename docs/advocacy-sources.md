@@ -35,6 +35,14 @@ Sources:
 
 Do not substitute the 2025–2026 session’s SB 1318, which addresses a different subject. The screenshot alone does not establish the date of Akshat’s appearance, so no hearing date is claimed on the page.
 
+## SB 1318 feature update · November 14, 2026
+
+The Impact page now leads its legislative section with the enactment of SB 1318, the signing date and Chapter 645. The law summary describes the model policy requirement and local education agencies’ next regularly scheduled review on or after July 1, 2026. It does not imply that every local policy was due on July 1, nor that the statute guarantees a measured reduction in suicide.
+
+The source feature links to [Senator Wahab’s article on legislative passage](https://sd10.senate.ca.gov/index.php/news/legislature-passes-bill-help-youth-experiencing-mental-health-crisis), clearly labelled as the bill author’s account, plus the Governor’s signing announcement and the enacted statutory text. The Senate article’s displayed date is inconsistent with its pre-signature wording; the website does not reuse that date. Enactment is grounded in the Governor’s announcement and chaptered text.
+
+The supplied photograph and owner’s account remain the basis for Akshat’s Assembly advocacy. Searches did not locate an article naming Akshat or Neorons in connection with the bill. The linked news and official records verify the legislation, not his individual role. The feature does not claim he authored, sponsored, drafted, or personally secured passage of SB 1318. The June 12, 2024 Digital Democracy transcript names a different student witness and must not be cited as evidence of Akshat’s appearance or its date.
+
 ## Photo and caption provenance
 
 The owner provided the three images and identified the speaker as himself, Akshat Agarwal, requesting publication on the Impact page. The images’ visible name straps also read “Akshat Agarwal.” Captions use the supplied context and visible subject matter, without claiming a specific UN meeting, date, invitation, endorsement, or policy outcome.
