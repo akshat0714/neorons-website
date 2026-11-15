@@ -1,6 +1,6 @@
 # Advocacy content and source notes
 
-Reviewed on November 13, 2026. These notes distinguish public legislative records from information supplied by Neorons. They are editorial source notes, not additional public-facing claims.
+Legislative status rechecked on November 15, 2026. These notes distinguish public legislative records from information supplied by Neorons. They are editorial source notes, not additional public-facing claims.
 
 ## Attribution of Neorons’ role
 
@@ -24,7 +24,7 @@ Status was checked against each official GovInfo BILLSTATUS XML, which contains 
 
 The California photograph concerns **SB 1318 from the 2023–2024 session**, authored by Senator Aisha Wahab: “Pupil health: suicide prevention policies: pupil suicide crisis.” It is distinct from the five federal proposals.
 
-The bill became **Chapter 645, Statutes of 2024**, approved and filed on **September 27, 2024**. It provides for school suicide-crisis intervention protocols that prioritise mental-health professionals. The current feature covers the legislation only. At the owner’s request on November 14, 2026, Akshat’s Assembly photograph and personal-role copy have been removed from this feature. It does not claim Neorons authored or caused passage of this law.
+The bill became **Chapter 645, Statutes of 2024**, approved and filed on **September 27, 2024**. It provides for school suicide-crisis intervention protocols that prioritise mental-health professionals. The November 14 feature covered the legislation only. On November 15, the owner requested an explicit account of Akshat’s drafting and advocacy alongside Senator Aisha Wahab. The current feature attributes that account to Neorons and separately cites official records for the law and status. The Assembly photograph remains omitted.
 
 Sources:
 
@@ -54,3 +54,9 @@ The owner provided the three images and identified the speaker as himself, Aksha
 | `images/advocacy/akshat-california-sb1318.jpg` | Screenshot 2026-11-13 at 11.05.03 PM.png | The broadcast caption identifies the California State Assembly and SB 1318, with the subject “Pupil health: suicide prevention policies: pupil suicide crisis.” The user’s advocacy account, the screenshot, and official bill purpose support the school-policy caption. This image is not labelled as a UN appearance. Retained in the repository, but not displayed in the current law-only feature. |
 
 No official UN event listing or transcript for this appearance was found during the review. The page consequently avoids an exact event/date, a direct quotation from the speech, or a claim of UN endorsement.
+
+## November 15, 2026 · attribution and search visibility
+
+The owner explicitly states that Akshat Agarwal helped draft SB 1318 alongside Senator Aisha Wahab and helped draft and advance the five federal bills. The website publishes this as “Neorons reports …”, not as a claim verified by the linked official legislative records. The November 15 source review again found no independent named attribution of Akshat’s drafting role. No metadata or structured data describes him as the official author/sponsor of legislation.
+
+All five official GovInfo BILLSTATUS XML records were checked again: introduction and committee referral only, with no passage/enactment or law entries. The introduced dates in the public table correspond to those records. SB 1318’s September 27, 2024 enactment and Chapter 645 designation were rechecked against the Governor’s announcement and Secretary of State chapter index. Later changes to bill status should be checked against those primary records.

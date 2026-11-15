@@ -154,3 +154,6 @@ body[data-page="impact"] .credibility-group { border-radius: 3px; }
   .campus-summary > p:last-child { margin-top: 8px; font-size: 14px; }
 }
 @media (prefers-reduced-motion: reduce) { body[data-page="impact"] * { scroll-behavior: auto; } }
+
+/* Keep the attributed legislative summary compact on wide screens. */
+.federal-heading > p { max-width: 380px; line-height: 1.75; }
