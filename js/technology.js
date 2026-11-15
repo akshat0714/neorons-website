@@ -137,6 +137,7 @@
     const rect=story.getBoundingClientRect();
     const top=parseFloat(getComputedStyle(pin).top)||100;
     const distance=story.offsetHeight-pin.offsetHeight;
+    if (distance <= 0 || !story.getClientRects().length) return;
     if(fromUser&&mode==='manual') {stop();mode='scroll';}
     if(mode==='scroll') {render(clamp((top-rect.top)/distance));updatePlay();}
   }

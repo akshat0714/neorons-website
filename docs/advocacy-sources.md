@@ -24,7 +24,7 @@ Status was checked against each official GovInfo BILLSTATUS XML, which contains 
 
 The California photograph concerns **SB 1318 from the 2023–2024 session**, authored by Senator Aisha Wahab: “Pupil health: suicide prevention policies: pupil suicide crisis.” It is distinct from the five federal proposals.
 
-The bill became **Chapter 645, Statutes of 2024**, approved and filed on **September 27, 2024**. It provides for school suicide-crisis intervention protocols that prioritise mental-health professionals. The page identifies the photographed advocacy and the law’s enactment separately; it does not claim Neorons authored or caused passage of this law.
+The bill became **Chapter 645, Statutes of 2024**, approved and filed on **September 27, 2024**. It provides for school suicide-crisis intervention protocols that prioritise mental-health professionals. The current feature covers the legislation only. At the owner’s request on November 14, 2026, Akshat’s Assembly photograph and personal-role copy have been removed from this feature. It does not claim Neorons authored or caused passage of this law.
 
 Sources:
 
@@ -41,16 +41,16 @@ The Impact page now leads its legislative section with the enactment of SB 1318,
 
 The source feature links to [Senator Wahab’s article on legislative passage](https://sd10.senate.ca.gov/index.php/news/legislature-passes-bill-help-youth-experiencing-mental-health-crisis), clearly labelled as the bill author’s account, plus the Governor’s signing announcement and the enacted statutory text. The Senate article’s displayed date is inconsistent with its pre-signature wording; the website does not reuse that date. Enactment is grounded in the Governor’s announcement and chaptered text.
 
-The supplied photograph and owner’s account remain the basis for Akshat’s Assembly advocacy. Searches did not locate an article naming Akshat or Neorons in connection with the bill. The linked news and official records verify the legislation, not his individual role. The feature does not claim he authored, sponsored, drafted, or personally secured passage of SB 1318. The June 12, 2024 Digital Democracy transcript names a different student witness and must not be cited as evidence of Akshat’s appearance or its date.
+Earlier versions used the supplied photograph and owner’s account for Akshat’s Assembly advocacy; the current law-only feature omits that account. Searches did not locate an article naming Akshat or Neorons in connection with the bill. The linked news and official records verify the legislation, not his individual role. The feature does not claim he authored, sponsored, drafted, or personally secured passage of SB 1318. The June 12, 2024 Digital Democracy transcript names a different student witness and must not be cited as evidence of Akshat’s appearance or its date.
 
 ## Photo and caption provenance
 
 The owner provided the three images and identified the speaker as himself, Akshat Agarwal, requesting publication on the Impact page. The images’ visible name straps also read “Akshat Agarwal.” Captions use the supplied context and visible subject matter, without claiming a specific UN meeting, date, invitation, endorsement, or policy outcome.
 
-| Published asset | User-provided source | Caption basis |
+| Supplied asset | User-provided source | Caption basis / current use |
 | --- | --- | --- |
 | `images/advocacy/akshat-un-address.jpg` | Screenshot 2026-11-13 at 11.04.44 PM.png | UN podium and General Assembly hall visible; the owner identifies this as his UN address. Caption describes presentation of Neorons’ suicide-prevention work. |
 | `images/advocacy/neorons-un-presentation.jpg` | Screenshot 2026-11-13 at 11.04.50 PM.png | The presentation screen visibly names Neorons for suicide prevention and refers to mobilising youth for a safe and equitable digital future. This supports the page’s focus on youth participation and a safer, more equitable digital future. |
-| `images/advocacy/akshat-california-sb1318.jpg` | Screenshot 2026-11-13 at 11.05.03 PM.png | The broadcast caption identifies the California State Assembly and SB 1318, with the subject “Pupil health: suicide prevention policies: pupil suicide crisis.” The user’s advocacy account, the screenshot, and official bill purpose support the school-policy caption. This image is not labelled as a UN appearance. |
+| `images/advocacy/akshat-california-sb1318.jpg` | Screenshot 2026-11-13 at 11.05.03 PM.png | The broadcast caption identifies the California State Assembly and SB 1318, with the subject “Pupil health: suicide prevention policies: pupil suicide crisis.” The user’s advocacy account, the screenshot, and official bill purpose support the school-policy caption. This image is not labelled as a UN appearance. Retained in the repository, but not displayed in the current law-only feature. |
 
 No official UN event listing or transcript for this appearance was found during the review. The page consequently avoids an exact event/date, a direct quotation from the speech, or a claim of UN endorsement.
