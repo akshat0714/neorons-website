@@ -31,7 +31,7 @@ assets = {
     'vendor': {'.css', '.js', '.jpg', '.jpeg', '.png', '.svg', '.gif', '.woff2', '.woff'},
 }
 files = list(root.glob('*.html'))
-files += [root / name for name in ('robots.txt', 'sitemap.xml', 'site.webmanifest') if (root / name).is_file()]
+files += [root / name for name in ('robots.txt', 'sitemap.xml', 'site.webmanifest', 'favicon.ico') if (root / name).is_file()]
 for directory, extensions in assets.items():
     folder = root / directory
     if folder.exists():

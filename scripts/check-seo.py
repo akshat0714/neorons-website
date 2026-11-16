@@ -11,7 +11,9 @@ from html.parser import HTMLParser
 import json
 from pathlib import Path
 import re
+import struct
 from urllib.parse import unquote, urljoin, urlsplit
+from urllib.robotparser import RobotFileParser
 import xml.etree.ElementTree as ET
 
 
@@ -20,6 +22,7 @@ class Page(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.titles, self.descriptions, self.canonicals = [], [], []
         self.robots, self.jsonld = [], []
+        self.icons = []
         self.in_head = False
         self.title_parts = self.json_parts = None
         self.feed(source)
@@ -41,6 +44,8 @@ class Page(HTMLParser):
                     self.robots.append(content)
             if tag == "link" and "canonical" in attrs.get("rel", "").lower().split():
                 self.canonicals.append(attrs.get("href", ""))
+            if tag == "link" and "icon" in attrs.get("rel", "").lower().split():
+                self.icons.append(attrs)
         if tag == "script" and attrs.get("type", "").split(";")[0].strip().lower() == "application/ld+json":
             self.json_parts = []
 
@@ -87,6 +92,37 @@ def reject_json_constant(value):
     raise ValueError(f"invalid JSON constant {value}")
 
 
+def png_dimensions(path):
+    """Read only the PNG signature and complete first IHDR chunk."""
+    with path.open("rb") as asset:
+        header = asset.read(33)
+    if len(header) != 33 or header[:8] != b"\x89PNG\r\n\x1a\n" or header[8:16] != b"\x00\x00\x00\rIHDR":
+        raise ValueError("not a PNG with a complete IHDR header")
+    width, height = struct.unpack(">II", header[16:24])
+    if not width or not height:
+        raise ValueError("PNG dimensions must be positive")
+    return width, height
+
+
+def check_ico_header(path):
+    """Check the ICO directory and frame bounds without decoding pixels."""
+    with path.open("rb") as asset:
+        header = asset.read(6)
+        if len(header) != 6:
+            raise ValueError("truncated ICO header")
+        reserved, kind, count = struct.unpack("<HHH", header)
+        if reserved != 0 or kind != 1 or not count:
+            raise ValueError("not an ICO file with image entries")
+        directory = asset.read(count * 16)
+    if len(directory) != count * 16:
+        raise ValueError("truncated ICO image directory")
+    size = path.stat().st_size
+    for position in range(0, len(directory), 16):
+        length, offset = struct.unpack("<II", directory[position + 8:position + 16])
+        if not length or offset < 6 + count * 16 or offset + length > size:
+            raise ValueError("ICO image entry points outside the file")
+
+
 def validate(root):
     root = root.resolve()
     errors, pages, definitions, page_nodes = [], {}, defaultdict(list), defaultdict(list)
@@ -111,6 +147,32 @@ def validate(root):
     home = home_urls[0]
     origin = urlsplit(home).netloc
     founder_url = urljoin(home, "akshat-agarwal.html")
+    robots = RobotFileParser()
+    try:
+        robots.parse((root / "robots.txt").read_text(encoding="utf-8").splitlines())
+    except FileNotFoundError:
+        robots.parse([])
+    except (OSError, UnicodeError) as exc:
+        fail("robots.txt", str(exc))
+        robots.parse([])
+
+    def local_asset(reference, label):
+        if not isinstance(reference, str) or not reference.strip():
+            fail(label, "expected a nonempty local asset URL")
+            return None
+        asset_url = urljoin(home, reference)
+        parsed = urlsplit(asset_url)
+        if parsed.scheme != "https" or parsed.netloc != origin or parsed.fragment:
+            fail(label, "asset must resolve to this site's HTTPS origin without a fragment")
+            return None
+        path = (root / unquote(parsed.path).lstrip("/")).resolve()
+        if not path.is_relative_to(root) or not path.is_file():
+            fail(label, f"local asset is missing or outside the site: {reference}")
+            return None
+        if not robots.can_fetch("Googlebot-Image", asset_url):
+            fail(label, f"robots.txt blocks Googlebot-Image from {reference}")
+        return path
+
     seen_urls, unique_metadata = set(), {"title": {}, "description": {}}
 
     for url in locations:
@@ -206,6 +268,50 @@ def validate(root):
         return {urljoin(page_url, item["@id"]) for item in values if isinstance(item, dict) and isinstance(item.get("@id"), str)}
 
     organization, website = (find(home, kind) for kind in ("Organization", "WebSite"))
+    if website and (not isinstance(website[1].get("name"), str) or not website[1]["name"].strip()):
+        fail("index.html", "WebSite.name must be nonempty")
+    if home in pages:
+        if not robots.can_fetch("Googlebot", home):
+            fail("index.html", "robots.txt blocks Googlebot from the homepage")
+        png_icons = 0
+        for icon in pages[home].icons:
+            reference = icon.get("href") or ""
+            extension = Path(urlsplit(reference).path).suffix.lower()
+            if extension not in {".png", ".ico"}:
+                continue
+            label = "index.html favicon"
+            asset = local_asset(reference, label)
+            if asset is None:
+                continue
+            try:
+                if extension == ".ico":
+                    check_ico_header(asset)
+                else:
+                    width, height = png_dimensions(asset)
+                    if width != height or width < 49:
+                        raise ValueError(f"PNG favicon must be square and larger than 48px; found {width}x{height}")
+                    png_icons += 1
+            except (OSError, ValueError, struct.error) as exc:
+                fail(label, f"{reference}: {exc}")
+        if not png_icons:
+            fail("index.html", "expected a rel=icon link to a local square PNG larger than 48px")
+    if organization:
+        logo = organization[1].get("logo")
+        reference = (logo.get("contentUrl") or logo.get("url")) if isinstance(logo, dict) else logo
+        asset = local_asset(reference, "Organization.logo")
+        if asset:
+            try:
+                if asset.suffix.lower() != ".png":
+                    raise ValueError("expected a local PNG logo")
+                width, height = png_dimensions(asset)
+                if min(width, height) < 112:
+                    raise ValueError(f"logo must be at least 112x112px; found {width}x{height}")
+                if isinstance(logo, dict):
+                    for key, actual in (("width", width), ("height", height)):
+                        if key in logo and logo[key] != actual:
+                            fail("Organization.logo", f"declared {key} must match the PNG's actual {key} ({actual})")
+            except (OSError, ValueError, struct.error) as exc:
+                fail("Organization.logo", str(exc))
     profile = find(founder_url, "ProfilePage")
     person = founder = None
     if profile:

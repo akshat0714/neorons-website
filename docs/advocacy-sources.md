@@ -1,6 +1,6 @@
 # Advocacy content and source notes
 
-Legislative status rechecked on November 15, 2026. These notes distinguish public legislative records from information supplied by Neorons. They are editorial source notes, not additional public-facing claims.
+Legislative status rechecked on November 16, 2026. These notes distinguish public legislative records from information supplied by Neorons. They are editorial source notes, not additional public-facing claims.
 
 ## Attribution of Neorons’ role
 
@@ -41,7 +41,7 @@ The Impact page now leads its legislative section with the enactment of SB 1318,
 
 The source feature links to [Senator Wahab’s article on legislative passage](https://sd10.senate.ca.gov/index.php/news/legislature-passes-bill-help-youth-experiencing-mental-health-crisis), clearly labelled as the bill author’s account, plus the Governor’s signing announcement and the enacted statutory text. The Senate article’s displayed date is inconsistent with its pre-signature wording; the website does not reuse that date. Enactment is grounded in the Governor’s announcement and chaptered text.
 
-Earlier versions used the supplied photograph and owner’s account for Akshat’s Assembly advocacy; the current law-only feature omits that account. Searches did not locate an article naming Akshat or Neorons in connection with the bill. The linked news and official records verify the legislation, not his individual role. The feature does not claim he authored, sponsored, drafted, or personally secured passage of SB 1318. The June 12, 2024 Digital Democracy transcript names a different student witness and must not be cited as evidence of Akshat’s appearance or its date.
+Before November 14, versions used the supplied photograph and owner’s account for Akshat’s Assembly advocacy; the November 14 law-only feature omitted that account. Searches did not locate an article naming Akshat or Neorons in connection with the bill. The linked news and official records verify the legislation, not his individual role. That November 14 version did not claim he authored, sponsored, drafted, or personally secured passage of SB 1318; the subsequent attributed drafting account is documented below. The June 12, 2024 Digital Democracy transcript names a different student witness and must not be cited as evidence of Akshat’s appearance or its date.
 
 ## Photo and caption provenance
 
@@ -51,7 +51,7 @@ The owner provided the three images and identified the speaker as himself, Aksha
 | --- | --- | --- |
 | `images/advocacy/akshat-un-address.jpg` | Screenshot 2026-11-13 at 11.04.44 PM.png | UN podium and General Assembly hall visible; the owner identifies this as his UN address. Caption describes presentation of Neorons’ suicide-prevention work. |
 | `images/advocacy/neorons-un-presentation.jpg` | Screenshot 2026-11-13 at 11.04.50 PM.png | The presentation screen visibly names Neorons for suicide prevention and refers to mobilising youth for a safe and equitable digital future. This supports the page’s focus on youth participation and a safer, more equitable digital future. |
-| `images/advocacy/akshat-california-sb1318.jpg` | Screenshot 2026-11-13 at 11.05.03 PM.png | The broadcast caption identifies the California State Assembly and SB 1318, with the subject “Pupil health: suicide prevention policies: pupil suicide crisis.” The user’s advocacy account, the screenshot, and official bill purpose support the school-policy caption. This image is not labelled as a UN appearance. Retained in the repository, but not displayed in the current law-only feature. |
+| `images/advocacy/akshat-california-sb1318.jpg` | Screenshot 2026-11-13 at 11.05.03 PM.png | The broadcast caption identifies the California State Assembly and SB 1318, with the subject “Pupil health: suicide prevention policies: pupil suicide crisis.” The user’s advocacy account, the screenshot, and official bill purpose support the school-policy caption. This image is not labelled as a UN appearance. Retained in the repository, but not displayed in the current legislative feature. |
 
 No official UN event listing or transcript for this appearance was found during the review. The page consequently avoids an exact event/date, a direct quotation from the speech, or a claim of UN endorsement.
 
@@ -60,3 +60,11 @@ No official UN event listing or transcript for this appearance was found during 
 The owner explicitly states that Akshat Agarwal helped draft SB 1318 alongside Senator Aisha Wahab and helped draft and advance the five federal bills. The website publishes this as “Neorons reports …”, not as a claim verified by the linked official legislative records. The November 15 source review again found no independent named attribution of Akshat’s drafting role. No metadata or structured data describes him as the official author/sponsor of legislation.
 
 All five official GovInfo BILLSTATUS XML records were checked again: introduction and committee referral only, with no passage/enactment or law entries. The introduced dates in the public table correspond to those records. SB 1318’s September 27, 2024 enactment and Chapter 645 designation were rechecked against the Governor’s announcement and Secretary of State chapter index. Later changes to bill status should be checked against those primary records.
+
+## November 16, 2026 · profile and international advocacy
+
+The owner supplied the account of multiple California State Assembly appearances, speaking at UN conferences in Zimbabwe and Lesotho, and work with regional offices in South Africa. Focused public searches did not establish event names, dates, organising agencies, offices or formal roles. The profile and Impact page therefore attribute these geographic details to Neorons and make none of those additional specifics up. The existing supplied Assembly image supports its depicted appearance, not the number of other appearances.
+
+[KidsRights’ Akshat Agarwal nominee profile](https://www.kidsrights.org/nominees/akshat-agarwal/) independently identifies him as Neorons’ founder and lists nomination in 2026. The website links this public profile, and the Person entity uses it as a sameAs reference. No prize finalist or winner status is claimed; sensitive biographical details from that page are not reproduced.
+
+All five official federal BILLSTATUS XML records were rechecked November 16. They remain introduced bills with committee referrals and no enacted-law entries. The founder page lists their exact introduced titles, numbers and dates and links to their official records. SB 1318 remains separately identified as enacted September 27, 2024, Chapter 645.

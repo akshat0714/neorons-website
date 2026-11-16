@@ -28,3 +28,13 @@ Search Console requests are discovery signals. Google decides whether, when and 
 - [Google: requesting recrawling](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl)
 
 Legislative attribution and primary sources are recorded in `advocacy-sources.md`. Official records verify enacted/introduced status; Neorons supplies the account of Akshat’s drafting contribution.
+
+## November 16, 2026 · logo and public identity
+
+Google Search Console now reports the submitted sitemap as Success, with all 13 pages discovered. The earlier fetch status resolved without changing the valid XML.
+
+The previous favicon declaration was SVG only. Google’s current [favicon guidance](https://developers.google.com/search/docs/appearance/favicon-in-search) lists supported raster formats. Every regular page now declares a stable 96×96 PNG icon, a root ICO fallback, and a 180×180 Apple touch icon. The manifest supplies 192×192 and 512×512 PNG icons. The original neuron geometry is preserved, with the site’s green and ivory palette for contrast. `scripts/build-brand-icons.py` reproducibly renders all variants; `--check` verifies exact output. The release packager now includes root `favicon.ico`.
+
+The existing WebSite entity retains Neorons as its preferred name with Neorons Inc. as an alternate. Organization.logo points to the matching 512×512 PNG. Existing identity entities are updated rather than duplicated; the founder has one independently matched KidsRights sameAs URL. PNG/ICO dimensions, structure, local crawlability and logo declarations are covered by the SEO validator.
+
+This configures eligible assets and clear identity signals. Google chooses favicon, site-name and knowledge-panel display; no new panel, logo display time or ranking is guaranteed. Request recrawling after deployment and record actual responses in the workspace release manifest.
