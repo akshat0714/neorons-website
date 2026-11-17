@@ -13,7 +13,7 @@ A static, international nonprofit website centred on suicide prevention, multili
 - `contact.html`, `media.html`, `profile.html`: contact, press and printable organisation profile
 - `privacy.html`, `safeguarding.html`, `accessibility.html`, `credits.html`: policies and logo attribution
 
-Photographs, illustrations and individual profiles are removed from the published site. Organisation and partner logos remain. Content and navigation remain available without JavaScript; motion controls respect reduced-motion preferences.
+The Impact page includes five I-Stem programme photographs and a supplied group photograph. Individual profiles and United Nations advocacy photographs remain removed. Organisation and partner logos remain. Content and navigation remain available without JavaScript; motion controls respect reduced-motion preferences.
 
 ## Run locally
 

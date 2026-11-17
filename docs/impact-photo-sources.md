@@ -45,3 +45,18 @@ Converted the supplied PNG screenshots to self-hosted WebP using Pillow, quality
 - Source: `Screenshot 2026-10-27 at 3.50.24 PM.png`
 - Source SHA-256: `d1a83515e2420e0e7f0e8510674c1e2d878786b23e4af309a9e557c59cdeaf1e`
 - Observed content: Participants facing speakers during an employability-skills session; the original banner remains visible.
+
+## Attribution update — 17 November 2026
+
+The user requested restoration of these five programme photographs and identified them as I-Stem photographs. They are used only on Impact; personal profiles and United Nations advocacy images remain removed.
+
+## I-Stem group photograph
+
+- Asset: `images/impact/istem-group.png`
+- Source: user-supplied `Screenshot 2026-11-17 at 3.16.51 PM.png`
+- Dimensions: 1092 × 682
+- Bytes: 1,010,411
+- SHA-256: `40c83385ab588c7f7ab3c12fe0e7789ecd3b0268eeeff7546fe45b66db37125b`
+- Copied unchanged; no generative editing, retouching, or added identification
+- Observable content: five people standing together in an indoor seating area; original screenshot includes carousel controls
+- User supplied the context of work with I-Stem; no person names, titles, event date or location are asserted

@@ -1,4 +1,4 @@
-/* Impact: organisational results and public legislative resources. */
+/* Impact: I-Stem collaboration, programme results and federal advocacy. */
 body[data-page="impact"] { --impact-green: #183e35; }
 .impact-lead { padding: 145px 0 12px; background: #183e35; color: #fffdf7; }
 .impact-lead .eyebrow { color: #c6d9c8; font-size: 11px; }
@@ -16,33 +16,10 @@ body[data-page="impact"] { --impact-green: #183e35; }
 .impact-reach dd { margin: 0; font: 400 clamp(34px,3.5vw,48px)/1.1 var(--serif); letter-spacing: -.04em; }
 .impact-reach dt { font-size: 12px; color: var(--muted); }
 .policy-section { padding-block: 80px 90px; border-top: 1px solid var(--line); }
-.impact-section-heading { display: grid; grid-template-columns: 1.4fr 1fr; column-gap: 90px; align-items: end; margin-bottom: 50px; }
-.impact-section-heading .eyebrow { grid-column: 1/-1; margin-bottom: 20px; }
-.impact-section-heading h2 { font-size: clamp(40px,4.5vw,61px); }
-.impact-section-heading > p:last-child { color: var(--muted); font-size: 16px; max-width: 390px; }
-.state-policy { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; padding-block: 35px 55px; border-block: 1px solid var(--line); }
-.state-policy-copy h3 { font-size: clamp(28px,3vw,39px); margin: 19px 0; }
-.state-policy-copy > p:not(.policy-location) { font-size: 14px; color: var(--muted); margin: 12px 0; }
-.policy-location { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
-.policy-location span { display: inline-block; margin-left: 13px; color: #286446; letter-spacing: 0; text-transform: none; font-weight: 600; }
-.state-policy-copy .text-link { display: inline-block; font-size: 12px; margin-top: 13px; }
-.sb1318-heading h2 em { color: #55715c; font-weight: 400; }
-.sb1318-heading > p:last-child strong { color: var(--ink); font-weight: 600; }
-.sb1318-feature { border: 0; padding-top: 0; align-items: start; gap: 38px 55px; scroll-margin-top: 120px; }
-.sb1318-feature .state-policy-copy h3 { margin: 15px 0 13px; font-size: 36px; }
-.sb1318-feature .state-policy-copy > p:not(.policy-location) { font-size: 14px; line-height: 1.8; }
-.sb1318-report { background: #e9eee3; border-radius: 17px; padding: 28px 32px; }
-.sb1318-report .eyebrow { color: #47604d; font-size: 9px; margin-bottom: 13px; }
-.sb1318-report > div:first-child > a { display: flex; gap: 20px; justify-content: space-between; max-width: 580px; font: 400 24px/1.2 var(--serif); letter-spacing: -.025em; text-decoration: none; }
-.sb1318-report > div:first-child > a:hover { text-decoration: underline; }
-.sb1318-report > div:first-child > a > span:last-child { flex-shrink: 0; font: 400 20px/1.5 var(--sans); }
-.sb1318-report > div:first-child > p:last-child { font-size: 12px; color: #4d6052; margin-top: 13px; }
-.sb1318-records { display: flex; flex-direction: column; align-items: flex-start; gap: 17px; margin-top: 25px; padding-top: 22px; border-top: 1px solid #c9d4c3; }
-.sb1318-records a { font-size: 12px; line-height: 1.6; color: #36533f; }
-.federal-policy { margin-top: 65px; }
+.federal-policy { margin-top: 0; }
 .federal-heading { display: flex; justify-content: space-between; gap: 35px; margin-bottom: 30px; align-items: end; }
 .federal-heading .eyebrow { font-size: 10px; margin-bottom: 14px; }
-.federal-heading h3 { font-size: 34px; }
+.federal-heading h2 { font-size: clamp(35px,4vw,48px); max-width: 570px; }
 .federal-heading > p { font-size: 12px; color: var(--muted); }
 .policy-table { width: 100%; border-collapse: collapse; table-layout: fixed; text-align: left; }
 .policy-table th,.policy-table td { padding: 24px 25px 24px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
@@ -58,32 +35,46 @@ body[data-page="impact"] { --impact-green: #183e35; }
 .bill-status { display: inline-block; font-size: 11px; color: #385845; border: 1px solid #b8c5b6; padding: 3px 10px; border-radius: 3px; white-space: nowrap; }
 .bill-referral { display: block; font-size: 10px; margin-top: 7px; }
 .policy-source-note { font-size: 10px; color: var(--muted); margin-top: 20px; }
-/* Programme figures are readable text cards with no media placeholders. */
+/* Collaboration photography and programme-wide results. */
+.istem-collaboration { display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; gap: 65px; padding-top: 80px; }
+.istem-copy .eyebrow { margin-bottom: 20px; }
+.istem-copy h2 { font-size: clamp(35px,4vw,52px); margin-bottom: 22px; }
+.istem-name { white-space: nowrap; }
+.istem-copy > p:last-child { color: var(--muted); font-size: 16px; line-height: 1.75; }
+.istem-photo img { display: block; width: 100%; height: auto; aspect-ratio: 1.95; object-fit: cover; object-position: center top; border-radius: 8px; }
+.istem-photo figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; margin-top: 10px; color: var(--muted); font-size: 11px; }
+
 .impact-programmes { padding-block: 80px 38px; }
 .programme-heading { max-width: 750px; margin-bottom: 35px; }
 .programme-heading .eyebrow { margin-bottom: 16px; }
 .programme-heading h2 { font-size: clamp(37px,4vw,53px); }
 .programme-heading > p:last-child { margin-top: 18px; color: var(--muted); font-size: 16px; line-height: 1.75; }
-.programme-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
-.programme-card { min-width: 0; padding: 30px 28px; border: 1px solid #d8dfd0; border-radius: 12px; background: #f2f3ec; }
+.programme-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 26px; }
+.programme-card { min-width: 0; border: 1px solid #d8dfd0; border-radius: 12px; background: #f2f3ec; overflow: hidden; }
+.programme-photo img { display: block; width: 100%; height: auto; aspect-ratio: 1.65; object-fit: cover; }
+.programme-photo figcaption { padding: 10px 28px 0; color: #52604f; font-size: 11px; }
+.programme-card-content { padding: 26px 28px 30px; }
+.programme-card-wide { grid-column: 1/-1; display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
+.programme-card-wide .programme-photo { padding-bottom: 14px; }
 .programme-card:nth-child(3n+2) { background: #eef1ec; }
 .programme-card:nth-child(3n) { background: #f6f2e9; }
 .programme-metric { padding-bottom: 24px; border-bottom: 1px solid #cdd6c7; margin-bottom: 23px; }
 .programme-metric strong { display: block; color: #234a3b; font: 400 clamp(38px,4vw,49px)/1.05 var(--serif); letter-spacing: -.045em; }
 .programme-metric span { display: block; margin-top: 10px; color: #52604f; font-size: 12px; line-height: 1.6; }
 .programme-card h3 { font-size: 26px; line-height: 1.18; margin-bottom: 13px; }
-.programme-card > p:not(.programme-metric) { color: #52604f; font-size: 13px; line-height: 1.75; }
+.programme-card-content > p:not(.programme-metric) { color: #52604f; font-size: 13px; line-height: 1.75; }
 .programme-card .programme-detail { margin-top: 18px; }
-.programme-note { margin-top: 22px; font-size: 12px; color: var(--muted); }
+.programme-summary { display: flex; align-items: center; justify-content: space-between; gap: 30px; margin-top: 30px; padding-block: 25px; border-top: 1px solid var(--line); }
+.programme-summary > p:first-child strong { display: block; color: #234a3b; font: 400 39px/1.1 var(--serif); letter-spacing: -.04em; }
+.programme-summary > p:first-child span { display: block; margin-top: 8px; font-size: 12px; color: var(--muted); }
+.programme-note { max-width: 300px; font-size: 12px; color: var(--muted); }
 .campus-summary { border-top: 1px solid var(--line); padding-block: 26px; margin-bottom: 55px; display: flex; gap: 35px; align-items: center; justify-content: space-between; }
 .campus-summary .eyebrow { font-size: 10px; }
 .campus-summary > p:last-child { font-size: 15px; }
 body[data-page="impact"] .credibility-group { border-radius: 3px; }
 @media (max-width: 900px) {
   .impact-lead-heading { gap: 35px; }
-  .programme-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .state-policy { gap: 35px; }
-  .impact-section-heading { column-gap: 45px; }
+  .istem-collaboration { gap: 35px; }
   .policy-table th:first-child { width: 42%; }
   .policy-table th:last-child { width: 19%; }
 }
@@ -100,19 +91,10 @@ body[data-page="impact"] .credibility-group { border-radius: 3px; }
   .impact-reach dd { font-size: 36px; }
   .impact-reach dt { font-size: 11px; }
   .policy-section { padding-block: 55px 45px; }
-  .impact-section-heading { grid-template-columns: 1fr; gap: 18px; margin-bottom: 30px; }
-  .impact-section-heading .eyebrow { margin: 0; }
-  .impact-section-heading > p:last-child { font-size: 14px; }
-  .state-policy { grid-template-columns: 1fr; gap: 26px; padding-block: 25px 35px; }
-  .state-policy-copy h3 { font-size: 32px; }
-  .sb1318-feature { gap: 25px; padding-top: 0; }
-  .sb1318-feature .state-policy-copy h3 { font-size: 32px; }
-  .sb1318-report { padding: 25px; }
-  .sb1318-report > div:first-child > a { font-size: 23px; }
-  .federal-policy { margin-top: 40px; }
+  .federal-policy { margin-top: 0; }
   .federal-heading { display: block; }
   .federal-heading > p { margin-top: 15px; }
-  .federal-heading h3 { font-size: 30px; }
+  .federal-heading h2 { font-size: 34px; }
   .policy-table,.policy-table tbody,.policy-table tr,.policy-table td,.policy-table tbody th { display: block; width: 100%; }
   .policy-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
   .policy-table tr { border-top: 1px solid var(--line); padding: 22px 0; }
@@ -122,11 +104,18 @@ body[data-page="impact"] .credibility-group { border-radius: 3px; }
   .policy-table td { margin-top: 13px; font-size: 13px; }
   .bill-referral { display: inline; margin-left: 10px; }
   .policy-source-note { border-top: 1px solid var(--line); padding-top: 18px; margin-top: 0; }
+  .istem-collaboration { grid-template-columns: 1fr; gap: 27px; padding-top: 50px; }
+  .istem-copy > p:last-child { font-size: 14px; }
   .impact-programmes { padding-top: 55px; }
   .programme-heading h2 { font-size: 37px; }
   .programme-heading > p:last-child { font-size: 14px; }
   .programme-grid { grid-template-columns: 1fr; gap: 16px; }
-  .programme-card { padding: 26px; }
+  .programme-card-content { padding: 24px; }
+  .programme-photo figcaption { padding-inline: 24px; }
+  .programme-card-wide { grid-column: auto; display: block; }
+  .programme-card-wide .programme-photo { padding-bottom: 0; }
+  .programme-summary { display: block; }
+  .programme-note { margin-top: 18px; max-width: none; }
   .programme-metric strong { font-size: 43px; }
   .campus-summary { display: block; margin-bottom: 30px; }
   .campus-summary > p:last-child { margin-top: 8px; font-size: 14px; }
