@@ -8,21 +8,54 @@ body[data-page="mission"] {
 }
 #community-atlas, #rights, #phone-service, #campus-programs { scroll-margin-top: 112px; }
 
-.mission-visual-hero { width: min(1240px, calc(100% - 56px)); padding-top: 137px; }
-.mission-hero-copy { max-width: 920px; margin: 0 auto 37px; text-align: center; }
-.mission-hero-copy .eyebrow { font-size: 10px; margin-bottom: 22px; }
-.mission-hero-copy h1 { font-size: clamp(54px, 6.3vw, 82px); line-height: 1.02; letter-spacing: -.055em; }
-.mission-hero-copy h1 em, .mission-purpose h2 em, .mission-closing h2 em { font-weight: 400; color: #697b5b; }
-.mission-hero-copy > p:not(.eyebrow) { margin: 19px auto 0; color: var(--mission-muted); font-size: 16px; line-height: 1.7; }
-.mission-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 15px 27px; margin-top: 23px; }
-.mission-actions .button { font-size: 12px; gap: 18px; padding: 13px 22px; }
-.mission-actions > a:not(.button) { border: 0; padding: 9px 0; font-size: 12px; text-decoration: none; }
+/* Full-bleed community photography, with clear space for faces above the copy. */
+.mission-visual-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  min-height: 760px;
+  min-height: max(760px, 100svh);
+  padding: 340px max(6vw, calc((100vw - 1200px) / 2)) 112px;
+  overflow: hidden;
+  background: #12231c;
+  color: #fffdf7;
+}
+.mission-hero-photo { position: absolute; inset: 0; z-index: -1; margin: 0; }
+.mission-hero-photo img {
+  display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%;
+  transform-origin: 52% 28%;
+}
+.motion-ready .mission-hero-photo img { animation: mission-hero-drift 24s ease-in-out infinite alternate; }
+.mission-hero-photo::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, #10251d12 25%, #10251d30 42%, #10251dc4 73%, #10251df5 100%), linear-gradient(90deg, #10251d42, transparent 75%);
+}
+.mission-hero-copy { position: relative; max-width: 690px; text-align: left; }
+.mission-hero-copy .eyebrow { color: #fffdf7; font-size: 11px; margin-bottom: 22px; }
+.mission-hero-copy h1 { color: #fffdf7; font-size: clamp(68px, 7.5vw, 110px); line-height: .96; letter-spacing: -.055em; }
+.mission-hero-copy h1 em { font-weight: 400; color: #fffdf7; }
+.mission-purpose h2 em, .mission-closing h2 em { font-weight: 400; color: #697b5b; }
+.mission-hero-copy > p:not(.eyebrow) { max-width: 510px; margin: 23px 0 0; color: #fffdf7; font-size: 16px; line-height: 1.65; }
+.mission-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 30px; margin-top: 27px; }
+.mission-actions .button { background: #fffdf7; color: #203f30; border-color: #fffdf7; font-size: 12px; gap: 24px; padding: 16px 24px; }
+.mission-actions .button:hover { background: #e6eedc; border-color: #e6eedc; }
+.mission-actions > a:not(.button) { border: 0; color: #fffdf7; padding: 12px 0; font-size: 12px; text-decoration: none; }
 .mission-actions > a:not(.button):hover { text-decoration: underline; }
 .mission-actions > a:not(.button) span { font-size: 17px; margin-left: 6px; }
-.mission-hero-photo { margin: 0; }
-.mission-hero-photo img { display: block; width: 100%; aspect-ratio: 1.95; object-fit: cover; object-position: center 45%; border-radius: 27px; }
-.mission-hero-photo figcaption { display: flex; justify-content: space-between; align-items: start; gap: 8px 24px; margin: 11px 3px 0; color: #626c59; font-size: 10px; line-height: 1.65; text-align: right; }
-.mission-hero-photo figcaption a { flex-shrink: 0; color: inherit; text-decoration-color: #bdc7b1; }
+.mission-hero-photo figcaption {
+  position: absolute; right: max(6vw, calc((100vw - 1200px) / 2)); bottom: 28px; z-index: 1;
+  display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 5px 16px;
+  max-width: calc(100% - 280px); color: #fffdf7; font-size: 10px; line-height: 1.65;
+}
+.mission-hero-photo figcaption a { color: inherit; text-underline-offset: 3px; text-decoration-color: #ffffff80; }
+.mission-hero-motion {
+  bottom: 24px; left: max(6vw, calc((100vw - 1200px) / 2));
+  background: #10251d66; border-color: #ffffff60; color: #fffdf7; backdrop-filter: blur(10px);
+}
+.mission-visual-hero :focus-visible { outline: 2px solid #fffdf7; outline-offset: 5px; }
+@keyframes mission-hero-drift { from { transform: scale(1); } to { transform: scale(1.035); } }
 
 /* The selected photograph leads; the globe stays close at hand. */
 .community-atlas { width: min(1200px, calc(100% - 80px)); padding-top: 90px; }
@@ -151,10 +184,10 @@ body[data-page="mission"] [role="tabpanel"]:focus-visible { outline: 2px solid #
   .culture-place, .culture-place h3 { font-size: 30px; }
 }
 @media (max-width: 800px) {
-  .mission-visual-hero { padding-top: 125px; width: calc(100% - 40px); }
-  .mission-hero-copy { margin-bottom: 30px; }
-  .mission-hero-copy h1 { font-size: 67px; }
-  .mission-hero-photo img { aspect-ratio: 1.65; border-radius: 23px; }
+  .mission-visual-hero { padding-inline: 40px; padding-top: 360px; }
+  .mission-hero-copy h1 { font-size: 78px; }
+  .mission-hero-photo figcaption { right: 40px; max-width: calc(100% - 250px); }
+  .mission-hero-motion { left: 40px; }
   .community-atlas { width: calc(100% - 48px); padding-top: 70px; }
   .atlas-region-nav { gap: 8px; margin-bottom: 25px; }
   .atlas-region-nav button { padding: 11px 16px; }
@@ -174,16 +207,17 @@ body[data-page="mission"] [role="tabpanel"]:focus-visible { outline: 2px solid #
   .mission-closing { padding-block: 65px 80px; }
 }
 @media (max-width: 540px) {
-  .mission-visual-hero { width: calc(100% - 24px); padding-top: 115px; }
-  .mission-hero-copy { padding-inline: 15px; margin-bottom: 27px; }
-  .mission-hero-copy .eyebrow { font-size: 9px; margin-bottom: 20px; }
-  .mission-hero-copy h1 { font-size: clamp(49px, 13.4vw, 65px); }
-  .mission-hero-copy > p:not(.eyebrow) { font-size: 13px; margin-top: 18px; }
-  .mission-actions { gap: 12px 21px; margin-top: 20px; }
-  .mission-actions .button { font-size: 11px; padding: 12px 18px; }
+  .mission-visual-hero { min-height: max(800px, 100svh); padding: 370px 26px 130px; }
+  .mission-hero-copy .eyebrow { font-size: 9px; margin-bottom: 18px; }
+  .mission-hero-copy h1 { font-size: clamp(52px, 15vw, 74px); }
+  .mission-hero-copy > p:not(.eyebrow) { font-size: 14px; margin-top: 20px; max-width: 330px; }
+  .mission-actions { gap: 5px 21px; margin-top: 23px; }
+  .mission-actions .button { font-size: 11px; padding: 14px 18px; gap: 20px; }
   .mission-actions > a:not(.button) { font-size: 11px; }
-  .mission-hero-photo img { aspect-ratio: 1.25; object-position: center 46%; border-radius: 19px; }
-  .mission-hero-photo figcaption { flex-direction: column; align-items: center; gap: 4px; margin-top: 9px; font-size: 9px; text-align: center; }
+  .mission-hero-photo img { height: 75%; object-position: 47% 22%; }
+  .mission-hero-photo::after { background: linear-gradient(180deg, #10251d08 20%, #10251d08 30%, #12231c85 47%, #12231c 74%); }
+  .mission-hero-photo figcaption { left: 26px; right: 26px; bottom: 24px; max-width: none; flex-direction: column; gap: 3px; font-size: 9px; }
+  .mission-hero-motion { left: 26px; bottom: 82px; font-size: 10px; padding: 8px 12px; }
   .community-atlas { width: calc(100% - 40px); padding-top: 55px; }
   .atlas-heading { margin-bottom: 24px; }
   .atlas-heading .eyebrow { font-size: 9px; margin-bottom: 18px; }
@@ -235,7 +269,7 @@ body[data-page="mission"] [role="tabpanel"]:focus-visible { outline: 2px solid #
   .mission-closing > p:not(.eyebrow) { font-size: 13px; margin-block: 18px 25px; }
 }
 @media (max-width: 360px) {
-  .mission-hero-copy h1 { font-size: 47px; }
+  .mission-hero-copy h1 { font-size: 50px; }
   .atlas-region-nav button { padding-inline: 12px; }
   .atlas-canvas-wrap { height: 260px; }
   .atlas-coordinate { white-space: normal; }
@@ -243,18 +277,25 @@ body[data-page="mission"] [role="tabpanel"]:focus-visible { outline: 2px solid #
   .mission-purpose h2 { font-size: 35px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .atlas-enter { animation: none; }
+  .atlas-enter, .motion-ready .mission-hero-photo img { animation: none; }
   .atlas-region-nav button, .atlas-tools button, .atlas-step-controls button, .mission-evidence > summary > span, .mission-rights-compact summary > span, .voice-disclosure-label { transition: none; }
 }
 .atlas-motion-off .atlas-enter, .motion-paused .atlas-enter { animation: none; }
 .motion-paused .atlas-region-nav button, .motion-paused .mission-evidence > summary > span, .motion-paused .mission-rights-compact summary > span { transition: none; }
 @media print {
-  .mission-visual-hero { padding-top: 20px; }
+  .mission-visual-hero { display: block; min-height: 0; padding: 20px; overflow: visible; color: #203f30; background: none; }
+  .mission-hero-photo { position: relative; z-index: auto; }
+  .mission-hero-photo img { height: auto; max-height: 330px; object-fit: contain; }
+  .mission-hero-photo::after { display: none; }
+  .mission-hero-photo figcaption { position: static; color: #203f30; max-width: none; justify-content: flex-start; }
+  .mission-hero-copy { margin-top: 25px; }
+  .mission-hero-copy h1, .mission-hero-copy h1 em, .mission-hero-copy .eyebrow, .mission-hero-copy > p:not(.eyebrow) { color: #203f30; }
+  .mission-hero-motion { display: none; }
   .atlas-region-nav, .atlas-world, .mission-actions { display: none; }
   .atlas-display, .atlas-panels { display: block; }
   .region-panel[hidden] { display: block !important; }
   .region-panel { margin-block: 25px; break-inside: avoid; }
   .culture-scene > img { height: 260px; }
-  .atlas-enter { animation: none; }
+  .atlas-enter, .motion-ready .mission-hero-photo img { animation: none; }
   .community-atlas, .mission-purpose, .mission-closing { padding-block: 30px; }
 }
