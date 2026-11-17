@@ -79,7 +79,7 @@
     root.classList.toggle("atlas-close", closer);
     if (play) {
       play.disabled = !allowed;
-      textIfChanged(play, tourActive ? "Pause journey" : tourFinished ? "Replay journey" : tourStarted ? "Resume journey" : "Play journey");
+      textIfChanged(play, tourActive ? "Pause tour" : tourFinished ? "Replay tour" : tourStarted ? "Resume tour" : "Play tour");
       play.setAttribute("aria-pressed", String(tourActive));
     }
     if (reduce) {
@@ -88,7 +88,7 @@
       reduce.setAttribute("aria-pressed", String(!allowed));
       textIfChanged(reduce, inherited ? "Motion reduced" : localReduced ? "Enable motion" : "Reduce motion");
     }
-    if (zoomButton) textIfChanged(zoomButton, closer ? "Pull back" : "Closer look");
+    if (zoomButton) textIfChanged(zoomButton, closer ? "Zoom out" : "Zoom in");
   }
   function progress() {
     root.style.setProperty("--tour-progress", String(tourFinished ? 1 : (selected + sceneElapsed / sceneDuration) / items.length));

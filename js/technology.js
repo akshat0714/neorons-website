@@ -59,7 +59,7 @@
     jumps.forEach((button,i) => button.style.setProperty('--chapter-progress',String(clamp(progress*4-i))));
   }
   function updatePlay() {
-    const text = playing ? 'Pause walkthrough' : progress>=.999 ? 'Replay walkthrough' : 'Play walkthrough';
+    const text = playing ? 'Pause demo' : progress>=.999 ? 'Replay demo' : 'Play demo';
     if(play.getAttribute('aria-label')===text) return;
     play.querySelector('[aria-hidden]').textContent = playing ? 'Ⅱ' : '▷';
     label.textContent=text;
