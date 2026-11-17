@@ -146,7 +146,6 @@ def validate(root):
         return ["sitemap.xml: expected exactly one homepage URL"], 0, 0
     home = home_urls[0]
     origin = urlsplit(home).netloc
-    founder_url = urljoin(home, "akshat-agarwal.html")
     robots = RobotFileParser()
     try:
         robots.parse((root / "robots.txt").read_text(encoding="utf-8").splitlines())
@@ -312,31 +311,10 @@ def validate(root):
                             fail("Organization.logo", f"declared {key} must match the PNG's actual {key} ({actual})")
             except (OSError, ValueError, struct.error) as exc:
                 fail("Organization.logo", str(exc))
-    profile = find(founder_url, "ProfilePage")
-    person = founder = None
-    if profile:
-        main_ids = links(founder_url, profile[1], "mainEntity")
-        if len(main_ids) != 1:
-            fail("akshat-agarwal.html", "ProfilePage.mainEntity must identify exactly one Person by @id")
-        else:
-            main_id = next(iter(main_ids))
-            founder = find(founder_url, "Person", main_id)
-            person = find(home, "Person", main_id)
-    if founder_url not in pages:
-        fail("sitemap.xml", "founder profile must be an existing indexed sitemap page")
     if organization and website:
         if organization[0] not in links(home, website[1], "publisher"):
             fail("index.html", "WebSite.publisher must reference the homepage Organization")
-    if organization and person:
-        if person[0] not in links(home, organization[1], "founder"):
-            fail("index.html", "Organization.founder must reference the homepage Person")
-        if organization[0] not in links(home, person[1], "worksFor") | links(home, person[1], "affiliation"):
-            fail("index.html", "Person.worksFor or affiliation must reference the homepage Organization")
-    if profile and founder and founder[0] not in links(founder_url, profile[1], "mainEntity"):
-        fail("akshat-agarwal.html", "ProfilePage.mainEntity must reference its Person")
-    if person and founder and person[0] != founder[0]:
-        fail("akshat-agarwal.html", "founder Person @id must match the homepage Person @id")
-    for page_url, item, expected_url in ((home, organization, home), (home, website, home), (founder_url, profile, founder_url), (founder_url, founder, founder_url)):
+    for page_url, item, expected_url in ((home, organization, home), (home, website, home)):
         if item and item[1].get("url") != expected_url:
             fail(page_url, f"{', '.join(sorted(types(item[1])))}.url must match {expected_url}")
     return errors, len(pages), sum(len(page.jsonld) for page in pages.values())

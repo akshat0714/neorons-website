@@ -189,10 +189,10 @@ h.resize(390, 330, 3);
 assert.equal(h.canvas.width, 780, "DPR is capped at 2");
 assert.equal(h.canvas.height, 660);
 assert.equal(h.root.properties["--tour-progress"], progressBeforeResize);
-assert.equal(h.play.textContent, "Pause journey");
+assert.equal(h.play.textContent, "Pause tour");
 assert.equal(h.queue(), 1);
 h.play.click();
-assert.equal(h.play.textContent, "Resume journey");
+assert.equal(h.play.textContent, "Resume tour");
 h.step();
 assert.equal(h.queue(), 0);
 assert(h.root.classList.contains("atlas-motion-off"));
@@ -203,7 +203,7 @@ for (let index = 2; index < ids.length; index++) {
   assert.equal(h.label.textContent, communities[index].name);
 }
 h.frames(framesPerScene);
-assert.equal(h.play.textContent, "Replay journey");
+assert.equal(h.play.textContent, "Replay tour");
 assert.equal(h.root.dataset.activeRegion, ids[lastIndex]);
 h.step();
 assert.equal(h.queue(), 0);
@@ -214,17 +214,17 @@ h.play.click();
 h.step();
 h.visible(false);
 assert.equal(h.queue(), 0);
-assert.equal(h.play.textContent, "Resume journey");
+assert.equal(h.play.textContent, "Resume tour");
 assert(h.root.classList.contains("atlas-motion-off"));
 h.visible(true);
-assert.equal(h.play.textContent, "Resume journey");
+assert.equal(h.play.textContent, "Resume tour");
 assert.equal(h.queue(), 1);
 h.play.click();
 h.pageHidden(true);
 assert.equal(h.queue(), 0);
-assert.equal(h.play.textContent, "Resume journey");
+assert.equal(h.play.textContent, "Resume tour");
 h.pageHidden(false);
-assert.equal(h.play.textContent, "Resume journey");
+assert.equal(h.play.textContent, "Resume tour");
 assert.equal(h.queue(), 1);
 
 // System, site and local preferences compose without a stuck disabled control.
@@ -254,7 +254,7 @@ h.systemMotion(false);
 assert.equal(h.play.disabled, false, "Clearing inherited preferences re-enables the journey");
 assert.equal(h.reduce.disabled, false);
 assert.equal(h.reduce.textContent, "Reduce motion");
-assert.equal(h.play.textContent, "Resume journey", "Resuming site motion does not restart the tour");
+assert.equal(h.play.textContent, "Resume tour", "Resuming site motion does not restart the tour");
 
 // Keyboard, next/previous and zoom controls expose the full pointer experience.
 h.tabs[0].listeners.keydown({ key: "ArrowLeft", preventDefault() {} });
@@ -265,10 +265,10 @@ assert.equal(h.root.dataset.activeRegion, ids[0]);
 h.prev.click();
 assert.equal(h.root.dataset.activeRegion, ids[lastIndex]);
 h.zoom.click();
-assert.equal(h.zoom.textContent, "Pull back");
+assert.equal(h.zoom.textContent, "Zoom out");
 h.frames(25);
 h.zoom.click();
-assert.equal(h.zoom.textContent, "Closer look");
+assert.equal(h.zoom.textContent, "Zoom in");
 h.reset.click();
 assert(h.root.classList.contains("atlas-overview"));
 h.frames(25);
@@ -286,7 +286,7 @@ h.canvas.listeners.pointerdown({ button: 0, pointerId: 2, pointerType: "touch", 
 h.canvas.listeners.pointermove({ pointerId: 2, clientX: 160, clientY: 122, preventDefault() { prevented = true; } });
 assert(prevented);
 assert(h.root.classList.contains("atlas-dragging"));
-assert.equal(h.zoom.textContent, "Pull back", "Dragging a zoomed globe preserves the zoom control state");
+assert.equal(h.zoom.textContent, "Zoom out", "Dragging a zoomed globe preserves the zoom control state");
 h.canvas.listeners.pointerup({ type: "pointerup", pointerId: 2, clientX: 160, clientY: 122 });
 assert.equal(h.root.classList.contains("atlas-dragging"), false);
 
@@ -297,7 +297,7 @@ reading.play.click();
 reading.frames(framesPerScene - 5);
 assert.equal(reading.root.dataset.activeRegion, ids[0]);
 reading.panelGroup.listeners.focusin({ target: { tagName: "A" } });
-assert.equal(reading.play.textContent, "Resume journey");
+assert.equal(reading.play.textContent, "Resume tour");
 assert.equal(reading.queue(), 0);
 reading.frames(framesPerScene + 50);
 assert.equal(reading.root.dataset.activeRegion, ids[0], "Focused story remains selected beyond its original deadline");
@@ -307,7 +307,7 @@ reading.frames(10);
 assert.equal(reading.root.dataset.activeRegion, ids[1], "Explicit resume continues the paused journey");
 for (const event of ["pointerenter", "pointerdown", "wheel"]) {
   reading.panelGroup.listeners[event]({});
-  assert.equal(reading.play.textContent, "Resume journey");
+  assert.equal(reading.play.textContent, "Resume tour");
   assert.equal(reading.queue(), 0);
   reading.frames(framesPerScene + 5);
   assert.equal(reading.root.dataset.activeRegion, ids[1], "Reading interaction pauses scene replacement");

@@ -44,5 +44,7 @@
       "source": "/((?!.*\\.).*)",
       "destination": "/404.html"
     }
-  ]
+  ],
+  "buildCommand": "node scripts/build-public.mjs",
+  "outputDirectory": "public-site"
 }

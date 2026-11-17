@@ -3,3 +3,6 @@ neorons-website/
 
 # Never commit local Claude Code state (may contain machine-local data)
 .claude/settings.local.json
+
+# Generated public-only deployment
+/public-site/

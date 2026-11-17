@@ -112,8 +112,8 @@
     root.dataset.activeRegion = items[selected].id;
     textIfChanged(currentLabel, items[selected].name);
     textIfChanged(coordinateLabel, coordinateText(items[selected].coordinates));
-    canvas.setAttribute("aria-label", "Interactive globe. Selected context: " + items[selected].name + ". Use the community tabs to explore.");
-    if (announce) textIfChanged(status, items[selected].name + ". Community context selected.");
+    canvas.setAttribute("aria-label", "Interactive globe. Selected context: " + items[selected].name + ". Use the community tabs to read language and cultural context.");
+    if (announce) textIfChanged(status, items[selected].name + ". Language and cultural context selected.");
     progress();
   }
   function stopTour(manualPause) {
@@ -331,7 +331,7 @@
       event.preventDefault(); tabs[next].focus(); tabs[next].click();
     });
   });
-  // The hero links keep their native atlas anchor while selecting its story.
+  // Optional deep links select a community while retaining the native atlas anchor.
   document.querySelectorAll("[data-story-link]").forEach(function (link) {
     link.addEventListener("click", function () {
       var index = items.findIndex(function (item) { return item.id === link.dataset.storyLink; });
@@ -343,7 +343,7 @@
     else startTour();
   });
   if (reduce) reduce.addEventListener("click", function () { localReduced = !localReduced; syncMotion(); });
-  // Reading a story or its sources takes priority over the timed journey.
+  // Reading a community summary or its sources takes priority over the timed tour.
   // Never hide a focused link, or restart merely because the reader moves away.
   if (panelGroup) {
     var pauseForReading = function () {
@@ -364,7 +364,7 @@
   if (previous) previous.addEventListener("click", function () { choose((selected + items.length - 1) % items.length, false); });
   if (reset) reset.addEventListener("click", function () {
     resetTour(); overview = true; closer = false; updateControls();
-    textIfChanged(status, "World view. Select a community to explore its context.");
+    textIfChanged(status, "World view. Select a community to read its language and cultural context.");
     flyTo([-35, 20], 1);
   });
   if (zoomButton) zoomButton.addEventListener("click", function () {

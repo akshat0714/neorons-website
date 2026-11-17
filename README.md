@@ -1,31 +1,30 @@
 # Neorons website
 
-A static, international nonprofit website centred on suicide prevention, multilingual access and inclusion. No package installation, application server or build step is required.
+A static, international nonprofit website centred on suicide prevention, multilingual access and inclusion. No package installation or application server is required. A small Node script prepares the public deployment directory.
 
 ## Pages
 
-- `index.html`: international mission, programme overview, reach and prominent supporter logos; programme photography appears only on Impact.
-- `about.html`: organisation and existing team biographies.
-- `programs.html`: multilingual AI phone service, interactive conceptual research diagrams, campus and community programmes.
-- `fellowship.html`: planned six-week virtual fellowship, six areas of support, a proposed weekly journey, with details coming soon; no FAQ or borrowed alumni claims.
-- `impact.html`: international reach, five programme photo stories with inclusion outcomes, all 23 IIT and 22 IIM logos, and fundraising.
-- `india.html`: all 11 original India programme records, including three marked as originally planned. Expandable records and filters work with `js/india.js`; the records are readable without JavaScript.
-- `contact.html`, `media.html`, `profile.html`: contact, press and printable organisation profile.
-- `privacy.html`, `safeguarding.html`, `accessibility.html`, `credits.html`: policies and photography attribution.
+- `index.html`: mission, programme overview, reach and supporter logos
+- `about.html`: organisation mission and priorities
+- `mission.html`: community perspectives, interactive globe, Indigenous rights resources and conceptual phone-service demonstration
+- `fellowship.html`: planned fellowship, with dates and applications pending
+- `impact.html`: organisational results, official legislative resources and supporter logos
+- `programs.html`, `india.html`: legacy links redirect to Mission
+- `contact.html`, `media.html`, `profile.html`: contact, press and printable organisation profile
+- `privacy.html`, `safeguarding.html`, `accessibility.html`, `credits.html`: policies and logo attribution
 
-The visual design uses a floating navigation bar, textured colour panels, layered paper compositions, and short programme copy. Decorative movement includes entrance transitions, scroll reveals, subtle parallax, and a voice waveform. The homepage Pause motion control remembers the preference locally; system reduced-motion settings are respected, including changes while the page is open. Content and navigation remain available without JavaScript.
-
-Navigation, footer, and page content are ordinary HTML and can be edited directly. Shared styles are in `css/styles.css`; `css/pages.css` carries the homepage’s paper panels, pastel colours, chapter links and document layouts through the inner pages. All pages include the same motion preference control. Shared navigation and old homepage fragment redirects are in `js/main.js`. The original programme/team source data is preserved in `js/events.js`; the public archive is static HTML. When correcting an event, update both its source data and its archive record.
+Photographs, illustrations and individual profiles are removed from the published site. Organisation and partner logos remain. Content and navigation remain available without JavaScript; motion controls respect reduced-motion preferences.
 
 ## Run locally
 
 ```sh
-python3 -m http.server 8080
+node scripts/build-public.mjs
+python3 -m http.server 8080 --directory public-site
 ```
 
-Open http://localhost:8080. All fonts and images are served locally. The five programme photos were supplied by Neorons; their provenance is recorded in `docs/impact-photo-sources.md`. Archive illustrative photographs retain public source/licence credits. The existing team portraits are retained. No generated testimonials are displayed.
+The build copies only public pages and assets into `public-site/`. Repository documentation, deployment configuration and development scripts are excluded. Vercel publishes this directory. For a GCP upload archive, use `bash scripts/package-release.sh /absolute/path/neorons-website.zip`.
 
-Official logos are self-hosted in `images/supporters/`; their published sources are recorded in `docs/supporter-logo-sources.md` and `credits.html`. Preserve their colours and proportions. The AI campus gallery has been removed; the India page contains the earlier 11 programme records. Fellowship styling is in `css/fellowship.css`. Programme dates and application details remain pending; no fellowship interest or application link is published. Impact photo stories use `css/editorial.css`; the homepage links to them without displaying photos. Supporter logos and endorsement statements appear only on Home and Impact; their rows use `css/credibility.css`. Programme figures describe overall work, not individual people or sessions pictured.
+Supporter logos are self-hosted in `images/supporters/`; sources appear in `credits.html`. Preserve their colours and proportions. Supporter rows appear only on Home and Impact.
 
 ## Editorial facts
 
