@@ -33,7 +33,7 @@ International figures and support relationships were supplied by Neorons:
 - 500,000+ people reached across 80+ countries.
 - 125,000 people reached through the multilingual conversational AI phone service.
 - Inclusive programmes across all 23 IIT campuses and 22 IIM campuses.
-- Over US$75,000 raised for suicide prevention.
+- Over US$15,000 raised for suicide prevention.
 - Google, Amazon, Microsoft, OpenAI and Meta are listed as organisations that trust the phone service.
 - UNICEF, UNDP, UNFPA and the Government of India support programmes and awareness work.
 
